@@ -223,7 +223,7 @@ module.exports = class {
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
                 let sent = await message.send(embed)
-                return new Promise(resolve => setTimeout(resolve, time)).then(async () => {
+                return new Promise(resolve => setTimeout(resolve, 4000)).then(async () => {
                     sent.delete()
                         .catch(() => {});
                 })
