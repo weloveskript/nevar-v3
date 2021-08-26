@@ -1,0 +1,9 @@
+{
+  "description": "Desbloquea un usuario o servidor",
+  "usage": "{emotes.use} | Benutz {prefix}unblock <Usuarios|servidor>",
+  "usageHelp": "unblock <Usuarios|servidor>",
+  "guildUnblocked": "{emotes.success} | El servidor con ID {id} ha sido desbloqueado.",
+  "notBlocked": "{emotes.error} | Este servidor no está bloqueado",
+  "userUnblocked": "{emotes.success} | {user} ha sido desbloqueado",
+  "userNotBlocked": "{emotes.error} | {user} no está bloqueado"
+}

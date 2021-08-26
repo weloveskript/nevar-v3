@@ -1,0 +1,5 @@
+{
+  "description": "Plays a song",
+  "usage": "{emotes.use} | Use {prefix}play <name|URL>",
+  "usageHelp": "play <name|URL>"
+}

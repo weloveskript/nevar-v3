@@ -1,0 +1,11 @@
+{
+  "typeVoice": "Voice channel",
+  "typeText": "Text channel",
+  "typeAnnouncement": "Announcement channel",
+  "unknownUser": "Unknown#0000",
+  "created": "Channel created",
+  "type": "Type",
+  "name": "Name",
+  "category": "Category",
+  "executedBy": "Carried out by"
+}

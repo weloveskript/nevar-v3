@@ -1,0 +1,12 @@
+{
+  "description": "Banea a un usuario que no está en Discord",
+  "usage": "{emotes.use} | Usar {prefix}ghostban <ID>",
+  "usageHelp": "ghostban <ID>",
+  "noReasonGiven": "Ninguna razón dada",
+  "moderator": "Moderador",
+  "date": "Fecha",
+  "reason": "Razón",
+  "gotBanned": "**{user}** fue prohibido",
+  "bannedBy": "Prohibido por",
+  "bannedEmbed": "{emotes.success} | {user} fue prohibido: {reason}"
+}

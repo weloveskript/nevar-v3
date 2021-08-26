@@ -1,0 +1,6 @@
+{
+  "description": "Lists all members sorted by their money",
+  "usageHelp": "economyleaderboard",
+  "list": "{emotes.coins} | Here all members are sorted according to their money (Page {page}/{maxPage}):",
+  "currency": "Dukaden"
+}

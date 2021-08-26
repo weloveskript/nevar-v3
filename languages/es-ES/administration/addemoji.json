@@ -1,0 +1,8 @@
+{
+  "description": "Agregue fácilmente un emote a través de un enlace a una imagen",
+  "usage": "{emotes.use} | Usar {prefix}addemoji <URL de la imagen> <nombre>",
+  "usageHelp": "addemoji <URL de la imagen> <nombre>",
+  "maxLength": "{emotes.error} | La longitud máxima del nombre es de 32 caracteres",
+  "created": "{emotes.success} | El emote <{name}:{id}> fue creado",
+  "cantAdd": "{emotes.error} | No se pudo agregar el emoji. ¿El servidor todavía tiene suficientes espacios libres?"
+}

@@ -1,0 +1,8 @@
+{
+  "description": "Since we live in a democry, simply create a poll with me",
+  "usage": "{emotes.use} | Use {prefix}poll <question> | response 1 | response 2 | response 3 | ... (up to 10 reponses)",
+  "usageHelp": "poll <question> | response 1 | response 2 | response 3 | ... (up to 10 reponses)",
+  "minArgs": "{emotes.error} | You must specify at least 2 responses",
+  "maxArgs": "{emotes.error} | You may only specify up to 10 responses",
+  "pollFrom": "Poll made by {user}"
+}

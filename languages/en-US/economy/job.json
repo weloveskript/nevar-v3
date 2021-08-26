@@ -1,0 +1,37 @@
+{
+  "description": "Apply for a job, quit yours, or see a list of everyone",
+  "usage": "{emotes.use} | Use {prefix}job apply <job> | quit | list",
+  "usageHelp": "job apply <job> | quit | list",
+
+
+  "_comment": "Jobs in folgendem Format reinschreiben:",
+  "_comment2": "Name | ID | nötige Arbeitsstunden | Lohn | Wie oft man arbeiten kann",
+  "jobs": [
+    "kitchen help | 1 | 0 | 20 | 300000",
+    "cashier | 2 | 10 | 40 | 600000",
+    "computer scientist\n | 3 | 30 | 150 | 1200000",
+    "financial advisor\n | 4 | 40 | 300 | 2400000",
+    "chief doctor | 5 | 80 | 500 | 4800000",
+    "football professional | 6 | 100 | 2000 | 9600000",
+    "pilot | 7 | 150 | 3000 | 14400000",
+    "tax consultant | 8 | 200 | 4000 | 18000000",
+    "attorney | 9 | 260 | 6000 | 19800000",
+    "pharmaceutical representative | 10 | 340 | 7000 | 24000000",
+    "business consultant | 11 | 350 | 9000 | 25800000",
+    "politician | 12 | 500 | 20000 | 30000000",
+    "discord employee | 13 | 1000 | 50000 | 36000000"
+  ],
+
+
+  "textLayout": "You can work all **{time}** and earn **{count} ducats** per hour worked",
+  "textLayout2": "You must have worked at least **{count} hours** to be able to work as **{job}**",
+  "list": "{emotes.coins} | So far you have worked a total of **{count}** hours.\n{emotes.boost} | Here are all available jobs: (Page {page}/{maxPage})",
+  "set": "{emotes.success} | You are now working as **{job}**",
+  "sameJob": "{emotes.error} | You already work as a **{job}**",
+  "notEnough": "{emotes.error} | You must have worked **{count} hours** to start as a **{job}**. You still need **{count2} hours**",
+  "notFound": "{emotes.coins} | I have not found a job under this name or ID",
+  "quitted": "{emotes.coins} | You quit your job as **{job}**",
+  "noJob": "{emotes.coins} | You don't currently have a job"
+
+}
+

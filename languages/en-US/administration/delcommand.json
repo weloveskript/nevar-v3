@@ -1,0 +1,8 @@
+{
+  "description": "Simply delete a custom command if you don't need it",
+  "usage": "{emotes.use} | Use {prefix}delcommand <name>",
+  "usageHelp": "delcommand <name>",
+  "notExist": "{emotes.error} | This command does not exist",
+  "deleted": "{emotes.success} | The command has been deleted"
+
+}

@@ -1,0 +1,6 @@
+{
+  "description": "Continues the current song",
+  "usageHelp": "resume",
+  "alreadyResumed": "{emotes.error} | The song is already running",
+  "resumed": "{emotes.resume} | **{song}** continued"
+}

@@ -1,0 +1,8 @@
+{
+  "description": "Priva a alguien de un nivel",
+  "usage": "{emotes.use} | Usar {prefix}removelevel <miembro> <nivel>",
+  "usageHelp": "removelevel <miembro> <nivel>",
+  "maxLevel": "{emotes.error} | Puedes retirar un máximo de 10 niveles",
+  "minLevel": "{emotes.error} | {user} no debe bajar del nivel 0",
+  "removed": "{emotes.success} | Tu tienes {user} {count} nivel deducido"
+}

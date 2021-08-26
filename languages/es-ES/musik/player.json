@@ -1,0 +1,13 @@
+{
+  "disconnect": "{emotes.error} | La reproducción finaliza porque me desconectaron del canal",
+  "empty": "{emotes.error} | La reproducción termina porque estoy solo en el canal",
+  "noResults": "{emotes.error} | No encontré nada para **{query}**",
+  "playlistAdd": "{emotes.playlist} | **{title}** se agregó a la cola (**{count}** canciones)",
+  "queueEnd": "{emotes.stop} | La reproducción ha terminado",
+  "searchCancel": "{emotes.error} | Esa no es una respuesta válida. Vuelva a enviar el comando",
+  "searchCancelled": "{emotes.success} | Cancelaste la busqueda",
+  "invalidResponse": "{emotes.error} | Debes ingresar un número entre 1 y {length}",
+  "added": "{emotes.success} | **{track}** se agregó a la cola",
+  "playing": "{emotes.play} | Ahora estoy reproduciendo **{track}** en <#{channel}>",
+  "leave": "{emotes.stop} | Me voy del canal de voz"
+}

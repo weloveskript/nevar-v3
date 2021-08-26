@@ -1,0 +1,11 @@
+{
+  "description": "Si desea demoler a un miembro antes de lo planeado, puede hacerlo aquí",
+  "usage": "{emotes.use} | Usar {prefix}unmute <miembro>",
+  "usageHelp": "unmute <miembro>",
+  "cantUnmute": "{emotes.error} | No puedes desanimar a {user}",
+  "gotUnmuted": "{emotes.success} | {user} se desanimó",
+  "gotUnmutedLog": "{user} se desanimó",
+  "unmutedBy": "Desanimado por",
+  "isNotMuted": "{emotes.error} | {user} no está silenciado"
+
+}

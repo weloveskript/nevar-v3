@@ -1,0 +1,19 @@
+{
+  "description": "Send fully customizable embeds with me",
+  "usageHelp": "embed",
+  "author": "➞ This is the author name",
+  "setAuthor": "{emotes.loading} | [Step 1/9] Tell me the name of the author of the embed",
+  "sendAuthorImage": "{emotes.loading} | [Step 2/9] Send the author's icon. Write \"/\" if you don't want one",
+  "imageTitle": "\uD83E\uDC14 This is the author icon",
+  "noIcon": "{emotes.error} | This is not a picture",
+  "sendThumbnail": "{emotes.loading} | [Step 3/9] Send the embed thumbnail. Send \"/\" if you don't want one",
+  "thumbnailTitle": "The image on the right is the thumbnail ➞",
+  "sendTitle": "{emotes.loading} | [Step 4/9] Set the title. \"/\" if you don't want one",
+  "sendDescription": "{emotes.loading} | [Step 5/9] Send the description of the embed (the description is this text here). For none, send \"/\"",
+  "sendImage": "{emotes.loading} | [Step 6/9] Send the picture of the embed. If you don't want one, send \"/\". The picture is the big one below",
+  "sendFooter": "{emotes.loading} | [Step 7/9] Immediately done: Send the text of the footer. As usual, if you don't want one send \"/\"",
+  "footer": "This is the footer text",
+  "sendFooterIcon": "{emotes.loading} | [Step 8/9] Send the icon for the footer",
+  "iconFooter": "\uD83E\uDC14 The footer icon is that",
+  "sendColor": "{emotes.loading} | [Step 9/9] Finally, tell me which color you want for the embed. (in hex or RGB). The same applies here: if you don't want one, send \"/\""
+}

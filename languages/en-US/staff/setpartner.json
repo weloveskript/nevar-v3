@@ -1,0 +1,12 @@
+{
+  "description": "Adds a bot or server to the partner system",
+  "usage": "{emotes.use} | Use {prefix}setpartner <server id/bot id> <server invite/bot invite> <short description>",
+  "usageHelp": "setpartner <server id/bot id> <server invite/bot invite> <short description>",
+  "onlyBotsAndServers": "{emotes.error} | Only bots and servers can be entered in the partner system",
+  "botAlreadyAdded": "{emotes.error} | The bot {username} is already registered in the partner system",
+  "botAdded": "{emotes.success} | The bot {username} is now registered in the partner system",
+  "botAddedAnnounce": "{emotes.raven} | We are now in a partnership with [{username}]({invite})! You can invite him with this link: [Just click]({invite})\n{emotes.raven} | {text}",
+  "guildAlreadyAdded": "{emotes.error} | The server {guildname} is already registered in the partner system",
+  "guildAdded": "{emotes.success} | The server {guildname} is now registered in the partner system",
+  "guildAddedAnnounce": "{emotes.raven} | We are now in a partnership with [{guildname}]({invite})! With this link you can join the server: [Just click]({invite})\n{emotes.raven} | {text}"
+}

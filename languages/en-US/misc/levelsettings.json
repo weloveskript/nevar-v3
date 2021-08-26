@@ -1,0 +1,9 @@
+{
+  "description": "With the command you can personalize your level card",
+  "usage": "{emotes.use} | Use {prefix}levelsettings setbg <number> / reset | setcolor <Hex-/Rgb-Color> reset\n{emotes.use} | You can find a list of available background images [here](https://nevar.eu/content/discord/cards?lang={lang})",
+  "usageHelp": "levelsettings setbg <number> / reset | setcolor <Hex-/Rgb-Color> reset",
+  "resetted": "{emotes.success} | You have reset your background image for the level card",
+  "bgSet": "{emotes.success} | You have set your background image for the levelcard to [number {number}]({url})",
+  "colorReset": "{emotes.success} | You have reset the color of your level card",
+  "colorSet": "{emotes.success} | You have set the color of your level card to {color}"
+}

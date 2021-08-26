@@ -1,0 +1,14 @@
+{
+  "description": "Los mensajes de nivel en el canal incorrecto pueden ser bastante molestos. ¿Debería enviarlo a otro canal, o mejor no enviarlo?",
+  "usage": "{emotes.use} | Usar {prefix}levelmessages off|on|resetchannel|setchannel <canal>|set <mensaje>",
+  "usageHelp": "levelmessages off|on|resetchannel|setchannel <canal>|set <mensaje>",
+  "chooseMessage": "{emotes.use} | Con `%username` escribes el nombre del miembro, con `%user` mencionas al miembro, con `%usertag` escribes el nombre+discriminador y con `%level` escribes el nivel",
+  "messageSet": "{emotes.success} | Mensaje de nivel establecido en {message}",
+  "notEnabled": "{emotes.error} | Los mensajes de nivel no están activados",
+  "channelOfMember": "{emotes.success} | Los mensajes de nivel se enviarán al canal actual del miembro a partir de ahora",
+  "alreadyDisabled": "{emotes.error} | Los mensajes de nivel ya están desactivados",
+  "disabled": "{emotes.success} | Mensajes de nivel desactivados",
+  "alreadyEnabled": "{emotes.error} | Los mensajes de nivel ya están activados",
+  "enabled": "{emotes.success} | Mensajes de nivel activados",
+  "setChannel": "{emotes.success} | Los mensajes de nivel ahora están en {channel}"
+}

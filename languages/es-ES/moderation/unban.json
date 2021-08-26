@@ -1,0 +1,10 @@
+{
+  "description": "Puede desbancar a los usuarios prohibidos si los quiere de vuelta en su Discord",
+  "usage": "{emotes.use} | Usar {prefix}unban <ID|Usuarios>",
+  "usageHelp": "unban <ID|Usuarios>",
+  "isNotBanned": "{emotes.error} | {user} no esta prohibido",
+  "gotUnbanned": "{emotes.success} | {user} fue desbancado",
+  "gotUnbannedLog": "{user} fue desbancado",
+  "unbannedBy": "No prohibido por",
+  "youGotUnbanned": "{emotes.success} | Estabas despierto {guild} por {moderator} no prohibido"
+}

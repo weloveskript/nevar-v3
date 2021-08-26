@@ -1,0 +1,8 @@
+{
+  "description": "Enumera todas las claves premium disponibles actualmente",
+  "usageHelp": "listkeys",
+  "withMax": "con un máximo",
+  "uses": "Usos ({uses}x ya usado)",
+  "noKeys": "Sin claves premium",
+  "embedText": "{emotes.success} | Las siguientes claves premium están actualmente activas:"
+}

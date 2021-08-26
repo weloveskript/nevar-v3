@@ -1,0 +1,9 @@
+{
+  "description": "Puede pedir dinero si quiere un salto financiero. Advertencia: no sin riesgo!",
+  "usageHelp": "beg",
+  "alreadyTook": "{emotes.coins} | Tienes que esperar **{time}** hasta que puedas suplicar de nuevo",
+
+  "case1": "{emotes.coins} | Fuiste golpeado y magullado en las costillas. La factura del hospital de **{amount} ducados** está cubierta por el seguro médico y usted recibe **{amount2} ducados** como compensación por el dolor y el sufrimiento",
+  "case2": "{emotes.coins} | Conociste a empresarios ricos y obtuviste **{amount} ducados** de ellos",
+  "case3": "{emotes.coins} | Conociste a gente pobre que, por bondad, todavía te da **{amount} ducados**"
+}

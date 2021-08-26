@@ -1,0 +1,8 @@
+{
+  "description": "Los impulsores son grandes personas. ¿Puedo darles el doble de XP?",
+  "usage": "{emotes.use} | Usar {prefix}doublexp on/off <rango>",
+  "usageHelp": "doublexp on/off <rango>",
+  "activate": "{emotes.success} | Los miembros con el rol {role} ahora obtienen el doble de XP",
+  "deactivate": "{emotes.success} | Los miembros con el rol {role} ya no reciben el doble de XP",
+  "notactivated": "{emotes.error} | No se activa el doble de XP para {role}"
+}

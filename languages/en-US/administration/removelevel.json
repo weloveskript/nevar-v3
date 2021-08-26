@@ -1,0 +1,9 @@
+{
+  "description": "Remove level from someone",
+  "usage": "{emotes.use} | Use {prefix}removelevel <member> <level>",
+  "usageHelp": "removelevel <member> <level>",
+  "maxLevel": "{emotes.error} | You may only remove up to 10 levels",
+  "minLevel": "{emotes.error} | {user} may not have negative levels",
+  "removed": "{emotes.success} | The user {user} lost {count} levels"
+}
+

@@ -1,0 +1,5 @@
+{
+  "description": "Webhooks allow you to write as if the person you want to write as is writing. Please don't abuse this though! :(",
+  "usage": "{emotes.use} | Use {prefix}mimic <member> <text>",
+  "usageHelp": "mimic <member> <text>"
+}

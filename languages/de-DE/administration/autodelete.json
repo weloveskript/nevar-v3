@@ -1,0 +1,24 @@
+{
+  "description": "Stell ganz einfach Autodelete für deine Channel ein",
+  "usage": "{emotes.use} Syntax: ```vb\n{prefix}autodelete [set <Channel> <Dauer> | reset]```",
+  "example": "{emotes.example} Beispiel: ```vb\n{prefix}autodelete set #spam 30s```",
+
+  "slashOption1": "aktion",
+  "slashOption1Desc": "Was möchtest du machen?",
+  "slashOption1Choice1": "set",
+  "slashOption1Choice2": "reset",
+
+  "slashOption2": "channel",
+  "slashOption2Desc": "Gib einen Channel an",
+
+  "slashOption3": "zeit",
+  "slashOption3Desc": "Gib eine gültige Zeit an, z.B. 5d",
+
+  "maxTime": "{emotes.error} Das maximale Autodelete beträgt 7 Tage",
+  "maxChannels": "{emotes.error} Du kannst in maximal 10 Channeln Autodelete einstellen",
+  "set": "{emotes.success} In {channel} werden neue Nachrichten absofort automatisch nach {time} gelöscht",
+  "resettedAll": "{emotes.success} Ich habe das Autodelete aller Channel zurückgesetzt",
+  "noAutodelete": "{emotes.error} Derzeit ist kein Autodelete eingestellt",
+  "resettedChannel": "{emotes.success} Ich habe das Autodelete in {channel} zurückgesetzt",
+  "noAutodeleteInChannel": "{emotes.error} In {channel} ist kein Autodelete aktiviert"
+}

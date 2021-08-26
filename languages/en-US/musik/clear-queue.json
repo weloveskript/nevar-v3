@@ -1,0 +1,6 @@
+{
+  "description": "Empties the entire queue",
+  "usageHelp": "clear-queue",
+  "empty": "{emotes.error} | The queue is empty",
+  "resetted": "{emotes.success} | The queue has been emptied"
+}

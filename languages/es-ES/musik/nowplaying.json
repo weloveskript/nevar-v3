@@ -1,0 +1,14 @@
+{
+  "description": "Muestra información sobre la canción que se está reproduciendo actualmente.",
+  "usageHelp": "nowplaying",
+  "name": "Solo jugando",
+  "channel": "Subido por",
+  "requested": "Solicitado por",
+  "views": "Llamadas",
+  "duration": "Duración",
+  "filters": "Filtros activos",
+  "volume": "Volumen",
+  "loop": "Círculo",
+  "yes": "Activado",
+  "no": "Desactivado"
+}

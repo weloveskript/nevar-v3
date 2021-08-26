@@ -1,0 +1,5 @@
+{
+  "description": "To sing along, I simply send you the lyrics as well!",
+  "usage": "{emotes.use} | Use {prefix}lyrics <songname>",
+  "usageHelp": "lyrics <songname>"
+}

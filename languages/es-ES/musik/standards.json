@@ -1,0 +1,9 @@
+{
+  "notConnected": "{emotes.error} | No estás conectado a ningún canal de voz",
+  "sameVoice": "{emotes.error} | No estás conectado al mismo canal de voz que yo",
+  "nothingIsPlaying": "{emotes.error} | Actualmente no se está reproduciendo nada",
+  "cantJoin": "{emotes.error} | No puedo unirme al canal de voz",
+  "notAvailable": "{emotes.error} | El video no está disponible en mi ubicación",
+  "starting": "{emotes.use} | Empieza la música. Por favor, espere un momento",
+  "otherError": "{emotes.error} | Ocurrió un error inesperado. Regístrese en el servidor de soporte\n\n```js\n{error}```"
+}

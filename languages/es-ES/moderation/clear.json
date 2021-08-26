@@ -1,0 +1,10 @@
+{
+  "description": "Siempre hay miembros molestos que piensan que tienen que molestar: ¡destruyan sus mensajes y organicen la censura!",
+  "usage": "{emotes.use} | Usar {prefix}clear <número> [miembro]",
+  "usageHelp": "clear <número> [miembro]",
+  "confirmDelete": "{emotes.loading} | Se vacía todo el canal. Confirmar con \"confirm\"",
+  "timeEnd": "{emotes.error} | Se acabó el tiempo",
+  "channelPurged": "{emotes.success} | El canal se vació",
+  "purgedUser": "{emotes.success} | {amount} Noticias de {user} fueron eliminados",
+  "purged": "{emotes.success} | {amount} se han eliminado los mensajes"
+}

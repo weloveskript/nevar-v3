@@ -1,0 +1,7 @@
+{
+  "description": "Muestra la cola del servidor",
+  "usageHelp": "queue",
+  "queue": "**Cola del servidor - {guild}**\n{emotes.arrow} Reproducción en curso: **{song}**\n\n{emotes.arrow} {queue}",
+  "andOther": "Y **{count}** otras canciones..",
+  "requestedBy": "Solicitado por"
+}

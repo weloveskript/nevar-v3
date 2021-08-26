@@ -1,0 +1,5 @@
+{
+  "description": "Enumera todos los socios de nuestro bot",
+  "usageHelp": "seepartners",
+  "partnerList": "Lista de socios"
+}

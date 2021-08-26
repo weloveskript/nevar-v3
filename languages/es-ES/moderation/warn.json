@@ -1,0 +1,19 @@
+{
+  "description": "Advertir a los miembros si no siguen las reglas",
+  "usage": "{emotes.use} | Usar {prefix}warn <miembro> <razón>",
+  "usageHelp": "warn <miembro> <razón>",
+  "isBot": "{emotes.error} | Los bots no pueden ser advertidos",
+  "cantWarnYourself": "{emotes.error} | No puedes advertirte a ti mismo",
+  "cantWarnUser": "{emotes.error} | No puedes advertir a {user}",
+  "userGotWarnedLog": "{user} fue advertido",
+  "reason": "razón",
+  "warnedBy": "Advertido por",
+  "youGotAutobanned": "{emotes.error} | Fuiste aceptado automáticamente por {guild} prohibido porque tu excedidas {count} advertencias",
+  "moderator": "Moderador",
+  "autoBanReason": "Prohibición automática después {count} advertencias: {warnReason}",
+  "autoBanEmbed": "{emotes.success} | {user} fue advertido: {reason} - Porque él superó {count} advertencias, fue automáticamente baneado",
+  "youGotAutokicked": "{emotes.error} | Fuiste aceptado automáticamente por {guild} pateado porque tu excedidas {count} advertencias",
+  "autoKickEmbed": "{emotes.success} | {user} fue advertido: {reason} - Porque él superó {count} advertencias, fue pateado automáticamente",
+  "youGotWarned": "{emotes.error} | Estabas despierto {guild} por {moderator} prevenido: {reason}",
+  "userGotWarned": "{emotes.success} | {user} fue advertido: {reason}"
+}

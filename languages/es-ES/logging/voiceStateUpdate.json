@@ -1,0 +1,3 @@
+{
+  "cantGiveRole": "{emotes.error} | No pude darle a {user} la función para el nivel {level}"
+}

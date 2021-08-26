@@ -1,0 +1,12 @@
+{
+  "description": "Agrega un bot o servidor al sistema asociado",
+  "usage": "{emotes.use} | Usuario {prefix}setpartner <ServerID/BotID> <Invitación del servidor/Invitación de bot> <texto pequeño>",
+  "usageHelp": "setpartner <ServerID/BotID> <Invitación del servidor/Invitación de bot> <texto pequeño>",
+  "onlyBotsAndServers": "{emotes.error} | Solo se pueden ingresar bots y servidores en el sistema de socios",
+  "botAlreadyAdded": "{emotes.error} | El bot {username} ya está registrado en el sistema de socios",
+  "botAdded": "{emotes.success} | El bot {username} ahora está registrado en el sistema de socios",
+  "botAddedAnnounce": "{emotes.raven} | ¡Ahora estamos asociados con [{username}]({invite})! Puedes invitarlo con este enlace: [Haga clic aquí]({invite})\n{emotes.raven} | {text}",
+  "guildAlreadyAdded": "{emotes.error} | El servidor {guildname} ya está registrado en el sistema de socios",
+  "guildAdded": "{emotes.success} | El servidor {guildname} ahora está registrado en el sistema de socios",
+  "guildAddedAnnounce": "{emotes.raven} | ¡Ahora estamos asociados con [{guildname}]({invite})! Con este enlace puedes unirte al servidor: [Haga clic aquí]({invite})\n{emotes.raven} | {text}"
+}

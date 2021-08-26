@@ -1,0 +1,12 @@
+{
+  "description": "Deactivates certain commands for your Discord server",
+  "usage": "{emotes.use} | Use {prefix}ignorecommand add/remove <command> | list",
+  "usageHelp": "ignorecommand <command>",
+  "alreadyIgnored": "{emotes.error} | The command is already being ignored",
+  "ignored": "{emotes.success} | The command {cmd} can no longer be executed",
+  "notIgnored": "{emotes.error} | The command is not ignored",
+  "removed": "{emotes.success} | The command {cmd} can now be executed again",
+  "empty": "No ignored commands",
+  "ignoredList": "{emotes.success} | Ignored commands:\n\n{emotes.arrow} {list}",
+  "ignoredCmds": "Ignored commands"
+}

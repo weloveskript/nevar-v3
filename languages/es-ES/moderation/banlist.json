@@ -1,0 +1,9 @@
+{
+  "description": "Enumera todos los usuarios actualmente prohibidos temporalmente.",
+  "usageHelp": "banlist",
+  "noOne" : "No hay miembros bloqueados temporalmente",
+  "list": "{emotes.success} | Los siguientes usuarios están actualmente bloqueados temporalmente:\n\n{emotes.arrow} {list}",
+  "unbanAt": "Desbloqueado el",
+  "case": "Case"
+}
+

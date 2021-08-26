@@ -1,0 +1,3 @@
+{
+  "cantGiveRole": "{emotes.error} | I couldn't give {user} the role for Level {level}"
+}

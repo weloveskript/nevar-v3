@@ -1,0 +1,27 @@
+{
+ "description": "No matter what you ask the 8ball - it will be able to tell you the correct answer",
+  "usage":"{emotes.use} | Use {prefix}8ball <question>",
+  "usageHelp": "8ball <question>",
+  "answer1": "Sure",
+  "answer2": "That's right",
+  "answer3": "I don't doubt that one",
+  "answer4": "Yes, definitely",
+  "answer5": "You can assume that",
+  "answer6": "I think so",
+  "answer7": "Most likely",
+  "answer8": "Looks good",
+  "answer9": "Yes",
+  "answer10": "It may hint that",
+  "answer11": "Probably not",
+  "answer12": "Ask me later again",
+  "answer13": "I'd rather not give you an answer right now",
+  "answer14": "I can't tell you right now",
+  "answer15": "Think about it and ask again",
+  "answer16": "Don't be so sure",
+  "answer17": "Well, I say no",
+  "answer18": "According to magical sources: No",
+  "answer19": "Doesn't look good",
+  "answer20": "Well.. No",
+  "wait": "{emotes.loading} | Give me some time to think..."
+}
+ 

@@ -1,0 +1,7 @@
+{
+  "description": "Ver el saldo de su cuenta o el de otra persona.",
+  "usageHelp": "balance [miembro]",
+  "balance": "{emotes.coins} | {member} tiene **{total}** ducados. Tiene **{pocket}** en la mano y **{bank}** en el banco"
+}
+
+

@@ -1,0 +1,5 @@
+{
+  "description": "Te permito escribir fácilmente en nombre de otros en forma de webhooks. Pero no lo aproveches :(",
+  "usage": "{emotes.use} | Usar {prefix}mimic <miembro> <texto>",
+  "usageHelp": "mimic <Mitglied> <texto>"
+}

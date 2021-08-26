@@ -1,0 +1,10 @@
+{
+  "description": "Cada vez que se invita a un nuevo bot para que le asigne un rol manualmente es molesto. ¡Deja que Raven lo haga por ti!",
+  "usage": "{emotes.use} | Usuario {prefix}botautorole add/remove <rol> | list",
+  "usageHelp": "botautorole add/remove <rol> | list",
+  "roleSet": "{emotes.success} | {role} ahora se otorga automáticamente a los bots recién invitados",
+  "roleRemoved": "{emotes.success} | {role} ya no se otorga a los bots recién invitados",
+  "list": "{emotes.success} | Los siguientes roles se otorgan a los bots recién invitados:\n\n{emotes.arrow} | {list}",
+  "noList": "{emotes.success} | Los siguientes roles se otorgan a los bots recién invitados:\n\n{emotes.arrow} | Sin roles",
+  "noAutorole": "{emotes.error} | Este rol no es un rol de bot automático"
+}

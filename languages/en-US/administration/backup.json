@@ -1,0 +1,18 @@
+{
+  "description": "You can simply load up a previous created backup once something bad happens",
+  "usage": "{emotes.use} | Use {prefix}backup create | load <Backup ID> | info <Backup ID>",
+  "usageHelp": "backup create | load <Backup ID> | info <Backup ID>",
+  "created": "{emotes.success} | The Backup was successfully created. The ID is going to be sent to you via DM. Keep that code save!",
+  "createdPrivate": "{emotes.success} | Here's your Backup-ID: {backupId}",
+  "pnError": "{emotes.error} | Unfortunately I can not send you a DM. The backup got removed.",
+  "createError": "{emotes.error} | An unknown error appeared..",
+  "loadBackup": "{emotes.loading} | The backup is going to replace the entire server. Are you sure? \"confirm\"",
+  "cancelLoad": "{emotes.error} | Time is over. The backup **won't** be loaded",
+  "successLoad": "{emotes.success} | The backup was successfully implemented",
+  "notFound": "{emotes.error} | No backup with the ID {ID} was found",
+  "id": "ID",
+  "server": "Server",
+  "size": "Size",
+  "createdAt": "Created on the"
+
+}

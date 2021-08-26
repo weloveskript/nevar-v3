@@ -1,0 +1,5 @@
+{
+  "description": "Omite la canción actual",
+  "usageHelp": "skip",
+  "skipped": "{emotes.skip} | Se omitió la canción actual"
+}

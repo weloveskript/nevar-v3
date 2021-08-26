@@ -1,0 +1,6 @@
+{
+  "description": "Your level",
+  "usageHelp": "level [member]",
+  "rank": "RANK",
+  "level": "LEVEL"
+}

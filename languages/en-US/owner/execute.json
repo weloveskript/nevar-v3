@@ -1,0 +1,7 @@
+{
+  "description": "Executes a command on the server",
+  "usage": "{emotes.use} | Use {prefix}execute <text>",
+  "usageHelp": "execute <text>",
+  "noOutput": "{emotes.success} | Executed, no output given"
+
+}

@@ -1,0 +1,5 @@
+{
+  "description": "Reproduce su texto, pero al revés",
+  "usage": "{emotes.use} | Usar {prefix}reverse <texto>",
+  "usageHelp": "reverse <texto>"
+}

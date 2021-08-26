@@ -1,0 +1,10 @@
+{
+  "description": "Would you like to help develop the Discord? I will pass on your suggestions and ideas to the administration quickly and securely!",
+  "usage": "{emotes.use} | Use {prefix}suggest <idea>",
+  "usageHelp": "suggest <idea>",
+  "noChannelSet": "{emotes.error} | The server has not set a suggestion channel",
+  "member": "Member",
+  "date": "Date",
+  "idea": "Idea",
+  "ideaGiven": "{emotes.success} | Your idea has been submitted"
+}

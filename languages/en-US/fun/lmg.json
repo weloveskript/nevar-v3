@@ -1,0 +1,7 @@
+{
+  "description": "There are always going to be people lazy enought to not use google. But not me!",
+  "usage": "{emotes.use} | Use {prefix}lmg <search>",
+  "usageHelp": "lmg <search>",
+  "textMarkdown": "{emotes.success} | [Just click on it]({url})"
+}
+

@@ -1,0 +1,10 @@
+{
+  "description": "If you want me to automatically kick or ban members after a certain number of warnings, you can do so here",
+  "usage": "{emotes.use} | Use {prefix}setwarns kick <number> | ban <number>",
+  "usageHelp": "setwarns kick <number> | ban <number>",
+  "noKickAnymore": "{emotes.success} | Members will no longer be automatically kicked",
+  "noBanAnymore": "{emotes.success} | Members will no longer be automatically kicked",
+  "invalidNumber": "{emotes.error} | Specify a number between 1 and 20",
+  "autoKick": "{emotes.success} | Members will be kicked automatically on {count} warnings from now on",
+  "autoBan": "{emotes.success} | Members will be automatically banned with {count} warnings"
+}

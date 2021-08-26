@@ -1,0 +1,10 @@
+{
+  "description": "Every time a new bot is invited to give it a role manually is annoying. Let raven do it for you!",
+  "usage": "{emotes.use} | Use {prefix}botautorole add/remove <role> | list",
+  "usageHelp": "botautorole add/remove <role> | list",
+  "roleSet": "{emotes.success} | {role} is now automatically given to newly invited bots",
+  "roleRemoved": "{emotes.success} | {role} is no longer given to newly invited bots",
+  "list": "{emotes.success} | The following roles are given to newly invited bots:\n\n{emotes.arrow} | {list}",
+  "noList": "{emotes.success} | The following roles are given to newly invited bots:\n\n{emotes.arrow} | No roles",
+  "noAutorole": "{emotes.error} | This role is not a bot auto role"
+}

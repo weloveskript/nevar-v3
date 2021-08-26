@@ -1,0 +1,8 @@
+{
+  "description": "Enumera todos los miembros silenciados actualmente",
+  "usageHelp": "mutelist",
+  "noOne" : "No hay miembros silenciados",
+  "list": "{emotes.success} | Los siguientes miembros están silenciados actualmente:\n\n{emotes.arrow} {list}",
+  "unmuteAt": "Disgusto por",
+  "case": "Case"
+}

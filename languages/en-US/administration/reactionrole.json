@@ -1,0 +1,11 @@
+{
+  "description": "Just set up Reactionroles",
+  "usageHelp": "reactionrole",
+  "started": "{emotes.loading} | First, provide the ID of the message",
+  "noId": "{emotes.error} | This is not a valid ID, action canceled",
+  "giveRole": "{emotes.loading} | Now mention the role or send its ID",
+  "noRole": "{emotes.error} | This is not a valid role, action canceled",
+  "giveEmote": "{emotes.loading} | Now, send the emote you want",
+  "noEmote": "{emotes.error} | This is not a valid emoji, action canceled",
+  "created": "{emotes.success} | The reaction role has been created"
+}

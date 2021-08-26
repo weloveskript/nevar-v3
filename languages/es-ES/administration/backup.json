@@ -1,0 +1,18 @@
+{
+  "description": "Si las personas equivocadas obtienen demasiados derechos en su Discord, ¡puede cargar fácilmente una copia de seguridad!",
+  "usage": "{emotes.use} | Usar {prefix}backup create | load <ID de respaldo> | info <ID de respaldo>",
+  "usageHelp": "backup create | load <ID de respaldo> | info <ID de respaldo>",
+  "created": "{emotes.success} | Se ha creado la copia de seguridad. La ID de respaldo se le envió a través de PM, ¡guárdelo para usted!",
+  "createdPrivate": "{emotes.success} | Aquí está su ID de respaldo: {backupId}",
+  "pnError": "{emotes.error} | No puedo escribirte un PM, la copia de seguridad fue eliminada",
+  "createError": "{emotes.error} | Se ha producido un error..",
+  "loadBackup": "{emotes.loading} | La copia de seguridad reemplaza a todo el servidor actual. ¿Está seguro? Confirmar con \"confirme\"",
+  "cancelLoad": "{emotes.error} | El tiempo ha expirado, la copia de seguridad **no** se cargó",
+  "successLoad": "{emotes.success} | La copia de seguridad se cargó correctamente",
+  "notFound": "{emotes.error} | No se encontró ninguna copia de seguridad con ID {ID}",
+  "id": "ID",
+  "server": "servidor",
+  "size": "talla",
+  "createdAt": "creado en"
+
+}

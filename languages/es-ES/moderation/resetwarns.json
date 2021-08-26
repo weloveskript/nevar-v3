@@ -1,0 +1,6 @@
+{
+  "description": "Con una buena orientación, puede restablecer el historial de advertencia de un miembro",
+  "usage": "{emotes.use} | Usar {prefix}resetwarns <miembro>",
+  "usageHelp": "resetwarns <miembro>",
+  "resetted": "{emotes.success} | Se restablecieron las advertencias de {user}"
+}

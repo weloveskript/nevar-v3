@@ -1,0 +1,12 @@
+{
+  "description": "Ban a user who is not on this Discord",
+  "usage":"{emotes.use} | use {prefix}ghostban <ID>",
+  "usageHelp": "ghostban <ID>",
+  "noReasonGiven": "No reason given",
+  "moderator": "Moderator",
+  "date": "date",
+  "reason": "reason",
+  "gotBanned": "**{user}** has been banned",
+  "bannedBy": "Banned by",
+  "bannedEmbed":"{emotes.success} | {user} has been banned: {reason}"
+}

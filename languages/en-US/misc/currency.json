@@ -1,0 +1,10 @@
+{
+  "description": "Converts one currency to another",
+  "usage": "{emotes.use} | Use {prefix}currency <number> <currency> <currency>",
+  "usageHelp": "currency <number> <currency> <currency>",
+  "error": "{emotes.error} | An error has occurred: {error}",
+  "converted1Title": "⬅️ From",
+  "converted1": "```{amountFrom} {from}```",
+  "converted2Title": "➡️ To",
+  "converted2": "```{amountTo} {to}```"
+}

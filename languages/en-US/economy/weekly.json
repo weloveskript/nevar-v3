@@ -1,0 +1,6 @@
+{
+  "description": "Claim your weekly reward",
+  "usageHelp": "weekly",
+  "alreadyTook": "{emotes.error} | To collect your weekly reward, you have to wait **{time}**",
+  "took": "{emotes.coins} | Your weekly reward is **{amount} ducats**"
+}

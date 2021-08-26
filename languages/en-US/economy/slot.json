@@ -1,0 +1,9 @@
+{
+  "description": "Play the slot machine for a certain amount",
+  "usage": "{emotes.use} | Use {prefix}slot <amount>",
+  "usageHelp": "slot <amount>",
+  "started": "│ » {emotes.slots1} {emotes.slots2} {emotes.slots3} « │",
+  "won": "{emotes.coins} | You won **{amount} ducats**",
+  "lose": "{emotes.coins} | You lost **{amount} ducats**",
+  "notEnough": "{emotes.coins} | You don't have that much money on hand"
+}

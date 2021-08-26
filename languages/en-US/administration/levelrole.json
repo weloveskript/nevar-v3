@@ -1,0 +1,10 @@
+{
+  "description": "You want to gift the \"King\" role to users with a level of 100+? You can do that here",
+  "usage": "{emotes.use} | Use {prefix}levelrole <level> <role> | <level> reset",
+  "usageHelp": "setlevelreward <level> <role> | <Level> reset",
+  "minLevel": "{emotes.error} | The level must be at least 1",
+  "resetLevel": "{emotes.success} | Level role for {level} was reset",
+  "noRole": "{emotes.error} | Level {level} does not have an attached role",
+  "levelRoleSet": "{emotes.success} | {level} rill receive role {role}"
+
+}

@@ -1,0 +1,31 @@
+{
+  "description": "Give away prizes easily on your Discord",
+  "usage": "{emotes.use} | use {prefix}givaway create <duration> <winner count> <winner> | end <ID> | reroll <ID> | delete <ID>",
+  "usageHelp": "givaway create <duration> <winnercount> <win> | end <ID> | reroll <ID> | delete <ID>",
+  "maxReached": "{emotes.error} | You already have 4 active giveaways",
+  "invalidTime": "{emotes.use} | Specify a valid duration. Available units are s, m, h, and d",
+  "maxTime": "{emotes.error} | A giveaway may last a maximum of 15 days",
+  "chooseNumber": "{emotes.error} | Enter a number between 1 and 10",
+  "ended": "**GIVEAWAY PAST**",
+  "timeRemaining": "Remaining time:",
+  "participate": "Respond with \uD83C\uDF89 to enter the giveaway",
+  "winMessage": "Congratulations, {winners}! The prize is: **{prize}**",
+  "noWinner": "There is no winner as no one has entered",
+  "winners": "Winners",
+  "endsAt": "Ends on",
+  "seconds": "seconds",
+  "minutes": "minutes",
+  "hours": "hours",
+  "days": "days",
+  "created": "{emotes.success} | The giveaway has been created",
+  "rerollWinners": "\uD83C\uDF89 New(r) Winner(s): {winners}! Congratulations!",
+  "rerollError": "Since no one participated, no winner could be selected",
+  "rerolled": "{emotes.success} | The giveaway has been rerolled",
+  "cantReroll": "{emotes.error} | No completed giveaway with the ID {ID} was found",
+  "deleted": "{emotes.success} | The giveaway has been deleted",
+  "cantDelete": "{emotes.error} | No completed giveaway with the ID {ID} was found",
+  "endedNow": "{emotes.success} | The giveaway has ended",
+  "cantEnd": "{emotes.error} | No giveaway with the ID {ID} was found"
+
+
+}

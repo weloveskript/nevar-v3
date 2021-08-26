@@ -1,0 +1,7 @@
+{
+ "autoReactEmojiDelete": "{emotes.warn} | An autoreact emoji ({emote}), from the channel {channel} has been deleted",
+  "unknownUser": "Unknown#0000",
+  "deleted": "Emoji deleted",
+  "name": "Name",
+  "executedBy": "Carried out by"
+}

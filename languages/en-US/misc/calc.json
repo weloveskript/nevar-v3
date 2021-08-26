@@ -1,0 +1,7 @@
+{
+  "description": "What's sqrt(436745454)? I'll tell you!",
+  "usage": "{emotes.use} | Use {prefix}calc <equation>",
+  "usageHelp": "calc <equation>",
+  "exercise": "Equation",
+  "result": "Solution"
+}

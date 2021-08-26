@@ -1,0 +1,19 @@
+{
+  "description": "No puedes memorizar todos los comandos, ¡así que aquí tienes una lista clara de todos ellos!",
+  "usage": "{emotes.use} | Usar {prefix}help [mando]",
+  "usageHelp": "help [mando]",
+  "customCMDnoHelp": "{emotes.error} | Un comando personalizado no tiene ayuda extendida",
+  "noCmdGiven": "{emotes.error} | No hay ningún comando llamado {cmd}",
+  "helpFor": "Ayuda para {cmd}",
+  "helpDescription": "Descripción",
+  "helpCategory": "Categoría",
+  "helpAliases": "Aliases",
+  "nothing": "Ninguno",
+  "helpUsage": "Usar",
+  "helpCooldown": "Enfriarse",
+  "second": "segundo",
+  "seconds": "segundos",
+  "helpPermission": "Permiso",
+  "forHelp": "● Para obtener ayuda sobre un comando específico, escriba {prefix}help <mando>",
+  "partners": "Nuestros compañeros"
+}

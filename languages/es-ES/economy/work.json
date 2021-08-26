@@ -1,0 +1,11 @@
+{
+  "description": "Haz tu trabajo para conseguir dinero",
+  "usageHelp": "work",
+  "alreadyWorked": "{emotes.error} | Trabajó por última vez antes del **{time}**. Tienes que esperar **{time2}** hasta que puedas volver al trabajo",
+
+
+  "worked": "{emotes.coins} | Trabajaste 1 hora como **{job}** y ganaste **{amount} ducados**",
+
+  "noJob": "{emotes.coins} | Actualmente no tienes trabajo. Con {prefix}job list obtienes una lista de todos los trabajos, y con {prefix}job apply <Job> solicitas uno"
+
+}

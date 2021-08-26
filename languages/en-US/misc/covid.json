@@ -1,0 +1,22 @@
+{
+  "description": "View current Covid-19 statistics",
+  "usage":"{emotes.use} | Use {prefix}covid [country]",
+  "usageHelp": "covid [country]",
+  "inCountry": "COVID-19 in {country}",
+  "worldWide": "Worldwide COVID-19 statistics",
+  "infections": "Infections",
+  "recovered": "Recoveries",
+  "deaths": "Deaths",
+  "infectionsToday": "Infections today",
+  "recoveredToday": "Recoveries today",
+  "deathsToday": "Deaths today",
+  "infectionsPerMillion": "Infections per million",
+  "deathsPerMillion": "Deaths per million",
+  "ofPopulation": "of the population",
+  "ofInfections": "of infections",
+  "of": "of",
+  "initialVaccinations": "initial vaccinations since vaccination began",
+  "vaccines": "Vaccinations",
+  "lastUpdate": "Last updated:"
+
+}

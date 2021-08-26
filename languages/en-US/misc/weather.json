@@ -1,0 +1,10 @@
+{
+  "description": "Shows you the weather for your city",
+  "usage": "{emotes.use} | Use {prefix}weather <city>",
+  "usageHelp": "weather <city>",
+  "title": "{weather}",
+  "temp": "Temperature (min. / max.)",
+  "weatherIn": "Weather in {city}",
+  "humidity": "Humidity",
+  "feels": "Temperature feels like"
+}

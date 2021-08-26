@@ -1,0 +1,21 @@
+{
+  "pingMsg": "{emotes.raven} | Hey {user}! My prefix here is {prefix}. With {prefix}help you get a list of my commands",
+  "noUrls": "{emotes.error} | You are not allowed to send any links here",
+  "cantGiveLevelrole": "{emotes.error} | I couldn't give {user} the role for Level {level}",
+  "notAllowed": "{emotes.error} | Commands are not allowed in {channel}",
+  "missingBotPerms": "{emotes.error} | I do not have the following rights: {permissions}",
+  "missingUserPerms": "{emotes.error} | You do not have the following rights: {permissions}",
+  "everyonePing": "{emotes.error} | You have no rights to mention `@`everyone",
+  "nsfwOnly": "{emotes.error} | The command can only be executed in NSFW channels",
+  "deactivated": "{emotes.error} | The command is temporarily deactivated",
+  "ownerOnly": "{emotes.error} | The command is only for my owner",
+  "staffOnly": "{emotes.error} | The command is only for raven staff",
+  "remainingCooldown": "{emotes.error} | You still have a cooldown of {cooldown} second(s)",
+  "error": "{emotes.error} | An error has occurred - please report on the [support server]({support})",
+  "premiumOnly": "{emotes.error} | This command is only available in the premium version of raven. To get this you have to reach level 5 on our [Supportserver]({support})!",
+  "reachedLevel5": "{emotes.success} | Since you have reached level 5 on my support server, you will receive a key for the premium version of raven: {key}",
+  "cmdIsIgnored": "{emotes.error} | The command is ignored here and cannot be executed"
+
+
+
+}

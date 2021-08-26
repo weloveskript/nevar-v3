@@ -1,0 +1,6 @@
+{
+  "description": "Enumera todos los miembros ordenados por su dinero",
+  "usageHelp": "economyleaderboard",
+  "list": "{emotes.coins} | Aquí todos los miembros están ordenados según su dinero (Página {page}/{maxPage}):",
+  "currency": "Ducados"
+}

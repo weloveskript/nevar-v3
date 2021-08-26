@@ -1,0 +1,13 @@
+{
+  "disconnect": "{emotes.error} | Playback ends because I was disconnected from the channel",
+  "empty": "{emotes.error} | Playback ends because I'm alone in the channel",
+  "noResults": "{emotes.error} | I didn't find anything for **{query}**",
+  "playlistAdd": "{emotes.playlist} | **{title}** was added to the queue (**{count}** songs)",
+  "queueEnd": "{emotes.stop} | Playback has ended",
+  "searchCancel": "{emotes.error} | That is not a valid answer. Please send the command again",
+  "searchCancelled": "{emotes.success} | You canceled the search",
+  "invalidResponse": "{emotes.error} | You have to enter a number between 1 and {length}",
+  "added": "{emotes.success} | **{track}** was added to the queue",
+  "playing": "{emotes.play} | I am now playing **{track}** in <#{channel}>",
+  "leave": "{emotes.stop} | I'm leaving the voice channel"
+}

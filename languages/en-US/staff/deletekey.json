@@ -1,0 +1,7 @@
+{
+  "description": "Deletes a premium key",
+  "usage": "{emotes.use} | Use {prefix}deletekey <key>",
+  "usageHelp": "deletekey <key>",
+  "deleted": "{emotes.success} | The key `{key}` has been deleted",
+  "doesntExist": "{emotes.error} | This key does not exist"
+}

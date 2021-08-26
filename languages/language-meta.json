@@ -1,0 +1,49 @@
+[
+  {
+    "name": "de-DE",
+    "nativeName": "Deutsch",
+    "default": true,
+    "aliases": [
+      "deutsch",
+      "German",
+      "de",
+      "de-de",
+      "de_de",
+      "de_DE"
+    ]
+  },
+  {
+    "name": "en-US",
+    "nativeName": "English",
+    "default": false,
+    "aliases": [
+      "english",
+      "en",
+      "en-us",
+      "en_us",
+      "en_US"
+    ]
+  },
+  {
+    "name": "es-ES",
+    "nativeName": "Español",
+    "default": false,
+    "aliases": [
+      "spanish",
+      "es",
+      "es-es"
+    ]
+  },
+  {
+    "name": "it-IT",
+    "nativeName": "Italiano",
+    "default": false,
+    "aliases": [
+      "italy",
+      "italienisch",
+      "italiano",
+      "it",
+      "it_it"
+    ]
+  }
+]

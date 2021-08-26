@@ -1,0 +1,11 @@
+{
+  "description": "If you want to unmute a member earlier than planned, you can do so here",
+  "usage": "{emotes.use} | Use {prefix} unmute <member>",
+  "usageHelp": "unmute <member>",
+  "cantUnmute":"{emotes.error} | You can't unmute {user}",
+  "gotUnmuted": "{emotes.success} | {user} has been unmuted",
+  "gotUnmutedLog": "{user} has been unmuted",
+  "unmutedBy": "unmuted by",
+  "isNotMuted": "{emotes.error} | {user} is not muted"
+
+}

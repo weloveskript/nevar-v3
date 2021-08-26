@@ -1,0 +1,17 @@
+{
+  "description": "If a member does not abide by the rules, there is a break in transmission",
+  "usage":"{emotes.use} | Use {prefix}mute <member> <duration> [reason]",
+  "usageHelp": "mute <member> <duration> [reason]",
+  "cantMuteYourself":"{emotes.error} | You can't mute yourself",
+  "cantMute":"{emotes.error} | You can't mute {user}",
+  "invalidTime": "{emotes.error} | Specify a valid duration. Available units are s, m, h, and d",
+  "noReasonGiven": "No reason given",
+  "youGotMuted":"{emotes.error} | You were muted on {guild} by {moderator} for {time}: {reason}",
+  "userGotMuted": "{emotes.success} | {user} was muted: {reason}",
+  "logMute": "{user} was muted",
+  "reason": "Reason",
+  "mutedBy": "Muted by",
+  "muteBis": "Muted until",
+  "userGotAutoUnmuted": "{emotes.pfeil} | {user} was unmuted: Mute time expired (Case #{case})"
+
+}

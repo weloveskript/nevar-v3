@@ -1,0 +1,6 @@
+{
+  "description": "Cambia el volumen de la canción.",
+  "usage": "{emotes.use} | Usuario {prefix}volume <1-100>",
+  "usageHelp": "volume <1-100>",
+  "set": "{emotes.volume} | El volumen se ha establecido en **{volume}%**"
+}

@@ -1,0 +1,14 @@
+{
+  "description": "Shows information about the currently playing song",
+  "usageHelp": "nowplaying",
+  "name": "Is playing now",
+  "channel": "Uploaded by",
+  "requested": "Requested by",
+  "views": "Views",
+  "duration": "Duration",
+  "filters": "Active filters",
+  "volume": "Volume",
+  "loop": "Loop",
+  "yes": "activated",
+  "no": "deactivated"
+}

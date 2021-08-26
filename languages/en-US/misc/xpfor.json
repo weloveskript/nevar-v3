@@ -1,0 +1,6 @@
+{
+  "description": "Shows you how much XP/messages/time you need for a certain level",
+  "usage": "{emotes.use} | Use {prefix}xpfor <level>",
+  "usageHelp": "xpfor <level>",
+  "text": "{emotes.success} | For level {level} you need **{xp} XP**. With an average of 15 XP per message and a timeout of 25 seconds, this is approx. **{count} messages** and a time expenditure of **{time}**"
+}

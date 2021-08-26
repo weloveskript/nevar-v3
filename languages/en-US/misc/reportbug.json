@@ -1,0 +1,7 @@
+{
+  "description": "I am made by humans, and humans make mistakes - if you notice one, you can share it with us here",
+  "usage":"{emotes.use} | Use {prefix}reportbug <description>",
+  "usageHelp": "reportbug <description>",
+  "thankYou":"{emotes.bughunter} | Thank you for submitting the bug. If we have any questions, we will contact you."
+}
+

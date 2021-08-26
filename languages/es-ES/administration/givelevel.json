@@ -1,0 +1,9 @@
+{
+  "description": "Simplemente darte un nivel para ser el primero es injusto",
+  "usage": "{emotes.use} | Usar {prefix}givelevel <miembro> <nivel>",
+  "usageHelp": "givelevel <miembro> <nivel>",
+  "maxLevel": "{emotes.error} | Puede agregar un máximo de 10 niveles",
+  "maxLevelHeight": "{emotes.error} | A partir del nivel 150, no se pueden asignar más niveles manualmente",
+  "added": "{emotes.success} | Agregaste {user} {count} niveles"
+}
+

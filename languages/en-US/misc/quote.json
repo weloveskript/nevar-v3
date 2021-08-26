@@ -1,0 +1,7 @@
+{
+  "description": "Quote a message by its ID",
+  "usage": "{emotes.use} | Use {prefix}quote <ID> [channel]",
+  "usageHelp": "quote <ID> [channel]",
+  "quote": "Quote",
+  "messageSent": "Message sent"
+}

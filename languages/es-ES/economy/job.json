@@ -1,0 +1,37 @@
+{
+  "description": "Solicite un trabajo, renuncie al suyo o vea una lista de todos",
+  "usage": "{emotes.use} | Utilizar {prefix}job apply <trabajo> | quit | list",
+  "usageHelp": "job apply <trabajo> | quit | list",
+
+
+  "_comment": "Jobs in folgendem Format reinschreiben:",
+  "_comment2": "Name | ID | nötige Arbeitsstunden | Lohn | Wie oft man arbeiten kann",
+  "jobs": [
+    "Ayuda cocina | 1 | 0 | 20 | 300000",
+    "Cajero | 2 | 10 | 40 | 600000",
+    "Científico de la computación | 3 | 30 | 150 | 1200000",
+    "Asesor financiero | 4 | 40 | 300 | 2400000",
+    "Médico jefe | 5 | 80 | 500 | 4800000",
+    "Futbolista profesional | 6 | 100 | 2000 | 9600000",
+    "Piloto | 7 | 150 | 3000 | 14400000",
+    "Consultor de impuestos | 8 | 200 | 4000 | 18000000",
+    "Abogado | 9 | 260 | 6000 | 19800000",
+    "Representante farmacéutico | 10 | 340 | 7000 | 24000000",
+    "Consultor de negocios | 11 | 350 | 9000 | 25800000",
+    "Político | 12 | 500 | 20000 | 30000000",
+    "Bastón de discordia | 13 | 1000 | 50000 | 36000000"
+  ],
+
+
+  "textLayout": "Puede trabajar todo **{time}** y ganar **{count} ducados** por hora trabajada",
+  "textLayout2": "Debes haber trabajado al menos **{count} horas** para poder trabajar como **{job}**",
+  "list": "{emotes.coins} | Hasta ahora ha trabajado un total de **{count}** horas.\n{emotes.boost} | Aquí están todos los trabajos disponibles: (Página {page}/{maxPage})",
+  "set": "{emotes.success} | Ahora estás trabajando como **{job}**",
+  "sameJob": "{emotes.error} | Ya trabajas como **{job}**",
+  "notEnough": "{emotes.error} | Debes haber trabajado **{count} horas** para comenzar como **{job}**. Aún necesitas **{count2} horas**",
+  "notFound": "{emotes.coins} | No he encontrado trabajo con este nombre o ID.",
+  "quitted": "{emotes.coins} | Renunciaste a tu trabajo como ** {trabajo} **",
+  "noJob": "{emotes.coins} | Actualmente no tienes trabajo"
+
+}
+

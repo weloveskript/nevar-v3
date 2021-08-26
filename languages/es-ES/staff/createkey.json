@@ -1,0 +1,10 @@
+{
+  "description": "Crea códigos para desbloquear la versión premium",
+  "usage": "{emotes.use} | Usuario {prefix}createkey [nombre] [Número de usos máximos | -1 = infinito]",
+  "usageHelp": "createkey [nombre] [Número de usos máximos | -1 = infinito]",
+  "randomCreated": "{emotes.success} | Se creó la clave `{key}`. Se puede usar 1 vez.",
+  "alreadyExists": "{emotes.error} | Esta clave ya existe",
+  "customCreated": "{emotes.success} | Se creó la clave `{key}`. Se puede usar {usages}",
+  "times": "veces",
+  "infinite": "infinitamente a menudo"
+}

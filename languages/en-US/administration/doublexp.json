@@ -1,0 +1,8 @@
+{
+  "description": "Booster are great human beings. May I give you a xp boost?",
+  "usage": "{emotes.use} | Use {prefix}doublexp on/off <role>",
+  "usageHelp": "doublexp on/off <role>",
+  "activate": "{emotes.success} | Member of the role {role} gain double XP now",
+  "deactivate": "{emotes.success} | Member of the role {role} no longer gain double XP",
+  "notactivated": "{emotes.error} | There is no double XP activated for role {role}"
+}

@@ -1,0 +1,8 @@
+{
+  "description": "Lists all servers the bot is on",
+  "usageHelp": "servers-list",
+  "averageMembers": "Average membercount:",
+  "servers": "servers",
+  "members": "members",
+  "page": "Page"
+}

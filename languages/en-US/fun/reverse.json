@@ -1,0 +1,5 @@
+{
+  "description": "Send your Text back to you. But esrever!",
+  "usage": "{emotes.use} | Use {prefix}reverse <text>",
+  "usageHelp": "reverse <text>"
+}

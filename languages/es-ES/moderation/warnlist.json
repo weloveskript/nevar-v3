@@ -1,0 +1,13 @@
+{
+  "description": "Para que no pierda la pista, aquí enumero todas las advertencias anteriores de un miembro",
+  "usage": "{emotes.use} | Usar {prefix}warnlist <miembro>",
+  "usageHelp": "warnlist <miembro>",
+  "noWarns": "{user} no tiene advertencias",
+  "warnsFrom": "Advertencias de {user}",
+  "moderator": "Moderador",
+  "reason": "Razón",
+  "on": "el",
+  "time": "Duración",
+  "permanent": "permanente",
+  "desc": "{user} posee {count} advertencias. (Página {page}/{maxPage})"
+}

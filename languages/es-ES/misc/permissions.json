@@ -1,0 +1,6 @@
+{
+  "description": "¡Te cuento todos los derechos que tienes en el canal!",
+  "usage": "{emotes.use} | Usar {prefix}permissions [miembro]",
+  "usageHelp": "permissions [miembro]",
+  "message": "{user}'s Derechos en {channel}"
+}

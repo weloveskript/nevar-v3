@@ -1,0 +1,5 @@
+{
+  "description": "Busca una canción en YouTube.",
+  "usage": "{emotes.use} | Usuario {prefix}search <canción>",
+  "usageHelp": "search <canción>"
+}

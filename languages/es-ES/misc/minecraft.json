@@ -1,0 +1,11 @@
+{
+  "description": "Información simple sobre cualquier servidor de Minecraft. Sin embargo, no puedo garantizar que estos datos sean correctos.",
+  "usage": "{emotes.use} | Usar {prefix}minecraft <Dirección del servidor>",
+  "usageHelp": "minecraft <Dirección del servidor>",
+  "error": "{emotes.error} | Se ha producido un error..",
+  "infosAbout": "Información sobre {server}",
+  "version": "Versión",
+  "playersOnline": "Jugador en línea",
+  "motd": "MOTD",
+  "ping": "Ping"
+}

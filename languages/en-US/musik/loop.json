@@ -1,0 +1,6 @@
+{
+  "description": "(De)activates the loop",
+  "usageHelp": "loop",
+  "disabled": "{emotes.loop} | The loop has been **deactivated**",
+  "enabled": "{emotes.loop} | The loop has been **activated**"
+}

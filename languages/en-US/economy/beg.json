@@ -1,0 +1,9 @@
+{
+  "description": "You can beg for money if you want a financial jump. Warning: not without risk!",
+  "usageHelp": "beg",
+  "alreadyTook": "{emotes.coins} | You have to wait **{time}** until you can beg again",
+
+  "case1": "{emotes.coins} | You were beaten up and bruised in your ribs. The hospital bill of **{amount} ducats** is covered by the health insurance and you get **{amount2} ducats** as compensation for pain and suffering",
+  "case2": "{emotes.coins} | You met rich entrepreneurs and got **{amount} ducats** from them",
+  "case3": "{emotes.coins} | You met poor people who, out of kindness, still give you **{amount} ducats**"
+}

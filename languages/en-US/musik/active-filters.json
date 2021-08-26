@@ -1,0 +1,5 @@
+{
+  "description": "Shows which filters are currently deactivated and which are activated",
+  "usageHelp": "active-filters",
+  "filters": "Filter"
+}

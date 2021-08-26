@@ -1,0 +1,20 @@
+{
+  "category.administration": "Administration",
+  "category.bilder": "Pictures",
+  "category.fun": "Fun",
+  "category.misc": "Misc",
+  "category.moderation": "Moderation",
+  "category.musik": "Music",
+  "category.owner": "Owner",
+  "category.staff": "Staff",
+  "category.economy": "Economy",
+  "category.partner": "Our Partners",
+  "pleaseWait": "{emotes.loading} | Please wait a moment..",
+  "deactivated": "deactivated",
+  "activated": "activated",
+  "languageSet": "\uD83C\uDDEC\uD83C\uDDE7 | My language has been set to english! -> **Please notice**: Since we are not native speakers, there may be errors in the translations!",
+  "dateformat": "yyyy-MM-DD, hh:mm:ss a",
+  "timezone": "Europe/London",
+  "yes": "yes",
+  "no": "no"
+}

@@ -1,0 +1,6 @@
+{
+  "description": "Reloads a command",
+  "usage": "{emotes.use} | Use {prefix}reload <command>",
+  "usageHelp": "reload <command>",
+  "reload": "{emotes.success} | {cmd} has been reloaded"
+}

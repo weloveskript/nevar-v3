@@ -1,0 +1,5 @@
+{
+  "description": "Lists all partners of our bot",
+  "usageHelp": "seepartners",
+  "partnerList": "Partner list"
+}

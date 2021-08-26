@@ -1,0 +1,9 @@
+{
+  "description": "Just give yourself levels to be first place even though its unfair ;)",
+  "usage": "{emotes.use} | Use {prefix}givelevel <member> <level>",
+  "usageHelp": "givelevel <mitglied> <level>",
+  "maxLevel": "{emotes.error} | You may only add 10 levels at once",
+  "maxLevelHeight": "{emotes.error} | The max Level of 150 is reached. No more Level can be added",
+  "added": "{emotes.success} | {user} received {count} more level"
+}
+

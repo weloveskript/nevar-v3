@@ -1,0 +1,6 @@
+{
+  "description": "Reclama tu recompensa diaria",
+  "usageHelp": "daily",
+  "alreadyTook": "{emotes.error} | Para cobrar su recompensa diaria, debe esperar **{time}**",
+  "took": "{emotes.coins} | Su recompensa diaria es de **{amount} ducados**"
+}
