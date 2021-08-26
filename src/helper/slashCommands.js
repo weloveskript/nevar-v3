@@ -66,6 +66,7 @@ module.exports = {
         //Handle slash commands
 
         client.on('interactionCreate', async (interaction) => {
+            if(!interaction) return;
             if(!interaction.isCommand()) return;
 
             let command = interaction.commandName

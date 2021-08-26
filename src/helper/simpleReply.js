@@ -1,7 +1,7 @@
 const { Message, Interaction } = require('discord.js');
 
 
-Message.prototype.send = async function(embed, ping = false, buttons = []){
+Message.prototype.send = async function(embed, ping = false, buttons){
     let sent;
     if(buttons){
         if(ping) sent = await this.reply(({embeds: [embed], components: buttons})).catch((e) => {});
@@ -13,7 +13,7 @@ Message.prototype.send = async function(embed, ping = false, buttons = []){
     return sent;
 }
 
-Interaction.prototype.send = async function(embed, ephemeral = false, buttons = []){
+Interaction.prototype.send = async function(embed, ephemeral = false, buttons){
     let sent;
     if(buttons){
         if(ephemeral) sent = await this.reply(({embeds: [embed], components: buttons, ephemeral: true})).catch((e) => {console.log(e)});

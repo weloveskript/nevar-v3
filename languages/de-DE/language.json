@@ -1,4 +1,8 @@
 {
  "noEntries": "Keine Einträge vorhanden",
- "wait": "{emotes.loading} Einen Moment bitte.."
+ "wait": "{emotes.loading} Einen Moment bitte..",
+ "yes": "Ja",
+ "no": "Nein",
+ "dateformat": "DD.MM.yyyy, HH:mm:ss",
+ "timezone": "Europe/Berlin"
 }
