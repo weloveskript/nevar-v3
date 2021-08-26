@@ -8,6 +8,7 @@ const {  MessageEmbed } = require("discord.js"),
 
 module.exports = {
 
+
     init(client) {
         if (config.apiKeys.top_gg && config.apiKeys.top_gg !== "" && config.support.newVotesChannel && config.support.newVotesChannel !== "") {
 

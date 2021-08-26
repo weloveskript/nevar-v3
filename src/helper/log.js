@@ -21,6 +21,7 @@ function format(tDate) {
         dateTimePad(tDate.getSeconds(), 2))
 }
 
+
 module.exports = class Logger {
     static log(content, type = "log") {
         const date = `[${format(new Date(Date.now()))}]:`;

@@ -1,4 +1,10 @@
 module.exports = {
+    /**
+     *
+     * @param message
+     * @param data
+     * @returns {null|boolean}
+     */
     getPrefix(message, data) {
         if (message.channel.type !== "dm") {
             const prefixes = [
@@ -24,6 +30,12 @@ module.exports = {
             return true;
         }
     },
+    /**
+     *
+     * @param array
+     * @param key
+     * @returns {*}
+     */
     sortByKey(array, key) {
         return array.sort(function(a, b) {
             const x = a[key];
@@ -32,6 +44,11 @@ module.exports = {
         });
     },
 
+    /**
+     *
+     * @param pArray
+     * @returns {*[]}
+     */
     shuffle(pArray) {
         const array = [];
         pArray.forEach(element => array.push(element));
@@ -47,6 +64,12 @@ module.exports = {
         return array;
     },
 
+    /**
+     *
+     * @param min
+     * @param max
+     * @returns {*}
+     */
     randomNum(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
     }

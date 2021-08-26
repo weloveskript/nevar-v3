@@ -1,3 +1,10 @@
+/**
+ *
+ * @param message
+ * @param search
+ * @param channelType
+ * @returns {Promise<V>}
+ */
 const resolveChannel = async ({ message, search, channelType }) => {
     const contentToCheck = search || message?.content;
     if (!contentToCheck || typeof contentToCheck !== "string") return;
@@ -26,6 +33,13 @@ const resolveChannel = async ({ message, search, channelType }) => {
     return;
 };
 
+/**
+ *
+ * @param message
+ * @param search
+ * @param useMessageContent
+ * @returns {Promise<*|V>}
+ */
 const resolveMember = async ({ message, search, useMessageContent = true }) => {
     const contentToCheck = search || (useMessageContent ? message.content : null);
     if (!contentToCheck || typeof contentToCheck !== "string") return;
@@ -57,6 +71,12 @@ const resolveMember = async ({ message, search, useMessageContent = true }) => {
     return;
 };
 
+/**
+ *
+ * @param message
+ * @param search
+ * @returns {Promise<V>}
+ */
 const resolveRole = async ({ message, search }) => {
     const contentToCheck = search || message.content;
     if (!contentToCheck || typeof contentToCheck !== "string") return;
@@ -84,6 +104,7 @@ const resolveRole = async ({ message, search }) => {
     }
     return;
 };
+
 
 module.exports = {
     resolveChannel,

@@ -1,6 +1,13 @@
 const { Message, Interaction } = require('discord.js');
 
 
+/**
+ *
+ * @param embed
+ * @param ping
+ * @param buttons
+ * @returns {Promise<Message>}
+ */
 Message.prototype.send = async function(embed, ping = false, buttons){
     let sent;
     if(buttons){
@@ -13,6 +20,13 @@ Message.prototype.send = async function(embed, ping = false, buttons){
     return sent;
 }
 
+/**
+ *
+ * @param embed
+ * @param ephemeral
+ * @param buttons
+ * @returns {Promise<*>}
+ */
 Interaction.prototype.send = async function(embed, ephemeral = false, buttons){
     let sent;
     if(buttons){

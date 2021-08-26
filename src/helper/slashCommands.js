@@ -6,6 +6,11 @@ const util = require('util')
     , config = require('../../config.json');
 
 module.exports = {
+    /**
+     *
+     * @param client
+     * @returns {Promise<void>}
+     */
     async init(client) {
 
         //Register slash commands
