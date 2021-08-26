@@ -1,0 +1,9 @@
+config.json
+node_modules
+.idea/
+package-lock.json
+storage/disabledcmds.json
+storage/giveaways.json
+storage/premiumKeys.json
+storage/partners.json
+storage
