@@ -1,5 +1,0 @@
-{
-  "description": "Stops playback",
-  "usageHelp": "stop",
-  "stopped": "{emotes.stop} | Playback has stopped"
-}

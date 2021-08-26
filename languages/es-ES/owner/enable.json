@@ -1,7 +1,0 @@
-{
-  "description": "Activa un comando",
-  "usage": "{emotes.use} | Usuario {prefix}enable <Mando>",
-  "usageHelp": "enable <Mando>",
-  "isNot": "{emotes.error} | {cmd} no está inhabilitado",
-  "enabled": "{emotes.success} | {cmd} se ha activado"
-}

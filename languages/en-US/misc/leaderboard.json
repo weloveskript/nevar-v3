@@ -1,7 +1,0 @@
-{
-  "description": "A simply leaderboard according to XP",
-  "usageHelp": "leaderboard",
-  "noLB": "{emotes.error} | There are no members in the leaderboard currently",
-  "LBfor": "Leaderboard for {guild}"
-}
-

@@ -1,5 +1,0 @@
-{
-  "description": "Shuffles the queue again",
-  "usageHelp": "shuffle",
-  "shuffled": "{emotes.success} | **{count}** songs were shuffled"
-}

@@ -1,7 +1,0 @@
-{
-  "description": "Pong",
-  "usageHelp": "ping",
-  "messageWait": "{emotes.loading} | Pong",
-  "messageDone": "{emotes.success} | Mi ping es **{ping}ms**"
-}
-

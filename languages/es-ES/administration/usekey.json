@@ -1,8 +1,0 @@
-{
-  "description": "Canjear una clave premium",
-  "usage": "{emotes.use} | Usuario {prefix}usekey <Clave>",
-  "usageHelp": "usekey <Clave>",
-  "notValid": "{emotes.error} | La clave `{key}` no es válida",
-  "redeemed": "{emotes.success} | La clave `{key}` ha sido canjeada. ¡Ahora tiene acceso a todas las funciones premium!",
-  "alreadyPremium": "{emotes.error} | Este Discord ya tiene acceso a todas las funciones premium."
-}

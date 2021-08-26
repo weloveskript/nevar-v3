@@ -1,7 +1,0 @@
-{
-  "description": "Ver si un determinado usuario está en uno de los servidores de Raven",
-  "usage": "{emotes.use} | Usuario {prefix}searchuser <identificación/nombre+discriminator>",
-  "usageHelp": "searchuser <identificación/nombre+discriminator>",
-  "sameServers": "{emotes.success} | Mismos servidores de {user} y yo:\n\n{guilds}",
-  "noSimilarServers": "{emotes.error} | {user} y yo no estamos en los mismos servidores"
-}

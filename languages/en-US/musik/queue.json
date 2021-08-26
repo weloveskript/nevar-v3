@@ -1,7 +1,0 @@
-{
-  "description": "Displays the server queue",
-  "usageHelp": "queue",
-  "queue": "**Server queue - {guild}**\n{emotes.arrow} Currently playing: **{song}**\n\n{emotes.arrow} {queue}",
-  "andOther": "And **{count}** other songs..",
-  "requestedBy": "Requested by"
-}

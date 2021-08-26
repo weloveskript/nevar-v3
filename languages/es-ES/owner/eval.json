@@ -1,4 +1,0 @@
-{
-  "description": "Ejecuta el código JavaScript ingresado",
-  "usageHelp": "eval <código>"
-}

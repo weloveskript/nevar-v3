@@ -1,8 +1,0 @@
-{
-  "description": "Sends a message to all servers",
-  "usage": "{emotes.use} | Use {prefix}announce <text>",
-  "usageHelp": "announce <text>",
-  "messageFrom": "Message from the raven staff",
-  "messageSent": "{emotes.raven} | Message sent to {count} server"
-}
-

@@ -1,7 +1,0 @@
-{
-  "description": "Soy hecho por personas y las personas cometen errores; si notas alguno, puedes compartirlo con nosotros aquí.",
-  "usage": "{emotes.use} | Usar {prefix}reportbug <descripción>",
-  "usageHelp": "reportbug <descripción>",
-  "thankYou": "{emotes.bughunter} | Gracias por enviar el error. Si tenemos alguna duda nos pondremos en contacto contigo."
-}
-

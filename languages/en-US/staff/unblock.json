@@ -1,9 +1,0 @@
-{
-  "description": "Unblocks a user or server",
-  "usage": "{emotes.use} | Use {prefix}unblock <user|server>",
-  "usageHelp": "unblock <user|server>",
-  "guildUnblocked": "{emotes.success} | The server with ID {id} has been unblocked",
-  "notBlocked": "{emotes.error} | This server is not blocked",
-  "userUnblocked": "{emotes.success} | {user} has been unblocked",
-  "userNotBlocked": "{emotes.error} | {user} is not blocked"
-}

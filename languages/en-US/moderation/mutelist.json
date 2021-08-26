@@ -1,8 +1,0 @@
-{
-  "description": "Lists all currently muted members",
-  "usageHelp": "mutelist",
-  "noOne" : "No muted members",
-  "list": "{emotes.success} | The following members are currently muted:\n\n{emotes.arrow} {list}",
-  "unmuteAt": "Unmute at",
-  "case": "Case"
-}

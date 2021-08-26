@@ -1,5 +1,0 @@
-{
-  "description": "Establece el idioma del bot",
-  "usage": "{emotes.use} | Usar {prefix}setlang <idioma>\n{emotes.use} | Los siguientes idiomas están disponibles actualmente: {langList}",
-  "usageHelp": "setlang <idioma>"
-}

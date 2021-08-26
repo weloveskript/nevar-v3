@@ -1,5 +1,0 @@
-{
-  "description": "Para que siempre puedas cantar, ¡te enviaré la letra de cualquier canción!",
-  "usage": "{emotes.use} | Usar {prefix}lyrics <nombre de la cancion>",
-  "usageHelp": "lyrics <nombre de la cancion>"
-}

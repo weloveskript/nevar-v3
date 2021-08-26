@@ -1,7 +1,0 @@
-{
-  "description": "Ejecuta un comando en el servidor.",
-  "usage": "{emotes.use} | Usuario {prefix}execute <texto>",
-  "usageHelp": "execute <texto>",
-  "noOutput": "{emotes.success} | Ejecutado, sin salida dada"
-
-}

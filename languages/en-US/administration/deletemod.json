@@ -1,7 +1,0 @@
-{
-  "description": "Not everyone shall see once you ban someone right? Let Raven delete the moderation messages",
-  "usage": "{emotes.use} | Use {prefix}deletemod <on|off>",
-  "usageHelp": "deletemod <on|off>",
-  "activated": "{emotes.success} | Autodelete for moderation commands enabled",
-  "deactivated": "{emotes.success} | Autodelete for moderation commands disabled"
-}

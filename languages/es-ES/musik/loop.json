@@ -1,6 +1,0 @@
-{
-  "description": "(Des)activa el bucle",
-  "usageHelp": "loop",
-  "disabled": "{emotes.loop} | El bucle ha sido **desactivado**",
-  "enabled": "{emotes.loop} | El bucle ha sido **activado**"
-}

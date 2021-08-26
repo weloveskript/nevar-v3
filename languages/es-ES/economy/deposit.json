@@ -1,8 +1,0 @@
-{
-  "description": "Deposita dinero en su cuenta bancaria",
-  "usage": "{emotes.use} | Utilizar {prefix}deposit <monto>",
-  "usageHelp": "deposit <monto>",
-  "deposit": "{emotes.coins} | Se han depositado **{amount} ducados** en su cuenta bancaria",
-  "notEnough": "{emotes.coins} | No tienes suficiente dinero a la mano"
-}
-

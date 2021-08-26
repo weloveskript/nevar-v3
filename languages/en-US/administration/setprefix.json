@@ -1,7 +1,0 @@
-{
-  "description": "Another bot already uses my prefix or you simply dislike it? No problem!",
-  "usage": "{emotes.use} | Use {prefix}setprefix <prefix>",
-  "usageHelp": "setprefix <prefix>",
-  "maxLength": "{emotes.error} | The prefix may not exceed 5 symbols",
-  "set": "{emotes.success} | My prefix will be {prefix} from now on"
-}

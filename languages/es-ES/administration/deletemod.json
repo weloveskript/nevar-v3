@@ -1,7 +1,0 @@
-{
-  "description": "Cuando prohíbe a alguien, no quiere que todos lo vean, ¿verdad? ¡Déjame borrar tus comandos de moderación!",
-  "usage": "{emotes.use} | Usar {prefix}deletemod <on|off>",
-  "usageHelp": "deletemod <on|off>",
-  "activated": "{emotes.success} | Eliminación automática activada para comandos de moderación",
-  "deactivated": "{emotes.success} | Eliminación automática desactivado para comandos de moderación"
-}

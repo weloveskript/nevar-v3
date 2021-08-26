@@ -1,7 +1,0 @@
-{
-  "description": "Crea un comando personalizado para tu Discord",
-  "usage": "{emotes.use} | Usar {prefix}addcommand <nombre> <contenido>\n{emotes.use} | Con `%user` mencionas al miembro, `%server` nombra el nombre del servidor, `%membercount` establece el número de miembros y `%newline` comienza una nueva línea",
-  "usageHelp": "addcommand <nombre> <contenido>",
-  "alreadyExists": "{emotes.error} | Este comando ya existe",
-  "created": "{emotes.success} | El comando {prefix}{command} fue creado"
-}

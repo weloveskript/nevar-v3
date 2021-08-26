@@ -1,5 +1,0 @@
-{
-  "description": "Enumera todos los comandos para los que necesita la versión premium",
-  "usageHelp": "premiumcommands",
-  "list": "{emotes.success} | Para los comandos de {size}, necesitas la versión premium de Nevar:\n\n{emotes.arrow} {list}"
-}

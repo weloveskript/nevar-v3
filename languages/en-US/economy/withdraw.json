@@ -1,7 +1,0 @@
-{
-  "description": "Withdraw money from your bank account",
-  "usage": "{emotes.use} | Use {prefix}withdraw <amount>",
-  "usageHelp": "withdraw <amount>",
-  "withdraw": "{emotes.coins} | You withdrew **{amount} ducats** from your bank account",
-  "notEnough": "{emotes.coins} | You don't have that much in your bank account"
-}

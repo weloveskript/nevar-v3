@@ -1,7 +1,0 @@
-{
- "autoReactEmojiDelete": "{emotes.warn} | Un emoji de reacción automática ({emote}), del canal {channel} ha sido eliminado",
-  "unknownUser": "Desconocido#0000",
-  "deleted": "Emoji eliminado",
-  "name": "Nombre",
-  "executedBy": "Llevada a cabo por"
-}

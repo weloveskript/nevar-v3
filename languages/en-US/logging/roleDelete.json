@@ -1,9 +1,0 @@
-{
-  "autoRoleDelete": "{emotes.warn} | The auto role (@{name}) has been deleted",
-  "doubleXpDelete": "{emotes.warn} | A double XP role (@{name}) was deleted",
-  "botAutoRoleDelete": "{emotes.warn} | The bot auto role (@{name}) has been deleted",
-  "levelRoleDelete": "{emotes.warn} | The level role for level {level} (@{name}) has been deleted",
-  "deleted": "Role deleted",
-  "name": "Name",
-  "executedBy": "Carried out by"
-}

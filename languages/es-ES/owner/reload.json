@@ -1,6 +1,0 @@
-{
-  "description": "Recarga un comando",
-  "usage": "{emotes.use} | Usuario {prefix}reload <Mando>",
-  "usageHelp": "reload <Mando>",
-  "reload": "{emotes.success} | {cmd} se ha vuelto a cargar"
-}

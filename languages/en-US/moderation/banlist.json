@@ -1,9 +1,0 @@
-{
-  "description": "Lists all currently temporarily banned users",
-  "usageHelp": "banlist",
-  "noOne" : "No temporarily banned members",
-  "list": "{emotes.success} | The following users are currently temporarily banned:\n\n{emotes.arrow} {list}",
-  "unbanAt": "Unban at",
-  "case": "Case"
-}
-

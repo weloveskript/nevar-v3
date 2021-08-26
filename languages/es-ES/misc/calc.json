@@ -1,7 +1,0 @@
-{
-  "description": "¿Qué es el sin(436745454)? Me gusta decirte",
-  "usage": "{emotes.use} | Usar {prefix}calc <tarea>",
-  "usageHelp": "calc <tarea>",
-  "exercise": "tarea",
-  "result": "resultado"
-}

@@ -1,9 +1,0 @@
-{
-  "description": "Deactivates a command",
-  "usage": "{emotes.use} | Use {prefix}disable <command>",
-  "usageHelp": "disable <command>",
-  "disabledList": "The following commands are deactivated:",
-  "noDisabled": "No deactivated commands",
-  "alreadyDisabled": "{emotes.error} | {cmd} is already deactivated",
-  "disabled": "{emotes.success} | {cmd} has been deactivated"
-}

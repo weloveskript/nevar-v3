@@ -1,6 +1,0 @@
-{
-  "description": "Le muestra la cantidad de XP / mensajes / tiempo que necesita para un cierto nivel",
-  "usage": "{emotes.use} | Utilizar {prefix}xpfor <nivel>",
-  "usageHelp": "xpfor <nivel>",
-  "text": "{emotes.success} | Para el nivel {level} necesitas **{xp} XP**. Con un promedio de 15 XP por mensaje y un tiempo de espera de 25 segundos, eso es aproximadamente **{count} mensajes** y una inversión de tiempo de **{time}**"
-}

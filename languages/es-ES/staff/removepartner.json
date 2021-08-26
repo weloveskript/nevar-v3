@@ -1,7 +1,0 @@
-{
-  "description": "Elimina servidores o bots del sistema asociado",
-  "usage": "{emotes.use} | Usuario {prefix}removepartner <identificación>",
-  "usageHelp": "removepartner <identificación>",
-  "removed": "{emotes.success} | El socio fue eliminado del sistema de socios",
-  "noPartner": "{emotes.error} | Este ID no se ingresa en el sistema de socios"
-}

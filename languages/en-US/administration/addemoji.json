@@ -1,8 +1,0 @@
-{
-  "description": "Add an emoji easily to a picture by using a link",
-  "usage": "{emotes.use} | Use {prefix}addemoji <Picture-URL> <name>",
-  "usageHelp": "addemoji <Picture-URL> <name>",
-  "maxLength": "{emotes.error} | The name may not exceed 32 symbols",
-  "created": "{emotes.success} | The emote <{name}:{id}> was successfully created",
-  "cantAdd": "{emotes.error} | There was an error adding this emoji. Does this server have enough free spots left?"
-}

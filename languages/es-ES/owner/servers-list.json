@@ -1,8 +1,0 @@
-{
-  "description": "Enumera todos los servidores en los que se encuentra el bot",
-  "usageHelp": "servers-list",
-  "averageMembers": "Número medio de miembros:",
-  "servers": "Servidores",
-  "members": "Miembros",
-  "page": "Página"
-}

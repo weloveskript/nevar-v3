@@ -1,9 +1,0 @@
-{
-  "autoRoleDelete": "{emotes.warn} | Se eliminó la función de automóvil (@{name})",
-  "doubleXpDelete": "{emotes.warn} | Se eliminó una función doble de XP (@{name})",
-  "botAutoRoleDelete": "{emotes.warn} | Se eliminó la función de bot car (@{name})",
-  "levelRoleDelete": "{emotes.warn} | Se eliminó el rol de nivel para el nivel {level} (@{name})",
-  "deleted": "Rol eliminado",
-  "name": "Nombre",
-  "executedBy": "Llevada a cabo por"
-}

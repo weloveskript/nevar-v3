@@ -1,7 +1,0 @@
-{
-  "description": "Retirar dinero de su cuenta bancaria",
-  "usage": "{emotes.use} | Utilizar {prefix}withdraw <monto>",
-  "usageHelp": "withdraw <monto>",
-  "withdraw": "{emotes.coins} | Retiró **{amount} ducados** de su cuenta bancaria",
-  "notEnough": "{emotes.coins} | No tienes tanto en tu cuenta bancaria"
-}

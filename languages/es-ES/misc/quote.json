@@ -1,7 +1,0 @@
-{
-  "description": "Cita un mensaje por ID",
-  "usage": "{emotes.use} | Usar {prefix}quote <ID> [canal]",
-  "usageHelp": "quote <ID> [canal]",
-  "quote": "Cita de mensaje",
-  "messageSent": "Mensaje enviado"
-}

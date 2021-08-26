@@ -1,6 +1,0 @@
-{
-  "description": "Siempre hay gente que es demasiado perezosa para usar Google ... ¡Menos mal que yo no!",
-  "usage": "{emotes.use} | Usar {prefix}lmg <buscar>",
-  "usageHelp": "lmg <buscar>",
-  "textMarkdown": "{emotes.success} | [Simplemente haz clic en él]({url})"
-}

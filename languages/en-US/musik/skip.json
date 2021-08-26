@@ -1,5 +1,0 @@
-{
-  "description": "Skips the current song",
-  "usageHelp": "skip",
-  "skipped": "{emotes.skip} | The current song was skipped"
-}

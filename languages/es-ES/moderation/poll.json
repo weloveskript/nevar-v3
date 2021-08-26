@@ -1,8 +1,0 @@
-{
-  "description": "Como vivimos en democracia, ¡puedes crear encuestas sobre mí fácilmente!",
-  "usage": "{emotes.use} | Usar {prefix}poll <pregunta> | respuesta 1 | respuesta 2 | respuesta 3 | ... (hasta 10 respuestas)",
-  "usageHelp": "poll <pregunta> | respuesta 1 | respuesta 2 | respuesta 3 | ... (hasta 10 respuesta)",
-  "minArgs": "{emotes.error} | Debes proporcionar al menos 2 respuestas",
-  "maxArgs": "{emotes.error} | Puedes dar un máximo de 10 respuestas",
-  "pollFrom": "Encuesta a través de {user}"
-}

@@ -1,7 +1,0 @@
-{
-  "description": "See if a certain user is on one of raven's servers",
-  "usage": "{emotes.use} | Use {prefix}searchuser <id/name+discriminator>",
-  "usageHelp": "searchuser <id/name+discriminator>",
-  "sameServers": "{emotes.success} | Same servers from {user} and me:\n\n{guilds}",
-  "noSimilarServers": "{emotes.error} | {user} and I are not on any same servers"
-}

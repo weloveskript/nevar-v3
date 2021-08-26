@@ -1,8 +1,0 @@
-{
-  "description": "Redeem a premium key",
-  "usage": "{emotes.use} | Use {prefix}usekey <key>",
-  "usageHelp": "usekey <key>",
-  "notValid": "{emotes.error} | The key `{key}` is invalid",
-  "redeemed": "{emotes.success} | The key `{key}` has been redeemed. You now have access to all premium functions!",
-  "alreadyPremium": "{emotes.error} | This Discord already has access to all premium features"
-}

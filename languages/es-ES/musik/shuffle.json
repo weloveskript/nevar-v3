@@ -1,5 +1,0 @@
-{
-  "description": "Baraja la cola de nuevo",
-  "usageHelp": "shuffle",
-  "shuffled": "{emotes.success} | **{count}** canciones se barajaron"
-}

@@ -1,6 +1,0 @@
-{
-  "description": "Reset some member's warnings",
-  "usage": "{emotes.use} | Use {prefix}resetwarns <member>",
-  "usageHelp": "resetwarns <member>",
-  "resetted": "{emotes.success} | Warns from {user} were reset"
-}

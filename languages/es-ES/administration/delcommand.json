@@ -1,8 +1,0 @@
-{
-  "description": "Si ya no necesita un comando personalizado que ha creado, simplemente puede eliminarlo nuevamente",
-  "usage": "{emotes.use} | Usar {prefix}delcommand <nombre>",
-  "usageHelp": "delcommand <nombre>",
-  "notExist": "{emotes.error} | Este comando no existe",
-  "deleted": "{emotes.success} | El comando fue eliminado"
-
-}

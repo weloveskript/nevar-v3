@@ -1,7 +1,0 @@
-{
-  "description": "Elimina una clave premium",
-  "usage": "{emotes.use} | Usuario {prefix}deletekey <Clave>",
-  "usageHelp": "deletekey <Clave>",
-  "deleted": "{emotes.success} | La clave `{key}` ha sido eliminada",
-  "doesntExist": "{emotes.error} | Esta clave no existe"
-}

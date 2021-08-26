@@ -1,7 +1,0 @@
-{
-  "description": "Removes servers or bots from the partner system",
-  "usage": "{emotes.use} | Use {prefix}removepartner <id>",
-  "usageHelp": "removepartner <id>",
-  "removed": "{emotes.success} | The partner was removed from the partner system",
-  "noPartner": "{emotes.error} | This ID is not entered in the partner system"
-}

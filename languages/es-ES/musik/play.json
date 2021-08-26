@@ -1,5 +1,0 @@
-{
-  "description": "Reproduce una canción",
-  "usage": "{emotes.use} | Usuario {prefix}play <nombre|URL>",
-  "usageHelp": "play <nombre|URL>"
-}

@@ -1,6 +1,0 @@
-{
-  "description": "Una tabla de clasificación simple de Discord, ascendiendo a XP",
-  "usageHelp": "leaderboard",
-  "noLB": "{emotes.error} | Nadie está actualmente en la clasificación",
-  "LBfor": "Tabla de clasificación para {guild}"
-}

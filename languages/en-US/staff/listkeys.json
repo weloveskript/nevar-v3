@@ -1,8 +1,0 @@
-{
-  "description": "Lists all currently available premium keys",
-  "usageHelp": "listkeys",
-  "withMax": "with a maximum of",
-  "uses": "uses ({uses}x already used)",
-  "noKeys": "No premium keys",
-  "embedText": "{emotes.success} | The following premium keys are currently active:"
-}

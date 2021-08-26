@@ -1,6 +1,0 @@
-{
-  "description": "Pauses the current song",
-  "usageHelp": "pause",
-  "alreadyPaused": "{emotes.error} | The song is already paused",
-  "paused": "{emotes.pause} | **{song}** has been paused"
-}

@@ -1,9 +1,0 @@
-{
-  "description": "Juega en la máquina tragamonedas por una cierta cantidad",
-  "usage": "{emotes.use} | Utilizar {prefix}slot <misión>",
-  "usageHelp": "slot <misión>",
-  "started": "│ » {emotes.slots1} {emotes.slots2} {emotes.slots3} « │",
-  "won": "{emotes.coins} | Ganaste **{amount} ducados**",
-  "lose": "{emotes.coins} | Perdiste **{amount} ducados**",
-  "notEnough": "{emotes.coins} | No tienes tanto dinero a mano"
-}

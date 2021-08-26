@@ -1,5 +1,0 @@
-{
-  "description": "Detiene la reproducción",
-  "usageHelp": "stop",
-  "stopped": "{emotes.stop} | La reproducción se ha detenido"
-}

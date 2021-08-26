@@ -1,7 +1,0 @@
-{
-  "description": "¿Otro bot ya tiene mi prefijo, o simplemente te gusta otro? ¡No hay problema!",
-  "usage": "{emotes.use} | Usar {prefix}setprefix <prefijo>",
-  "usageHelp": "setprefix <prefijo>",
-  "maxLength": "{emotes.error} | El prefijo no puede tener más de 5 caracteres",
-  "set": "{emotes.success} | Mi prefijo es ahora {prefix}"
-}

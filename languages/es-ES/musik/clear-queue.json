@@ -1,6 +1,0 @@
-{
-  "description": "Vacía toda la cola",
-  "usageHelp": "clear-queue",
-  "empty": "{emotes.error} | La cola esta vacia",
-  "resetted": "{emotes.success} | La cola se vació"
-}

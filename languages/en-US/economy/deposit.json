@@ -1,8 +1,0 @@
-{
-  "description": "Deposits money into your bank account",
-  "usage": "{emotes.use} | Use {prefix}deposit <amount>",
-  "usageHelp": "deposit <amount>",
-  "deposit": "{emotes.coins} | **{amount} ducats** have been deposited into your bank account",
-  "notEnough": "{emotes.coins} | You don't have enough money on hand"
-}
-

@@ -1,6 +1,0 @@
-{
-  "description": "Claim your daily reward",
-  "usageHelp": "daily",
-  "alreadyTook": "{emotes.error} | To collect your daily reward, you have to wait **{time}**",
-  "took": "{emotes.coins} | Your daily reward is **{amount} ducats**"
-}

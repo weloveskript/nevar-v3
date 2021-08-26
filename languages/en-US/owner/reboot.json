@@ -1,5 +1,0 @@
-{
-  "description": "Restarts the bot",
-  "usageHelp": "reboot",
-  "reboot": "{emotes.arrow} | Restarting.."
-}

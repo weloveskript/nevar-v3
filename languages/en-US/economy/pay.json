@@ -1,7 +1,0 @@
-{
-  "description": "Transfer money to a member",
-  "usage": "{emotes.use} | Use {prefix}pay <member> <amount>",
-  "usageHelp": "pay <member> <amount>",
-  "paid": "{emotes.coins} | You have transferred {member} **{amount} ducats**",
-  "notEnough": "{emotes.error} | You cannot transfer more money than you have in your bank account"
-}

@@ -1,6 +1,0 @@
-{
-  "description": "Reclama tu recompensa semanal",
-  "usageHelp": "weekly",
-  "alreadyTook": "{emotes.error} | Para cobrar su recompensa semanal, debe esperar **{time}**",
-  "took": "{emotes.coins} | Su recompensa semanal es de **{amount} ducados**"
-}

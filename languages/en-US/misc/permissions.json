@@ -1,6 +1,0 @@
-{
-  "description": "I'll tell you all the rights you have in this channel!",
-  "usage": "{emotes.use} | Use {prefix}permissions [member]",
-  "usageHelp": "permissions [member]",
-  "message": "{user}'s permissions in {channel}"
-}

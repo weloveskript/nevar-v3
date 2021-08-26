@@ -1,5 +1,0 @@
-{
-  "description": "Creo que tu nombre en caracteres ASCII se ve genial ... ¡echemos un vistazo!",
-  "usage": "{emotes.use} | Usar {prefix}ascii <texto>",
-  "usageHelp": "ascii <texto>"
-}
