@@ -1,7 +1,6 @@
 const Command = require('../../structure/Command')
     , { MessageEmbed } = require('discord.js')
-    , Discord = require('discord.js')
-    , reply = require('../../helper/simpleReply');
+    , Discord = require('discord.js');
 
 class Addemoji extends Command {
     constructor(client) {
@@ -52,8 +51,8 @@ class Addemoji extends Command {
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
 
-            if(message) return reply.message(message, embed);
-            if(interaction) return reply.interaction(interaction, embed);
+            if(message) return message.send(embed, false);
+            if(interaction) return interaction.send(embed);
         }
 
         function isUrl(string){
@@ -85,8 +84,8 @@ class Addemoji extends Command {
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-            if(message) return reply.message(message, embed);
-            if(interaction) return reply.interaction(interaction, embed);
+            if(message) return message.send(embed);
+            if(interaction) return interaction.send(embed);
         }
 
         if(name.length < 2 || name.length > 32){
@@ -96,8 +95,8 @@ class Addemoji extends Command {
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-            if(message) return reply.message(message, embed);
-            if(interaction) return reply.interaction(interaction, embed, true);
+            if(message) return message.send(embed);
+            if(interaction) return interaction.send(embed, true);
         }
 
         guild.emojis
@@ -111,8 +110,8 @@ class Addemoji extends Command {
                         .replace('{id}', emoji.id))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if(message) return reply.message(message, embed);
-                if(interaction) return reply.interaction(interaction, embed);
+                if(message) return message.send(embed);
+                if(interaction) return interaction.send(embed);
             })
             .catch(async (error) => {
                 let embed = new MessageEmbed()
@@ -124,8 +123,8 @@ class Addemoji extends Command {
                         .replace('{support}', this.client.supportUrl))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if(message) reply.message(message, embed);
-                if(interaction) reply.interaction(interaction, embed, true)
+                if(message) message.send(embed);
+                if(interaction) interaction.send(embed, true)
                 let user = message?.author || interaction?.member.user
                 let type = 'Message-Command'
                 if(interaction) {

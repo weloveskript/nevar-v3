@@ -2,9 +2,7 @@ const cmdCooldown = {}
     , { MessageEmbed } = require('discord.js')
     , config = require('../../config.json')
     , Levels = require('discord-xp')
-    , fs = require('fs')
-    , reply = require('../helper/simpleReply');
-
+    , fs = require('fs');
 Levels.setURL(config.mongoDB_url);
 
 module.exports = class {
@@ -52,7 +50,7 @@ module.exports = class {
                             .replace('{emotes.use}', client.emotes.use))
                         .setColor(client.embedColor)
                         .setFooter(data.guild.footer);
-                    return reply.message(message, embed, true);
+                    return message.send(embed, true);
                 }
             }
 
@@ -98,9 +96,6 @@ module.exports = class {
                     }
                 }
             }
-
-
-
 
             if(message.author.bot) return;
 
@@ -227,10 +222,12 @@ module.exports = class {
                         .replace('{emotes.error}', client.emotes.error))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                await message.reply({embeds: [embed], allowedMentions: ['user']}).then(msg => {
-                    msg.delete({timeout: 4000})
-                });
-                return;
+                let sent = await message.send(embed)
+                return new Promise(resolve => setTimeout(resolve, time)).then(async () => {
+                    sent.delete()
+                        .catch(() => {});
+                })
+
             }
 
             let neededPermissions = []
@@ -253,7 +250,7 @@ module.exports = class {
                         .replace('{emotes.arrow}', client.emotes.arrow))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.message(message, embed)
+                return message.send(embed)
             }
 
             neededPermissions = [];
@@ -271,7 +268,7 @@ module.exports = class {
                         .replace('{emotes.error}', client.emotes.error))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.message(message, embed)
+                return message.send(embed)
             }
 
             if (!message.channel.nsfw && cmd.conf.nsfw) {
@@ -281,7 +278,7 @@ module.exports = class {
                         .replace('{emotes.error}', client.emotes.error))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.message(message, embed)
+                return message.send(embed)
             }
 
             let disabled = false;
@@ -302,7 +299,7 @@ module.exports = class {
                             .replace('{support}', client.supportUrl))
                         .setColor(client.embedColor)
                         .setFooter(data.guild.footer);
-                    return reply.message(message, embed)
+                    return message.send(embed)
                 }
             }
 
@@ -313,7 +310,7 @@ module.exports = class {
                         .replace('{emotes.error}', client.emotes.error))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.message(message, embed)
+                return message.send(embed)
             }
             if(cmd.conf.staffOnly && !(client.config.staffs.includes(message.author.id))) {
                 let embed = new MessageEmbed()
@@ -323,7 +320,7 @@ module.exports = class {
                         .replace('{client}', client.user.username))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.message(message, embed)
+                return message.send(embed)
             }
 
             if(cmd.conf.premium && !data.guild.premium) {
@@ -336,7 +333,7 @@ module.exports = class {
                         .replace('{support}', client.supportUrl))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.message(message, embed, true)
+                return message.send(embed, true)
 
             }
 
@@ -353,18 +350,16 @@ module.exports = class {
                     let desc = g.translate("general/commandHandler:remainingCooldown").split('?')[0]
                         .replace('{emotes.error}', client.emotes.error)
                         .replace('{time}', seconds);
-                    if(seconds> 1){
-                        desc += g.translate("general/commandHandler:remainingCooldown").split('?')[2]
-                    }else{
-                        desc += g.translate("general/commandHandler:remainingCooldown").split('?')[1]
-                    }
+                    if(seconds> 1) desc += g.translate("general/commandHandler:remainingCooldown").split('?')[2]
+                    else desc += g.translate("general/commandHandler:remainingCooldown").split('?')[1]
+
                     desc += g.translate("general/commandHandler:remainingCooldown").split('?')[3]
                     let embed = new MessageEmbed()
                         .setAuthor(client.user.username, client.user.displayAvatarURL(), client.website)
                         .setDescription(desc)
                         .setColor(client.embedColor)
                         .setFooter(data.guild.footer);
-                    return reply.message(message, embed)
+                    return message.send(embed)
                 }
             }
 
@@ -382,8 +377,8 @@ module.exports = class {
                         .replace('{emotes.error}', client.emotes.error))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                await reply.message(message, embed, true);
-                return client.logError(e, message.member.user, g, `/${command} ${args[0] ? args.join(' ') : ''}`, 'Message-Command')
+                await message.send(embed, true);
+                return client.logError(e, message.member.user, g, `${data.guild.prefix}${command} ${args[0] ? args.join(' ') : ''}`, 'Message-Command')
             }
         }
     }

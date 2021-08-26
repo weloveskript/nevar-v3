@@ -1,7 +1,7 @@
 {
   "description": "Stell ganz einfach Autodelete für deine Channel ein",
-  "usage": "{emotes.use} Syntax: ```vb\n{prefix}autodelete [set <Channel> <Dauer> | reset]```",
-  "example": "{emotes.example} Beispiel: ```vb\n{prefix}autodelete set #spam 30s```",
+  "usage": "{emotes.use} Syntax: ```vb\n{prefix}autodelete set <Channel> <Dauer> | reset <Channel>```",
+  "example": "{emotes.example} Beispiel: ```vb\n{prefix}autodelete set #{channel} 30s```",
 
   "slashOption1": "aktion",
   "slashOption1Desc": "Was möchtest du machen?",

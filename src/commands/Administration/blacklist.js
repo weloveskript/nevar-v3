@@ -1,6 +1,5 @@
 const Command = require('../../structure/Command')
-    , { MessageEmbed } = require('discord.js')
-    , reply = require('../../helper/simpleReply');
+    , { MessageEmbed } = require('discord.js');
 
 class Blacklist extends Command {
 
@@ -75,8 +74,8 @@ class Blacklist extends Command {
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-            if (message) return reply.message(message, embed);
-            if (interaction) return reply.interaction(interaction, embed);
+            if (message) return message.send(embed);
+            if (interaction) return interaction.send(embed);
         }
         if(args[0].toLowerCase() === 'add'){
             if(!args[1]){
@@ -90,8 +89,8 @@ class Blacklist extends Command {
                             .replace('{emotes.example}', this.client.emotes.example))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return reply.message(message, embed);
-                if (interaction) return reply.interaction(interaction, embed);
+                if (message) return message.send(embed);
+                if (interaction) return interaction.send(embed);
             }else{
                 if(data.guild.plugins.blacklist.list.includes(args[1].toLowerCase())){
                     data.guild.plugins.blacklist.list = data.guild.plugins.blacklist.list.filter((val) => val !== args[1].toLowerCase())
@@ -106,8 +105,8 @@ class Blacklist extends Command {
                         .replace('{emotes.success}', this.client.emotes.success))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return reply.message(message, embed);
-                if (interaction) return reply.interaction(interaction, embed);
+                if (message) return message.send(embed);
+                if (interaction) return interaction.send(embed);
 
             }
         }
@@ -123,8 +122,8 @@ class Blacklist extends Command {
                             .replace('{emotes.example}', this.client.emotes.example))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return reply.message(message, embed);
-                if (interaction) return reply.interaction(interaction, embed);
+                if (message) return message.send(embed);
+                if (interaction) return interaction.send(embed);
             }else{
                 if(data.guild.plugins.blacklist.list.includes(args[1].toLowerCase())){
                     data.guild.plugins.blacklist.list = data.guild.plugins.blacklist.list.filter((val) => val !== args[1].toLowerCase())
@@ -137,8 +136,8 @@ class Blacklist extends Command {
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
-                    if (message) return reply.message(message, embed);
-                    if (interaction) return reply.interaction(interaction, embed);
+                    if (message) return message.send(embed);
+                    if (interaction) return interaction.send(embed);
                 }else{
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
@@ -147,8 +146,8 @@ class Blacklist extends Command {
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
-                    if (message) return reply.message(message, embed);
-                    if (interaction) return reply.interaction(interaction, embed);
+                    if (message) return message.send(embed);
+                    if (interaction) return interaction.send(embed);
                 }
 
 
@@ -164,8 +163,8 @@ class Blacklist extends Command {
                     .replace('{emotes.success}', this.client.emotes.success))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-            if (message) return reply.message(message, embed);
-            if (interaction) return reply.interaction(interaction, embed);
+            if (message) return message.send(embed);
+            if (interaction) return interaction.send(embed);
         }
         if(args[0].toLowerCase() === 'list'){
             let filter = data.guild.plugins.blacklist.list.join(`\n${this.client.emotes.arrow} `);
@@ -179,8 +178,8 @@ class Blacklist extends Command {
                     .replace('{list}', this.client.emotes.arrow + ' ' + filter))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-            if (message) return reply.message(message, embed);
-            if (interaction) return reply.interaction(interaction, embed);
+            if (message) return message.send(embed);
+            if (interaction) return interaction.send(embed);
         }
 
     }

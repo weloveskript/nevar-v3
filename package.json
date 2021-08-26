@@ -1,6 +1,6 @@
 {
   "name": "Nevar",
-  "version": "3.0.0",
+  "version": "3.0.0-beta",
   "description": "A Discord multipurpose bot with more than 100 commands based on Javascript and Discord.js",
   "main": "src/app.js",
   "author": "Tinte",

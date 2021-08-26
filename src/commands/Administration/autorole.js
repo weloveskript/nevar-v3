@@ -1,10 +1,7 @@
 const Command = require('../../structure/Command')
     , Resolvers = require('../../helper/resolver')
-    , { MessageEmbed } = require('discord.js')
-    , reply = require('../../helper/simpleReply');
+    , { MessageEmbed } = require('discord.js');
 
-
-//autorole <bot/user> <add/remove> <role> / list
 class Autorole extends Command {
 
     constructor(client) {
@@ -87,8 +84,8 @@ class Autorole extends Command {
                         .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-            if (message) return reply.message(message, embed);
-            if (interaction) return reply.interaction(interaction, embed);
+            if (message) return message.send(embed);
+            if (interaction) return interaction.send(embed);
         }
         let type = args[0].toLowerCase();
         if(args[0].toLowerCase() === 'list'){
@@ -118,8 +115,8 @@ class Autorole extends Command {
                     .replace('{botRoles}', botRoles.join(`\n${this.client.emotes.arrow} `)))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-            if (message) return reply.message(message, embed);
-            if (interaction) return reply.interaction(interaction, embed);
+            if (message) return message.send(embed);
+            if (interaction) return interaction.send(embed);
             return;
         }
         if(!args[1]){
@@ -134,8 +131,8 @@ class Autorole extends Command {
                         .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-            if (message) return reply.message(message, embed);
-            if (interaction) return reply.interaction(interaction, embed);
+            if (message) return message.send(embed);
+            if (interaction) return interaction.send(embed);
         }
         if(args[1].toLowerCase() === 'add'){
             if(!args[2]){
@@ -150,8 +147,8 @@ class Autorole extends Command {
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return reply.message(message, embed);
-                if (interaction) return reply.interaction(interaction, embed);
+                if (message) return message.send(embed);
+                if (interaction) return interaction.send(embed);
             }
             let role = guild.roles.cache.get(args[2]);
             if(message) role = await Resolvers.resolveRole({
@@ -170,8 +167,8 @@ class Autorole extends Command {
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return reply.message(message, embed);
-                if (interaction) return reply.interaction(interaction, embed);
+                if (message) return message.send(embed);
+                if (interaction) return interaction.send(embed);
             }
             if(type === 'user'){
                 if(data.guild.plugins.autorole.user.includes(role.id)){
@@ -188,8 +185,8 @@ class Autorole extends Command {
                         .replace('{emotes.success}', this.client.emotes.success))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return reply.message(message, embed);
-                if (interaction) return reply.interaction(interaction, embed);
+                if (message) return message.send(embed);
+                if (interaction) return interaction.send(embed);
             }else if(type === 'bot'){
                 if(data.guild.plugins.autorole.bot.includes(role.id)){
                     data.guild.plugins.autorole.bot = data.guild.plugins.autorole.bot.filter((val) => val !== role.id);
@@ -205,8 +202,8 @@ class Autorole extends Command {
                         .replace('{emotes.success}', this.client.emotes.success))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return reply.message(message, embed);
-                if (interaction) return reply.interaction(interaction, embed);
+                if (message) return message.send(embed);
+                if (interaction) return interaction.send(embed);
             }
 
         }
@@ -223,8 +220,8 @@ class Autorole extends Command {
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return reply.message(message, embed);
-                if (interaction) return reply.interaction(interaction, embed);
+                if (message) return message.send(embed);
+                if (interaction) return interaction.send(embed);
             }
 
             let role = guild.roles.cache.get(args[2]);
@@ -244,8 +241,8 @@ class Autorole extends Command {
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return reply.message(message, embed);
-                if (interaction) return reply.interaction(interaction, embed);
+                if (message) return message.send(embed);
+                if (interaction) return interaction.send(embed);
             }
             if(type === 'user'){
                 let state;
@@ -263,8 +260,8 @@ class Autorole extends Command {
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
-                    if (message) return reply.message(message, embed);
-                    if (interaction) return reply.interaction(interaction, embed);
+                    if (message) return message.send(embed);
+                    if (interaction) return interaction.send(embed);
                 }else{
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
@@ -273,8 +270,8 @@ class Autorole extends Command {
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
-                    if (message) return reply.message(message, embed);
-                    if (interaction) return reply.interaction(interaction, embed);
+                    if (message) return message.send(embed);
+                    if (interaction) return interaction.send(embed);
                 }
 
             }
@@ -294,8 +291,8 @@ class Autorole extends Command {
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
-                    if (message) return reply.message(message, embed);
-                    if (interaction) return reply.interaction(interaction, embed);
+                    if (message) return message.send(embed);
+                    if (interaction) return interaction.send(embed);
                 }else{
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
@@ -304,8 +301,8 @@ class Autorole extends Command {
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
-                    if (message) return reply.message(message, embed);
-                    if (interaction) return reply.interaction(interaction, embed);
+                    if (message) return message.send(embed);
+                    if (interaction) return interaction.send(embed);
                 }
             }
         }

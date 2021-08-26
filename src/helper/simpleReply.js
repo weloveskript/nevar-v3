@@ -14,7 +14,6 @@ Message.prototype.send = async function(embed, ping = false, buttons = []){
 }
 
 Interaction.prototype.send = async function(embed, ephemeral = false, buttons = []){
-    console.log('huch')
     let sent;
     if(buttons){
         if(ephemeral) sent = await this.reply(({embeds: [embed], components: buttons, ephemeral: true})).catch((e) => {console.log(e)});

@@ -3,8 +3,7 @@ const util = require('util')
     , readdir = util.promisify(fs.readdir)
     , { MessageEmbed } = require('discord.js')
     , cmdCooldown = {}
-    , config = require('../../config.json')
-    , reply = require('./simpleReply');
+    , config = require('../../config.json');
 
 module.exports = {
     async init(client) {
@@ -49,7 +48,6 @@ module.exports = {
                         for(let guild of client.guilds.cache){
                             let slashCommands = client.api.applications(client.user.id).guilds(guild[0]).commands.get()
                                 .then((slashCommands) => {
-                                    //if(!slashCommands) continue;
                                     for(let slashCommand of slashCommands){
                                         if(slashCommand.name === command.help.name){
                                             try {
@@ -57,10 +55,7 @@ module.exports = {
                                             }catch(e){}
                                         }
                                     }
-                                })
-
-                                .catch((e) => {});
-
+                                }).catch((e) => {});
                         }
                     }
                 }
@@ -111,7 +106,7 @@ module.exports = {
                         .replace('{emotes.error}', client.emotes.error))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.interaction(interaction, embed, true);
+                return interaction.send(embed, true);
             }
 
             let neededPermissions = [];
@@ -137,7 +132,7 @@ module.exports = {
                         .replace('{emotes.arrow}', client.emotes.arrow))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.interaction(interaction, embed, true);
+                return interaction.send(embed, true);
             }
 
             let member = await g.members.fetch(interaction.member.user.id);
@@ -158,7 +153,7 @@ module.exports = {
                         .replace('{emotes.error}', client.emotes.error))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.interaction(interaction, embed, true);
+                return interaction.send(embed, true);
 
             }
 
@@ -169,7 +164,7 @@ module.exports = {
                         .replace('{emotes.error}', client.emotes.error))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.interaction(interaction, embed, true);
+                return interaction.send(embed, true);
             }
 
             const fs = require('fs');
@@ -192,7 +187,7 @@ module.exports = {
                             .replace('{support}', client.supportUrl))
                         .setColor(client.embedColor)
                         .setFooter(data.guild.footer);
-                    return reply.interaction(interaction, embed);
+                    return interaction.send(embed);
                 }
             }
 
@@ -203,7 +198,7 @@ module.exports = {
                         .replace('{emotes.error}', client.emotes.error))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.interaction(interaction, embed);
+                return interaction.send(embed);
             }
 
             if(cmd.conf.staffOnly && !(config.staffs.includes(member.user.id))) {
@@ -214,7 +209,7 @@ module.exports = {
                         .replace('{client}', client.user.username))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.interaction(interaction, embed);
+                return interaction.send(embed);
             }
 
             if(cmd.conf.premium && !data.guild.premium) {
@@ -227,7 +222,7 @@ module.exports = {
                         .replace('{support}', client.supportUrl))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                return reply.interaction(interaction, embed);
+                return interaction.send(embed);
 
             }
 
@@ -254,7 +249,7 @@ module.exports = {
                         .setDescription(desc)
                         .setColor(client.embedColor)
                         .setFooter(data.guild.footer);
-                    return reply.interaction(interaction, embed, true);
+                    return interaction.send(embed, true);
                 }
             }
 
@@ -275,10 +270,9 @@ module.exports = {
                         .replace('{emotes.error}', client.emotes.error))
                     .setColor(client.embedColor)
                     .setFooter(data.guild.footer);
-                await reply.interaction(interaction, embed, true);
+                await interaction.send(embed, true);
                 return client.logError(e, interaction.member.user, g, `/${command} ${args[0] ? args.join(' ') : ''}`, 'Slash-Command')
             }
-
         });
     }
 }
