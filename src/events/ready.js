@@ -43,22 +43,27 @@ module.exports = class {
         let status = require('../../config.json').status
             , i = 0;
 
-        if(config.support.id && config.support.voteChannel && config.support.userChannel && config.support.serverChannel && config.support.logChannel&& config.support.partnerChannel){
+        if(config.support.id){
             setInterval(async function(){
 
-                let guild = client.guilds.cache.get(config.support.id)
-                    , serverChannel = guild.channels.cache.get(config.support.serverChannel)
-                    , voteChannel = guild.channels.cache.get(config.support.voteChannel)
-                    , userChannel = guild.channels.cache.get(config.support.userChannel);
+                let guild = client.guilds.cache.get(config.support.id);
+
+                let serverChannel;
+                let voteChannel;
+                let userChannel;
+                if(config.support.serverChannel) serverChannel = guild.channels.cache.get(config.support.serverChannel);
+                if(config.support.voteCountChannel) voteChannel = guild.channels.cache.get(config.support.voteCountChannel);
+                if(config.support.userChannel) userChannel = guild.channels.cache.get(config.support.userChannel);
+
 
                 //set channel names
-                serverChannel.setName(`┏💻 ${client.guilds.cache.size} servers`);
+                if(serverChannel) serverChannel.setName(`┏💻 ${client.guilds.cache.size} servers`);
                 await client.wait(2000);
-                userChannel.setName(`│ 👥 ${client.format(client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0))} users`);
+                if(userChannel) userChannel.setName(`│ 👥 ${client.format(client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0))} users`);
 
-                if(config.apiKeys.dbl && config.apiKeys.dbl !== ""){
+                if(config.apiKeys.top_gg && config.apiKeys.top_gg !== ""){
                     let res = await fetch("https://discordbots.org/api/bots/"+client.user.id, {
-                        headers: { "Authorization": config.apiKeys.dbl }
+                        headers: { "Authorization": config.apiKeys.top_gg}
                     })
                         , data = await res.json()
                         , votes = 0
@@ -67,8 +72,8 @@ module.exports = class {
 
                     if(!data.error){
                         votes = data.monthlyPoints;
-                        client.wait(200);
-                        voteChannel.setName(`│ 💜 ${client.format(votes)} votes in ${month.toLowerCase()}`)
+                        await client.wait(200);
+                        if(voteChannel) voteChannel.setName(`│ 💜 ${client.format(votes)} votes in ${month.toLowerCase()}`)
                     }
 
                 }
@@ -80,8 +85,8 @@ module.exports = class {
             const transferData = new cron.CronJob('* * * * *', async() => {
                 let staffs = [];
                 for(let id of config.staffs){
-
-                    console.log(id)
+                    let user = await client.users.fetch(id);
+                    staffs.push(user.username + '#'+user.discriminator + ' | ' + user.id + ' | ' + user.displayAvatarURL());
                 }
                 let serverCount = client.guilds.cache.size
                     , userCount = client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0)
@@ -91,12 +96,18 @@ module.exports = class {
                     servers: serverCount,
                     users: userCount,
                     channels: channelCount,
-                    commands: commandCount
+                    commands: commandCount,
+                    staffs: staffs,
+                    wsPing: client.ws.ping,
+                    lastUpdated: Date.now(),
                 }
                     , fs = require('fs');
 
-                fs.writeFile(config.webApi.path, JSON.stringify(obj), function(err){
-                    if(err) {}
+                fs.writeFile(config.webApi.path, JSON.stringify(obj, null, 4), function(err){
+                    if(err) {
+                        client.logger.log('Couldn\'t transfer the bot data', "error")
+                        throw new Error(err)
+                    }
                 });
             }, null, true, 'Europe/Berlin');
             transferData.start();

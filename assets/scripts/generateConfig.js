@@ -1,6 +1,6 @@
 const logger = require('../../src/helper/log')
-    , fs = require('fs')
-    , { baseDir } = require('../../src/app');
+    , fs = require('fs');
+
 logger.log('Config generation started..', "debug")
 
 
@@ -74,8 +74,7 @@ fs.writeFile('./config-sample.json', JSON.stringify(conf, null, 4), function(err
         logger.log('Couldn\'t create config', "error")
         throw new Error(err)
     }else{
-        console.log('huch')
-        console.log(baseDir)
-        console.log('ohja')
+        logger.log('Successfully generated config', "success")
+
     }
 });
