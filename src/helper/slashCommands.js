@@ -23,6 +23,7 @@ module.exports = {
                     let response = client.loadCommand('../commands/' + directory, cmd)
                     if (response) client.logger.log(response, 'error')
                     let command = client.commands.get(cmd.split('.')[0]);
+                    if(!command?.slashCommand) continue;
                     if(command.slashCommand.addCommand){
                         cmdCount++;
                         for(let guild of client.guilds.cache){
