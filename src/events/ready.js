@@ -75,7 +75,6 @@ module.exports = class {
                     if(!data.error){
                         votes = data.monthlyPoints;
                         await client.wait(200);
-                        client.format(votes)
                         if(voteChannel) voteChannel.setName(config.channelDesigns.voteCountChannel
                             .replace('{count}', client.format(votes))
                             .replace('{month}', month.toLowerCase))

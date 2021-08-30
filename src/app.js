@@ -88,4 +88,3 @@ init().then(res => {
 }).catch((err) => {
     client.logger.log("Failed to initiate client: " + err, "error");
 });
-
