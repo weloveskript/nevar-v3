@@ -23,6 +23,12 @@ let conf = {
         newVotesChannel: "ID of the channel where the voters are thanked -> can be left blank"
     },
 
+    channelDesigns: {
+        serverChannel: "\uD83D\uDCBB ➜ {count} servers",
+        userChannel: "\uD83D\uDC65 ➜ {count} users",
+        voteCountChannel: "\uD83E\uDD0D ➜ {count} votes"
+    },
+
     webApi: {
         transfer: false,
         path: "/path/to/your/json/file.json",

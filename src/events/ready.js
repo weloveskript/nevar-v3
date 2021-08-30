@@ -57,9 +57,11 @@ module.exports = class {
 
 
                 //set channel names
-                if(serverChannel) serverChannel.setName(`┏💻 ${client.guilds.cache.size} servers`);
+                if(serverChannel) serverChannel.setName(config.channelDesigns.serverChannel
+                    .replace('{count}', client.guilds.cache.size));
                 await client.wait(2000);
-                if(userChannel) userChannel.setName(`│ 👥 ${client.format(client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0))} users`);
+                if(userChannel) userChannel.setName(config.channelDesigns.userChannel
+                    .replace('{count}', client.format(client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0))));
 
                 if(config.apiKeys.top_gg && config.apiKeys.top_gg !== ""){
                     let res = await fetch("https://discordbots.org/api/bots/"+client.user.id, {
@@ -73,7 +75,10 @@ module.exports = class {
                     if(!data.error){
                         votes = data.monthlyPoints;
                         await client.wait(200);
-                        if(voteChannel) voteChannel.setName(`│ 💜 ${client.format(votes)} votes in ${month.toLowerCase()}`)
+                        client.format(votes)
+                        if(voteChannel) voteChannel.setName(config.channelDesigns.voteCountChannel
+                            .replace('{count}', client.format(votes))
+                            .replace('{month}', month.toLowerCase))
                     }
 
                 }
