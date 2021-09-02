@@ -2,9 +2,6 @@
 <p align="center"><img width=60% src="https://github.com/Tintenpatron/Nevar-v3/blob/main/assets/nevar.gif?raw=true"></p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![NodeJS](https://img.shields.io/node/v/discord.js?style=for-the-badge)
-[![Last-Commit](https://img.shields.io/github/last-commit/Tintenpatron/Nevar-v3?style=for-the-badge)](https://github.com/Tintenpatron/Nevar-v3)
-![Version](https://img.shields.io/github/package-json/v/Tintenpatron/Nevar-v3?style=for-the-badge)
 ## Overview
 
 Nevar is a Discord bot with over 100 commands programmed with [NodeJS](https://nodejs.org/en/), [Discord.js](https://discord.js.org/#/) and [Mongoose](https://mongoosejs.com/) by [Tinte](https://discord.com/users/631176108372656148)
@@ -31,6 +28,9 @@ $ node src/app.js
 ## Statistics
 ![License](https://img.shields.io/github/stars/Tintenpatron/Nevar-v3?style=for-the-badge)
 ![License](https://img.shields.io/github/contributors/Tintenpatron/Nevar-v3?style=for-the-badge)
+![Version](https://img.shields.io/github/package-json/v/Tintenpatron/Nevar-v3?style=for-the-badge)
+[![Last-Commit](https://img.shields.io/github/last-commit/Tintenpatron/Nevar-v3?style=for-the-badge)](https://github.com/Tintenpatron/Nevar-v3)
+
 
 ## License
 [![License](https://img.shields.io/github/license/Tintenpatron/Nevar-v3?style=for-the-badge)](https://github.com/Tintenpatron/Nevar-v3/blob/main/LICENSE.md)
