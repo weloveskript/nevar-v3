@@ -13,6 +13,7 @@ Nevar is a Discord bot with over 100 commands programmed with [NodeJS](https://n
 ## Requirements
 [![NodeJS](https://img.shields.io/badge/NodeJS-%3E=16.6.0-brightgreen?style=for-the-badge)](https://nodejs.org)
 [![Discord.js](https://img.shields.io/badge/Discord.js-%3E=13.1.0-brightgreen?style=for-the-badge)](https://discord.js.org)
+[![Mongoose](https://img.shields.io/badge/Mongoose-%3E=4.0.2-brightgreen?style=for-the-badge)](https://mongoosejs.com)
 
 ## Install and run Nevar
 ```bash
