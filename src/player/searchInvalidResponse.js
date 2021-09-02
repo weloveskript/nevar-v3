@@ -1,10 +1,9 @@
-const { MessageEmbed } = require('discord.js')
-	, reply = require('../helper/simpleReply');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = async (client, message, query, tracks, content, collector) => {
 	let guildData = await client.findOrCreateGuild({id: message.guild.id})
 
-	if (content === 'cancel') {
+	if (content.toLowerCase() === 'cancel') {
 		collector.stop();
 		return message.react(client.emotes.success)
 	} else {
@@ -16,7 +15,7 @@ module.exports = async (client, message, query, tracks, content, collector) => {
 				.replace('{count}', tracks.length))
 			.setColor(client.embedColor)
 			.setFooter(guildData.footer);
-		return reply.message(message, embed)
+		return message.send(embed)
 
 	}
 };

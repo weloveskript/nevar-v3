@@ -8,7 +8,7 @@
   "homepage": "https://nevar.eu",
   "scripts": {
     "start": "node src/app.js",
-    "install": "node assets/scripts/generateConfig.js"
+    "install": "node assets/scripts/install.js"
   },
   "dependencies": {
     "@sentry/node": "^6.10.0",

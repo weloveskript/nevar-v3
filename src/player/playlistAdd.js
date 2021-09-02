@@ -1,11 +1,8 @@
-const { MessageEmbed } = require('discord.js')
-	, reply = require('../helper/simpleReply');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = async (client, message, queue, playlist) => {
 
 	let guildData = await client.findOrCreateGuild({id: message.guild.id})
-
-
 	let embed = new MessageEmbed()
 		.setAuthor(client.user.username, client.user.displayAvatarURL(), client.website)
 		.setDescription(message.translate("player/messages:playlistAdded")
@@ -15,6 +12,6 @@ module.exports = async (client, message, queue, playlist) => {
 		.setColor(client.embedColor)
 		.setFooter(guildData.footer);
 
-	reply.message(message, embed)
+	message.send(embed)
 
 };

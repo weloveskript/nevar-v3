@@ -1,5 +1,4 @@
-const { MessageEmbed } = require('discord.js')
-	, reply = require('../helper/simpleReply');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = async (client, message, track) => {
 
@@ -13,5 +12,5 @@ module.exports = async (client, message, track) => {
 			.replace('{channel}', message.member.voice.channel.id))
 		.setColor(client.embedColor)
 		.setFooter(guildData.footer);
-	return reply.message(message, embed)
+	return message.send(embed)
 };

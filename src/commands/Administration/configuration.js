@@ -68,7 +68,7 @@ class Configuration extends Command {
             )
         let sent;
         if (message) sent = await message.send(embed, false, [row]);
-        if (interaction) sent = await interaction.send(embed);
+        if (interaction) sent = await interaction.send(embed, false, [row]);
         let channel = interaction?.channel || message?.channel;
         const filter = i => i.customId.startsWith('conf_'+id+'_'+identifier) && i.user.id === user.id;
 
@@ -89,7 +89,7 @@ class Configuration extends Command {
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                     desc += guild.translate("administration/configuration:confSystem:language")
-                        .replace('{lang}', message.translate("language:language"))
+                        .replace('{lang}', guild.translate("language:language"))
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                     desc += guild.translate("administration/configuration:confSystem:premium")
                         .replace('{premium}', data.guild.premium ? guild.translate("language:activated") : guild.translate("language:deactivate"))
@@ -175,9 +175,12 @@ class Configuration extends Command {
                         .setFooter(data.guild.footer);
                     await i.update({embeds: [embed], components: [row]});
                 }
+                if(i.customId === 'conf_'+id+'_'+identifier+'_levelsettings') {
+
+                }
 
 
-            })
+                })
             .on('end', async (i) => {
                 for(let button of row.components){
                     button.setDisabled(true);

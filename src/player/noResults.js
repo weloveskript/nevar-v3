@@ -1,12 +1,8 @@
-const { MessageEmbed } = require('discord.js')
-	, reply = require('../helper/simpleReply');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = async (client, message, query) => {
 
 	let guildData = await client.findOrCreateGuild({id: message.guild.id})
-
-
-
 	let embed = new MessageEmbed()
 		.setAuthor(client.user.username, client.user.displayAvatarURL(), client.website)
 		.setDescription(message.translate("player/messages:noResults")
@@ -15,5 +11,5 @@ module.exports = async (client, message, query) => {
 		.setColor(client.embedColor)
 		.setFooter(guildData.footer);
 
-	reply.message(message, embed)
+	message.send(embed)
 };

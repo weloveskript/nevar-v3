@@ -1,5 +1,4 @@
 const { MessageEmbed } = require('discord.js')
-	, reply = require('../helper/simpleReply')
 	, config = require('../../config.json');
 
 module.exports = async (client, message, queue) => {
@@ -12,7 +11,7 @@ module.exports = async (client, message, queue) => {
 			.replace('{emotes.stop}', client.emotes.stop))
 		.setColor(client.embedColor)
 		.setFooter(guildData.footer);
-	reply.message(message, embed)
+	message.send(embed)
 
 	await client.wait(config.music.stay_time * 1000);
 
