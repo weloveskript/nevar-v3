@@ -92,18 +92,31 @@ module.exports = class {
                     let user = await client.users.fetch(id);
                     staffs.push(user.username + '#'+user.discriminator + ' | ' + user.id + ' | ' + user.displayAvatarURL());
                 }
+                let votes = 0;
+                if(config.apiKeys.top_gg && config.apiKeys.top_gg !== "") {
+                    let res = await fetch("https://discordbots.org/api/bots/" + client.user.id, {
+                        headers: {"Authorization": config.apiKeys.top_gg}
+                    })
+                        , data = await res.json();
+
+                    if (!data.error) votes = data.monthlyPoints;
+                }
+
+
                 let serverCount = client.guilds.cache.size
                     , userCount = client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0)
                     , channelCount = client.channels.cache.size
                     , commandCount = client.commands.size
                     , obj = {
-                    servers: serverCount,
-                    users: userCount,
-                    channels: channelCount,
-                    commands: commandCount,
-                    staffs: staffs,
-                    wsPing: client.ws.ping,
-                    lastUpdated: Date.now(),
+                        servers: serverCount,
+                        users: userCount,
+                        channels: channelCount,
+                        commands: commandCount,
+                        staffs: staffs,
+                        wsPing: client.ws.ping,
+                        votes: votes,
+                        support: client.support,
+                        lastUpdated: Date.now(),
                 }
                     , fs = require('fs');
 
