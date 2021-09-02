@@ -1,6 +1,5 @@
 const Command = require('../../structure/Command')
     , backups = require('discord-backup')
-    , Sentry = require('@sentry/node')
     , { MessageEmbed } = require('discord.js');
 
 class Backup extends Command {

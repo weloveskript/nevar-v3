@@ -16,6 +16,7 @@ module.exports = {
         //Register slash commands
         const directories = await readdir("./src/commands/");
         let cmdCount = 0;
+        let guildCount = [];
         for(let directory of directories) {
             const commands = await readdir('./src/commands/' + directory + '/');
             for (const cmd of commands) {
@@ -28,27 +29,33 @@ module.exports = {
                         cmdCount++;
                         for(let guild of client.guilds.cache){
                             try {
-                                let options = command.slashCommand.options;
+                                let options = [];
+                                if (command.slashCommand?.options) options = command.slashCommand.options;
                                 let i = 0;
-                                for(let option of command.slashCommand.options){
-                                    options[i].name = guild[1].translate((options[i].name));
-                                    options[i].description = guild[1].translate((options[i].description));
-                                    if(options[i].choices){
-                                        let i2 = 0;
-                                        for(let choice of options[i].choices){
-                                            options[i].choices[i2].name = guild[1].translate(options[i].choices[i2].name);
-                                            i2++;
+                                if (options.length > 0) {
+                                    for (let option of command.slashCommand.options) {
+                                        options[i].name = guild[1].translate((options[i].name));
+                                        options[i].description = guild[1].translate((options[i].description));
+                                        if (options[i].choices) {
+                                            let i2 = 0;
+                                            for (let choice of options[i].choices) {
+                                                options[i].choices[i2].name = guild[1].translate(options[i].choices[i2].name);
+                                                i2++;
+                                            }
                                         }
+                                        i++;
                                     }
-                                    i++;
                                 }
                                 let data = {
                                     name: command.help.name,
                                     description: guild[1].translate(command.slashCommand.description),
                                     options: options
                                 }
+                                if(!guildCount.includes(guild[1].id)) guildCount.push(guild[1].id)
                                 guild[1]?.commands.create(data).catch((e) => {})
-                            }catch (e) {}
+                            }
+
+                            catch (e) {}
                         }
                     }else{
                         for(let guild of client.guilds.cache){
@@ -67,7 +74,7 @@ module.exports = {
                 }
             }
         }
-        client.logger.log('Registered ' + cmdCount + ' slash commands', "debug")
+        client.logger.log('Registered ' + cmdCount + ' slash commands on ' + guildCount.length + ' guilds', "debug")
 
         //Handle slash commands
 

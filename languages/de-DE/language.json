@@ -4,5 +4,9 @@
  "yes": "Ja",
  "no": "Nein",
  "dateformat": "DD.MM.yyyy, HH:mm:ss",
- "timezone": "Europe/Berlin"
+ "timezone": "Europe/Berlin",
+ "language": "Deutsch",
+ "activated": "Aktiviert",
+ "deactivated": "Deaktiviert",
+ "notFound": "Nicht gefunden"
 }

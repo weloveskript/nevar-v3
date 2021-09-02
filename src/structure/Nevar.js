@@ -82,6 +82,17 @@ class Nevar extends Client {
             return formatter.format(integer);
         }
 
+        this.randomKey = function(length){
+            let result           = '';
+            let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let charactersLength = characters.length;
+            for ( let i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() *
+                    charactersLength));
+            }
+            return result;
+        }
+
         //multi language machen
         this.logError = function(err, user, guild, command, type) {
             let embed = new MessageEmbed()

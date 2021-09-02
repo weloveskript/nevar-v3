@@ -1,0 +1,22 @@
+{
+  "description": "Zeigt alle Einstellungen des Servers übersichtlich an",
+  "overview": "{emotes.arrow} Welche Einstellungen möchtest du sehen?",
+
+  "system": "System",
+  "joinsettings": "Join/Leave-Einstellungen",
+  "levelsettings": "Level-Einstellungen",
+  "moderation": "Automoderation",
+
+  "confSystem": {
+    "prefix": "{emotes.arrow} Server-Prefix\n```|- {prefix}```\n",
+    "language": "{emotes.arrow} Sprache\n```|- {lang}```\n",
+    "premium": "{emotes.arrow} Premium\n```|- {premium}```\n"
+  },
+
+  "confJoinsettings": {
+    "welcomeMessages": "{emotes.arrow} Willkommensnachrichten\n```|- Deaktiviert || |- Channel: {channel}\n|- Nachricht: {message}\n|- Mit Bild: {withImage}```\n",
+    "goodbyeMessages": "{emotes.arrow} Verabschiedungsnachrichten\n```|- Deaktiviert || |- Channel: {channel}\n|- Nachricht: {message}\n|- Mit Bild: {withImage}```",
+    "userAutoroles": "\n{emotes.arrow} User-Autorollen\n```|- {list}```",
+    "botAutoroles": "\n{emotes.arrow} Bot-Autorollen\n```|- {list}```"
+  }
+}
