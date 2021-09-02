@@ -1,7 +1,12 @@
+/**
+ * Installs all the files necessary for the bot to run perfectly
+ * Installs all the files necessary for the bot to run perfectly
+ */
+
 const logger = require('../../src/helper/log')
     , fs = require('fs');
 
-logger.log('Config generation started..', "debug")
+logger.log('Installation started..', "debug");
 
 
 let conf = {
@@ -72,15 +77,55 @@ let conf = {
             type: "LISTENING"
         }
     ]
-}
-
-let data = JSON.stringify(conf);
+};
 fs.writeFile('./config-sample.json', JSON.stringify(conf, null, 4), function(err){
     if(err) {
         logger.log('Couldn\'t create config', "error")
-        throw new Error(err)
+        console.error(new Error(err))
     }else{
         logger.log('Successfully generated config', "success")
 
+    }
+});
+
+let DisabledCmds = {}
+    , Giveaways = {}
+    , Keys = {}
+    , Partners = {};
+
+fs.writeFile('./storage/disabledcmds.json', JSON.stringify(DisabledCmds, null, 4), function(err){
+    if(err){
+        logger.log("Couldn't create storage/disabledcmds.json", "error");
+        console.error(new Error(err));
+    }else{
+        logger.log('Successfully created storage/disabledcmds.json', "success");
+    }
+});
+
+
+fs.writeFile('./storage/giveaways.json', JSON.stringify(Giveaways, null, 4), function(err){
+    if(err){
+        logger.log("Couldn't create storage/giveaways.json", "error");
+        console.error(new Error(err));
+    }else{
+        logger.log('Successfully created storage/giveaways.json', "success");
+    }
+});
+
+fs.writeFile('./storage/premiumKeys.json', JSON.stringify(Giveaways, null, 4), function(err){
+    if(err){
+        logger.log("Couldn't create storage/premiumKeys.json", "error");
+        console.error(new Error(err));
+    }else{
+        logger.log('Successfully created storage/premiumKeys.json', "success");
+    }
+});
+
+fs.writeFile('./storage/partners.json', JSON.stringify(Giveaways, null, 4), function(err){
+    if(err){
+        logger.log("Couldn't create storage/partners.json", "error");
+        console.error(new Error(err));
+    }else{
+        logger.log('Successfully created storage/partners.json', "success");
     }
 });
