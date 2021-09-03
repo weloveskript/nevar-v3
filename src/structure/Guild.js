@@ -21,10 +21,11 @@ module.exports = mongoose.model("Guild", new Schema({
     premium: { type: Boolean, default: false},
     prefix: { type: String, default: config.prefix },
     plugins: { type: Object, default: {
-            levelmessages: {
+            levelsystem: {
                 enabled: false,
                 channel: null,
-                message: '%user, du bist nun Level %level!'
+                message: '%user, du bist nun Level %level!',
+                levelroles: []
             },
             blacklist: {
                 list: []
@@ -62,7 +63,6 @@ module.exports = mongoose.model("Guild", new Schema({
     casesCount: { type: Number, default: 0 },
     autoReactChannels: { type: Array, default: []},
     autoDeleteChannels: { type: Array, default: []},
-    levelRoles: { type: Array, default: []},
     reactionRoles: { type: Array, default: []},
     doubleXpRoles: { type: Array, default: []},
     commands: { type: Array, default: [] },
