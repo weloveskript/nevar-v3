@@ -18,7 +18,6 @@
     "connect": "^3.7.0",
     "cron": "^1.8.2",
     "discord-backup": "^3.0.1",
-    "discord-backups": "^2.3.0",
     "discord-giveaways": "^4.5.1",
     "discord-player": "^4.1.4",
     "discord-xp": "^1.1.16",
