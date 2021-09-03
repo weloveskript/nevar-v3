@@ -89,7 +89,7 @@ fs.writeFile('./config-sample.json', JSON.stringify(conf, null, 4), function(err
 });
 
 let DisabledCmds = {}
-    , Giveaways = {}
+    , Giveaways = []
     , Keys = {}
     , Partners = {};
 
