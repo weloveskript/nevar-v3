@@ -55,12 +55,12 @@ class Configuration extends Command {
                     .setStyle('PRIMARY')
                     .setEmoji('👋'),
                 new MessageButton()
-                    .setCustomId('conf_'+id+'_'+identifier+'levelsettings')
+                    .setCustomId('conf_'+id+'_'+identifier+'_levelsettings')
                     .setLabel(guild.translate("administration/configuration:levelsettings"))
                     .setStyle('PRIMARY')
                     .setEmoji('✨'),
                 new MessageButton()
-                    .setCustomId('conf_'+id+'_'+identifier+'moderation')
+                    .setCustomId('conf_'+id+'_'+identifier+'_moderation')
                     .setLabel(guild.translate("administration/configuration:moderation"))
                     .setStyle('PRIMARY')
                     .setEmoji('⚒️')
@@ -92,7 +92,7 @@ class Configuration extends Command {
                         .replace('{lang}', guild.translate("language:language"))
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                     desc += guild.translate("administration/configuration:confSystem:premium")
-                        .replace('{premium}', data.guild.premium ? guild.translate("language:activated") : guild.translate("language:deactivate"))
+                        .replace('{premium}', data.guild.premium ? guild.translate("language:activated") : guild.translate("language:deactivated"))
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
@@ -146,7 +146,7 @@ class Configuration extends Command {
 
                     let userAutoroles = [];
                     for(let id of data.guild.plugins.autorole.user){
-                        let role = guild.roles.cache.get(id).name;
+                        let role = guild.roles.cache.get(id)?.name;
                         if(role) userAutoroles.push('@'+role);
 
                     }
@@ -157,7 +157,7 @@ class Configuration extends Command {
 
                     let botAutoroles = [];
                     for(let id of data.guild.plugins.autorole.bot){
-                        let role = guild.roles.cache.get(id).name;
+                        let role = guild.roles.cache.get(id)?.name;
                         if(role) botAutoroles.push('@'+role);
 
                     }
@@ -176,9 +176,56 @@ class Configuration extends Command {
                     await i.update({embeds: [embed], components: [row]});
                 }
                 if(i.customId === 'conf_'+id+'_'+identifier+'_levelsettings') {
+                    for(let button of row.components){
+                        button.setDisabled(false);
+                        button.setStyle('PRIMARY');
+                    }
+                    let button = row.components.find((button) => button.customId === i.customId)
+                    button.setDisabled(true);
+                    button.setStyle('SECONDARY');
+                    let desc = '';
+                    desc += guild.translate("administration/configuration:confLevelsystem:levelmessages")
+                        .replace('{state}', data.guild.plugins.levelsystem.enabled ? guild.translate("language:activated") : guild.translate("language:deactivated"))
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+                    desc += guild.translate("administration/configuration:confLevelsystem:message")
+                        .replace('{message}', data.guild.plugins.levelsystem.message)
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+
+                    let channel = guild.channels.cache.get(data.guild.plugins.levelsystem.channel)?.name;
+                    if(!channel) channel = guild.translate("administration/configuration:confLevelsystem:defaultChannel");
+                    else channel = '#'+channel;
+                    desc += guild.translate("administration/configuration:confLevelsystem:channel")
+                        .replace('{channel}', channel)
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+
+                    let roles = [];
+                    for(let id of data.guild.plugins.levelsystem.levelroles){
+                        let role = guild.roles.cache.get(id.split(' | ')[1])?.name;
+                        if(role) roles.push(guild.translate("administration/configuration:confLevelsystem:level") + ' ' + id.split(' | ')[0] + ' | @' + role)
+                    }
+                    if(roles.length < 1) roles = [guild.translate("language:noEntries")];
+
+                    desc += guild.translate("administration/configuration:confLevelsystem:roles")
+                        .replace('{list}', roles.join('|- '))
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+
+
+                    let embed = new MessageEmbed()
+                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setDescription(desc)
+                        .setTitle(guild.translate("administration/configuration:levelsettings"))
+                        .setThumbnail(guild.iconURL({dynamic: true}))
+                        .setColor(this.client.embedColor)
+                        .setFooter(data.guild.footer);
+                    await i.update({embeds: [embed], components: [row]});
+                }
+                if(i.customId === 'conf_'+id+'_'+identifier+'_levelsettings') {
+
+
+
+
 
                 }
-
 
                 })
             .on('end', async (i) => {

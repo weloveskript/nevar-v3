@@ -18,5 +18,14 @@
     "goodbyeMessages": "{emotes.arrow} Verabschiedungsnachrichten\n```|- Deaktiviert || |- Channel: {channel}\n|- Nachricht: {message}\n|- Mit Bild: {withImage}```",
     "userAutoroles": "\n{emotes.arrow} User-Autorollen\n```|- {list}```",
     "botAutoroles": "\n{emotes.arrow} Bot-Autorollen\n```|- {list}```"
+  },
+
+  "confLevelsystem": {
+    "levelmessages": "{emotes.arrow} Level-Nachrichten\n```|- {state}```\n",
+    "message": "{emotes.arrow} Nachricht\n```|- {message}```\n",
+    "channel": "{emotes.arrow} Channel der Level-Nachrichten\n```|- {channel}```\n",
+    "roles": "{emotes.arrow} Level-Rollen\n```|- {list}```",
+    "level": "Level",
+    "defaultChannel": "Channel des aktuellen Mitglieds"
   }
 }
