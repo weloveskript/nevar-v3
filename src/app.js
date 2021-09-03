@@ -1,5 +1,5 @@
 require('./helper/extenders');
-require('./helper/simpleReply');
+require('./helper/replier');
 
 
 const util = require('util')
