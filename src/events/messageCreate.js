@@ -121,39 +121,35 @@ module.exports = class {
                     let user = await Levels.fetch(message.author.id, message.guild.id);
                     let role = message.guild.me.roles.highest;
                     if (leveledUp) {
-                        if(message.guild.id === config.support.id){
-                            if(Number(user.level) === 5){
-                                function generateKey(length) {
-                                    let result           = [];
-                                    let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-                                    let charactersLength = characters.length;
-                                    for ( var i = 0; i < length; i++ ) {
-                                        result.push(characters.charAt(Math.floor(Math.random() *
-                                            charactersLength)));
-                                    }
-                                    return result.join('');
+                        if(message.guild.id === config.support.id && Number(user.level) === 5){
+                            function generateKey(length) {
+                                let result           = [];
+                                let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                                let charactersLength = characters.length;
+                                for ( var i = 0; i < length; i++ ) {
+                                    result.push(characters.charAt(Math.floor(Math.random() *
+                                        charactersLength)));
                                 }
-
-                                let keyPath = 'storage/premiumKeys.json'
-                                let rawKeys = fs.readFileSync(keyPath)
-                                let jsonDataKeys = JSON.parse(rawKeys)
-
-                                let randomKey = generateKey(12)
-
-                                jsonDataKeys[randomKey] = 1;
-                                let newJson = await JSON.stringify(jsonDataKeys)
-                                fs.writeFileSync(keyPath, newJson)
-                                let embed = new MessageEmbed()
-                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), client.website)
-                                    .setDescription(message.translate("general/commandHandler:premiumKey")
-                                        .replace('{emotes.success}', this.client.emotes.success)
-                                        .replace('{user}', message.member.user.username)
-                                        .replace('{client}', client.user.username)
-                                        .replace('{key}', randomKey))
-                                    .setColor(client.embedColor)
-                                    .setFooter(data.guild.footer);
-                                await message.member.send(embed);
+                                return result.join('');
                             }
+                            let keyPath = 'storage/premiumKeys.json'
+                                , rawKeys = fs.readFileSync(keyPath)
+                                , jsonDataKeys = JSON.parse(rawKeys)
+                                , randomKey = generateKey(12);
+
+                            jsonDataKeys[randomKey] = 1;
+                            let newJson = await JSON.stringify(jsonDataKeys)
+                            fs.writeFileSync(keyPath, newJson)
+                            let embed = new MessageEmbed()
+                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), client.website)
+                                .setDescription(message.translate("general/commandHandler:premiumKey")
+                                    .replace('{emotes.success}', this.client.emotes.success)
+                                    .replace('{user}', message.member.user.username)
+                                    .replace('{client}', client.user.username)
+                                    .replace('{key}', randomKey))
+                                .setColor(client.embedColor)
+                                .setFooter(data.guild.footer);
+                            await message.member.send(embed).catch(() => {});
                         }
                         if (data.guild.levelRoles.length > 0) {
                             for (let val of data.guild.levelRoles) {
