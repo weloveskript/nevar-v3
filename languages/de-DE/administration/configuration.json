@@ -5,16 +5,17 @@
   "system": "System",
   "joinsettings": "Join/Leave-Einstellungen",
   "levelsettings": "Level-Einstellungen",
-  "moderation": "Automoderation",
+  "other": "Weiteres",
 
   "confSystem": {
     "prefix": "{emotes.arrow} Server-Prefix\n```|- {prefix}```\n",
     "language": "{emotes.arrow} Sprache\n```|- {lang}```\n",
-    "premium": "{emotes.arrow} Premium\n```|- {premium}```\n"
+    "premium": "{emotes.arrow} Premium\n```|- {premium}```\n",
+    "footer": "{emotes.arrow} Embed-Footer\n```|- {footer}```"
   },
 
   "confJoinsettings": {
-    "welcomeMessages": "{emotes.arrow} Willkommensnachrichten\n```|- Deaktiviert || |- Channel: {channel}\n|- Nachricht: {message}\n|- Mit Bild: {withImage}```\n",
+    "welcomeMessages": "{emotes.arrow} Willkommensnachrichten\n```|- Deaktiviert || |- Channel: {channel}\n|- Nachricht: {message}\n|- Mit Bild: {withImage}```",
     "goodbyeMessages": "{emotes.arrow} Verabschiedungsnachrichten\n```|- Deaktiviert || |- Channel: {channel}\n|- Nachricht: {message}\n|- Mit Bild: {withImage}```",
     "userAutoroles": "\n{emotes.arrow} User-Autorollen\n```|- {list}```",
     "botAutoroles": "\n{emotes.arrow} Bot-Autorollen\n```|- {list}```"
@@ -26,6 +27,17 @@
     "channel": "{emotes.arrow} Channel der Level-Nachrichten\n```|- {channel}```\n",
     "roles": "{emotes.arrow} Level-Rollen\n```|- {list}```",
     "level": "Level",
-    "defaultChannel": "Channel des aktuellen Mitglieds"
+    "defaultChannel": "Channel des aktuellen Mitglieds",
+    "doubleXp": "\n{emotes.arrow} Doppel-XP Rollen:\n```|- {list}```"
+
+  },
+
+  "confOther": {
+    "join2create": "{emotes.arrow} Join2Create\n```|- Deaktiviert || |- Channel: {channel}\n|- Userlimit: {userlimit}\n|- Bitrate: {bitrate}kbps```",
+    "blacklist": "\n{emotes.arrow} Blacklist\n```|- {list}```",
+    "andMore": "... und {x} mehr",
+    "autoSanctions": "\n{emotes.arrow} Automatische Sanktionen:\n```|- Automatischer Kick: {kick}\n|- Automatischer Ban: {ban}```",
+    "warns": "nach {x} Warns",
+    "bans": "nach {x} Warns"
   }
 }

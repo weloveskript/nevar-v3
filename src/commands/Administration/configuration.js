@@ -60,10 +60,10 @@ class Configuration extends Command {
                     .setStyle('PRIMARY')
                     .setEmoji('✨'),
                 new MessageButton()
-                    .setCustomId('conf_'+id+'_'+identifier+'_moderation')
-                    .setLabel(guild.translate("administration/configuration:moderation"))
+                    .setCustomId('conf_'+id+'_'+identifier+'_other')
+                    .setLabel(guild.translate("administration/configuration:other"))
                     .setStyle('PRIMARY')
-                    .setEmoji('⚒️')
+                    .setEmoji('📖'),
 
             )
         let sent;
@@ -94,6 +94,11 @@ class Configuration extends Command {
                     desc += guild.translate("administration/configuration:confSystem:premium")
                         .replace('{premium}', data.guild.premium ? guild.translate("language:activated") : guild.translate("language:deactivated"))
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
+
+                    desc += guild.translate("administration/configuration:confSystem:footer")
+                        .replace('{footer}', data.guild.footer)
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                         .setDescription(desc)
@@ -119,7 +124,7 @@ class Configuration extends Command {
                         (data.guild.plugins.welcome.enabled ?
                             '```' + guild.translate("administration/configuration:confJoinsettings:welcomeMessages")
                                 .split('\n')[1].split(' || ')[1]
-                                .replace('{channel}', guild.channels.cache.get(data.guild.plugins.welcome.channel) ? guild.channels.cache.get(data.guild.plugins.welcome.channel).name : guild.translate("language:notFound")) +
+                                .replace('{channel}', guild.channels.cache.get(data.guild.plugins.welcome.channel) ? '#'+guild.channels.cache.get(data.guild.plugins.welcome.channel).name : guild.translate("language:notFound")) +
                             '\n' + guild.translate("administration/configuration:confJoinsettings:welcomeMessages")
 
                                 .split('\n').slice(2).join('\n')
@@ -128,13 +133,14 @@ class Configuration extends Command {
                                 .replace('{withImage}', data.guild.plugins.welcome.withImage ? guild.translate("language:yes") : guild.translate("language:no")) :
                             guild.translate("administration/configuration:confJoinsettings:welcomeMessages")
                                 .split('\n')[1].split(' || ')[0] + '```')
+                    desc += '\n';
                     desc += (guild.translate("administration/configuration:confJoinsettings:goodbyeMessages")
                             .split('\n')[0]
                             .replace('{emotes.arrow}', this.client.emotes.arrow)) +
                         (data.guild.plugins.goodbye.enabled ?
                             '```' + guild.translate("administration/configuration:confJoinsettings:goodbyeMessages")
                                 .split('\n')[1].split(' || ')[1]
-                                .replace('{channel}', guild.channels.cache.get(data.guild.plugins.goodbye.channel) ? guild.channels.cache.get(data.guild.plugins.goodbye.channel).name : guild.translate("language:notFound")) +
+                                .replace('{channel}', guild.channels.cache.get(data.guild.plugins.goodbye.channel) ? '#'+guild.channels.cache.get(data.guild.plugins.goodbye.channel).name : guild.translate("language:notFound")) +
                             '\n' + guild.translate("administration/configuration:confJoinsettings:goodbyeMessages")
 
                                 .split('\n').slice(2).join('\n')
@@ -194,6 +200,7 @@ class Configuration extends Command {
                     let channel = guild.channels.cache.get(data.guild.plugins.levelsystem.channel)?.name;
                     if(!channel) channel = guild.translate("administration/configuration:confLevelsystem:defaultChannel");
                     else channel = '#'+channel;
+
                     desc += guild.translate("administration/configuration:confLevelsystem:channel")
                         .replace('{channel}', channel)
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
@@ -209,6 +216,16 @@ class Configuration extends Command {
                         .replace('{list}', roles.join('|- '))
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
 
+                    let doubleXp = [];
+                    for(let id of data.guild.doubleXpRoles){
+                        let role = guild.roles.cache.get(id)
+                        if(role) doubleXp.push(role.name)
+                    }
+                    if(doubleXp.length < 1) doubleXp = [guild.translate("language:noEntries")];
+                    desc += guild.translate("administration/configuration:confLevelsystem:doubleXp")
+                        .replace('{list}', doubleXp.join('\n|- '))
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+
 
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
@@ -219,10 +236,60 @@ class Configuration extends Command {
                         .setFooter(data.guild.footer);
                     await i.update({embeds: [embed], components: [row]});
                 }
-                if(i.customId === 'conf_'+id+'_'+identifier+'_levelsettings') {
+                if(i.customId === 'conf_'+id+'_'+identifier+'_other') {
+                    console.log(data.guild.joinToCreate)
+                    for(let button of row.components){
+                        button.setDisabled(false);
+                        button.setStyle('PRIMARY');
+                    }
+                    let button = row.components.find((button) => button.customId === i.customId)
+                    button.setDisabled(true);
+                    button.setStyle('SECONDARY');
+                    let desc = '';
+                    desc += (guild.translate("administration/configuration:confOther:join2create")
+                            .split('\n')[0]
+                            .replace('{emotes.arrow}', this.client.emotes.arrow)) +
+                        (data.guild.joinToCreate.voice ?
+                            '```' + guild.translate("administration/configuration:confOther:join2create")
+                                .split('\n')[1].split(' || ')[1]
+                                .replace('{channel}', guild.channels.cache.get(data.guild.joinToCreate.voice) ? '#'+ guild.channels.cache.get(data.guild.joinToCreate.voice).name : guild.translate("language:notFound")) +
+                            '\n' + guild.translate("administration/configuration:confOther:join2create")
+
+                                .split('\n').slice(2).join('\n')
+                                .replace('{userlimit}', data.guild.joinToCreate.userLimit)
+
+                                .replace('{bitrate}', data.guild.joinToCreate.bitrate) :
+                            guild.translate("administration/configuration:confOther:join2create")
+                                .split('\n')[1].split(' || ')[0] + '```')
+
+                    let arr = [];
+                    arr = data.guild.plugins.blacklist.list;
+                    if(arr.length === 0) arr = [guild.translate("language:noEntries")];
+                    if(arr.length > 10){
+                        let length = arr.length - 10
+                        arr = arr.slice(0, 10)
+
+                        arr.push(guild.translate("administration/configuration:confOther:andMore")
+                            .replace('{x}', length))
+                    }
+                    desc += guild.translate("administration/configuration:confOther:blacklist")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+                        .replace('{list}', arr.join('\n|- '))
+
+                    desc += guild.translate("administration/configuration:confOther:autoSanctions")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+                        .replace('{kick}', (data.guild.plugins.autoSanctions.kick !== false ? guild.translate("administration/configuration:confOther:warns").replace('{x}', data.guild.plugins.autoSanctions.kick) : guild.translate("language:deactivated")))
+                        .replace('{ban}', (data.guild.plugins.autoSanctions.ban !== false ? guild.translate("administration/configuration:confOther:bans").replace('{x}', data.guild.plugins.autoSanctions.ban) : guild.translate("language:deactivated")))
 
 
-
+                    let embed = new MessageEmbed()
+                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setDescription(desc)
+                        .setTitle(guild.translate("administration/configuration:other"))
+                        .setThumbnail(guild.iconURL({dynamic: true}))
+                        .setColor(this.client.embedColor)
+                        .setFooter(data.guild.footer);
+                    await i.update({embeds: [embed], components: [row]});
 
 
                 }
