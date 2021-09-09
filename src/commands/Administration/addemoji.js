@@ -6,6 +6,7 @@ class Addemoji extends Command {
     constructor(client) {
         super(client, {
             name: "addemoji",
+            description: "administration/addemoji:description",
             dirname: __dirname,
             aliases: ["addemoji", "createemoji", "add-emoji", "addemote"],
             memberPermissions: ["MANAGE_EMOJIS_AND_STICKERS"],
@@ -15,7 +16,6 @@ class Addemoji extends Command {
             cooldown: 20000,
             slashCommand: {
                 addCommand: true,
-                description: "administration/addemoji:description",
                 options: [
                     {
                         name: "administration/addemoji:slashOption1",

@@ -6,6 +6,7 @@ class Backup extends Command {
     constructor(client) {
         super(client, {
             name: "backup",
+            description: "administration/backup:description",
             dirname: __dirname,
             memberPermissions: ['MANAGE_GUILD'],
             botPermissions: ['ADMINISTRATOR'],
@@ -13,7 +14,6 @@ class Backup extends Command {
             premium: true,
             slashCommand: {
                 addCommand: true,
-                description: "administration/backup:description",
                 options: [
                     {
                         name: "administration/backup:slashOption1",

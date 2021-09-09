@@ -6,6 +6,7 @@ class Blacklist extends Command {
     constructor(client) {
         super(client, {
             name: "blacklist",
+            description: "administration/blacklist:description",
             dirname: __dirname,
             aliases: ["bl"],
             memberPermissions: ["MANAGE_GUILD"],
@@ -13,7 +14,6 @@ class Blacklist extends Command {
             cooldown: 3000,
             slashCommand: {
                 addCommand: true,
-                description: "administration/blacklist:description",
                 options: [
                     {
                         name: "administration/blacklist:slashOption1",

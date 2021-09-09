@@ -6,12 +6,12 @@ class Autoreact extends Command {
     constructor(client) {
         super(client, {
             name: "autoreact",
+            description: "administration/autoreact:description",
             dirname: __dirname,
             memberPermissions: ["MANAGE_GUILD"],
             cooldown: 5000,
             slashCommand: {
                 addCommand: true,
-                description: "administration/autoreact:description",
                 options: [
                     {
                         name: "administration/autoreact:slashOption1",

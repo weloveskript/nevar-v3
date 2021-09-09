@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = class Command {
     constructor(client, {
         name = null,
+        description = null,
         dirname = false,
         aliases = [],
         botPermissions = [],
@@ -14,7 +15,6 @@ module.exports = class Command {
         premium = false,
         slashCommand = {
             addCommand: true,
-            description: null,
             options: []
         }
     })

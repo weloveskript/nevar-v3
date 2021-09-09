@@ -7,13 +7,13 @@ class Autorole extends Command {
     constructor(client) {
         super(client, {
             name: "autorole",
+            description: "administration/autorole:description",
             dirname: __dirname,
             aliases: ["joinrole"],
             memberPermissions: ["MANAGE_GUILD"],
             cooldown: 3000,
             slashCommand: {
                 addCommand: true,
-                description: "administration/autorole:description",
                 options: [
                     {
                         name: "administration/autorole:slashOption1",

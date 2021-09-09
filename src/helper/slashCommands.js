@@ -48,7 +48,7 @@ module.exports = {
                                 }
                                 let data = {
                                     name: command.help.name,
-                                    description: guild[1].translate(command.slashCommand.description),
+                                    description: guild[1].translate(command.description),
                                     options: options
                                 }
                                 if(!guildCount.includes(guild[1].id)) guildCount.push(guild[1].id)

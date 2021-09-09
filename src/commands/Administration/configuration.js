@@ -19,12 +19,12 @@ class Configuration extends Command {
     constructor(client) {
         super(client, {
             name: "configuration",
+            description: "administration/configuration:description",
             dirname: __dirname,
             aliases: ["conf", "config"],
             memberPermissions: ["MANAGE_GUILD"],
             slashCommand: {
                 addCommand: true,
-                description: "administration/configuration:description",
             }
         });
     }

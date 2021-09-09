@@ -7,6 +7,7 @@ class Autodelete extends Command {
     constructor(client) {
         super(client, {
             name: "autodelete",
+            description: "administration/autodelete:slashOption1Desc",
             dirname: __dirname,
             memberPermissions: ["MANAGE_GUILD"],
             premium: true,
@@ -17,7 +18,6 @@ class Autodelete extends Command {
                 options: [
                     {
                         name: "administration/autodelete:slashOption1",
-                        description: "administration/autodelete:slashOption1Desc",
                         type: "STRING",
                         required: true,
                         choices: [
