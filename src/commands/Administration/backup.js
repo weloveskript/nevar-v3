@@ -106,11 +106,11 @@ class Backup extends Command {
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
                     error = true;
-                    if(interaction) return answer.react(this.client.emotes.error)
+                    if(interaction) return answer.edit({embeds:[embed3]});
                     if(message) return answer.edit({embeds:[embed3]});
                 });
                 if(!error){
-                    if(interaction) answer.react(this.client.emotes.success)
+                    if(interaction) answer.edit({embeds:[embed2]});
                     if(message) answer.edit({embeds:[embed2]});
                 }
             })
