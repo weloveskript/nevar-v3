@@ -237,7 +237,6 @@ class Configuration extends Command {
                     await i.update({embeds: [embed], components: [row]});
                 }
                 if(i.customId === 'conf_'+id+'_'+identifier+'_other') {
-                    console.log(data.guild.joinToCreate)
                     for(let button of row.components){
                         button.setDisabled(false);
                         button.setStyle('PRIMARY');
