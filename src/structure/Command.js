@@ -22,7 +22,7 @@ module.exports = class Command {
         const category = (dirname ? dirname.split(path.sep)[parseInt(String(dirname.split(path.sep).length - 1), 10)] : "Other");
         this.client = client;
         this.conf = { memberPermissions, botPermissions, nsfw, ownerOnly, staffOnly, cooldown, premium};
-        this.help = { name, category, aliases };
+        this.help = { name, category, aliases, description };
         this.slashCommand = slashCommand;
     }
 };

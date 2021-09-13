@@ -48,18 +48,22 @@ module.exports = {
                                 }
                                 let data = {
                                     name: command.help.name,
-                                    description: guild[1].translate(command.description),
+                                    description: guild[1].translate(command.help.description),
                                     options: options
                                 }
                                 if(!guildCount.includes(guild[1].id)) guildCount.push(guild[1].id)
-                                guild[1]?.commands.create(data).catch((e) => {})
+                                guild[1]?.commands.create(data).catch((e) => {
+                                    if(!e.toString().startsWith('DiscordAPIError: Missing Access')){
+                                        //console.error(e)
+                                    }
+                                })
                             }
 
                             catch (e) {}
                         }
                     }else{
                         for(let guild of client.guilds.cache){
-                            let slashCommands = client.api.applications(client.user.id).guilds(guild[0]).commands.get()
+                            client.api.applications(client.user.id).guilds(guild[0]).commands.get()
                                 .then((slashCommands) => {
                                     for(let slashCommand of slashCommands){
                                         if(slashCommand.name === command.help.name){
