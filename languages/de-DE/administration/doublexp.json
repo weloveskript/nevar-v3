@@ -1,0 +1,18 @@
+{
+  "description": "Legt fest, welche Rollen doppeltes XP bekommen sollen",
+  "usage": "{emotes.use} Syntax: ```vb\n{prefix}doublexp on/off <Rolle> | list```",
+  "example": "{emotes.example} Beispiel: ```vb\n{prefix}doublexp on @Premium-Nutzer```",
+
+  "slashOption1": "aktion",
+  "slashOption1Desc": "Was möchtest du machen?",
+  "slashOption1Choice1": "on",
+  "slashOption1Choice2": "off",
+  "slashOption1Choice3": "list",
+
+  "slashOption2": "rolle",
+  "slashOption2Desc": "Gib eine Rolle an",
+
+  "activated": "{emotes.success} Mitglieder mit der {role} Rolle bekommen nun doppeltes XP",
+  "deactivated": "{emotes.success} Mitglieder mit der {role} Rolle bekommen absofort kein doppeltes XP mehr",
+  "list": "{emotes.success} Folgende Rollen erhalten doppeltes XP:\n\n{emotes.arrow} {list}"
+}
