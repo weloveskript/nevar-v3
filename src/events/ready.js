@@ -90,7 +90,7 @@ module.exports = class {
                 let staffs = [];
                 for(let id of config.staffs){
                     let user = await client.users.fetch(id);
-                    staffs.push(user.username + '#'+user.discriminator + ' | ' + user.id + ' | ' + user.displayAvatarURL());
+                    staffs.push(user.username + '#'+user.discriminator + ' |?| ' + user.id + ' |?| ' + user.displayAvatarURL());
                 }
                 let votes = 0;
                 if(config.apiKeys.top_gg && config.apiKeys.top_gg !== "") {
