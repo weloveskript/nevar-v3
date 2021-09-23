@@ -25,8 +25,6 @@ const client = new Nevar({
 
 
 module.exports.client = client;
-module.exports.__baseDir = __dirname;
-
 const init = async () => {
 
     // Load directories

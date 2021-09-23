@@ -51,22 +51,18 @@ const resolveMember = async ({ message, search, useMessageContent = true }) => {
     }
     if (await message.guild.members.fetch(search).catch(() => {})) {
         const memberFound = await message.guild.members.fetch(search);
-        if (memberFound)
-            return memberFound;
+        if (memberFound) return memberFound;
     }
     await message.guild.members.fetch({
         query: search
     });
-    if (
-        message.guild.members.cache.some(
-            member => member.user.tag === search || member.user.username === search
-        )
+    if (message.guild.members.cache.some(
+        member => member.user.tag === search || member.user.username === search)
     ) {
         const memberFound = message.guild.members.cache.find(
             member => member.user.tag === search || member.user.username === search
         );
-        if (memberFound)
-            return memberFound;
+        if (memberFound) return memberFound;
     }
     return;
 };
