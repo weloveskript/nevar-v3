@@ -2,7 +2,6 @@ const Command = require('../../structure/Command')
     , { MessageEmbed } = require('discord.js')
     , Resolvers = require('../../helper/resolver');
 
-// doublexp on/off <role>
 class Doublexp extends Command {
 
     constructor(client) {

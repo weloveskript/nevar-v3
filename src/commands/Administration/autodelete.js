@@ -18,6 +18,7 @@ class Autodelete extends Command {
                 options: [
                     {
                         name: "administration/autodelete:slashOption1",
+                        description: "administration/autodelete:slashOption1Desc",
                         type: "STRING",
                         required: true,
                         choices: [

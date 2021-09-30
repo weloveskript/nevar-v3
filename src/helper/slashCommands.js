@@ -54,7 +54,7 @@ module.exports = {
                                 if(!guildCount.includes(guild[1].id)) guildCount.push(guild[1].id)
                                 guild[1]?.commands.create(data).catch((e) => {
                                     if(!e.toString().startsWith('DiscordAPIError: Missing Access')){
-                                        //console.error(e)
+                                        console.log(e)
                                     }
                                 })
                             }
