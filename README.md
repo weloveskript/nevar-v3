@@ -1,4 +1,4 @@
-<p align="center"><img width=12.5% src="https://nevar.eu/assets/img/favicon.png"></p>
+<p align="center"><img width=29.5% src="https://beta.nevar.eu/assets/img/nevar/logo_trans.png"></p>
 <p align="center"><img width=60% src="https://github.com/Tintenpatron/Nevar-v3/blob/main/assets/nevar.gif?raw=true"></p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
