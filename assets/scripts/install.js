@@ -112,7 +112,7 @@ fs.writeFile('./storage/giveaways.json', JSON.stringify(Giveaways, null, 4), fun
     }
 });
 
-fs.writeFile('./storage/premiumKeys.json', JSON.stringify(Giveaways, null, 4), function(err){
+fs.writeFile('./storage/premiumKeys.json', JSON.stringify(Keys, null, 4), function(err){
     if(err){
         logger.log("Couldn't create storage/premiumKeys.json", "error");
         console.error(new Error(err));
@@ -121,7 +121,7 @@ fs.writeFile('./storage/premiumKeys.json', JSON.stringify(Giveaways, null, 4), f
     }
 });
 
-fs.writeFile('./storage/partners.json', JSON.stringify(Giveaways, null, 4), function(err){
+fs.writeFile('./storage/partners.json', JSON.stringify(Partners, null, 4), function(err){
     if(err){
         logger.log("Couldn't create storage/partners.json", "error");
         console.error(new Error(err));
@@ -129,3 +129,12 @@ fs.writeFile('./storage/partners.json', JSON.stringify(Giveaways, null, 4), func
         logger.log('Successfully created storage/partners.json', "success");
     }
 });
+
+fs.mkdirSync('./storage/images', {}, function(err){
+    if(err){
+        logger.log("Couldn't create storage/images/", "error");
+        console.error(new Error(err));
+    }else{
+        logger.log('Successfully created storage/images/', 'success');
+    }
+})
