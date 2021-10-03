@@ -1,0 +1,37 @@
+{
+  "description": "Lässt dich komplett anpassbare Embeds über mich senden",
+  "usage": "embed",
+  "example": "embed",
+
+  "accept": "{emotes.arrow} Ich stimme zu, dass Bilder die ich für das Embed sende auf externen Servern hochgeladen und gespeichert werden",
+  "cancelled": "{emotes.error} Der Vorgang wurde abgebrochen",
+  "iconToLarge": "{emotes.error} Die Maximalgröße beträgt 3MB - Vorgang wurde abgebrochen",
+  "noImageGiven": "{emotes.error} Es werden nur Bilder im PNG, WEBP, JPEG oder GIF Format akzeptiert",
+  "generate": "{emotes.arrow} Dein Embed wird nun generiert. Bitte beachte, das dass einen kleinen Moment dauern kann",
+  "successfull": "{emotes.success} Dein Embed wurde erfolgreich generiert",
+
+  "collectAuthor": "{emotes.arrow} [Schritt 1/9] Gib dem Autor des Embeds einen Namen",
+  "author": "»» Hier steht der Autor",
+
+  "collectAuthorIcon": "{emotes.arrow} [Schritt 2/9] Sende den Avatar des Autors - wenn er keinen haben soll, kannst du \"/\" senden",
+  "authorIcon": "«« Das ist das Autor-Icon",
+
+  "collectThumbnail": "{emotes.arrow} [Schritt 3/9] Sende das Thumbnail des Embeds - wenn es keins haben soll, kannst du \"/\" senden",
+  "thumbnail": "Das Thumbnail ist das Bild rechts im Embed »»",
+
+  "collectTitle": "{emotes.arrow} [Schritt 4/9] Sende den Titel des Embeds - wenn es keinen haben soll, kannst du \"/\" senden",
+  "title": "»» Dieser Text ist der Titel",
+
+  "collectDesc": "{emotes.arrow} [Schritt 5/9] Sende die Beschreibung das Embeds - wenn es keine haben soll, kannst du \"/\" senden. Die Beschreibung ist dieser Text",
+
+  "collectImage": "{emotes.arrow} [Schritt 6/9] Sende das Hauptbild des Embeds - wenn es keins haben soll, kannst du \"/\" senden. Das Hauptbild ist das große Bild, am unteren Ende des Embeds",
+
+  "collectFooter": "{emotes.arrow} [Schritt 7/9] Sende den Footertext des Embeds - wenn es keinen haben soll, kannst du \"/\" senden",
+  "footer": "»» Hier steht der Footertext",
+
+  "collectFooterIcon": "{emotes.arrow} [Schritt 8/9] Gleich fertig: Sende das Footerbild des Embeds - wenn es keins haben soll, kannst du \"/\" senden",
+  "footerIcon": "«« Das ist das Footer-Icon",
+
+  "collectColor": "{emotes.arrow} [Schritt 9/9] Letzter Schritt: Sende die Farbe des Embeds - diese Angabe kann in HEX sowie RGB sein. Wenn du die Nevar-Standardfarbe möchtest, kannst du \"/\" senden",
+  "color": "«« Das ist die Farbe des Embeds"
+}

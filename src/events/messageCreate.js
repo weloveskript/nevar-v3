@@ -151,7 +151,7 @@ module.exports = class {
                                 .setFooter(data.guild.footer);
                             await message.member.send(embed).catch(() => {});
                         }
-                        if (data.guild.levelRoles.length > 0) {
+                        if (data.guild.levelRoles?.length > 0) {
                             for (let val of data.guild.levelRoles) {
                                 if(parseInt(val.split(' | ')[0]) === parseInt(user.level)){
                                     let id = val
