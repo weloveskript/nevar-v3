@@ -533,6 +533,12 @@ class Embed extends Command {
                                                                             .setFooter(data.guild.footer);
                                                                         await sent.edit({embeds: [successfullEmbed]});
                                                                         channel.send({embeds:[generatedEmbed]});
+
+                                                                        //Delete downloaded images
+                                                                        fs.unlinkSync(authorIcon);
+                                                                        fs.unlinkSync(thumbnail);
+                                                                        fs.unlinkSync(image);
+                                                                        fs.unlinkSync(footerIcon);
                                                                     })
                                                                 }
                                                             });
