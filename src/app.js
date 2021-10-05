@@ -16,6 +16,12 @@ const client = new Nevar({
         Discord.Intents.FLAGS.GUILD_PRESENCES |
         Discord.Intents.FLAGS.GUILDS |
         Discord.Intents.FLAGS.GUILD_MESSAGES,
+    ws: {
+        properties: {
+            $browser: "discord.js",
+            $device: "discord.js"
+        }
+    },
     partials: Object.values(Discord.Constants.PartialTypes),
     restTimeOffset: 200,
     allowedMention: {
