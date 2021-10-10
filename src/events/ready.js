@@ -21,11 +21,6 @@ module.exports = class {
             res.end(client.user.tag + ' is running')
         });
 
-        const api = require('../helper/api/api');
-        await api.init(client);
-
-        http.createServer(app).listen(3434);
-
         //Top.GG init
         //const topgg = require('../helper/topgg');
         //topgg.init(client);
