@@ -1,0 +1,21 @@
+{
+  "description": "Deaktiviere Commands auf deinem Server",
+  "usage": "{emotes.use} Syntax: ```vb\n{prefix}ignorecommand add/remove <Command> | list```",
+  "example": "{emotes.example} Beispiel: ```vb\n{prefix}ignorecommand add balance```",
+
+  "slashOption1": "aktion",
+  "slashOption1Desc": "Was möchtest du machen?",
+  "slashOption1Choice1": "add",
+  "slashOption1Choice2": "remove",
+  "slashOption1Choice3": "list",
+
+  "slashOption2": "command",
+  "slashOption2Desc": "Gib den Command an",
+
+  "alreadyIgnored": "{emotes.error} Der Command wird bereits ignoriert",
+  "notIgnored": "{emotes.error} Der Command wird nicht ignoriert",
+  "ignored": "{emotes.success} Der {cmd}-Command kann auf diesem Discord absofort nicht mehr ausgeführt werden",
+  "unignored": "{emotes.success} Der {cmd}-Command kann auf diesem Discord absofort wieder ausgeführt werden",
+  "list": "{emotes.arrow} Ignorierte Commands:\n\n```|- {list}```"
+
+}
