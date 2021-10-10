@@ -21,7 +21,7 @@ Message.prototype.send = async function(embed, ping = false, buttons){
 }
 
 /**
- * 
+ *
  * @param embed
  * @param ephemeral
  * @param buttons
@@ -31,7 +31,7 @@ Interaction.prototype.send = async function(embed, ephemeral = false, buttons){
     let sent;
     if(buttons){
         if(ephemeral) sent = await this.reply(({embeds: [embed], components: buttons, ephemeral: true})).catch(() => {});
-        else sent = await this.reply({embeds: [embed], components: buttons, ephemeral: false, fetchReply: true}).catch(() => {});
+        else sent = await this.reply({embeds: [embed], components: buttons, ephemeral: false, fetchReply: true}).catch((e) => {console.log(e)});
     }else{
         if(ephemeral) sent = await this.reply({embeds: [embed], ephemeral: true}).catch(() => {});
         else sent = await this.reply({embeds: [embed], ephemeral: false, fetchReply: true}).catch(() => {});
