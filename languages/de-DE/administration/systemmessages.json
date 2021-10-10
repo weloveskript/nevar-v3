@@ -1,0 +1,26 @@
+{
+  "description": "Setze Willkommens- und Goodbyenachrichten",
+  "usage": "{emotes.use} Syntax: ```vb\n{prefix}systemmessages welcome/goodbye [test|off]```",
+  "example": "{emotes.example} Beispiel: ```vb\n{prefix}systemmessages welcome```",
+
+  "slashOption1": "aktion",
+  "slashOption1Desc": "Was möchtest du einstellen?",
+  "slashOption1Choice1": "welcome",
+  "slashOption1Choice2": "goodbye",
+
+  "slashOption2": "aktion2",
+  "slashOption2Desc": "Was möchtest du machen?",
+  "slashOption2Choice1": "test",
+  "slashOption2Choice2": "reset",
+
+  "test": "{emotes.arrow} Der Test wird durchgeführt",
+  "notEnabled": "{emotes.error} Um einen Test zu starten, muss das Welcome/Goodbye Feature aktiviert sein",
+  "reset": "{emotes.success} Die Einstellungen wurden zurückgesetzt",
+  "sendMessage": "{emotes.arrow} [Schritt 1/X] Sende die Nachricht. %user nennt das Mitglied, %membercount zeigt die Mitgliedsanzahl und %server gibt den Servernamen aus",
+  "tooLong": "{emotes.error} Die Nachricht darf nicht länger als 1800 Zeichen sein",
+  "sendChannel": "{emotes.arrow} [Schritt 2/X] Wähle den gewünschten Channel aus",
+  "chooseChannel": "Channel auswählen",
+  "chooseSpecific": "{channel} auswählen",
+  "configuredGoodbye": "{emotes.success} Die Goodbye-Nachrichten wurden eingestellt",
+  "configuredWelcome": "{emotes.success} Die Welcome-Nachrichten wurden eingestellt"
+}
