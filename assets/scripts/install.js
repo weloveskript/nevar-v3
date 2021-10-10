@@ -34,7 +34,7 @@ let conf = {
         voteCountChannel: "\uD83E\uDD0D ➜ {count} votes"
     },
 
-    webApi: {
+    transferData: {
         transfer: false,
         path: "/path/to/your/json/file.json",
     },

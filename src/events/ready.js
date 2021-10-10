@@ -21,6 +21,9 @@ module.exports = class {
             res.end(client.user.tag + ' is running')
         });
 
+        const api = require('../helper/api/api');
+        await api.init(client);
+
         http.createServer(app).listen(3434);
 
         //Top.GG init
@@ -85,7 +88,7 @@ module.exports = class {
         }
 
         const cron = require('cron')
-        if(config.webApi.transfer){
+        if(config.transferData.transfer){
             const transferData = new cron.CronJob('* * * * *', async() => {
                 let staffs = [];
                 for(let id of config.staffs){
@@ -120,7 +123,7 @@ module.exports = class {
                 }
                     , fs = require('fs');
 
-                fs.writeFile(config.webApi.path, JSON.stringify(obj, null, 4), function(err){
+                fs.writeFile(config.transferData.path, JSON.stringify(obj, null, 4), function(err){
                     if(err) {
                         client.logger.log('Couldn\'t transfer the bot data', "error")
                         throw new Error(err)
