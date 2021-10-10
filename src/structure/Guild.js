@@ -38,13 +38,11 @@ module.exports = mongoose.model("Guild", new Schema({
                 enabled: false,
                 message: null,
                 channel: null,
-                withImage: null
             },
             goodbye: {
                 enabled: false,
                 message: null,
                 channel: null,
-                withImage: null
             },
             autoSanctions: {
                 kick: false,
