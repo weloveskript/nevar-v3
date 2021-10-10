@@ -1,5 +1,4 @@
 const Command = require('../../structure/Command')
-    , Resolvers = require('../../helper/resolver')
     , { MessageEmbed } = require('discord.js')
     , { MessageActionRow, MessageSelectMenu } = require('discord.js');
 
@@ -46,11 +45,10 @@ class Systemmessages extends Command {
                             {
                                 name: "administration/systemmessages:slashOption2Choice2",
                                 value: "reset"
-
                             },
                         ]
                     }
-                    ]
+                ]
             }
         });
     }
@@ -157,7 +155,6 @@ class Systemmessages extends Command {
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
 
-
                     let row = new MessageActionRow()
                         .addComponents(
                             new MessageSelectMenu()
@@ -189,18 +186,11 @@ class Systemmessages extends Command {
                         data.guild.plugins.goodbye.enabled = true;
                         data.guild.markModified("plugins.goodbye");
                         await data.guild.save();
-
                     });
-
-
                 });
             }
         }
         if(args[0].toLowerCase() === "welcome"){
-
-
-
-
             if(args[1] && args[1].toLowerCase() === "test"){
                 if(data.guild.plugins.welcome.enabled){
                     let member = interaction?.member || message?.member;
@@ -281,7 +271,6 @@ class Systemmessages extends Command {
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
 
-
                     let row = new MessageActionRow()
                         .addComponents(
                             new MessageSelectMenu()
@@ -315,21 +304,9 @@ class Systemmessages extends Command {
                         await data.guild.save();
 
                     });
-
-
                 });
             }
-
-
-
-
-
-
         }
-
-
-
-
     }
 }
 
