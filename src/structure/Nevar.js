@@ -6,7 +6,7 @@ const util = require('util')
     , { GiveawaysManager } = require('discord-giveaways')
     , { Client, Collection, MessageEmbed } = require('discord.js')
     , { Player } = require('discord-player')
-    , MathUtils = require('../helper/mathUtil');
+    , MathUtils = require('../helper/mathUtils');
 
 
 moment.relativeTimeThreshold("s", 60);

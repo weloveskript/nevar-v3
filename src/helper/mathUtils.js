@@ -1,4 +1,4 @@
-module.exports = class MathUtil{
+module.exports = class MathUtils{
 
     /**
      * Check if a is lower than b
