@@ -5,7 +5,8 @@ const util = require('util')
     , embedColor = config.embeds.color
     , { GiveawaysManager } = require('discord-giveaways')
     , { Client, Collection, MessageEmbed } = require('discord.js')
-    , { Player } = require('discord-player');
+    , { Player } = require('discord-player')
+    , MathUtils = require('../helper/mathUtil');
 
 
 moment.relativeTimeThreshold("s", 60);
@@ -40,6 +41,8 @@ class Nevar extends Client {
         this.guildsData = require('./Guild');
         this.usersData = require('./User');
         this.membersData = require('./Member');
+
+        this.mathUtils = MathUtils;
 
         this.queues = [];
 
