@@ -1,0 +1,13 @@
+{
+  "description": "Setze einen Join2Create Channel",
+  "usage": "{emotes.use} Syntax: ```vb\n{prefix}join2create```",
+  "example": "{emotes.example} Beispiel: ```vb\n{prefix}join2create```",
+
+  "sendChannel": "{emotes.arrow} [Schritt 1/3] Wähle den Channel aus",
+  "chooseChannel": "Channel auswählen",
+  "sendUserlimit": "{emotes.arrow} [Schritt 2/3] Sende das Userlimit\n```|- minimal: 1\n|- maximal: 99\n|- unendlich: -1```",
+  "invalidUserLimit": "{emotes.error} Das Userlimit darf minimal 1 und maximal 99 sein",
+  "sendBitrate": "{emotes.arrow} [Schritt 3/3] Sende die Bitrate\n```|- minimal: 8\n|- maximal: 96```",
+  "invalidBitrate": "{emotes.error} Die Bitrate darf minimal 8 und maximal 96 sein",
+  "success": "{emotes.success} Der JoinToCreate-Channel wurde eingerichtet"
+}
