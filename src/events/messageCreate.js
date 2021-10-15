@@ -299,7 +299,7 @@ module.exports = class {
                 }
             }
 
-            if (cmd.conf.ownerOnly && (member.user.id !== config.owner_id)) {
+            if (cmd.conf.ownerOnly && (message.member.user.id !== config.owner_id)) {
                 let embed = new MessageEmbed()
                     .setAuthor(client.user.username, client.user.displayAvatarURL(), client.website)
                     .setDescription(g.translate("general/commandHandler:ownerCommand")
