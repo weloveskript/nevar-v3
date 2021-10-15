@@ -1,0 +1,10 @@
+{
+    "description": "Erstelle Codes zum Freischalten der Premiumversion",
+    "usage": "{emotes.use} | Benutze {prefix}createkey [Name] [Anzahl an max. Verwendungen | -1 = unendlich]",
+    "usageHelp": "createkey [Name] [Anzahl an max. Verwendungen | -1 = unendlich]",
+    "randomCreated": "{emotes.success} | Der Key `{key}` wurde erstellt. Er kann 1 Mal genutzt werden",
+    "alreadyExists": "{emotes.error} | Dieser Key existiert bereits",
+    "customCreated": "{emotes.success} | Der Key `{key}` wurde erstellt. Er kann {usages} benutzt werden",
+    "times": "Mal",
+    "infinite": "unendlich oft"
+  }
