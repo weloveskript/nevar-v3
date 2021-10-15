@@ -1,0 +1,7 @@
+{
+    "description": "Du bist zu wild, zeige jeden das du ein wahrer Staff bist!",
+    "usage": "{emotes.use} Syntax: ```vb\n{prefix}operator```",
+    "example": "{emotes.example} Beispiel: ```vb\n{prefix}operator```",
+
+    "success": "{emotes.nevar} | {user} ist richtig wild. 🔥"
+}
