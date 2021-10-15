@@ -41,6 +41,7 @@ class Reboot extends Command {
 			.setColor(this.client.embedColor)
 			.setFooter(data.guild.footer);
 		interaction.send(embed).then(async msg => {
+            console.log('Bot wird neugestartet.')
 			process.exit(42)
 		})
         }
