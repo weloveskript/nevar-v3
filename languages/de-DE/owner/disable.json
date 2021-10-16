@@ -7,6 +7,6 @@
     "alreadyDisabled": "{emotes.error} | {cmd} ist bereits deaktiviert",
     "disabled": "{emotes.success} | {cmd} wurde deaktiviert",
 
-    "slashOption1": "Command | List",
+    "slashOption1": "command",
     "slashOption1Desc": "Gib hier den Command an, den du deaktivieren möchtest."
   }
