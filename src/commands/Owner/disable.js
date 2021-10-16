@@ -94,7 +94,7 @@ class Disable extends Command {
 				.setFooter(data.guild.footer);
 			if(interaction) interaction.send(embed);
 			if(message) interaction.send(embed, false);
-			//return
+			return
 		}
 		let disabled = [];
 		disabled.push(cmd.help.name)
