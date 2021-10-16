@@ -23,26 +23,16 @@ class Operator extends Command {
         let guild = interaction?.guild || message?.guild
             , member = interaction?.member || message?.member
             , channel = interaction?.channel || message?.channel;
-        if(message) {
-            let embedmessage = new MessageEmbed()
+        let name = interaction?.member?.user?.username || message?.member?.user?.username
+            let embed = new MessageEmbed()
             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
             .setDescription(guild.translate("staff/operator:success")
-                .replace('{user}', message.author.username)
+                .replace('{user}', name)
                 .replace('{emotes.nevar}', this.client.emotes.nevar.logo_small_transparent))
             .setColor(this.client.embedColor)
             .setFooter(data.guild.footer);
-            return message.send(embedmessage, false);
-        } else if (interaction) {
-            let embedinteraction = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-            .setDescription(guild.translate("staff/operator:success")
-                .replace('{user}', interaction.member.user.username)
-                .replace('{emotes.nevar}', this.client.emotes.nevar.logo_small_transparent))
-            .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
-            return interaction.send(embedinteraction);
-        }
-        
+            if(interaction) return interaction.send(embed);
+            if(message) return message.send(embed, false);
     }
    
 }
