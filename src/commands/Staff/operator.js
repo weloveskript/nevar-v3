@@ -15,15 +15,26 @@ class Operator extends Command {
             staffOnly: true,
             cooldown: 20000,
             slashCommand: {
-                addCommand: true
+                addCommand: true,
+                options: [
+                    {
+                        name: "owner/operator:slashOption1",
+                        description: "owner/operator:slashOption1Desc",
+                        type: "STRING",
+                        required: false
+                    },
+
+
+                ]
             }
         });
     }
     async run(interaction, message, args, data){
-        let guild = interaction?.guild || message?.guild
+        const guild = interaction?.guild || message?.guild
             , member = interaction?.member || message?.member
             , channel = interaction?.channel || message?.channel;
-        let name = interaction?.member?.user?.username || message?.member?.user?.username
+        if(!args[0]) {
+            let name = interaction?.member?.user?.username || message?.member?.user?.username
             let embed = new MessageEmbed()
             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
             .setDescription(guild.translate("staff/operator:success")
@@ -33,6 +44,18 @@ class Operator extends Command {
             .setFooter(data.guild.footer);
             if(interaction) return interaction.send(embed);
             if(message) return message.send(embed, false);
+        } else if (args[0] === 'riptinte') {
+            let name = interaction?.member?.user?.username || message?.member?.user?.username
+            let embed = new MessageEmbed()
+            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setDescription(guild.translate("staff/operator:secret")
+                .replace('{emotes.nevar}', this.client.emotes.nevar.logo_small_transparent))
+            .setColor(this.client.embedColor)
+            .setFooter(data.guild.footer);
+            if(interaction) return interaction.send(embed);
+            if(message) return message.send(embed, false);
+        }
+        
     }
    
 }
