@@ -93,7 +93,7 @@ class Disable extends Command {
 				.setColor(this.client.embedColor)
 				.setFooter(data.guild.footer);
 			if(interaction) interaction.send(embed);
-			if(message) interaction.send(embed, false);
+			if(message) message.send(embed, false);
 			return
 		}
 		let disabled = [];
@@ -111,7 +111,7 @@ class Disable extends Command {
 			.setColor(this.client.embedColor)
 			.setFooter(data.guild.footer);
 		if(interaction) interaction.send(embed);
-		if(message) interaction.send(embed, false);
+		if(message) message.send(embed, false);
     }
 }
 

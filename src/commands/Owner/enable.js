@@ -14,18 +14,31 @@ class Enable extends Command {
             staffOnly: true,
             cooldown: 20000,
             slashCommand: {
-                addCommand: true
+                addCommand: true,
+				options: [
+                    {
+                        name: "owner/enable:slashOption1",
+                        description: "owner/enable:slashOption1Desc",
+                        type: "STRING",
+                        required: true
+                    },
+
+
+                ]
             }
         });
     }
     async run(interaction, message, args, data) {
 		const fs = require('fs')
         const command = args[0];
+		const guild = interaction?.guild || message?.guild
+            , member = interaction?.member || message?.member
+            , channel = interaction?.channel || message?.channel;
 		const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
 		if(!cmd){
 			let embed = new MessageEmbed()
 				.setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-				.setDescription(message.translate("owner/enable:usage")
+				.setDescription(guild.translate("owner/enable:usage")
 					.replace('{emotes.use}', this.client.emotes.use)
 					.replace('{prefix}', data.guild.prefix))
 				.setColor(this.client.embedColor)
@@ -45,7 +58,7 @@ class Enable extends Command {
 		if(!disablestate) {
 			let embed = new MessageEmbed()
 				.setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-				.setDescription(message.translate("owner/enable:isNot")
+				.setDescription(guild.translate("owner/enable:isNot")
 					.replace('{emotes.error}', this.client.emotes.use)
 					.replace('{cmd}', cmd.help.name))
 				.setColor(this.client.embedColor)
@@ -63,7 +76,7 @@ class Enable extends Command {
 
 		let embed = new MessageEmbed()
 			.setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-			.setDescription(message.translate("owner/enable:enabled")
+			.setDescription(guild.translate("owner/enable:enabled")
 				.replace('{emotes.success}', this.client.emotes.success)
 				.replace('{cmd}', cmd.help.name))
 			.setColor(this.client.embedColor)
