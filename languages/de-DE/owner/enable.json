@@ -1,0 +1,10 @@
+{
+    "description": "Aktiviert einen Command",
+    "usage": "{emotes.use} | Benutze {prefix}enable <Command>",
+    "usageHelp": "enable <Command>",
+    "isNot": "{emotes.error} | {cmd} ist nicht deaktiviert",
+    "enabled": "{emotes.success} | {cmd} wurde aktiviert",
+
+    "slashOption1": "Command | List",
+    "slashOption1Desc": "Gib hier den Command an, den du deaktivieren möchtest."
+  }
