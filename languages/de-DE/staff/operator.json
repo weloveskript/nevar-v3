@@ -3,5 +3,8 @@
     "usage": "{emotes.use} Syntax: ```vb\n{prefix}operator```",
     "example": "{emotes.example} Beispiel: ```vb\n{prefix}operator```",
 
-    "success": "{emotes.nevar} | {user} ist richtig wild. 🔥"
+    "success": "{emotes.nevar} {user} ist richtig wild. 🔥",
+    "secret": "{emotes.nevar} Tinte ist so garnicht wild. ",
+    "slashOption1": "???",
+    "slashOption1Desc": "Was ist das??"
 }

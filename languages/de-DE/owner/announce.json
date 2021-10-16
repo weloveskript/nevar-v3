@@ -1,6 +1,6 @@
 {
     "description": "Sendet eine Nachricht an alle Server",
-    "usage": "{emotes.use} | Benutze {prefix}announce <Text>",
+    "usage": "{emotes.use}  Benutze {prefix}announce <Text>",
     "messageFrom": "Nachricht vom Nevar Staff",
-    "messageSent": "{emotes.raven} | Nachricht an {count} Server gesendet"
+    "messageSent": "{emotes.nevar} Nachricht an {count} Server gesendet"
 }

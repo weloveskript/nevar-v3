@@ -1,4 +1,4 @@
 {
     "description": "Startet den Bot neu",
-    "reboot": "{emotes.arrow} | Ich starte neu.."
+    "reboot": "{emotes.arrow} Ich starte neu.."
   }

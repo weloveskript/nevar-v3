@@ -1,10 +1,10 @@
 {
     "description": "Deaktiviert einen Command",
-    "usage": "{emotes.use} | Benutze {prefix}disable <Command | List>",
+    "usage": "{emotes.use} Benutze {prefix}disable <Command | List>",
     "disabledList": "Folgende Commands sind deaktiviert:",
     "noDisabled": "Keine deaktivierten Commands",
-    "alreadyDisabled": "{emotes.error} | {cmd} ist bereits deaktiviert",
-    "disabled": "{emotes.success} | {cmd} wurde deaktiviert",
+    "alreadyDisabled": "{emotes.error} {cmd} ist bereits deaktiviert",
+    "disabled": "{emotes.success} {cmd} wurde deaktiviert",
 
     "slashOption1": "command",
     "slashOption1Desc": "Gib hier den Command an, den du deaktivieren möchtest."
