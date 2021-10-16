@@ -1,0 +1,9 @@
+{
+    "description": "Listet alle Server, auf denen der Bot ist",
+    "usageHelp": "servers-list",
+    "averageMembers": "Durchschnittliche Mitgliederzahl:",
+    "servers": "Server",
+    "members": "Mitglieder",
+    "page": "Seite"
+  }
+  
