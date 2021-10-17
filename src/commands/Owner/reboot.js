@@ -1,6 +1,6 @@
 const Command = require('../../structure/Command')
     , { MessageEmbed } = require('discord.js')
-    , Discord = require('discord.js');
+    , spawn = require('child_process').spawn;
 
 class Reboot extends Command {
     constructor(client) {
@@ -9,45 +9,37 @@ class Reboot extends Command {
             description: "owner/reboot:description",
             dirname: __dirname,
             aliases: ["rb"],
-            memberPermissions: ["SEND_MESSAGES"],
-            botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
             ownerOnly: true,
-            staffOnly: false,
             cooldown: 20000,
             slashCommand: {
-                addCommand: true
+                addCommand: false
             }
         });
     }
     async run(interaction, message, args, data){
-        let guild = interaction?.guild || message?.guild
-            , member = interaction?.member || message?.member
-            , channel = interaction?.channel || message?.channel;
-        if(message) {
-            let embed = new MessageEmbed()
+        let guild = interaction?.guild || message?.guild;
+
+        let embed = new MessageEmbed()
 			.setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
 			.setDescription(guild.translate("owner/reboot:reboot")
 				.replace('{emotes.arrow}', this.client.emotes.arrow))
 			.setColor(this.client.embedColor)
 			.setFooter(data.guild.footer);
-		message.send(embed, false).then(async msg => {
-			process.exit(42)
-		})
-        } else if (interaction) {
-            let embed = new MessageEmbed()
-			.setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-			.setDescription(guild.translate("owner/reboot:reboot")
-				.replace('{emotes.arrow}', this.client.emotes.arrow))
-			.setColor(this.client.embedColor)
-			.setFooter(data.guild.footer);
-		interaction.send(embed).then(async msg => {
-            console.log('Bot wird neugestartet.')
-			process.exit(42)
-		})
+        if(interaction) {
+            interaction.send(embed).then(async () => {
+                this.client.logger.log("Restarting..", "debug")
+			    process.exit(0)
+		    })
         }
-        
+        if(message) {
+            message.send(embed).then(async () => {
+                this.client.logger.log("Restarting..", "debug")
+                process.exit(0)
+            })
+        }
+
     }
-   
+
 }
 
 module.exports = Reboot;
