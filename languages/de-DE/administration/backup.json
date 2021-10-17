@@ -1,7 +1,7 @@
 {
   "description": "Verwaltet Backups für deinen Discord-Server",
-  "usage": "{emotes.use} Syntax: ```vb\n{prefix}backup create | <load/info> <ID>```",
-  "example": "{emotes.example} Beispiel: ```vb\n{prefix}backup load 850880327625867264```",
+  "usage": "{emotes.use} Syntax: ```{prefix}backup create | <load/info> <ID>```",
+  "example": "{emotes.example} Beispiel: ```{prefix}backup load 850880327625867264```",
 
   "slashOption1": "aktion",
   "slashOption1Desc": "Was möchtest du machen?",

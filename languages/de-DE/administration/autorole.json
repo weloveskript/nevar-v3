@@ -1,7 +1,7 @@
 {
   "description": "Vergibt beim Beitritt von neuen Mitgliedern oder Bots automatisch Rollen",
-  "usage": "{emotes.use} Syntax: ```vb\n{prefix}autorole <bot/user> <add/remove> <rolle> | list```",
-  "example": "{emotes.example} Beispiel: ```vb\n{prefix}autorole user add @Nutzer```",
+  "usage": "{emotes.use} Syntax: ```{prefix}autorole <bot/user> <add/remove> <rolle> | list```",
+  "example": "{emotes.example} Beispiel: ```{prefix}autorole user add @Nutzer```",
 
   "slashOption1": "typ",
   "slashOption1Desc": "Für Bots oder Nutzer?",

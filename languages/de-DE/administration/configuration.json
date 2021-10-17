@@ -1,5 +1,7 @@
 {
   "description": "Zeigt alle Einstellungen des Servers übersichtlich an",
+  "usage": "{emotes.use} Syntax: ```{prefix}configuration```",
+  "example": "{emotes.example} Beispiel: ```{prefix}configuration```",
   "overview": "{emotes.arrow} Welche Einstellungen möchtest du sehen?",
 
   "system": "System",

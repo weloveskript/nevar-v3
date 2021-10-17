@@ -1,7 +1,7 @@
 {
     "description": "Aktiviert einen Command",
-    "usage": "{emotes.use} Syntax: ```vb\n{prefix}enable <command>```",
-    "example": "{emotes.example} Beispiel: ```vb\n{prefix}enable ban```",
+    "usage": "{emotes.use} Syntax: ```{prefix}enable <command>```",
+    "example": "{emotes.example} Beispiel: ```{prefix}enable ban```",
 
     "isNot": "{emotes.error} {cmd} ist nicht deaktiviert",
     "enabled": "{emotes.success} {cmd} wurde aktiviert"

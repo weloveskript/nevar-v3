@@ -1,7 +1,7 @@
 {
   "description": "Stellt den Autoreact für Channel ein",
-  "usage": "{emotes.use} Syntax: ```vb\n{prefix}autoreact <add/remove> <channel> <emoji> | <reset> <all/channel> | list```",
-  "example": "{emotes.example} Beispiel: ```vb\n{prefix}autoreact add #{channel} <:nevar_logo:860278157486587964>```",
+  "usage": "{emotes.use} Syntax: ```{prefix}autoreact <add/remove> <channel> <emoji> | <reset> <all/channel> | list```",
+  "example": "{emotes.example} Beispiel: ```{prefix}autoreact add #{channel} <:nevar_logo:860278157486587964>```",
 
   "slashOption1": "aktion",
   "slashOption1Desc": "Was möchtest du machen?",

@@ -1,7 +1,7 @@
 {
   "description": "Setze Willkommens- und Goodbyenachrichten",
-  "usage": "{emotes.use} Syntax: ```vb\n{prefix}systemmessages welcome/goodbye [test|off]```",
-  "example": "{emotes.example} Beispiel: ```vb\n{prefix}systemmessages welcome```",
+  "usage": "{emotes.use} Syntax: ```{prefix}systemmessages welcome/goodbye [test|off]```",
+  "example": "{emotes.example} Beispiel: ```{prefix}systemmessages welcome```",
 
   "slashOption1": "aktion",
   "slashOption1Desc": "Was möchtest du einstellen?",

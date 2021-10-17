@@ -1,7 +1,7 @@
 {
   "description": "Füge Wörter hinzu, die ich automatisch löschen soll",
-  "usage": "{emotes.use} Syntax: ```vb\n{prefix}blacklist <add/remove> <Wort> | <reset|list>```",
-  "example": "{emotes.example} Beispiel: ```vb\n{prefix}blacklist add $#@%!```",
+  "usage": "{emotes.use} Syntax: ```{prefix}blacklist <add/remove> <Wort> | <reset|list>```",
+  "example": "{emotes.example} Beispiel: ```{prefix}blacklist add $#@%!```",
 
   "slashOption1": "aktion",
   "slashOption1Desc": "Was möchtest du machen?",

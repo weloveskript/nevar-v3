@@ -1,7 +1,7 @@
 {
   "description": "Füge einen Emote über einen Link zu einem Bild ganz einfach hinzu",
-  "usage": "{emotes.use} Syntax: ```vb\n{prefix}addemoji <URL/Emoji> <Name>```",
-  "example": "{emotes.example} Beispiel: ```vb\n{prefix}addemoji https://nevar.eu/assets/img/favicon.png nevar_logo```",
+  "usage": "{emotes.use} › Syntax: ```{prefix}addemoji <URL/Emoji> <Name>```",
+  "example": "{emotes.example} › Beispiel: ```{prefix}addemoji https://nevar.eu/assets/img/favicon.png nevar_logo```",
 
   "slashOption1": "emoji",
   "slashOption1Desc": "Gib hier den Emoji an, welchen du hinzufügen möchtest",
@@ -9,7 +9,7 @@
   "slashOption2": "name",
   "slashOption2Desc": "Wie soll der Emoji heißen?",
 
-  "length": "{emotes.error} Hmh, passt noch nicht. Der Name muss zwischen 2 und 32 Zeichen lang sein!",
-  "created": "{emotes.success} <{name}:{id}> wurde hinzugefügt",
-  "cantCreate": "{emotes.error} Ich konnte den Emoji nicht hinzufügen - hier sind mögliche Gründe woran das liegen kann:\n```|- der Server hat nicht mehr genug freie Plätze\n|- die angegebene URL führt zu keinem Bild\n|- der angegebene Emoji ist nicht mehr verfügbar\n|- du hast keine(n) gültigen URL oder Emoji angegeben```\n{emotes.arrow} Kannst du alle genannten Gründe ausschließen? Probiere es ein weiteres Mal\n{emotes.arrow} Du denkst, der Fehler liegt nicht bei dir? Melde dich auf unserem [Supportserver]({support})"
+  "length": "{emotes.error} › Hmh, passt noch nicht. Der Name muss zwischen 2 und 32 Zeichen lang sein!",
+  "created": "{emotes.success} › <{name}:{id}> wurde hinzugefügt",
+  "cantCreate": "{emotes.error} › Ich konnte den Emoji nicht hinzufügen - hier sind mögliche Gründe woran das liegen kann:\n```|- der Server hat nicht mehr genug freie Plätze\n|- die angegebene URL führt zu keinem Bild\n|- der angegebene Emoji ist nicht mehr verfügbar\n|- du hast keine(n) gültigen URL oder Emoji angegeben```\n{emotes.arrow} Kannst du alle genannten Gründe ausschließen? Probiere es ein weiteres Mal\n{emotes.arrow} Du denkst, der Fehler liegt nicht bei dir? Melde dich auf unserem [Supportserver]({support})"
 }

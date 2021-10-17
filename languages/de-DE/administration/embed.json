@@ -1,7 +1,7 @@
 {
   "description": "Lässt dich komplett anpassbare Embeds über mich senden",
-  "usage": "embed",
-  "example": "embed",
+  "usage": "{emotes.use} Syntax: ```{prefix}embed```",
+  "example": "{emotes.example} Beispiel: ```{prefix}embed```",
 
   "accept": "{emotes.arrow} Ich stimme zu, dass Bilder die ich für das Embed sende auf externen Servern hochgeladen und gespeichert werden",
   "cancelled": "{emotes.error} Der Vorgang wurde abgebrochen",

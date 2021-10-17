@@ -1,7 +1,7 @@
 {
   "description": "Legt fest, welche Rollen doppeltes XP bekommen sollen",
-  "usage": "{emotes.use} Syntax: ```vb\n{prefix}doublexp on/off <Rolle> | list```",
-  "example": "{emotes.example} Beispiel: ```vb\n{prefix}doublexp on @Premium-Nutzer```",
+  "usage": "{emotes.use} Syntax: ```{prefix}doublexp on/off <Rolle> | list```",
+  "example": "{emotes.example} Beispiel: ```{prefix}doublexp on @Premium-Nutzer```",
 
   "slashOption1": "aktion",
   "slashOption1Desc": "Was möchtest du machen?",
