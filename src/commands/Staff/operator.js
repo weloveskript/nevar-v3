@@ -1,6 +1,5 @@
 const Command = require('../../structure/Command')
-    , { MessageEmbed } = require('discord.js')
-    , Discord = require('discord.js');
+    , { MessageEmbed } = require('discord.js');
 
 class Operator extends Command {
     constructor(client) {
@@ -15,27 +14,15 @@ class Operator extends Command {
             staffOnly: true,
             cooldown: 20000,
             slashCommand: {
-                addCommand: true,
-                options: [
-                    {
-                        name: "owner/operator:slashOption1",
-                        description: "owner/operator:slashOption1Desc",
-                        type: "STRING",
-                        required: false
-                    },
-
-
-                ]
+                addCommand: false
             }
         });
     }
     async run(interaction, message, args, data){
-        const guild = interaction?.guild || message?.guild
-            , member = interaction?.member || message?.member
-            , channel = interaction?.channel || message?.channel;
-        if(!args[0]) {
-            let name = interaction?.member?.user?.username || message?.member?.user?.username
-            let embed = new MessageEmbed()
+        let guild = interaction?.guild || message?.guild
+            , name = interaction?.member?.user?.username || message?.member?.user?.username;
+
+        let embed = new MessageEmbed()
             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
             .setDescription(guild.translate("staff/operator:success")
                 .replace('{user}', name)
@@ -43,21 +30,9 @@ class Operator extends Command {
             .setColor(this.client.embedColor)
             .setFooter(data.guild.footer);
             if(interaction) return interaction.send(embed);
-            if(message) return message.send(embed, false);
-        } else if (args[0] === 'riptinte') {
-            let name = interaction?.member?.user?.username || message?.member?.user?.username
-            let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-            .setDescription(guild.translate("staff/operator:secret")
-                .replace('{emotes.nevar}', this.client.emotes.nevar.logo_small_transparent))
-            .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
-            if(interaction) return interaction.send(embed);
-            if(message) return message.send(embed, false);
-        }
-        
+            if(message) return message.send(embed);
     }
-   
+
 }
 
 module.exports = Operator;
