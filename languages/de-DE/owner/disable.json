@@ -1,11 +1,12 @@
 {
     "description": "Deaktiviert einen Command",
-    "usage": "{emotes.use} Benutze {prefix}disable <Command | List>",
-    "disabledList": "Folgende Commands sind deaktiviert:",
-    "noDisabled": "Keine deaktivierten Commands",
-    "alreadyDisabled": "{emotes.error} {cmd} ist bereits deaktiviert",
-    "disabled": "{emotes.success} {cmd} wurde deaktiviert",
+    "usage": "{emotes.use} Syntax: ```vb\n{prefix}disable <list/command>```",
+    "example": "{emotes.example} Beispiel: ```vb\n{prefix}disable ban```",
 
     "slashOption1": "command",
-    "slashOption1Desc": "Gib hier den Command an, den du deaktivieren möchtest."
+    "slashOption1Desc": "Welchen Command möchtest du deaktivieren?",
+
+    "disabledList": "{emotes.arrow} Folgende Commands sind deaktiviert:\n\n```|- {list}```",
+    "alreadyDisabled": "{emotes.error} {cmd} ist bereits deaktiviert",
+    "disabled": "{emotes.success} {cmd} wurde deaktiviert"
   }
