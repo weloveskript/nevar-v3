@@ -3,7 +3,7 @@
  * Installs all the files necessary for the bot to run perfectly
  */
 
-const logger = require('../../src/helper/log')
+const logger = require('../../../src/helper/log')
     , fs = require('fs');
 
 logger.log('Installation started..', "debug");
