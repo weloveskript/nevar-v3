@@ -4,7 +4,7 @@ const cmdCooldown = {}
     , toml = require('toml')
     , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
     , Levels = require('discord-xp');
-Levels.setURL(config.mongoDB_url);
+Levels.setURL(config.general.mongodb_url);
 
 module.exports = class {
     constructor(client) {
