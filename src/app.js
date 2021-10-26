@@ -6,7 +6,7 @@ const util = require('util')
     , fs = require('fs')
     , mongoose = require('mongoose')
     , Discord = require('discord.js')
-    , Nevar = require('./structure/Nevar')
+    , Nevar = require('./core/nevar')
     , toml = require('toml')
     , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
     , readdir = util.promisify(fs.readdir);
@@ -53,9 +53,9 @@ const init = async () => {
     }
 
     // Load player events
-    const playerFiles = await fs.readdirSync('./src/player/');
+    const playerFiles = await fs.readdirSync('./src/helper/player/');
     for(let file of playerFiles){
-        const playerEvent = require('./player/'+file)
+        const playerEvent = require('./helper/player/'+file)
         client.player.on(file.split('.')[0], playerEvent.bind(null, client))
     }
     client.logger.log(`Loaded ${playerFiles.length} player events`, "debug")

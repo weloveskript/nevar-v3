@@ -65,7 +65,7 @@ module.exports = class {
                 if(userChannel) userChannel.setName(config.channels.design_user_count_channel
                     .replace('{count}', client.format(client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0))));
 
-                if(config.apiKeys.top_gg && config.apiKeys.top_gg !== ""){
+                if(config.apiKeys.topgg && config.apiKeys.topgg !== ""){
                     let res = await fetch("https://discordbots.org/api/bots/"+client.user.id, {
                         headers: { "Authorization": config.apiKeys.top_gg}
                     })
