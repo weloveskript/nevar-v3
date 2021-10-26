@@ -1,8 +1,9 @@
 const cmdCooldown = {}
+    , fs = require('fs')
     , { MessageEmbed } = require('discord.js')
-    , config = require('../../config.json')
-    , Levels = require('discord-xp')
-    , fs = require('fs');
+    , toml = require('toml')
+    , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
+    , Levels = require('discord-xp');
 Levels.setURL(config.mongoDB_url);
 
 module.exports = class {
@@ -286,7 +287,7 @@ module.exports = class {
             }
 
             if (disabled) {
-                if (!(message.author.id === client.config.owner_id)) {
+                if (!(message.author.id === config.team.owner_id)) {
                     let embed = new MessageEmbed()
                         .setAuthor(client.user.username, client.user.displayAvatarURL(), client.website)
                         .setDescription(g.translate("general/commandHandler:disabledCommand")
@@ -299,7 +300,7 @@ module.exports = class {
                 }
             }
 
-            if (cmd.conf.ownerOnly && (message.member.user.id !== config.owner_id)) {
+            if (cmd.conf.ownerOnly && (message.member.user.id !== config.team_owner_id)) {
                 let embed = new MessageEmbed()
                     .setAuthor(client.user.username, client.user.displayAvatarURL(), client.website)
                     .setDescription(g.translate("general/commandHandler:ownerCommand")
@@ -308,7 +309,7 @@ module.exports = class {
                     .setFooter(data.guild.footer);
                 return message.send(embed)
             }
-            if(cmd.conf.staffOnly && !(client.config.staffs.includes(message.author.id))) {
+            if(cmd.conf.staffOnly && !(config.team.staff_ids.includes(message.author.id))) {
                 let embed = new MessageEmbed()
                     .setAuthor(client.user.username, client.user.displayAvatarURL(), client.website)
                     .setDescription(g.translate("general/commandHandler:staffCommand")
@@ -341,7 +342,7 @@ module.exports = class {
             }
             const time = uCooldown[cmd.help.name] || 0;
             if (time && (time > Date.now())) {
-                if (!(message.author.id === config.owner_id)) {
+                if (!(message.author.id === config.team.owner_id)) {
                     let seconds = Math.ceil((time - Date.now()) / 1000)
                     let desc = g.translate("general/commandHandler:remainingCooldown").split('?')[0]
                         .replace('{emotes.error}', client.emotes.error)

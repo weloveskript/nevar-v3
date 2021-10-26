@@ -1,8 +1,9 @@
 const util = require('util')
     , path = require('path')
     , moment = require('moment')
-    , config = require('../../config.json')
-    , embedColor = config.embeds.color
+    , toml = require('toml')
+    , fs = require('fs')
+    , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
     , { GiveawaysManager } = require('discord-giveaways')
     , { Client, Collection, MessageEmbed } = require('discord.js')
     , { Player } = require('discord-player')
@@ -19,7 +20,7 @@ moment.relativeTimeThreshold("M", 12);
 class Nevar extends Client {
     constructor(options) {
         super(options);
-        this.config = require('../../config.json');
+        this.config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
 
         this.emotes = require("../../assets/emojis.json");
 
@@ -28,10 +29,10 @@ class Nevar extends Client {
         this.commands = new Collection();
         this.aliases = new Collection();
 
-        this.embedColor = embedColor;
+        this.embedColor = config.embeds.color;
         this.footerText = config.embeds.footer;
-        this.supportUrl = config.embeds.support;
-        this.website = config.embeds.web;
+        this.supportUrl = config.support.invite;
+        this.website = config.general.website;
 
         this.logger = require('../helper/log');
 
@@ -63,7 +64,7 @@ class Nevar extends Client {
             updateCountdownEvery: 20000,
             default: {
                 botsCanWin: false,
-                embedColor: embedColor,
+                embedColor: config.embeds.color,
                 reaction: "🎉"
             }
         });

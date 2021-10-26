@@ -1,4 +1,6 @@
-const config = require('../../config.json');
+const toml = require('toml')
+    , fs = require('fs')
+    , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
 
 module.exports = class {
     constructor(client) {
@@ -40,7 +42,7 @@ module.exports = class {
         await unmuteChecker.init(client);
         await unbanChecker.init(client);
 
-        let status = require('../../config.json').status
+        let status = config.status
             , i = 0;
 
         if(config.support.id){
@@ -51,16 +53,16 @@ module.exports = class {
                 let serverChannel;
                 let voteChannel;
                 let userChannel;
-                if(config.support.serverChannel) serverChannel = guild.channels.cache.get(config.support.serverChannel);
-                if(config.support.voteCountChannel) voteChannel = guild.channels.cache.get(config.support.voteCountChannel);
-                if(config.support.userChannel) userChannel = guild.channels.cache.get(config.support.userChannel);
+                if(config.support.server_count_channel) serverChannel = guild.channels.cache.get(config.support.server_count_channel);
+                if(config.support.vote_count_channel) voteChannel = guild.channels.cache.get(config.support.vote_count_channel);
+                if(config.support.user_count_channel) userChannel = guild.channels.cache.get(config.support.user_count_channel);
 
 
                 //set channel names
-                if(serverChannel) serverChannel.setName(config.channelDesigns.serverChannel
+                if(serverChannel) serverChannel.setName(config.channels.design_server_count_channel
                     .replace('{count}', client.guilds.cache.size));
                 await client.wait(2000);
-                if(userChannel) userChannel.setName(config.channelDesigns.userChannel
+                if(userChannel) userChannel.setName(config.channels.design_user_count_channel
                     .replace('{count}', client.format(client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0))));
 
                 if(config.apiKeys.top_gg && config.apiKeys.top_gg !== ""){
@@ -75,7 +77,7 @@ module.exports = class {
                     if(!data.error){
                         votes = data.monthlyPoints;
                         await client.wait(200);
-                        if(voteChannel) voteChannel.setName(config.channelDesigns.voteCountChannel
+                        if(voteChannel) voteChannel.setName(config.channels.design_vote_count_channel
                             .replace('{count}', client.format(votes))
                             .replace('{month}', month.toLowerCase))
                     }
@@ -85,17 +87,17 @@ module.exports = class {
         }
 
         const cron = require('cron')
-        if(config.transferData.transfer){
+        if(config.datatransfer.state){
             const transferData = new cron.CronJob('* * * * *', async() => {
                 let staffs = [];
-                for(let id of config.staffs){
+                for(let id of config.team.staff_ids){
                     let user = await client.users.fetch(id);
                     staffs.push(user.username + '#'+user.discriminator + ' |?| ' + user.id + ' |?| ' + user.displayAvatarURL());
                 }
                 let votes = 0;
-                if(config.apiKeys.top_gg && config.apiKeys.top_gg !== "") {
+                if(config.apikeys.top_gg && config.apikeys.top_gg !== "") {
                     let res = await fetch("https://discordbots.org/api/bots/" + client.user.id, {
-                        headers: {"Authorization": config.apiKeys.top_gg}
+                        headers: {"Authorization": config.apikeys.top_gg}
                     })
                         , data = await res.json();
 
@@ -120,7 +122,7 @@ module.exports = class {
                 }
                     , fs = require('fs');
 
-                fs.writeFile(config.transferData.path, JSON.stringify(obj, null, 4), function(err){
+                fs.writeFile(config.datatransfer.path, JSON.stringify(obj, null, 4), function(err){
                     if(err) {
                         client.logger.log('Couldn\'t transfer the bot data', "error")
                         throw new Error(err)
@@ -141,8 +143,8 @@ module.exports = class {
         }, 20000)
 
 
-        //await require('../interface/app')();
 
+        //await require("../interface/app.js")();
 
     }
 };

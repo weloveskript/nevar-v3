@@ -3,7 +3,8 @@ const util = require('util')
     , readdir = util.promisify(fs.readdir)
     , { MessageEmbed } = require('discord.js')
     , cmdCooldown = {}
-    , config = require('../../config.json');
+    , toml = require('toml')
+    , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
 
 module.exports = {
     /**
@@ -196,7 +197,7 @@ module.exports = {
             }
 
             if (disabled) {
-                if (!(member.user.id === config.owner_id)) {
+                if (!(member.user.id === config.team.owner_id)) {
                     let embed = new MessageEmbed()
                         .setAuthor(client.user.username, client.user.displayAvatarURL(), client.website)
                         .setDescription(g.translate("general/commandHandler:disabledCommand")
@@ -209,7 +210,7 @@ module.exports = {
                 }
             }
 
-            if (cmd.conf.ownerOnly && (member.user.id !== config.owner_id)) {
+            if (cmd.conf.ownerOnly && (member.user.id !== config.team.owner_id)) {
                 let embed = new MessageEmbed()
                     .setAuthor(client.user.username, client.user.displayAvatarURL(), client.website)
                     .setDescription(g.translate("general/commandHandler:ownerCommand")
@@ -219,7 +220,7 @@ module.exports = {
                 return interaction.send(embed);
             }
 
-            if(cmd.conf.staffOnly && !(config.staffs.includes(member.user.id))) {
+            if(cmd.conf.staffOnly && !(config.team.staff_ids.includes(member.user.id))) {
                 let embed = new MessageEmbed()
                     .setAuthor(client.user.username, client.user.displayAvatarURL(), client.website)
                     .setDescription(g.translate("general/commandHandler:staffCommand")
@@ -251,7 +252,7 @@ module.exports = {
             }
             const time = uCooldown[cmd.help.name] || 0;
             if (time && (time > Date.now())) {
-                if (!(member.user.id === config.owner_id)) {
+                if (!(member.user.id === config.team.owner_id)) {
                     let seconds = Math.ceil((time - Date.now()) / 1000)
                     let desc = g.translate("general/commandHandler:remainingCooldown").split('?')[0]
                         .replace('{emotes.error}', client.emotes.error)

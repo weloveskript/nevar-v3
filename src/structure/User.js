@@ -3,6 +3,8 @@ const userSchema = new mongoose.Schema({
 
     id: { type: String },
 
+    guilds: { type: Array, default: [] },
+
     levelColor: { type: String, default: "5773c9"},
     levelBackground: { type: Number, default: 0 },
 

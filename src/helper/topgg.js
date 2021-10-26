@@ -1,33 +1,34 @@
-const {  MessageEmbed } = require("discord.js"),
-    { AutoPoster } = require("topgg-autoposter"),
-    Topgg = require("@top-gg/sdk"),
-    express = require("express"),
-    fetch = require("node-fetch"),
-    config = require('../../config.json')
+const {  MessageEmbed } = require("discord.js")
+    , { AutoPoster } = require("topgg-autoposter")
+    , Topgg = require("@top-gg/sdk")
+    , express = require("express")
+    , fetch = require("node-fetch")
+    , toml = require('toml')
+    , fs = require('fs')
+    , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
 
 
 module.exports = {
 
 
     init(client) {
-        if (config.apiKeys.top_gg && config.apiKeys.top_gg !== "" && config.support.newVotesChannel && config.support.newVotesChannel !== "") {
+        if (config.apikeys.topgg && config.apikeys.topgg !== "" && config.support.vote_announce_channel && config.support.vote_announce_channel !== "") {
 
             const { AutoPoster } = require('topgg-autoposter');
 
-            const ap = AutoPoster(config.apiKeys.top_gg, client);
+            const ap = AutoPoster(config.apikeys.topgg, client);
 
             const Topgg = require('@top-gg/sdk')
                 , express = require('express');
 
             const app = express();
 
-            const webhook = new Topgg.Webhook(config.apiKeys.top_gg_webhook_auth);
+            const webhook = new Topgg.Webhook(config.apikeys.topgg_webhook_auth);
             app.post("/dblwebhook", webhook.listener(async (vote) => {
-                console.log(vote.user);
                 const user = await client.users.fetch(vote.user);
                 const resp = await fetch("https://discordbots.org/api/bots/" + client.user.id, {
                     headers: {
-                        "Authorization": config.apiKeys.top_gg
+                        "Authorization": config.apikeys.topgg
                     }
                 });
                 const data = await resp.json();
@@ -47,7 +48,7 @@ module.exports = {
                     .setDescription(`${client.emotes.boost} | **${user.username}** just voted for our bot!\n${client.emotes.nevar.logo_small_transparent} Here you can vote every 12 hours: **[Click](https://top.gg/bot/${client.user.id}/vote)**`)
                     .setColor(client.embedColor)
                     .setFooter(`${votes} votes in ${month} | Thank you 🖤`);
-                client.channels.cache.get(config.support.newVotesChannel).send(embed);
+                client.channels.cache.get(config.support.vote_announce_channel).send({embeds: [embed]});
 
             }));
             app.listen(3232)

@@ -7,7 +7,8 @@ const util = require('util')
     , mongoose = require('mongoose')
     , Discord = require('discord.js')
     , Nevar = require('./structure/Nevar')
-    , config = require('../config.json')
+    , toml = require('toml')
+    , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
     , readdir = util.promisify(fs.readdir);
 
 const client = new Nevar({
@@ -26,6 +27,9 @@ const client = new Nevar({
     restTimeOffset: 200,
     allowedMention: {
         parse: ["users"]
+    },
+    presence: {
+        status: "idle"
     }
 });
 
@@ -67,11 +71,11 @@ const init = async () => {
     }
 
     // Login
-    client.login(config.bot_token);
+    client.login(config.general.bot_token);
 
     // Connect to mongodb
     mongoose
-        .connect(config.mongoDB_url, {
+        .connect(config.general.mongodb_url, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
@@ -82,6 +86,7 @@ const init = async () => {
             client.logger.log('Couldn\'t connect to MongoDB: ' + err, 'error');
         });
 
+    client.mongoose = mongoose;
     const languages = require('./helper/languages.js');
     client.translations = await languages();
 };
@@ -89,6 +94,7 @@ const init = async () => {
 // Init
 init().then(res => {
     if(!res) client.logger.log("Successfully initiated client", "success");
+
 }).catch((err) => {
     client.logger.log("Failed to initiate client: " + err, "error");
 });

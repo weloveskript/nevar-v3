@@ -1,5 +1,7 @@
 const { MessageEmbed } = require('discord.js')
-	, config = require('../../config.json');
+	, toml = require('toml')
+	, fs = require('fs')
+	, config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
 
 module.exports = async (client, message, queue) => {
 

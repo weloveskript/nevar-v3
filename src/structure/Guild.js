@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
     , Schema = mongoose.Schema
-    , config = require('../../config.json')
+    , toml = require('toml')
+    , fs = require('fs')
+    , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
     ,languages = require('../../languages/language-meta.json');
 
 module.exports = mongoose.model("Guild", new Schema({
@@ -19,7 +21,7 @@ module.exports = mongoose.model("Guild", new Schema({
     },
     blocked: { type: Boolean, default: false },
     premium: { type: Boolean, default: false},
-    prefix: { type: String, default: config.prefix },
+    prefix: { type: String, default: config.general.default_prefix },
     plugins: { type: Object, default: {
             levelsystem: {
                 enabled: false,
