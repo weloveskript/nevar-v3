@@ -1,4 +1,4 @@
-const Command = require('../../structure/Command')
+const Command = require('../../core/command')
     , { MessageEmbed } = require('discord.js')
     , Imgur = require('imgur')
     , fs = require('fs')

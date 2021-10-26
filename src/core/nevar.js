@@ -22,7 +22,7 @@ class Nevar extends Client {
         super(options);
         this.config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
 
-        this.emotes = require("../../assets/emojis.json");
+        this.emotes = require("../../storage/assets/emojis.json");
 
         this.languages = require('../../languages/language-meta.json');
 
@@ -39,9 +39,9 @@ class Nevar extends Client {
         this.wait = util.promisify(setTimeout);
         this.functions = require('../helper/functions');
 
-        this.guildsData = require('./Guild');
-        this.usersData = require('./User');
-        this.membersData = require('./Member');
+        this.guildsData = require('../entities/guild');
+        this.usersData = require('../entities/user');
+        this.membersData = require('../entities/member');
 
         this.mathUtils = MathUtils;
 

@@ -1,4 +1,4 @@
-const Command = require('../../structure/Command')
+const Command = require('../../core/command')
     , backups = require('discord-backup')
     , { MessageEmbed } = require('discord.js');
 
