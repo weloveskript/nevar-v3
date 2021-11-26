@@ -31,6 +31,10 @@ class Autodelete extends Command {
                                 value: "reset"
 
                             },
+                            {
+                                name: "administration/autodelete:slashOption1Choice3",
+                                value: "list"
+                            }
                         ]
 
                     },
@@ -38,7 +42,7 @@ class Autodelete extends Command {
                         name: "administration/autodelete:slashOption2",
                         description: "administration/autodelete:slashOption2Desc",
                         type: "CHANNEL",
-                        required: true,
+                        required: false,
                     },
                     {
                         name: "administration/autodelete:slashOption3",
@@ -129,18 +133,19 @@ class Autodelete extends Command {
                         }
                     }
 
+                    let time = ms(args[2]);
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                         .setDescription(guild.translate("administration/autodelete:set")
                             .replace('{emotes.success}', this.client.emotes.success)
                             .replace('{channel}', channel)
-                            .replace('{time}', args[2]))
+                            .replace('{time}', ms(Number(time))))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
                     if (message) await message.send(embed);
                     if (interaction) await interaction.send(embed);
                     await this.client.wait(500);
-                    data.guild.autoDeleteChannels.push(`${channel.id} | ${ms(args[2])}`);
+                    data.guild.autoDeleteChannels.push(`${channel.id} | ${time}`);
                     await data.guild.save();
 
                 }
@@ -247,6 +252,22 @@ class Autodelete extends Command {
                         if (message) return message.send(embed);
                         if (interaction) return interaction.send(embed);}
             }
+        }else if(args[0].toLowerCase() === 'list'){
+            let channels = [];
+            for(let val of data.guild.autoDeleteChannels){
+                let channel = guild.channels.cache.get(val.split(' | ')[0]);
+                if(channel) channels.push('|- #' + channel.name + ' | ' + ms(Number(val.split(' | ')[1])));
+            }
+            if(channels.length === 0) channels.push('|- '+ guild.translate("language:noEntries"));
+            let embed = new MessageEmbed()
+                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setDescription(guild.translate("administration/autodelete:list")
+                    .replace('{emotes.arrow}', this.client.emotes.arrow)
+                    .replace('{list}', channels.join('\n')))
+                .setColor(this.client.embedColor)
+                .setFooter(data.guild.footer);
+            if (message) await message.send(embed);
+            if (interaction) await interaction.send(embed);
         }
     }
 }

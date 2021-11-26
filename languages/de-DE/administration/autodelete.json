@@ -7,6 +7,7 @@
   "slashOption1Desc": "Was möchtest du machen?",
   "slashOption1Choice1": "set",
   "slashOption1Choice2": "reset",
+  "slashOption1Choice3": "list",
 
   "slashOption2": "channel",
   "slashOption2Desc": "Gib einen Channel an",
@@ -19,6 +20,7 @@
   "set": "{emotes.success} In {channel} werden neue Nachrichten absofort automatisch nach {time} gelöscht",
   "resettedAll": "{emotes.success} Ich habe das Autodelete aller Channel zurückgesetzt",
   "noAutodelete": "{emotes.error} Derzeit ist kein Autodelete eingestellt",
-  "resettedChannel": "{emotes.success} Ich habe das Autodelete in {channel} zurückgesetzt",
-  "noAutodeleteInChannel": "{emotes.error} In {channel} ist kein Autodelete aktiviert"
+  "resettedChannel": "{emotes.success} In {channel} werden neue Nachrichten absofort nicht mehr automatisch gelöscht",
+  "noAutodeleteInChannel": "{emotes.error} In {channel} ist kein Autodelete aktiviert",
+  "list": "{emotes.arrow} In den folgenden Channeln ist Autodelete aktiviert:\n\n```{list}```"
 }
