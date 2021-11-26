@@ -1,9 +1,11 @@
 const cmdCooldown = {}
     , fs = require('fs')
-    , { MessageEmbed } = require('discord.js')
+    , { MessageEmbed, Permissions} = require('discord.js')
     , toml = require('toml')
     , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
     , Levels = require('discord-xp');
+
+
 Levels.setURL(config.general.mongodb_url);
 
 module.exports = class {
@@ -107,7 +109,9 @@ module.exports = class {
                 if(data.guild.plugins.blacklist?.list.length > 0){
                     for(let word of data.guild.plugins.blacklist.list){
                         if(message.content.toLowerCase().includes(word)){
-                            return message.delete().catch(()=>{});
+                            if (!message.channel.permissionsFor(message.member).has(Permissions.FLAGS["ADMINISTRATOR"]) || !message.channel.permissionsFor(message.member).has(Permissions.FLAGS["MANAGE_GUILD"]) || !message.channel.permissionsFor(message.member).has(Permissions.FLAGS["MANAGE_MESSAGES"])) {
+                                return message.delete().catch(() => {});
+                            }
                         }
                     }
                 }
@@ -229,8 +233,7 @@ module.exports = class {
 
             }
 
-            let neededPermissions = []
-                , { Permissions } = require('discord.js');
+            let neededPermissions = [];
             if (!cmd.conf.botPermissions.includes("EMBED_LINKS")) {
                 cmd.conf.botPermissions.push("EMBED_LINKS");
             }
