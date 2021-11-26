@@ -14,6 +14,8 @@ module.exports = class {
 
     async run(message){
 
+        message.author
+
         if(!message) return;
 
         const data = {}

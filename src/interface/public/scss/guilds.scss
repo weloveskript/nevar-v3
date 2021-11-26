@@ -1,0 +1,93 @@
+.crown {
+  cursor: default;
+}
+
+.logout-button {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  background-color: $plurble;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px 15px;
+  font-size: large;
+  text-decoration: none;
+}
+
+.tippy-box {
+  background-color: black !important;
+  color: white !important;
+}
+
+.guild-container:hover .guild-text {
+  opacity: 1;
+}
+
+.guild-container {
+  width: 192px;
+  height: 192px;
+  padding-top: 30px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  * {
+    user-select: none;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+
+
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    img {
+      -webkit-filter: brightness(10%) grayscale(10%) blur(3px);
+      filter: brightness(10%) grayscale(10%) blur(3px);
+    }
+
+  }
+
+
+  .guild-text {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    opacity: 0;
+    transform: translate(50%, -50%);
+    text-align: center;
+    z-index: 9999 !important;
+    font-size: large;
+    color: white;
+  }
+
+  span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+  }
+
+}
+
+.unsupported-guild {
+  -webkit-filter: brightness(10%) grayscale(10%) blur(3px);
+  filter: brightness(10%) grayscale(10%) blur(3px);
+}
+
+.guilds-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 20px;
+
+  > div {
+
+  }
+
+}

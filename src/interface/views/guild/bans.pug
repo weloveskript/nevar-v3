@@ -1,0 +1,35 @@
+h1
+    i.bi.bi-people
+    | &nbsp;Gebannte Nutzer (#{members.length})
+
+.members-list
+    hr
+    each member in members
+        - var iconUrl = ""
+        if !member.iconURL
+            - iconUrl = "https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"
+        else
+            - iconUrl = member.iconURL
+
+        .member-item
+            .member-grid
+                .member-icon
+                    img(src=iconUrl height=96 width=96)
+                .member-info
+                    span.name
+                        | #{member.tag.trim()}&nbsp;
+                    button.button.copy-button(onclick="copyString('" + member.userID + "')")
+                        i.bi.bi-clipboard
+                    br
+                    - moment.locale("de");
+                    span
+                        | <strong>Gebannt bis</strong> #{moment(member.ban.endDate).format("LLLL")}<br>
+                        | <strong>Grund:</strong> #{member.ban.reason.split("|")[member.ban.reason.split("|").length - 2].split(":")[1].trim()}
+                    br
+                    br
+                    a.button.ban-button(href=baseUrl + "guilds/" + guild.id + "/members/" + member.id + "/unban")
+                        i.bi.bi-hammer
+                        | &nbsp;Entbannen
+        hr
+
+

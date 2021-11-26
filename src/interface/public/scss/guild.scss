@@ -1,0 +1,136 @@
+.back {
+  color: $plurble;
+  font-size: x-large;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.panel-container {
+  display: grid;
+  height: 600px;
+  grid-template-areas: "sidebar main main main main main main main main";
+  border-radius: 5px;
+  background: $plurble;
+
+  .panel-bar {
+    border-start-start-radius: 5px;
+    background: #405177;
+    grid-area: sidebar;
+    height: 600px;
+    z-index: 5;
+    overflow-x: hidden;
+
+    a {
+      padding: 10px 15px;
+      color: white;
+      font-size: larger;
+      display: block;
+      text-decoration: none;
+      transition: background-color 200ms ease-in;
+
+      &:hover {
+        background: #2c3751;
+      }
+
+      &:active {
+        background: #1e2737;
+      }
+
+    }
+
+  }
+
+  .panel-content {
+    grid-area: main;
+    padding: 15px 15px;
+
+    .sub-panel {
+      overflow-y: scroll;
+      max-height: 560px;
+      padding: 1px 20px;
+      background-color: #292b2f;
+      border-radius: 5px;
+    }
+
+  }
+
+}
+
+.button {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 10px;
+  font-size: medium;
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+}
+
+.copy-button {
+  color: black;
+}
+
+.ban-button {
+  background-color: red;
+  margin-right: 15px;
+}
+
+.kick-button {
+  background-color: orangered;
+}
+
+
+.overview-grid {
+  display: grid;
+  grid-template-areas: "icon table table table table table table";
+}
+
+.overview-icon {
+  grid-area: icon;
+}
+
+.members-list {
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #4d4f58;
+    margin: 1em 0;
+    padding: 0;
+  }
+}
+
+.member-item {
+  display: block;
+
+  .member-grid {
+    display: grid;
+    grid-template-areas: "icon info";
+    grid-template-columns: 122px 1fr;
+  }
+
+  .member-icon {
+    grid-area: icon;
+    max-width: 122px;
+  }
+
+  .member-info {
+    .name {
+      font-size: x-large;
+      font-weight: bold;
+    }
+    grid-area: info;
+  }
+
+}
+
+.overview-table {
+  grid-area: table;
+}
+
+

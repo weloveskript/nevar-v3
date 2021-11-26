@@ -1,7 +1,7 @@
 {
   "description": "Füge einen Emote über einen Link zu einem Bild ganz einfach hinzu",
-  "usage": "{emotes.use} › Syntax: ```{prefix}addemoji <URL/Emoji> <Name>```",
-  "example": "{emotes.example} › Beispiel: ```{prefix}addemoji https://nevar.eu/assets/img/favicon.png nevar_logo```",
+  "usage": "{emotes.use} Syntax: ```{0}addemoji <URL/Emoji> <Name>```",
+  "example": "{emotes.example} Beispiel: ```{0}addemoji https://nevar.eu/assets/img/favicon.png nevar_logo```",
 
   "slashOption1": "emoji",
   "slashOption1Desc": "Gib hier den Emoji an, welchen du hinzufügen möchtest",

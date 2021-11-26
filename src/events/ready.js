@@ -144,7 +144,7 @@ module.exports = class {
 
 
 
-        //await require("../interface/app.js")();
+        await require("../interface/app.js")();
 
     }
 };

@@ -1,0 +1,31 @@
+h1
+    i.bi.bi-people
+    | &nbsp;Mitglieder (#{members.length})
+
+.members-list
+    hr
+    each member in members
+        - var iconUrl = ""
+        if !member.iconURL
+            - iconUrl = "https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"
+        else
+            - iconUrl = member.iconURL
+
+        .member-item
+            .member-grid
+                .member-icon
+                    img(src=iconUrl height=96 width=96)
+                .member-info
+                    span.name
+                        | #{member.tag.trim()}&nbsp;
+                    button.button.copy-button(onclick="copyString('" + member.userID + "')")
+                        i.bi.bi-clipboard
+                    br
+                    br
+                    if !(member.userID == client.user.id || member.userID == discordId)
+                        a.button.kick-button(href=baseUrl + "guilds/" + guild.id + "/members/" + member.userID + "/kick")
+                            i.bi.bi-box-arrow-right
+                            | &nbsp;Kicken
+        hr
+
+

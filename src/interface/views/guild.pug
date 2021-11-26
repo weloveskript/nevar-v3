@@ -1,0 +1,66 @@
+extends partials/layout
+block variables
+    - var title = "\"" + guild.name + "\" verwalten | Nevar"
+    if !subView
+        - var subView = "overview"
+
+block content
+    a.back(href="/")
+        | <i class="bi bi-arrow-left"></i>
+    if discordId = owner.user.id
+        h1 Manage "#{guild.name}"
+        //pre=JSON.stringify(guild, null, 4)
+        .panel-container
+            .panel-bar
+                a(href=baseUrl + "guilds/" + guild.id + "/")
+                    i.bi.bi-speedometer2
+                    | &nbsp;Übersicht
+                a(href=baseUrl + "guilds/" + guild.id + "/members")
+                    i.bi.bi-people
+                    | &nbsp;Mitglieder
+                a(href=baseUrl + "guilds/" + guild.id + "/bans")
+                    i.bi.bi-hammer
+                    | &nbsp;Gebannte Nutzer
+                a(href=baseUrl + "guilds/" + guild.id + "/commands")
+                    i.bi.bi-slash-circle
+                    | &nbsp;Ignorierte Commands
+                a(href=baseUrl + "guilds/" + guild.id + "/premium")
+                    i.bi.bi-gem
+                    | &nbsp;Premium
+                a(href=baseUrl + "guilds/" + guild.id + "/settings")
+                    i.bi.bi-sliders
+                    | &nbsp;Einstellungen
+            .panel-content
+                .sub-panel
+                    if subView == "overview"
+                        include guild/overview
+                    else if subView == "members"
+                        include guild/members
+                    else if subView == "bans"
+                        include guild/bans
+                    else if subView == "commands"
+                        include guild/commands
+                    else if subView == "premium"
+                        include guild/premium
+                    else if subView == "settings"
+                        include guild/settings
+
+    else
+        h1 401: Unauthoriziert
+
+block scripts
+    script.
+        function copyString(str) {
+            const el = document.createElement('textarea');
+            el.value = str;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+        }
+
+        tippy('.copy-button', {
+            content: 'ID Kopieren',
+            placement: "right"
+        });
+

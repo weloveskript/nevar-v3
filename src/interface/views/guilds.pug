@@ -1,0 +1,39 @@
+extends partials/layout
+block variables
+	- var title = client.user.username + ' - Dashboard'
+
+block content
+	h1 Supported guilds (#{supportedGuilds.length})
+		.guilds-container
+			each guild in supportedGuilds
+				- var iconUrl = ""
+				if !guild.icon
+					- iconUrl = "https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"
+				else
+					- iconUrl = "https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + ""
+
+				.guild-container(onclick="location.href = '" + baseUrl + "guilds/" + guild.id + "'")
+					div
+						img(src=iconUrl)
+						.guild-text=guild.name
+						if guild.owner
+							span.crown 👑
+			each guild in unsupportedGuilds
+				div
+					- var iconUrl = ""
+					if !guild.icon
+						- iconUrl = "https://yt3.ggpht.com/ytc/AAUvwniEUaBNWbH9Pk7A1cmIBdxnYt0YYrgNKx5h8grSMA=s900-c-k-c0x00ffffff-no-rj"
+					else
+						- iconUrl = "https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + ""
+
+					.guild-container.unsupported-guild(onclick="location.href = '" +
+						"https://discord.com/oauth2/authorize?client_id="+client.user.id+"&permissions=1899359446&scope=bot%20applications.commands&guild_id="+guild.id+"'")
+						img(height=192 width=192 src=iconUrl)
+						if guild.owner
+							span.crown 👑
+block scripts
+	script.
+		tippy('.crown', {
+			content: "This is your guild",
+			placement: "bottom"
+		});

@@ -1,0 +1,48 @@
+//@import "node_modules/bootstrap/scss/bootstrap";
+@import "variables";
+@import "guilds";
+@import "guild";
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+pre {
+  font-family: "Source Code Pro" !important;
+}
+
+body {
+  background-color: $background_color;
+  color: $foreground_color;
+}
+
+.container {
+  max-width: 60%;
+  width: 100%;
+  padding-right: 15px;
+  padding-top: 35px;
+  padding-bottom: 75px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}

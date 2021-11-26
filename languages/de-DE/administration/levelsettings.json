@@ -1,0 +1,15 @@
+{
+  "description": "Stelle die Levelnachrichten, dessen Channel und Levelrollen ein",
+  "usage": "{emotes.use} Syntax: ```vb\n{prefix}levelsettings channel | <messages/roles> [reset]```",
+  "example": "{emotes.example} Beispiel: ```vb\n{prefix}levelsettings roles reset```",
+
+  "slashOption1": "aktion",
+  "slashOption1Desc": "Was möchtest du einstellen?",
+  "slashOption1Choice1": "levelchannel",
+  "slashOption1Choice2": "levelnachrichten",
+  "slashOption1Choice3": "levelrollen",
+
+  "sendChannel": "{emotes.arrow} Wähle den Channel für die Levelnachrichten aus",
+  "chooseChannel": "Channel wählen",
+  "current": "Aktueller Channel des Mitgliedes"
+}

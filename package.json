@@ -8,16 +8,18 @@
   "homepage": "https://nevar.eu",
   "scripts": {
     "start": "node src/app.js",
-    "install": "node assets/scripts/install.js"
+    "install": "node storage/assets/scripts/install.js"
   },
   "dependencies": {
     "@sentry/node": "^6.10.0",
     "@top-gg/sdk": "^3.1.2",
+    "axios": "^0.24.0",
     "body-parser": "^1.19.0",
     "chalk": "^4.1.1",
     "connect": "^3.7.0",
     "connect-mongo": "^3.2.0",
     "connect-mongodb-session": "^3.1.1",
+    "cookie-parser": "^1.4.5",
     "cron": "^1.8.2",
     "discord-backup": "^3.0.1",
     "discord-giveaways": "^4.5.1",
@@ -25,7 +27,9 @@
     "discord-xp": "^1.1.16",
     "discord.js": "^13.0.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "fs": "^0.0.1-security",
+    "helmet": "^4.6.0",
     "i18next": "^20.3.5",
     "i18next-node-fs-backend": "^2.1.3",
     "imgur": "^1.0.2",
@@ -35,6 +39,7 @@
     "ms": "^2.1.3",
     "node-fetch": "^2.6.1",
     "node-sass": "^6.0.1",
+    "pug": "^3.0.2",
     "qs": "^6.10.1",
     "request": "^2.88.2",
     "sass-middleware": "^0.0.3",

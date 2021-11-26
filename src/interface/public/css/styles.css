@@ -1,0 +1,252 @@
+.crown {
+    cursor: default
+}
+
+.logout-button {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    background-color: #7289d9;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 15px;
+    font-size: large;
+    text-decoration: none
+}
+
+.tippy-box {
+    background-color: black !important;
+    color: white !important
+}
+
+.guild-container:hover .guild-text {
+    opacity: 1
+}
+
+.guild-container {
+    width: 192px;
+    height: 192px;
+    padding-top: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.guild-container * {
+    user-select: none
+}
+
+.guild-container img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    box-shadow: rgba(3, 3, 3, 0.35) 0px 8px 20px;
+
+}
+
+.guild-container:hover {
+    cursor: pointer
+}
+
+.guild-container:hover img {
+    -webkit-filter: brightness(10%) grayscale(10%) blur(3px);
+    filter: brightness(10%) grayscale(10%) blur(3px)
+}
+
+.guild-container .guild-text {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    opacity: 0;
+    transform: translate(50%, -50%);
+    text-align: center;
+    z-index: 9999 !important;
+    font-size: large;
+    color: white
+}
+
+.guild-container span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 10px
+}
+
+.unsupported-guild {
+    -webkit-filter: brightness(10%) grayscale(10%) blur(3px);
+    filter: brightness(10%) grayscale(10%) blur(3px)
+}
+
+.guilds-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px
+}
+
+.back {
+    color: #7289d9;
+    font-size: x-large;
+    text-decoration: none;
+    font-weight: bolder
+}
+
+.panel-container {
+    display: grid;
+    height: 600px;
+    grid-template-areas: "sidebar main main main main main main main main";
+    border-radius: 5px;
+    background: #7289d9
+}
+
+.panel-container .panel-bar {
+    border-start-start-radius: 5px;
+    background: #405177;
+    grid-area: sidebar;
+    height: 600px;
+    z-index: 5;
+    overflow-x: hidden
+}
+
+.panel-container .panel-bar a {
+    padding: 10px 15px;
+    color: white;
+    font-size: larger;
+    display: block;
+    text-decoration: none;
+    transition: background-color 200ms ease-in
+}
+
+.panel-container .panel-bar a:hover {
+    background: #2c3751
+}
+
+.panel-container .panel-bar a:active {
+    background: #1e2737
+}
+
+.panel-container .panel-content {
+    grid-area: main;
+    padding: 15px 15px
+}
+
+.panel-container .panel-content .sub-panel {
+    overflow-y: scroll;
+    max-height: 560px;
+    padding: 1px 20px;
+    background-color: #292b2f;
+    border-radius: 5px
+}
+
+.button {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px;
+    font-size: medium;
+    text-decoration: none;
+    font-weight: bold
+}
+
+.button:hover {
+    cursor: pointer
+}
+
+.copy-button {
+    color: black
+}
+
+.ban-button {
+    background-color: red;
+    margin-right: 15px
+}
+
+.kick-button {
+    background-color: orangered
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-areas: "icon table table table table table table"
+}
+
+.overview-icon {
+    grid-area: icon
+}
+
+.members-list hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #4d4f58;
+    margin: 1em 0;
+    padding: 0
+}
+
+.member-item {
+    display: block
+}
+
+.member-item .member-grid {
+    display: grid;
+    grid-template-areas: "icon info";
+    grid-template-columns: 122px 1fr
+}
+
+.member-item .member-icon {
+    grid-area: icon;
+    max-width: 122px
+}
+
+.member-item .member-info {
+    grid-area: info
+}
+
+.member-item .member-info .name {
+    font-size: x-large;
+    font-weight: bold
+}
+
+.overview-table {
+    grid-area: table
+}
+
+::-webkit-scrollbar {
+    width: 10px
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0)
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555
+}
+
+pre {
+    font-family: "Source Code Pro" !important
+}
+
+body {
+    background-color: #2f3136;
+    color: #fff
+}
+
+.container {
+    max-width: 60%;
+    width: 100%;
+    padding-right: 15px;
+    padding-top: 35px;
+    padding-bottom: 75px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+* {
+    font-family: 'Open Sans', sans-serif
+}

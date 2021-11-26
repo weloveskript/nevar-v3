@@ -29,13 +29,12 @@ class Addemoji extends Command {
                         type: "STRING",
                         required: true,
                     }
-
-
                 ]
             }
         });
     }
     async run(interaction, message, args, data){
+
 
         let guild = message?.guild || interaction?.guild;
         let arg = args[0];
@@ -50,7 +49,6 @@ class Addemoji extends Command {
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-
             if(message) return message.send(embed, false);
             if(interaction) return interaction.send(embed);
         }

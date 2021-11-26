@@ -1,7 +1,8 @@
 const {
     bgBlue,
     black,
-    green
+    green,
+    white
 } = require("chalk");
 
 function dateTimePad(value, digits) {
@@ -27,7 +28,7 @@ module.exports = class Logger {
         const date = `[${format(new Date(Date.now()))}]:`;
         switch (type) {
             case "log": {
-                return console.log(`${date} ${bgBlue(type.toUpperCase())} ${content} `);
+                return console.log(`${date} ${white.bgWhite('NEVAR')}-${bgBlue(type.toUpperCase())} ${content} `);
             }
             case "warn": {
                 return console.log(`${date} ${black.bgYellow(type.toUpperCase())} ${content} `);
