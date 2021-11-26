@@ -292,6 +292,8 @@ class Autoreact extends Command {
             let autoreactChannels_ugly = [];
             for (let val of data.guild.autoReactChannels) {
                 let channel = val.split(" | ")[0]
+                let check = guild.channels.cache.get(channel);
+                if(!check) continue;
                 if(val) {
                     if (val.startsWith(channel)) {
                         let id = val.split(" | ")[1]
