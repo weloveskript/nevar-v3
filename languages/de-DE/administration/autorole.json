@@ -7,6 +7,7 @@
   "slashOption1Desc": "Für Bots oder Nutzer?",
   "slashOption1Choice1": "bot",
   "slashOption1Choice2": "user",
+  "slashOption1Choice3": "list",
 
   "slashOption2": "aktion",
   "slashOption2Desc": "Was möchtest du machen?",

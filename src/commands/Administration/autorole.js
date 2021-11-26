@@ -30,13 +30,17 @@ class Autorole extends Command {
                                 value: "user"
 
                             },
+                            {
+                                name: "administration/autorole:slashOption1Choice3",
+                                value: "list",
+                            }
                         ]
                     },
                     {
                         name: "administration/autorole:slashOption2",
                         description: "administration/autorole:slashOption2Desc",
                         type: "STRING",
-                        required: true,
+                        required: false,
                         choices: [
                             {
                                 name: "administration/autorole:slashOption2Choice1",
