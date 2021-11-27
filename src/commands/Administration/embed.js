@@ -525,20 +525,33 @@ class Embed extends Command {
                                                                             }
                                                                         }
                                                                         //Send generated embed
-                                                                        let successfullEmbed = new MessageEmbed()
-                                                                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                                                                            .setDescription(guild.translate("administration/embed:successfull")
-                                                                                .replace('{emotes.success}', this.client.emotes.success))
-                                                                            .setColor(this.client.embedColor)
-                                                                            .setFooter(data.guild.footer);
-                                                                        await sent.edit({embeds: [successfullEmbed]});
-                                                                        channel.send({embeds:[generatedEmbed]});
+
+                                                                        let webhook = await channel.createWebhook(authorText, {avatar: authorIcon ? authorIcon : 'https://www.designtagebuch.de/wp-content/uploads/mediathek//2021/05/discord-logo.jpg'}).catch(() => {});
+                                                                        await webhook.send({embeds: [generatedEmbed]}).catch(async (err) => {
+                                                                            let errorEmbed = new MessageEmbed()
+                                                                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                                                .setDescription(guild.translate("administration/embed:unsuccessfull")
+                                                                                    .replace('{emotes.error}', this.client.emotes.error))
+                                                                                .setColor(this.client.embedColor)
+                                                                                .setFooter(data.guild.footer);
+                                                                            await sent.edit({embeds: [errorEmbed]});
+                                                                        })
+                                                                            .then(async () => {
+                                                                                let successfullEmbed = new MessageEmbed()
+                                                                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                                                    .setDescription(guild.translate("administration/embed:successfull")
+                                                                                        .replace('{emotes.success}', this.client.emotes.success))
+                                                                                    .setColor(this.client.embedColor)
+                                                                                    .setFooter(data.guild.footer);
+                                                                                await sent.edit({embeds: [successfullEmbed]});
+                                                                            })
+                                                                        await webhook.delete().catch(() => {});
 
                                                                         //Delete downloaded images
-                                                                        fs.unlinkSync(authorIcon);
-                                                                        fs.unlinkSync(thumbnail);
-                                                                        fs.unlinkSync(image);
-                                                                        fs.unlinkSync(footerIcon);
+                                                                        if(authorIcon) fs.unlinkSync(authorIcon);
+                                                                        if(thumbnail) fs.unlinkSync(thumbnail);
+                                                                        if(image) fs.unlinkSync(image);
+                                                                        if(footerIcon) fs.unlinkSync(footerIcon);
                                                                     })
                                                                 }
                                                             });

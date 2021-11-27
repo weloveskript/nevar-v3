@@ -9,6 +9,7 @@
   "noImageGiven": "{emotes.error} Es werden nur Bilder im PNG, WEBP, JPEG oder GIF Format akzeptiert",
   "generate": "{emotes.arrow} Dein Embed wird nun generiert. Bitte beachte, das dass einen kleinen Moment dauern kann",
   "successfull": "{emotes.success} Dein Embed wurde erfolgreich generiert",
+  "unsuccessfull": "{emotes.error} Beim Generieren/Senden deines Embeds ist ein Fehler aufgetreten",
 
   "collectAuthor": "{emotes.arrow} [Schritt 1/9] Gib dem Autor des Embeds einen Namen",
   "author": "»» Hier steht der Autor",
