@@ -16,7 +16,8 @@ const client = new Nevar({
         Discord.Intents.FLAGS.GUILD_MEMBERS |
         Discord.Intents.FLAGS.GUILD_PRESENCES |
         Discord.Intents.FLAGS.GUILDS |
-        Discord.Intents.FLAGS.GUILD_MESSAGES,
+        Discord.Intents.FLAGS.GUILD_MESSAGES |
+        Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
     ws: {
         properties: {
             $browser: "discord.js",
@@ -29,7 +30,7 @@ const client = new Nevar({
         parse: ["users"]
     },
     presence: {
-        status: "idle"
+        status: "online"
     }
 });
 
@@ -67,6 +68,7 @@ const init = async () => {
     for(let file of evtFiles){
         let eventName = file.split('.')[0];
         let event = new (require('./events/'+file))(client);
+        console.log(eventName)
         client.on(eventName, (...args) => event.run(...args));
     }
 

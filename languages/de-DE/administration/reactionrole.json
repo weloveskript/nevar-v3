@@ -1,0 +1,13 @@
+{
+  "description": "Stelle ganz einfach Reactionroles ein",
+  "usage": "{emotes.use} Syntax: ```{prefix}reactionrole```",
+  "example": "{emotes.example} Beispiel: ```{prefix}reactionrole```",
+
+  "sendId": "{emotes.arrow} [Schritt 1/3] Sende die ID der Nachricht",
+  "invalidId": "{emotes.error} Das ist keine gültige ID",
+  "sendRole": "{emotes.arrow} [Schritt 2/3] Welche Rolle soll beim Drücken vergeben werden?",
+  "invalidRole": "{emotes.error} Das  ist keine gültige Rolle",
+  "sendEmote": "{emotes.arrow} [Schritt 3/3] Send den dazugehörigen Emote",
+  "invalidEmote": "{emotes.error} Das ist kein gültiger Emote",
+  "successfully": "{emotes.success} Die Reactionrole wurde eingerichtet"
+}
