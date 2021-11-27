@@ -213,7 +213,7 @@ class Configuration extends Command {
                     if(roles.length < 1) roles = [guild.translate("language:noEntries")];
 
                     desc += guild.translate("administration/configuration:confLevelsystem:roles")
-                        .replace('{list}', roles.join('|- '))
+                        .replace('{list}', roles.join('\n|- '))
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
 
                     let doubleXp = [];

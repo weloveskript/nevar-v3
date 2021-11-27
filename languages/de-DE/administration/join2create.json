@@ -3,7 +3,7 @@
   "usage": "{emotes.use} Syntax: ```{prefix}join2create```",
   "example": "{emotes.example} Beispiel: ```{prefix}join2create```",
 
-  "sendChannel": "{emotes.arrow} [Schritt 1/3] Wähle den Channel aus",
+  "sendChannel": "{emotes.arrow} [Schritt 1/3] Sende den Channel",
   "wrongChannel": "{emotes.error} Das ist kein gültiger Channel",
   "chooseChannel": "Channel auswählen",
   "sendUserlimit": "{emotes.arrow} [Schritt 2/3] Sende das Userlimit\n```|- minimal: 1\n|- maximal: 99\n|- unendlich: -1```",

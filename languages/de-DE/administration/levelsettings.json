@@ -1,6 +1,6 @@
 {
   "description": "Stelle die Levelnachrichten, dessen Channel und Levelrollen ein",
-  "usage": "{emotes.use} Syntax: ```vb\n{prefix}levelsettings channel | <messages/roles> [reset]```",
+  "usage": "{emotes.use} Syntax: ```vb\n{prefix}levelsettings <channel/messages/roles>```",
   "example": "{emotes.example} Beispiel: ```vb\n{prefix}levelsettings roles reset```",
 
   "slashOption1": "aktion",
@@ -9,7 +9,25 @@
   "slashOption1Choice2": "levelnachrichten",
   "slashOption1Choice3": "levelrollen",
 
-  "sendChannel": "{emotes.arrow} Wähle den Channel für die Levelnachrichten aus",
-  "chooseChannel": "Channel wählen",
-  "current": "Aktueller Channel des Mitgliedes"
+  "sendChannel": "{emotes.arrow} Sende  den Channel. Sende \"current\", wenn die Nachricht im jeweiligen Channel kommen soll",
+  "invalidChannel": "{emotes.error} Das ist kein gültiger Channel",
+  "channelSet": "{emotes.success} Levelnachrichten kommen absofort in {channel}",
+  "channelSetToDefault": "{emotes.success} Levelnachrichten kommen absofort im aktuellen Channel des Mitgliedes",
+
+  "sendMessage": "{emotes.arrow} Sende die Nachricht. Folgende Variablen gibt es:\n\n```|- %userName | Name des Mitglieds\n|- %mentionUser | Mitglied wird erwähnt\n|- %userTag | Name + Hashtag des Mitgliedes\n|- %level | Level des Mitgliedes```\n{emotes.arrow} Zum Ausschalten der Levelnachrichten sende \"off\"",
+  "messageSet": "{emotes.success} Die Levelnachricht wurde gesetzt",
+  "messageDeactivated": "{emotes.success} Levelnachrichten wurden deaktiviert",
+
+  "chooseAction": "{emotes.arrow} Was möchtest du machen?",
+  "choose1": "Levelrolle erstellen",
+  "choose2": "Levelrolle löschen",
+  "choose3": "Liste ansehen",
+  "sendRole": "{emotes.arrow} Sende die Rolle die man bekommen soll",
+  "invalidRole": "{emotes.error} Das ist keine gültige Rolle",
+  "sendLevel": "{emotes.arrow} Bei welchem Level soll man {role} bekommen?",
+  "invalidLevel": "{emotes.error} Das ist kein gültiges Level",
+  "roleSet": "{emotes.success} Absofort bekommt man bei Level {level} die Rolle {role}",
+  "list": "{emotes.arrow} Folgende Levelrollen sind derzeit eingestellt:\n\n```|- {list}```",
+  "sendDeleteLevel": "{emotes.arrow} Für welches Level möchtest du die Levelrollen zurücksetzen?",
+  "resettedLevel": "{emotes.success} Für Level {level} wurden alle Levelrollen zurückgesetzt"
 }
