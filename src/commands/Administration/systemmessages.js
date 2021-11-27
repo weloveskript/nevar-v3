@@ -116,7 +116,7 @@ class Systemmessages extends Command {
                 if (interaction) return interaction.send(embed);
             }
 
-            if(!args[1]){
+            if(!args[1]) {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                     .setDescription(guild.translate("administration/systemmessages:sendMessage")
@@ -134,7 +134,7 @@ class Systemmessages extends Command {
                     }
                 );
                 collectMessage.on("collect", async (msg) => {
-                    if(msg.content.length > 1800){
+                    if (msg.content.length > 1800) {
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                             .setDescription(guild.translate("administration/systemmessages:tooLong")
@@ -155,39 +155,52 @@ class Systemmessages extends Command {
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
 
-                    let row = new MessageActionRow()
-                        .addComponents(
-                            new MessageSelectMenu()
-                                .setCustomId('select_'+member.user.id)
-                                .setPlaceholder(guild.translate("administration/systemmessages:chooseChannel"))
-                        )
-                    for(let channel of guild.channels.cache){
-                        let option = {
-                            label: channel[1].name,
-                            value: member.user.id+'_'+channel[1].id
-                        }
-                        if(channel[1].type === "GUILD_TEXT" || channel[1].type === "GUILD_NEWS") row.components[0].options.push(option)
-                    }
-                    msg.delete().catch(() => {});
-                    if (message) await sent.edit({embeds:[embed], components: [row]});
-                    if (interaction) await sent.edit({embeds:[embed], components: [row]});
 
-                    this.client.on("interactionCreate", async (interact) => {
-                        if(!interact.isSelectMenu()) return;
-                        if(interact.values[0].toString().split('_')[0] !== member.user.id) return;
-                        data.guild.plugins.goodbye.channel = interact.values[0].toString().split('_')[1];
+                    msg.delete().catch(() => {});
+                    if (message) await sent.edit({embeds: [embed]});
+                    if (interaction) await sent.edit({embeds: [embed]});
+
+                    const collectChannel = channel.createMessageCollector(
+                        {
+                            filter: m => m.author.id === member.user.id,
+                            time: 120000
+                        }
+                    );
+                    collectChannel.on("collect", async (msg) => {
+                        let chan;
+                        if (msg.mentions.channels.first()) {
+                            chan = msg.mentions.channels.first();
+                        } else {
+                            chan = msg.guild.channels.cache.get(msg.content);
+                        }
+                        if(!chan || chan.type !== "GUILD_TEXT" && chan.type !== "GUILD_NEWS"){
+                            let embed = new MessageEmbed()
+                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setDescription(guild.translate("administration/systemmessages:invalidChannel")
+                                    .replace('{emotes.error}', this.client.emotes.error))
+                                .setColor(this.client.embedColor)
+                                .setFooter(data.guild.footer);
+                            msg.delete().catch(() => {});
+                            await sent.edit({embeds:[embed]});
+                            collectChannel.stop();
+                            return;
+                        }
+                        msg.delete().catch(() => {});
+                        collectChannel.stop();
+
+                        data.guild.plugins.goodbye.channel = chan.id;
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                             .setDescription(guild.translate("administration/systemmessages:configuredGoodbye")
                                 .replace('{emotes.success}', this.client.emotes.success))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
-                        await interact.update({ embeds: [embed], components: [] });
+                        await sent.edit({embeds: [embed]});
                         data.guild.plugins.goodbye.enabled = true;
                         data.guild.markModified("plugins.goodbye");
                         await data.guild.save();
                     });
-                });
+                })
             }
         }
         if(args[0].toLowerCase() === "welcome"){
@@ -271,38 +284,48 @@ class Systemmessages extends Command {
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
 
-                    let row = new MessageActionRow()
-                        .addComponents(
-                            new MessageSelectMenu()
-                                .setCustomId('select_'+member.user.id)
-                                .setPlaceholder(guild.translate("administration/systemmessages:chooseChannel"))
-                        )
-                    for(let channel of guild.channels.cache){
-                        let option = {
-                            label: channel[1].name,
-                            value: member.user.id+'_'+channel[1].id
-                        }
-                        if(channel[1].type === "GUILD_TEXT" || channel[1].type === "GUILD_NEWS") row.components[0].options.push(option)
-                    }
                     msg.delete().catch(() => {});
-                    if (message) await sent.edit({embeds:[embed], components: [row]});
-                    if (interaction) await sent.edit({embeds:[embed], components: [row]});
+                    if (message) await sent.edit({embeds: [embed]});
+                    if (interaction) await sent.edit({embeds: [embed]});
+                    const collectChannel = channel.createMessageCollector(
+                        {
+                            filter: m => m.author.id === member.user.id,
+                            time: 120000
+                        }
+                    );
+                    collectChannel.on("collect", async (msg) => {
+                        let chan;
+                        if (msg.mentions.channels.first()) {
+                            chan = msg.mentions.channels.first();
+                        } else {
+                            chan = msg.guild.channels.cache.get(msg.content);
+                        }
+                        if(!chan || chan.type !== "GUILD_TEXT" && chan.type !== "GUILD_NEWS"){
+                            let embed = new MessageEmbed()
+                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setDescription(guild.translate("administration/systemmessages:invalidChannel")
+                                    .replace('{emotes.error}', this.client.emotes.error))
+                                .setColor(this.client.embedColor)
+                                .setFooter(data.guild.footer);
+                            msg.delete().catch(() => {});
+                            await sent.edit({embeds:[embed]});
+                            collectChannel.stop();
+                            return;
+                        }
+                        msg.delete().catch(() => {});
+                        collectChannel.stop();
 
-                    this.client.on("interactionCreate", async (interact) => {
-                        if(!interact.isSelectMenu()) return;
-                        if(interact.values[0].toString().split('_')[0] !== member.user.id) return;
-                        data.guild.plugins.welcome.channel = interact.values[0].toString().split('_')[1];
+                        data.guild.plugins.welcome.channel = chan.id;
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                             .setDescription(guild.translate("administration/systemmessages:configuredWelcome")
                                 .replace('{emotes.success}', this.client.emotes.success))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
-                        await interact.update({ embeds: [embed], components: [] });
+                        await sent.edit({embeds: [embed]});
                         data.guild.plugins.welcome.enabled = true;
                         data.guild.markModified("plugins.welcome");
                         await data.guild.save();
-
                     });
                 });
             }

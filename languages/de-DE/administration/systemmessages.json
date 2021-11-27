@@ -18,9 +18,8 @@
   "reset": "{emotes.success} Die Einstellungen wurden zurückgesetzt",
   "sendMessage": "{emotes.arrow} [Schritt 1/2] Sende die Nachricht. %user nennt das Mitglied, %membercount zeigt die Mitgliedsanzahl und %server gibt den Servernamen aus",
   "tooLong": "{emotes.error} Die Nachricht darf nicht länger als 1800 Zeichen sein",
-  "sendChannel": "{emotes.arrow} [Schritt 2/2] Wähle den gewünschten Channel aus",
-  "chooseChannel": "Channel auswählen",
-  "chooseSpecific": "{channel} auswählen",
+  "sendChannel": "{emotes.arrow} [Schritt 2/2] Sende den Channel",
+  "invalidChannel": "{emotes.error} Das ist kein gültiger Channel",
   "configuredGoodbye": "{emotes.success} Die Goodbye-Nachrichten wurden eingestellt",
   "configuredWelcome": "{emotes.success} Die Welcome-Nachrichten wurden eingestellt"
 }
