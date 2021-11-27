@@ -30,28 +30,34 @@ class Join2create extends Command {
             .setFooter(data.guild.footer);
         let sent;
 
-        let row = new MessageActionRow()
-            .addComponents(
-                new MessageSelectMenu()
-                    .setCustomId('select_'+member.user.id)
-                    .setPlaceholder(guild.translate("administration/join2create:chooseChannel"))
-            )
-        for(let channel of guild.channels.cache){
-            let option = {
-                label: channel[1].name,
-                value: member.user.id+'_'+channel[1].id
+        if (message) sent = await message.send(embed, false);
+        if (interaction) sent = await interaction.send(embed, false);
+
+        const collectChannel = channel.createMessageCollector(
+            {
+                filter: m => m.author.id === member.user.id,
+                time: 120000
             }
-            if(channel[1].type === "GUILD_VOICE") row.components[0].options.push(option)
-        }
-        if (message) sent = await message.send(embed, false, [row]);
-        if (interaction) sent = await interaction.send(embed, false, [row]);
-
-        const filter = i => (i.customId === 'select_'+member.user.id) && i.user.id === member.user.id;
-
-        const clicked = await sent.awaitMessageComponent({ filter, time: 20000 }).catch(() => {})
-
-        if(clicked){
-            data.guild.joinToCreate.voice = clicked.values[0].toString().split('_')[1];
+        );
+        collectChannel.on("collect", async (msg) => {
+            let chan;
+            if(msg.mentions.channels.first()){
+                chan = msg.mentions.channels.first();
+            }else{
+                chan = msg.guild.channels.cache.get(msg.content);
+            }
+            if(!chan || chan.type !== "GUILD_VOICE"){
+                let embed = new MessageEmbed()
+                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setDescription(guild.translate("administration/join2create:wrongChannel")
+                        .replace('{emotes.error}', this.client.emotes.error))
+                    .setColor(this.client.embedColor)
+                    .setFooter(data.guild.footer);
+                msg.delete().catch(() => {});
+                return sent.edit({embeds:[embed]});
+            }
+            msg.delete().catch(() => {});
+            data.guild.joinToCreate.voice = chan.id;
             data.guild.markModified("joinToCreate")
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
@@ -59,7 +65,8 @@ class Join2create extends Command {
                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-            await clicked.update({embeds:[embed], components: []});
+            await sent.edit({embeds:[embed]});
+            collectChannel.stop();
             const collectUserlimit = channel.createMessageCollector(
                 {
                     filter: m => m.author.id === member.user.id,
@@ -70,7 +77,7 @@ class Join2create extends Command {
 
                 if(!isNaN(msg.content)){
                     let i = Math.round(Number(msg.content));
-                    if(i < 1 || i > 99){
+                    if(i < 1 && i !== -1 || i > 99 && i !== -1){
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                             .setDescription(guild.translate("administration/join2create:invalidUserLimit")
@@ -160,7 +167,7 @@ class Join2create extends Command {
                     return collectUserlimit.stop();
                 }
             });
-        }
+        });
     }
 }
 
