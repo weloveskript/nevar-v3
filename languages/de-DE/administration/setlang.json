@@ -1,0 +1,10 @@
+{
+  "description": "Setzt die Sprache des Bots",
+  "usage": "{emotes.use} Syntax: ```{prefix}setlang <Sprache>/list```",
+  "example": "{emotes.example} Beispiel: ```{prefix}setlang de```",
+
+  "slashOption1": "sprache",
+  "slashOption1Desc": "Gib die gewünschte Sprache an",
+
+  "chooseLang": "{emotes.arrow} Wähle die gewünschte Sprache aus"
+}
