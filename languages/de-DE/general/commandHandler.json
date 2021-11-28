@@ -1,15 +1,14 @@
 {
   "ignoredCmd": "{emotes.error} Der Befehl ist auf diesem Discord-Server deaktiviert",
-  "botPermsMissing": "{emotes.error} Um den Befehl ausführen zu können, fehlen mir folgende Berechtigungen:\n```{perms}```",
-  "memberPermsMissing": "{emotes.error} Um den Befehl ausführen zu können, fehlen dir folgende Berechtigungen:\n```{perms}```",
-  "nsfwCommand": "{emotes.error} Der Befehl ist nur in NSFW-Channeln nutzbar",
+  "botPermsMissing": "{emotes.error} Mir fehlen folgende Berechtigungen:\n```{perms}```",
+  "memberPermsMissing": "{emotes.error} Dir fehlen folgende Berechtigungen:\n```{perms}```",
+  "nsfwCommand": "{emotes.error} Der Befehl ist nur in NSFW-Channeln ausführbar",
   "disabledCommand": "{emotes.error} Der Befehl ist derzeit global deaktiviert - hier sind mögliche Gründe woran das liegen kann:\n```|- verursacht Fehler\n|- ist ausnutzbar zum eigenen Vorteil/Nachteil anderer\n|- beinhaltet Fehler und ist daher nicht nutzbar```\n{emotes.arrow} Bei Fragen kannst du jederzeit unserem [Supportserver]({support}) beitreten",
-  "ownerCommand": "{emotes.error} Der Befehl ist nur für meinen Lord *- also nicht für dich -* nutzbar",
-  "staffCommand": "{emotes.error} Nur {client}-Staffs die jeden Tag hart für mich arbeiten, können diesen Befehl nutzen",
-  "premiumCommand": "{emotes.error} Nur coole Discord-Server die die Premiumversion von {client} freigeschaltet haben, können diesen Befehl nutzen\n{emotes.arrow} Sobald du auf unserem [Supportserver]({support}) Level 5 erreichst, wird ein Premium-Key von selber seinen Weg zu dir finden :)",
-  "remainingCooldown": "{emotes.error} Chill, mach mal keinen Stress.. Du kannst den Befehl in {time} ?Sekunde?Sekunden? wieder nutzen",
-  "unknownError": "{emotes.error} Hmh, der Command ließ sich nicht ausführen. Frag am besten mal auf dem [Supportserver]({support}) nach, vielleicht erfährst du dort mehr",
-  "botPing": "{emotes.arrow} [Wie geht's dir {user}?|Wie war dein Tag {user}?|Was hast du heute so gemacht {user}?|Brauchst du Hilfe, {user}?] Mein Prefix hier ist **{prefix}** (sofern der Server es erlaubt, biete ich auch Slash-Commands)",
-  "premiumKey": "{emotes.success} Hey, {user} - wie ich sehe, hast du auf meinem Supportserver soeben Level 5 erreicht. Als kleines Dankeschön, schenke ich dir einen Key für die {client}-Premiumversion: {key}",
-  "cantGiveRole": "{emotes.error} Ich konnte {user} die Rolle {role} für Level {level} nicht geben"
+  "ownerCommand": "{emotes.error} Der Befehl ist nur für meinen Ersteller nutzbar",
+  "staffCommand": "{emotes.error} Der Befehl ist nur für {client}-Staffs nutzbar",
+  "premiumCommand": "{emotes.error} Der Befehl ist nur mit der Premiumversion von {client} nutzbar\n{emotes.arrow} Sobald du auf unserem [Supportserver]({support}) Level 5 erreichst, lassen wir dir einen Premium-Key zukommen",
+  "remainingCooldown": "{emotes.error} Ganz ruhig.. Du kannst den Befehl in {time} ?Sekunde?Sekunden? wieder nutzen",
+  "unknownError": "{emotes.error} Hmh, irgendwas ist schiefgelaufen.. Meld dich auf dem [Supportserver]({support}), dort können wir dir weiterhelfen",
+  "botPing": "{emotes.arrow} [Hey {user}. Wie kann ich dir helfen?|Stets zu Diensten {user}. Wie kann ich helfen?|Hola {user} - wie geht's dir?|Wie kann ich dir helfen {user}?|Was geht {user}?|Was kann ich für dich tun {user}?] Mein Prefix hier ist **{prefix}**\n{emotes.arrow} Als Alternative zu normalen Commands biete ich auch Slash-Commands an",
+  "premiumKey": "{emotes.success} Hey {user}. Wie ich sehe, hast du auf meinem Supportserver gerade Level 5 erreicht. Als kleines Dankeschön, schenke ich dir einen Key für die {client}-Premiumversion: {key}"
 }

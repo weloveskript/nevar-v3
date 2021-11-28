@@ -8,5 +8,7 @@
  "language": "Deutsch",
  "activated": "Aktiviert",
  "deactivated": "Deaktiviert",
- "notFound": "Nicht gefunden"
+ "notFound": "Nicht gefunden",
+ "error": "{emotes.error} Ein Fehler ist aufgetreten",
+ "set": "\uD83C\uDDE9\uD83C\uDDEA Die Sprache wurde auf Deutsch gestellt"
 }

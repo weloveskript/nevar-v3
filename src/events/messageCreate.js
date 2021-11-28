@@ -50,6 +50,7 @@ module.exports = class {
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), client.website)
                         .setDescription(text
                             .replace('{emotes.arrow}', client.emotes.arrow)
+                            .replace('{emotes.arrow}', client.emotes.arrow)
                             .replace('{user}', message.member.user.username)
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', client.emotes.use))
@@ -164,23 +165,7 @@ module.exports = class {
                                     let id = val
                                         .replace(user.level, "")
                                         .replace(" | ", "");
-                                    message.member.roles.add(id).catch(async e => {
-                                        user = await Levels.fetch(message.author.id, message.guild.id);
-                                        if (data.guild.plugins.logchannel.moderation) {
-                                            const channel = message.guild.channels.cache.get(data.guild.plugins.logchannel.moderation);
-                                            let role = message.guild.roles.cache.get(id);
-                                            let embed = new MessageEmbed()
-                                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), client.website)
-                                                .setDescription(g.translate("general/commandHandler:cantGiveRole")
-                                                    .replace('{user}', message.author.tag)
-                                                    .replace('{level}', user.level)
-                                                    .replace('{role}', '@'+role.name)
-                                                    .replace('{emotes.error}', client.emotes.error))
-                                                .setColor(client.embedColor)
-                                                .setFooter(data.guild.footer);
-                                            channel.send(embed);
-                                        }
-                                    })
+                                    message.member.roles.add(id).catch(() => {})
                                 }
                             }
                         }

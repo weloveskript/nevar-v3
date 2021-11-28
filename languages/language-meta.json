@@ -2,6 +2,7 @@
   {
     "name": "de-DE",
     "nativeName": "Deutsch",
+    "emoji": "\uD83C\uDDE9\uD83C\uDDEA",
     "default": true,
     "aliases": [
       "deutsch",
@@ -15,6 +16,7 @@
   {
     "name": "en-US",
     "nativeName": "English",
+    "emoji": "\uD83C\uDDEC\uD83C\uDDE7",
     "default": false,
     "aliases": [
       "english",
@@ -27,6 +29,7 @@
   {
     "name": "es-ES",
     "nativeName": "Español",
+    "emoji": "\uD83C\uDDEA\uD83C\uDDF8",
     "default": false,
     "aliases": [
       "spanish",
@@ -37,6 +40,7 @@
   {
     "name": "it-IT",
     "nativeName": "Italiano",
+    "emoji": "\uD83C\uDDEE\uD83C\uDDF9",
     "default": false,
     "aliases": [
       "italy",
