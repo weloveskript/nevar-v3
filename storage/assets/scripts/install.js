@@ -7,16 +7,18 @@ const logger = require('../../../src/helper/log')
 
 logger.log('Installation started..', "debug");
 
-
-
 let config =
+    "#             _______ _______ ___ ___ _______ ______ \n" +
+    "#             |    |  |    ___|   |   |   _   |   __ \\\n" +
+    "#             |       |    ___|   |   |       |      <\n" +
+    "#             |__|____|_______|\\_____/|___|___|___|__|\n" +
+    "#                                              \n"+
     "#####################################################################################\n" +
     `## Automatically generated config for Nevar-v${require('../../../package.json').version}\n` +
     "#####################################################################################\n\n" +
     "# Don't change anything here except the necessary data, unless you know what you're doing here!\n" +
     "# If you change the wrong things, the bot will not start\n" +
     "# All fields with an * behind are absolutely necessary, all fields without can be left blank\n\n" +
-    "# Start config\n" +
     "#####################################################################################\n" +
     "#####################################################################################\n" +
     "#####################################################################################\n\n" +
@@ -139,55 +141,22 @@ let config =
     "type = \"WATCHING\"";
 
 
-fs.writeFile('config-sample.toml', config, function(err9){
-    if(err9){
-        logger.log('Error while writing to file', "error");
-    }
-    else{
-        logger.log('File written successfully', "debug");
-    }
-});
-return;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-fs.writeFile('./config-sample.json', JSON.stringify(conf, null, 4), function(err){
-    if(err) {
+fs.writeFile('config-sample.toml', config, async function(err){
+    if(err){
         logger.log('Couldn\'t create config', "error")
         console.error(new Error(err))
-    }else{
+    }
+    else{
         logger.log('Successfully generated config', "success")
-
     }
 });
 
-let DisabledCmds = {}
-    , Giveaways = []
-    , Keys = {}
-    , Partners = {};
+let disabledCommands = {};
+let giveaways = [];
+let keys = {};
+let partners = {};
 
-fs.writeFile('./storage/disabledcmds.json', JSON.stringify(DisabledCmds, null, 4), function(err){
+fs.writeFile('./storage/disabledcmds.json', JSON.stringify(disabledCommands, null, 4), function(err){
     if(err){
         logger.log("Couldn't create storage/disabledcmds.json", "error");
         console.error(new Error(err));
@@ -197,7 +166,7 @@ fs.writeFile('./storage/disabledcmds.json', JSON.stringify(DisabledCmds, null, 4
 });
 
 
-fs.writeFile('./storage/giveaways.json', JSON.stringify(Giveaways, null, 4), function(err){
+fs.writeFile('./storage/giveaways.json', JSON.stringify(giveaways, null, 4), function(err){
     if(err){
         logger.log("Couldn't create storage/giveaways.json", "error");
         console.error(new Error(err));
@@ -206,7 +175,7 @@ fs.writeFile('./storage/giveaways.json', JSON.stringify(Giveaways, null, 4), fun
     }
 });
 
-fs.writeFile('./storage/premiumKeys.json', JSON.stringify(Keys, null, 4), function(err){
+fs.writeFile('./storage/premiumKeys.json', JSON.stringify(keys, null, 4), function(err){
     if(err){
         logger.log("Couldn't create storage/premiumKeys.json", "error");
         console.error(new Error(err));
@@ -215,7 +184,7 @@ fs.writeFile('./storage/premiumKeys.json', JSON.stringify(Keys, null, 4), functi
     }
 });
 
-fs.writeFile('./storage/partners.json', JSON.stringify(Partners, null, 4), function(err){
+fs.writeFile('./storage/partners.json', JSON.stringify(partners, null, 4), function(err){
     if(err){
         logger.log("Couldn't create storage/partners.json", "error");
         console.error(new Error(err));
