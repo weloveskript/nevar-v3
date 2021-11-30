@@ -1,37 +1,151 @@
-<p align="center"><img width=29.5% src="https://beta.nevar.eu/assets/img/nevar/logo_trans.png"></p>
-<p align="center"><img width=60% src="https://github.com/Tintenpatron/Nevar-v3/blob/main/assets/nevar.gif?raw=true"></p>
+<div id="top"></div>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-## Overview
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![AGPLv3 License][license-shield]][license-url]
 
-Nevar is a Discord bot with over 100 commands programmed with [NodeJS](https://nodejs.org/en/), [Discord.js](https://discord.js.org/#/) and [Mongoose](https://mongoosejs.com/) by [Tinte](https://discord.com/users/631176108372656148)
-<br>
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/nevar-bot/nevar-v3">
+    <img src="https://repository-images.githubusercontent.com/423237036/5a40e391-64d4-47d5-86eb-2f5e7c8a9e13" alt="Logo" width="80" height="80">
+  </a>
 
-## Requirements
-[![NodeJS](https://img.shields.io/badge/NodeJS-%3E=16.6.0-brightgreen?style=for-the-badge)](https://nodejs.org)
-[![Discord.js](https://img.shields.io/badge/Discord.js-%3E=13.1.0-brightgreen?style=for-the-badge)](https://discord.js.org)
-[![Mongoose](https://img.shields.io/badge/Mongoose-%3E=4.0.2-brightgreen?style=for-the-badge)](https://mongoosejs.com)
+<h3 align="center">Nevar</h3>
 
-## Install and run Nevar
-```bash
-##  Installation part  ##
-$ git clone https://github.com/Tintenpatron/Nevar-v3 Nevar
-$ cd Nevar
-$ npm install
-#if no config and some files were created in storage/ during npm install:
-$ node assets/scripts/install.js
+  <p align="center">
+    Nevar is a multipurpose Discord bot, made with JavaScript.
+    <br />
+    <a href="https://nevar.eu/invite"><strong>Invite »</strong></a>
+    <br />
+    <br />
+    <a href="https://nevar.eu">Website</a>
+    ·
+    <a href="https://github.com/nevar-bot/nevar-v3/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/nevar-bot/nevar-v3/issues">Request Feature</a>
+  </p>
+</div>
 
-##  Execution part  ##
-$ node src/app.js
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+
+Nevar is a multipurpose Discord bot, made with JavaScript.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### Built With
+
+-   [JavaScript](https://npm.io/https://nodejs.org/en/)
+-   [discord.js](https://npm.io/discord.js)
+-   [Mongoose](https://npm.io/https://mongoosejs.com/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+-   [NodeJS v17](https://nodejs.org)
+-   An [MongoDB](https://mongodb.org) Server
+-   An [Discord Bot](https://discord.com) application
+
+### Installation
+
+1. Clone the repo
+    ```sh
+    git clone https://github.com/nevar-bot/nevar-v3
+    ```
+2. Install NPM packages
+    ```sh
+    npm install
+    ```
+3. Fill in the created `config.toml`with your data
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- USAGE EXAMPLES -->
+
+## Usage
+
+To start the bot, use:
+
+```sh
+node src/app.js
 ```
 
-## Statistics
-![License](https://img.shields.io/github/stars/Tintenpatron/Nevar-v3?style=for-the-badge)
-![License](https://img.shields.io/github/contributors/Tintenpatron/Nevar-v3?style=for-the-badge)
-![Version](https://img.shields.io/github/package-json/v/Tintenpatron/Nevar-v3?style=for-the-badge)
-[![Last-Commit](https://img.shields.io/github/last-commit/Tintenpatron/Nevar-v3?style=for-the-badge)](https://github.com/Tintenpatron/Nevar-v3)
+If you run the bot in production, we recommend using an process manager like [PM2](https://npm.io/pm2)
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- CONTRIBUTING -->
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- LICENSE -->
 
 ## License
-[![License](https://img.shields.io/github/license/Tintenpatron/Nevar-v3?style=for-the-badge)](https://github.com/Tintenpatron/Nevar-v3/blob/main/LICENSE.md)
 
+Distributed under the AGPLv3 License. See `LICENSE` for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/nevar-bot/nevar-v3.svg?style=for-the-badge
+[contributors-url]: https://github.com/nevar-bot/nevar-v3/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/nevar-bot/nevar-v3.svg?style=for-the-badge
+[forks-url]: https://github.com/nevar-bot/nevar-v3/network/members
+[stars-shield]: https://img.shields.io/github/stars/nevar-bot/nevar-v3.svg?style=for-the-badge
+[stars-url]: https://github.com/nevar-bot/nevar-next/stargazers
+[issues-shield]: https://img.shields.io/github/issues/nevar-bot/nevar-v3.svg?style=for-the-badge
+[issues-url]: https://github.com/nevar-bot/nevar-v3/issues
+[license-shield]: https://img.shields.io/github/license/nevar-bot/nevar-v3.svg?style=for-the-badge
+[license-url]: https://github.com/nevar-bot/nevar-next/blob/master/LICENSE
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/linkedin_username
+[product-screenshot]: images/screenshot.png
