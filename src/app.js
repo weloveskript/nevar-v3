@@ -8,8 +8,17 @@ const util = require('util')
     , Discord = require('discord.js')
     , Nevar = require('./core/nevar')
     , toml = require('toml')
-    , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
     , readdir = util.promisify(fs.readdir);
+
+let config;
+
+try {
+    config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
+} catch (err){
+    require('./helper/log').log("NO VALID CONFIG FOUND", "error");
+    require('./helper/log').log("To create the config, run npm install or node storage/assets/scripts/install.js", "error")
+    process.exit();
+}
 
 const client = new Nevar({
     intents:
@@ -37,6 +46,7 @@ const client = new Nevar({
 
 module.exports.client = client;
 const init = async () => {
+
 
     // Load directories
     const directories = await readdir("./src/commands/");

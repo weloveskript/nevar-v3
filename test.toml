@@ -1,0 +1,133 @@
+#####################################################################################
+## Automatically generated config for Nevar-v3.0.0-beta
+#####################################################################################
+
+# Don't change anything here except the necessary data, unless you know what you're doing here!
+# If you change the wrong things, the bot will not start
+# All fields with an * behind are absolutely necessary, all fields without can be left blank
+
+# Start config
+#####################################################################################
+#####################################################################################
+#####################################################################################
+
+[ general ]
+# Enter your bot token here*
+bot_token = ""
+# Your MongoDB login url*
+mongodb_url = ""
+# Your prefix for commands*
+default_prefix = ""
+# Your website (Discord invitation works too)*
+website = ""
+
+[ support ]
+# Your support server ID*
+id = ""
+# An invitation from your support server*
+invite = ""
+# ID of the channel where the bot sends its information (server joined, left, etc.)*
+bot_log = ""
+# ID of the channel where the bot sends in new partners
+partner_channel = ""
+# ID of the channel where the bot displays the current server count
+server_count_channel = ""
+# ID of the channel where the bot displays the current user count (of all servers)
+user_count_channel = ""
+# ID of the channel where the bot displays the current vote count
+vote_count_channel = ""
+# ID of the channel where the bot announces new votes
+vote_announce_channel = ""
+
+[ webdashboard ]
+# Whether the web interface is activated or not (true/false)*
+activated = true
+# The following information is only required if the web dashboard is generally activated
+# Port of the web interface
+port = 3030
+# The base URL of the interface
+base_url = "http://localhost:3030/"
+# The redirect URL of the interface (must be set in the Discord Developer Portal under OAuth2 as a redirect URL)
+redirect_uri = "http://localhost:3030/oauth2"
+# Some long text
+session_secret=""
+# Client secret of your bot (can be found in the Developer Portal under OAuth2)
+client_secret = ""
+# The scopes that are used (it is best to leave them as they are, so that there are no problems in the code of the interface)
+scopes = ["identify", "guilds", "guilds.join"]
+# The OAuth2 URL used for the redirect - can simply be left as it is
+oauth2_url = "https://discord.com/api/oauth2/authorize?client_id={clientId}&redirect_uri={redirectUrl}&response_type=code&scope={scopes}"
+
+[ embeds ]
+# The default footer text for embeds*
+footer = "nevar.eu · discord.gg/uyYrQG3hkc"
+# The standard color for embeds, RGB, hex or Discord-color keywords (like BLURPLE) are accepted here*
+color = "BLURPLE"
+
+[ channels ]
+# The design of the channel that displays the server count (the variable in {} is automatically replaced)
+design_server_count_channel = "💻 ➜ {count} servers"
+# The design of the channel that displays the user count (the variable in {} is automatically replaced)
+design_user_count_channel = "👥 ➜ {count} users"
+# The design of the channel that displays the vote count (the variable in {} is automatically replaced)
+design_vote_count_channel = "🤍 ➜ {count} votes"
+
+[ team ]
+# Your Discord ID*
+owner_id = ""
+# The Discord IDs of all staffs, the owner ID is automatically included
+staff_ids = ["", ""]
+
+[ datatransfer ]
+# Whether current bot data (number of servers, votes, etc.) is written to a file every minute*
+state = true
+# If so, in which file?
+path = "./data.json"
+
+[ music ]
+# All available music filters (just leave it like that)
+filters = ["8D", "gate", "haas", "phaser",
+        "treble", "tremolo", "vibrato", "reverse",
+        "karaoke", "flanger", "mcompand", "pulsator",
+        "subboost", "bassboost", "vaporwave", "nightcore",
+        "normalizer", "surrounding"]
+# Your looong YouTube cookie (this is how you get it: https://www.youtube.com/watch?v=qymuvhBetnM)*
+youtube_cookie = ""
+# How long the bot will remain in the voice channel after a song has ended*
+stay_time = 25
+
+[ apikeys ]
+# All of the following APIs offer a free API key and no paid subscription is required
+
+# https://docs.top.gg/
+topgg = ""
+topgg_webhook_auth = ""
+# docs.genius.com*
+genius = "3YI-nxyYVQV0vfHBUTBN9cffp2paHRSFd42FdQHjxrJgtAaxT6o_ktZSd5Zg3slX"
+# products.wolframalpha.com/api*
+wolfram = "H8XQQ4-P5X9KH3T64"
+# developers.giphy.com*
+giphy = "LHIIHWO88xyDPyja03D031Z4SZ37jLmh"
+# openweathermap.org/api*
+weather = "96729c11baa013dd5644cecdc319315b"
+
+# Status Section
+
+[[status]]
+# The different statuses for the bot
+
+# Every new status must have this structure:
+
+#          [[status]]
+#          name = "Status name"
+#          type = "PLAYING/WATCHING/LISTENING"
+
+# Status 1
+[[status]]
+name = "Nevar-Beta"
+type = "PLAYING"
+
+# Status 2
+[[status]]
+name = "nevar.eu"
+type = "WATCHING"

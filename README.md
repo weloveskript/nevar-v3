@@ -90,7 +90,7 @@ To get a local copy up and running follow these simple example steps.
     ```sh
     npm install
     ```
-3. Fill in the created `config.toml`with your data
+3. Fill in the created `config-sample.toml`with your data and rename it to `config.toml`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

@@ -3,11 +3,20 @@ const util = require('util')
     , moment = require('moment')
     , toml = require('toml')
     , fs = require('fs')
-    , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
     , { GiveawaysManager } = require('discord-giveaways')
     , { Client, Collection, MessageEmbed } = require('discord.js')
     , { Player } = require('discord-player')
     , MathUtils = require('../helper/mathUtils');
+
+let config;
+
+try {
+    config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
+} catch (err){
+    require('../helper/log').log("NO VALID CONFIG FOUND", "error");
+    require('../helper/log').log("To create the config, run npm install or node storage/assets/scripts/install.js", "error")
+    process.exit();
+}
 
 
 moment.relativeTimeThreshold("s", 60);
@@ -20,7 +29,7 @@ moment.relativeTimeThreshold("M", 12);
 class Nevar extends Client {
     constructor(options) {
         super(options);
-        this.config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
+        this.config = config;
 
         this.emotes = require("../../storage/assets/emojis.json");
 
