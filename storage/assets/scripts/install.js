@@ -109,17 +109,17 @@ let config =
     "\n" +
     "[ apikeys ]\n" +
     "# All of the following APIs offer a free API key and no paid subscription is required\n\n" +
-    "# https://docs.top.gg/\n" +
+    "# docs.top.gg\n" +
     "topgg = \"\"\n" +
     "topgg_webhook_auth = \"\"\n" +
     "# docs.genius.com*\n" +
-    "genius = \"3YI-nxyYVQV0vfHBUTBN9cffp2paHRSFd42FdQHjxrJgtAaxT6o_ktZSd5Zg3slX\"\n" +
+    "genius = \"\"\n" +
     "# products.wolframalpha.com/api*\n" +
-    "wolfram = \"H8XQQ4-P5X9KH3T64\"\n" +
+    "wolfram = \"\"\n" +
     "# developers.giphy.com*\n" +
-    "giphy = \"LHIIHWO88xyDPyja03D031Z4SZ37jLmh\"\n" +
+    "giphy = \"\"\n" +
     "# openweathermap.org/api*\n" +
-    "weather = \"96729c11baa013dd5644cecdc319315b\"\n" +
+    "weather = \"\"\n" +
     "\n" +
     "# Status Section\n" +
     "\n" +
@@ -193,11 +193,15 @@ fs.writeFile('./storage/partners.json', JSON.stringify(partners, null, 4), funct
     }
 });
 
-fs.mkdirSync('./storage/images', {}, function(err){
-    if(err){
-        logger.log("Couldn't create storage/images/", "error");
-        console.error(new Error(err));
-    }else{
-        logger.log('Successfully created storage/images/', 'success');
-    }
-})
+try {
+    fs.mkdirSync('./storage/images', {}, function(err){
+        if(err){
+            logger.log("Couldn't create storage/images/", "error");
+            console.error(new Error(err));
+        }else{
+            logger.log('Successfully created storage/images/', 'success');
+        }
+    })
+}catch (err) {
+    console.log('hi')
+}
