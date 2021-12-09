@@ -1,5 +1,3 @@
-const Discord = require('discord.js');
-
 module.exports = {
     async init(client){
         client.membersData.find({ "ban.banned": true }).then((members) => {
@@ -11,21 +9,7 @@ module.exports = {
             for (const memberData of [...client.databaseCache.bannedUsers.values()].filter((m) => m.ban.endDate <= Date.now())) {
                 const guild = client.guilds.cache.get(memberData.guildID);
                 if(!guild) continue;
-                const guildData = await client.findOrCreateGuild({ id: guild.id });
-                guild.data = guildData;
-                guild.members.unban(memberData.id, guild.translate("general/checker:autoUnbanReason")).catch()
-                const user = await client.users.fetch(memberData.id);
-                const embed = new Discord.MessageEmbed()
-                    .setDescription(guild.translate("general/checker:autoUnban")
-                        .replace('{emotes.arrow}', client.emotes.arrow)
-                        .replace('{user}', user.tag)
-                        .replace('{case}', memberData.ban.case))
-                    .setColor("#f44271")
-                    .setFooter(footer);
-                const channel = guild.channels.cache.get(guildData.plugins.logchannel.moderation);
-                if(channel){
-                    channel.send({embeds: [embed]});
-                }
+                guild.members.unban(memberData.id, guild.translate("general/checker:autoUnbanReason")).catch(() => {});
                 memberData.ban = {
                     banned: false,
                     endDate: null,
@@ -33,8 +17,8 @@ module.exports = {
                 };
                 client.databaseCache.bannedUsers.delete(`${memberData.id}${memberData.guildID}`);
                 await memberData.save();
+                //Logging einbauen
             }
         }, 1000);
     }
-
 };

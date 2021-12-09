@@ -1,5 +1,5 @@
-const Command = require('../../core/command')
-    , { MessageEmbed } = require('discord.js');
+const Command = require('../../core/command');
+const { MessageEmbed } = require('discord.js');
 
 class Setprefix extends Command {
 

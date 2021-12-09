@@ -1,6 +1,6 @@
-const Command = require('../../core/command')
-    , { MessageEmbed } = require('discord.js')
-    , spawn = require('child_process').spawn;
+const Command = require('../../core/command');
+const { MessageEmbed } = require('discord.js');
+const spawn = require('child_process').spawn;
 
 class Reboot extends Command {
     constructor(client) {

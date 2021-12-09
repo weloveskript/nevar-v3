@@ -1,11 +1,5 @@
-const Discord = require('discord.js');
 module.exports = {
-    /**
-     *
-     * @param message
-     * @param data
-     * @returns {null|boolean}
-     */
+
     getPrefix(message, data) {
         if (message.channel.type !== "dm") {
             const prefixes = [
@@ -14,11 +8,8 @@ module.exports = {
                 message.client.user.username.toLowerCase(),
                 data.guild.prefix,
                 `hey ${message.client.user.username.toLowerCase()}`,
-                `hey <@${message.client.user.id}> `,
+                `<@${message.client.user.id}> `,
                 `hey <@!${message.client.user.id}> `,
-                `moin ${message.client.user.username.toLowerCase()}`,
-                `moin <@${message.client.user.id}> `,
-                `moin <@!${message.client.user.id}> `
             ];
             let prefix = null;
             prefixes.forEach((p) => {
@@ -31,12 +22,7 @@ module.exports = {
             return true;
         }
     },
-    /**
-     *
-     * @param array
-     * @param key
-     * @returns {*}
-     */
+
     sortByKey(array, key) {
         return array.sort(function(a, b) {
             const x = a[key];
@@ -45,11 +31,21 @@ module.exports = {
         });
     },
 
-    /**
-     *
-     * @param pArray
-     * @returns {*[]}
-     */
+    generatePremiumKey() {
+        const { client } = require('../app');
+        return client.user.username.toLowerCase() + '_' + [...Array(12)].map(i=>(~~(Math.random()*36)).toString(36)).join('');
+
+    },
+
+    getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    },
+
     shuffle(pArray) {
         const array = [];
         pArray.forEach(element => array.push(element));
@@ -63,16 +59,5 @@ module.exports = {
             array[randomIndex] = temporaryValue;
         }
         return array;
-    },
-
-    /**
-     *
-     * @param min
-     * @param max
-     * @returns {*}
-     */
-    randomNum(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
     }
-
 };

@@ -1,6 +1,6 @@
-const Command = require('../../core/command')
-    , { MessageEmbed } = require('discord.js')
-    , Discord = require('discord.js');
+const Command = require('../../core/command');
+const { MessageEmbed } = require('discord.js');
+const Discord = require('discord.js');
 
 class Addemoji extends Command {
     constructor(client) {
@@ -38,6 +38,7 @@ class Addemoji extends Command {
 
         let guild = message?.guild || interaction?.guild;
         let arg = args[0];
+        console.log(args)
         if(!arg){
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)

@@ -1,8 +1,8 @@
-const Command = require('../../core/command')
-    , { MessageEmbed } = require('discord.js')
-    , Imgur = require('imgur')
-    , fs = require('fs')
-    , request = require('request');
+const Command = require('../../core/command');
+const { MessageEmbed } = require('discord.js');
+const Imgur = require('imgur');
+const fs = require('fs');
+const request = require('request');
 
 async function download(uri, filename, callback){
     request.head(uri, function(err, res, body){

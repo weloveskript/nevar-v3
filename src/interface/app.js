@@ -65,7 +65,7 @@ module.exports = async () => {
 	app.use(require("./router/guildsRouter.js"));
 
 	app.listen(port, () => {
-		client.logger.log('Interface web server is running on port ' + port);
+		client.logger.log('Dashboard is running on port ' + port, 'info');
 	});
 
 };

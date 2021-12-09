@@ -1,6 +1,5 @@
-const Command = require('../../core/command')
-    , { MessageEmbed } = require('discord.js')
-    , { MessageActionRow, MessageSelectMenu } = require('discord.js');
+const Command = require('../../core/command');
+const { MessageEmbed } = require('discord.js');
 
 class Join2create extends Command {
 
@@ -57,7 +56,7 @@ class Join2create extends Command {
                 return sent.edit({embeds:[embed]});
             }
             msg.delete().catch(() => {});
-            data.guild.joinToCreate.voice = chan.id;
+            data.guild.plugins.joinToCreate.voice = chan.id;
             data.guild.markModified("joinToCreate")
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
@@ -89,7 +88,7 @@ class Join2create extends Command {
                         msg.delete().catch(() => {});
                         return collectUserlimit.stop();
                     }else{
-                        data.guild.joinToCreate.userLimit = i;
+                        data.guild.plugins.joinToCreate.userLimit = i;
                         data.guild.markModified("joinToCreate");
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
@@ -124,7 +123,7 @@ class Join2create extends Command {
                                     msg.delete().catch(() => {});
                                     return collectBitrate.stop();
                                 } else {
-                                    data.guild.joinToCreate.bitrate = i;
+                                    data.guild.plugins.joinToCreate.bitrate = i;
                                     data.guild.markModified("joinToCreate");
                                     let embed = new MessageEmbed()
                                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
@@ -136,7 +135,7 @@ class Join2create extends Command {
                                     if (interaction) await sent.edit({embeds: [embed]});
                                     msg.delete().catch(() => {});
                                     collectBitrate.stop();
-                                    data.guild.joinToCreate.bitrate = i;
+                                    data.guild.plugins.joinToCreate.bitrate = i;
                                     data.guild.markModified("joinToCreate");
                                     await data.guild.save();
                                 }

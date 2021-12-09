@@ -1,5 +1,5 @@
-const Command = require('../../core/command')
-    , { MessageEmbed } = require('discord.js');
+const Command = require('../../core/command');
+const { MessageEmbed} = require('discord.js');
 
 class Levelsettings extends Command {
 
@@ -162,6 +162,7 @@ class Levelsettings extends Command {
                     collectMessage.stop();
                     return;
                 }
+                data.guild.plugins.levelsystem.enabled = true;
                 data.guild.plugins.levelsystem.message = msg.content;
                 data.guild.markModified("plugins.levelsystem");
                 await data.guild.save();
@@ -190,16 +191,26 @@ class Levelsettings extends Command {
                     new MessageButton()
                         .setCustomId('levelroles_'+ id + '_create')
                         .setLabel(guild.translate("administration/levelsettings:choose1"))
+                        .setEmoji('➕')
                         .setStyle('PRIMARY'),
                     new MessageButton()
                         .setCustomId('levelroles_'+ id + '_list')
-                        .setLabel(guild.translate("administration/levelsettings:choose3"))
+                        .setLabel(guild.translate("administration/levelsettings:choose2"))
+                        .setEmoji('📜')
+                        .setDisabled(data.guild.plugins.levelsystem.levelroles.length < 1)
                         .setStyle('PRIMARY'),
                     new MessageButton()
                         .setCustomId('levelroles_'+ id + '_delete')
-                        .setLabel(guild.translate("administration/levelsettings:choose2"))
+                        .setLabel(guild.translate("administration/levelsettings:choose3"))
+                        .setEmoji('➖')
+                        .setDisabled(data.guild.plugins.levelsystem.levelroles.length < 1)
                         .setStyle('DANGER'),
-
+                    new MessageButton()
+                        .setCustomId('levelroles_'+ id + '_reset')
+                        .setLabel(guild.translate("administration/levelsettings:choose4"))
+                        .setEmoji('🗑️')
+                        .setDisabled(data.guild.plugins.levelsystem.levelroles.length < 1)
+                        .setStyle('DANGER'),
                 )
             let sent;
             if (message) sent = await message.send(embed, false, [row]);
@@ -210,6 +221,19 @@ class Levelsettings extends Command {
             const clicked = await sent.awaitMessageComponent({ filter, time: 20000 }).catch(() => {})
 
             if(clicked) {
+                if(clicked.customId === 'levelroles_'+ id + '_reset'){
+                    data.guild.plugins.levelsystem.levelroles = [];
+                    data.guild.markModified("plugins.levelsystem");
+                    await data.guild.save();
+                    let embed = new MessageEmbed()
+                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setDescription(guild.translate("administration/levelsettings:resettedAll")
+                            .replace('{emotes.success}', this.client.emotes.success))
+                        .setColor(this.client.embedColor)
+                        .setFooter(data.guild.footer);
+                    return clicked.update({embeds: [embed], components: []});
+
+                }
                 if (clicked.customId === 'levelroles_' + id + '_create') {
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)

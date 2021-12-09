@@ -1,6 +1,6 @@
-const Command = require('../../core/command')
-    , Resolvers = require('../../helper/resolver')
-    , { MessageEmbed } = require('discord.js');
+const Command = require('../../core/command');
+const Resolvers = require('../../helper/resolver');
+const { MessageEmbed } = require('discord.js');
 
 class Autorole extends Command {
 

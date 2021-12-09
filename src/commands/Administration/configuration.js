@@ -1,18 +1,5 @@
-const Command = require('../../core/command')
-    , { MessageEmbed } = require('discord.js');
-
-function msToTime(duration){
-    let seconds = Math.floor((duration / 1000) % 60),
-        minutes = Math.floor((duration / (1000 * 60)) % 60),
-        hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
-
-    hours = (hours < 10) ? "0" + hours : hours;
-    minutes = (minutes < 10) ? "0" + minutes : minutes;
-    seconds = (seconds < 10) ? "0" + seconds : seconds;
-
-    return hours + ":" + minutes + ":" + seconds;
-}
-
+const Command = require('../../core/command');
+const { MessageEmbed } = require('discord.js');
 
 class Configuration extends Command {
 
@@ -217,7 +204,7 @@ class Configuration extends Command {
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
 
                     let doubleXp = [];
-                    for(let id of data.guild.doubleXpRoles){
+                    for(let id of data.guild.plugins.doubleXpRoles){
                         let role = guild.roles.cache.get(id)
                         if(role) doubleXp.push(role.name)
                     }
@@ -248,16 +235,16 @@ class Configuration extends Command {
                     desc += (guild.translate("administration/configuration:confOther:join2create")
                             .split('\n')[0]
                             .replace('{emotes.arrow}', this.client.emotes.arrow)) +
-                        (data.guild.joinToCreate.voice ?
+                        (data.guild.plugins.joinToCreate.voice ?
                             '```' + guild.translate("administration/configuration:confOther:join2create")
                                 .split('\n')[1].split(' || ')[1]
-                                .replace('{channel}', guild.channels.cache.get(data.guild.joinToCreate.voice) ? '#'+ guild.channels.cache.get(data.guild.joinToCreate.voice).name : guild.translate("language:notFound")) +
+                                .replace('{channel}', guild.channels.cache.get(data.guild.plugins.joinToCreate.voice) ? '#'+ guild.channels.cache.get(data.guild.plugins.joinToCreate.voice).name : guild.translate("language:notFound")) +
                             '\n' + guild.translate("administration/configuration:confOther:join2create")
 
                                 .split('\n').slice(2).join('\n')
-                                .replace('{userlimit}', data.guild.joinToCreate.userLimit)
+                                .replace('{userlimit}', data.guild.plugins.joinToCreate.userLimit)
 
-                                .replace('{bitrate}', data.guild.joinToCreate.bitrate) :
+                                .replace('{bitrate}', data.guild.plugins.joinToCreate.bitrate) :
                             guild.translate("administration/configuration:confOther:join2create")
                                 .split('\n')[1].split(' || ')[0] + '```')
 

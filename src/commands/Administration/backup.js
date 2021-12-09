@@ -1,6 +1,6 @@
-const Command = require('../../core/command')
-    , backups = require('discord-backup')
-    , { MessageEmbed } = require('discord.js');
+const Command = require('../../core/command');
+const backups = require('discord-backup');
+const { MessageEmbed } = require('discord.js');
 
 class Backup extends Command {
     constructor(client) {

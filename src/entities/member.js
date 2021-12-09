@@ -29,6 +29,5 @@ module.exports = mongoose.model("Member", new mongoose.Schema({
             job: null,
             workedHours: 0,
             lastBeg: null
-
-        }}
+    }}
 }));

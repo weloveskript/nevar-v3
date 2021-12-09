@@ -4,7 +4,6 @@ module.exports = class {
     }
 
     async run(messageReaction, user){
-        console.log('hmpf')
         if(!user || !messageReaction || user.bot) return;
 
         const data = {};

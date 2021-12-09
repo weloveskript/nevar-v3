@@ -1,7 +1,7 @@
 {
   "description": "Stelle die Levelnachrichten, dessen Channel und Levelrollen ein",
   "usage": "{emotes.use} Syntax: ```vb\n{prefix}levelsettings <channel/messages/roles>```",
-  "example": "{emotes.example} Beispiel: ```vb\n{prefix}levelsettings roles reset```",
+  "example": "{emotes.example} Beispiel: ```vb\n{prefix}levelsettings roles```",
 
   "slashOption1": "aktion",
   "slashOption1Desc": "Was möchtest du einstellen?",
@@ -20,8 +20,9 @@
 
   "chooseAction": "{emotes.arrow} Was möchtest du machen?",
   "choose1": "Levelrolle erstellen",
-  "choose2": "Levelrolle löschen",
-  "choose3": "Liste ansehen",
+  "choose2": "Liste ansehen",
+  "choose3": "Levelrolle löschen",
+  "choose4": "Levelrollen zurücksetzen",
   "sendRole": "{emotes.arrow} Sende die Rolle die man bekommen soll",
   "invalidRole": "{emotes.error} Das ist keine gültige Rolle",
   "sendLevel": "{emotes.arrow} Bei welchem Level soll man {role} bekommen?",
@@ -29,5 +30,6 @@
   "roleSet": "{emotes.success} Absofort bekommt man bei Level {level} die Rolle {role}",
   "list": "{emotes.arrow} Folgende Levelrollen sind derzeit eingestellt:\n\n```|- {list}```",
   "sendDeleteLevel": "{emotes.arrow} Für welches Level möchtest du die Levelrollen zurücksetzen?",
-  "resettedLevel": "{emotes.success} Für Level {level} wurden alle Levelrollen zurückgesetzt"
+  "resettedLevel": "{emotes.success} Für Level {level} wurden alle Levelrollen zurückgesetzt",
+  "resettedAll": "{emotes.success} Alle Levelrollen wurden zurückgesetzt"
 }

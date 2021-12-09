@@ -1,6 +1,6 @@
-const Command = require('../../core/command')
-    , { MessageEmbed } = require('discord.js')
-	, fs = require('fs');
+const Command = require('../../core/command');
+const { MessageEmbed } = require('discord.js');
+const fs = require('fs');
 
 
 class Disable extends Command {

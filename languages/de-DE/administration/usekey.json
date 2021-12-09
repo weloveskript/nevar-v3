@@ -1,0 +1,12 @@
+{
+  "description": "Schalte alle Premium-Funktionen frei",
+  "usage": "{emotes.use} Syntax: ```{prefix}usekey <Key>```",
+  "example": "{emotes.example} Beispiel: ```{prefix}usekey SpecialKey2022```",
+
+  "slashOption1": "key",
+  "slashOption1Desc": "Gib hier deinen Premium-Key an",
+
+  "invalidKey": "{emotes.error} Der Premium-Key konnte nicht eingelöst werden - hier sind mögliche Gründe woran das liegen kann:\n```|- der Key existiert nicht\n|- der Key wurde bereits zu oft benutzt\n|- der Key ist abgelaufen```\n{emotes.arrow} Kannst du alle genannten Gründe ausschließen? Probiere es ein weiteres Mal\n{emotes.arrow} Du denkst, der Fehler liegt nicht bei dir? Melde dich auf unserem [Supportserver]({support})",
+  "redeemed": "{emotes.success} Der Premium-Key wurde erfolgreich eingelöst, ihr habt nun Zugriff auf alle Premium-Funktionen",
+  "alreadyPremium": "{emotes.error} Der Server hat bereits alle Premium-Funktionen freigeschaltet"
+}

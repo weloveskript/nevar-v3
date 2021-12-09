@@ -1,12 +1,12 @@
-const util = require('util')
-    , path = require('path')
-    , moment = require('moment')
-    , toml = require('toml')
-    , fs = require('fs')
-    , { GiveawaysManager } = require('discord-giveaways')
-    , { Client, Collection, MessageEmbed } = require('discord.js')
-    , { Player } = require('discord-player')
-    , MathUtils = require('../helper/mathUtils');
+const util = require('util');
+const path = require('path');
+const moment = require('moment');
+const toml = require('toml');
+const fs = require('fs');
+const { GiveawaysManager } = require('discord-giveaways');
+const { Client, Collection, MessageEmbed } = require('discord.js');
+const { Player } = require('discord-player');
+const MathUtils = require('../helper/mathUtils');
 
 let config;
 
@@ -53,8 +53,6 @@ class Nevar extends Client {
         this.membersData = require('../entities/member');
 
         this.mathUtils = MathUtils;
-
-        this.queues = [];
 
         this.databaseCache = {};
         this.databaseCache.users = new Collection();
@@ -113,10 +111,10 @@ class Nevar extends Client {
                 .setDescription(`${this.emotes.error} Bei der Ausführung eines Commands kam es zu einem Fehler\n\n${this.emotes.arrow} Ausgeführter Command: \n\`\`\`vb\n${command}\`\`\`\n${this.emotes.arrow} Fehler\n\`\`\`js\n${err}\`\`\`\n${this.emotes.arrow} Informationen\n\`\`\`vb\nAusgeführt von: ${user.tag} (ID: ${user.id})\nAusgeführt auf: ${guild.name} (ID: ${guild.id})\nCommand-Art: ${type}\`\`\``)
                 .setColor(this.embedColor)
                 .setFooter(this.footerText);
-            let g = this.guilds.cache.get(config.support.id),
-                channel = g.channels.cache.get(config.support.logChannel);
+            let g = this.guilds.cache.get(config.support.id);
+            let channel = g.channels.cache.get(config.support.bot_log);
 
-            channel?.send({embeds: [embed]}).catch((e) => {});
+            channel?.send({embeds: [embed]}).catch(() => {});
 
         }
 
@@ -131,9 +129,6 @@ class Nevar extends Client {
         if(!language) throw "Invalid language given";
         return language(key, args)
     }
-
-
-
 
     loadCommand (commandPath, commandName) {
         try {

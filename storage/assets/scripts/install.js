@@ -52,7 +52,7 @@ let config =
     "\n" +
     "[ webdashboard ]\n" +
     "# Whether the web interface is activated or not (true/false)*\n" +
-    "activated = true\n" +
+    "enabled = false\n" +
     "# The following information is only required if the web dashboard is generally activated\n" +
     "# Port of the web interface\n" +
     "port = 3030\n" +
@@ -203,5 +203,6 @@ try {
         }
     })
 }catch (err) {
-    console.log('hi')
+    logger.log("Couldn't create storage/images/", "error");
+    console.error(new Error(err));
 }

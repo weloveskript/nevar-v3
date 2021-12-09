@@ -1,10 +1,3 @@
-/**
- *
- * @param message
- * @param search
- * @param channelType
- * @returns {Promise<V>}
- */
 const resolveChannel = async ({ message, search, channelType }) => {
     const contentToCheck = search || message?.content;
     if (!contentToCheck || typeof contentToCheck !== "string") return;

@@ -1,11 +1,11 @@
-const {  MessageEmbed } = require("discord.js")
-    , { AutoPoster } = require("topgg-autoposter")
-    , Topgg = require("@top-gg/sdk")
-    , express = require("express")
-    , fetch = require("node-fetch")
-    , toml = require('toml')
-    , fs = require('fs')
-    , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
+const {  MessageEmbed } = require("discord.js");
+const { AutoPoster } = require("topgg-autoposter");
+const Topgg = require("@top-gg/sdk");
+const express = require("express");
+const fetch = require("node-fetch");
+const toml = require('toml');
+const fs = require('fs');
+const config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
 
 
 module.exports = {
@@ -14,13 +14,7 @@ module.exports = {
     init(client) {
         if (config.apikeys.topgg && config.apikeys.topgg !== "" && config.support.vote_announce_channel && config.support.vote_announce_channel !== "") {
 
-            const { AutoPoster } = require('topgg-autoposter');
-
             const ap = AutoPoster(config.apikeys.topgg, client);
-
-            const Topgg = require('@top-gg/sdk')
-                , express = require('express');
-
             const app = express();
 
             const webhook = new Topgg.Webhook(config.apikeys.topgg_webhook_auth);
@@ -52,8 +46,6 @@ module.exports = {
 
             }));
             app.listen(3232)
-
         }
     }
-
 };

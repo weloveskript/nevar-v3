@@ -1,6 +1,6 @@
-const toml = require('toml')
-    , fs = require('fs')
-    , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
+const toml = require('toml');
+const fs = require('fs');
+const config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
 
 module.exports = class {
     constructor(client) {
@@ -10,7 +10,6 @@ module.exports = class {
     async run() {
         const client = this.client;
 
-        client.logger.log("Loaded " + client.commands.size + ' commands', "debug");
 
         const connect = require('connect')
             , http = require('http')
@@ -26,14 +25,16 @@ module.exports = class {
         http.createServer(app).listen(3434);
 
         //Top.GG init
-        //const topgg = require('../helper/topgg');
-        //topgg.init(client);
+        const topgg = require('../helper/topgg');
+        topgg.init(client);
 
         //Register & handle slash commands
         const slashCommands = require('../helper/slashCommands');
         await slashCommands.init(client);
 
-        client.logger.log("Successfully logged in as " + client.user.tag, "ready");
+        client.logger.log("Loaded " + client.guilds.cache.size + " guilds", "info")
+        client.logger.log("Logged in as " + client.user.tag, "ready");
+
 
         //Unmute & Unban Checker
 
@@ -143,8 +144,10 @@ module.exports = class {
         }, 20000)
 
 
+        if(config.webdashboard.enabled){
+            await require("../interface/app.js")();
+        }
 
-        await require("../interface/app.js")();
 
     }
 };

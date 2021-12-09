@@ -1,7 +1,7 @@
-const Command = require('../../core/command')
-    , { MessageEmbed } = require('discord.js')
-    , Resolvers = require('../../helper/resolver')
-    , Discord = require('discord.js');
+const Command = require('../../core/command');
+const { MessageEmbed } = require('discord.js');
+const Resolvers = require('../../helper/resolver');
+const Discord = require('discord.js');
 
 class Reactionrole extends Command {
 
@@ -125,7 +125,7 @@ class Reactionrole extends Command {
                                             }
                                         }
                                         fetchedMsg.react(emote).catch(() => {});
-                                        data.guild.reactionRoles.push(fetchedMsg.id + ' | ' + emote + ' | ' + role.id);
+                                        data.guild.plugins.reactionRoles.push(fetchedMsg.id + ' | ' + emote + ' | ' + role.id);
                                         await data.guild.save();
                                         let embed = new MessageEmbed()
                                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)

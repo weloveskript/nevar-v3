@@ -1,6 +1,6 @@
-const Command = require('../../core/command')
-    , { MessageEmbed } = require('discord.js')
-    , ms = require('ms');
+const Command = require('../../core/command');
+const { MessageEmbed } = require('discord.js');
+const ms = require('ms');
 
 class Autodelete extends Command {
 
@@ -116,7 +116,7 @@ class Autodelete extends Command {
                         if (message) return message.send(embed);
                         if (interaction) return interaction.send(embed);
                     }
-                    if (data.guild.autoDeleteChannels.length > 10) {
+                    if (data.guild.plugins.autoDeleteChannels.length > 10) {
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                             .setDescription(guild.translate("administration/autodelete:maxChannels")
@@ -127,9 +127,9 @@ class Autodelete extends Command {
                         if (interaction) return interaction.send(embed);
                     }
 
-                    for (let val of data.guild.autoDeleteChannels) {
+                    for (let val of data.guild.plugins.autoDeleteChannels) {
                         if (val.split(' | ')[0] === channel.id) {
-                            data.guild.autoDeleteChannels = data.guild.autoDeleteChannels.filter((ch) => ch !== val)
+                            data.guild.plugins.autoDeleteChannels = data.guild.plugins.autoDeleteChannels.filter((ch) => ch !== val)
                         }
                     }
 
@@ -145,7 +145,7 @@ class Autodelete extends Command {
                     if (message) await message.send(embed);
                     if (interaction) await interaction.send(embed);
                     await this.client.wait(500);
-                    data.guild.autoDeleteChannels.push(`${channel.id} | ${time}`);
+                    data.guild.plugins.autoDeleteChannels.push(`${channel.id} | ${time}`);
                     await data.guild.save();
 
                 }
@@ -183,8 +183,8 @@ class Autodelete extends Command {
             }
             if (args[1].toLowerCase() === 'all') {
                 let bool;
-                if (data.guild.autoDeleteChannels.length >= 1) {
-                    data.guild.autoDeleteChannels = [];
+                if (data.guild.plugins.autoDeleteChannels.length >= 1) {
+                    data.guild.plugins.autoDeleteChannels = [];
                     data.guild.markModified("autoDeleteChannels");
                     await data.guild.save();
                     bool = true;
@@ -213,9 +213,9 @@ class Autodelete extends Command {
                     let channel = guild.channels.cache.filter(ch => ch.type === 'GUILD_TEXT').get(args[1]);
                     if (message) channel = message.mentions.channels.filter((ch) => ch.type === "GUILD_TEXT" || ch.type === "GUILD_NEWS" && ch.guild.id === message.guild.id).first();
                     if (channel) {
-                        for (let val of data.guild.autoDeleteChannels) {
+                        for (let val of data.guild.plugins.autoDeleteChannels) {
                             if (val.split(' | ')[0] === channel.id) {
-                                data.guild.autoDeleteChannels = data.guild.autoDeleteChannels.filter((ch) => ch !== val);
+                                data.guild.plugins.autoDeleteChannels = data.guild.plugins.autoDeleteChannels.filter((ch) => ch !== val);
                                 await data.guild.save();
                                 let embed = new MessageEmbed()
                                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
@@ -254,7 +254,7 @@ class Autodelete extends Command {
             }
         }else if(args[0].toLowerCase() === 'list'){
             let channels = [];
-            for(let val of data.guild.autoDeleteChannels){
+            for(let val of data.guild.plugins.autoDeleteChannels){
                 let channel = guild.channels.cache.get(val.split(' | ')[0]);
                 if(channel) channels.push('|- #' + channel.name + ' | ' + ms(Number(val.split(' | ')[1])));
             }

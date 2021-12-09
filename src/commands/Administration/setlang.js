@@ -1,5 +1,5 @@
-const Command = require('../../core/command')
-    , { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
+const Command = require('../../core/command');
+const { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
 
 class Setlang extends Command {
 
@@ -27,7 +27,6 @@ class Setlang extends Command {
             .setColor(this.client.embedColor)
             .setFooter(data.guild.footer);
 
-        const { MessageButton, MessageActionRow } = require('discord.js');
         let id = message?.member?.user?.id || interaction?.member?.user?.id
         let row = new MessageActionRow();
         for(let lang of this.client.languages){
@@ -64,6 +63,8 @@ class Setlang extends Command {
             }else{
                 data.guild.language = lang.name;
                 await data.guild.save();
+                const slashCommands = require('../../helper/slashCommands.js');
+                await slashCommands.init(this.client, guild.id);
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                     .setDescription(guild.translate("language:set")

@@ -1,6 +1,6 @@
-const Command = require('../../core/command')
-    , { MessageEmbed } = require('discord.js')
-    , Resolvers = require('../../helper/resolver');
+const Command = require('../../core/command');
+const { MessageEmbed } = require('discord.js');
+const Resolvers = require('../../helper/resolver');
 
 class Doublexp extends Command {
 
@@ -90,12 +90,12 @@ class Doublexp extends Command {
                 if(interaction) return interaction.send(embed);
             }
 
-            for(let val of data.guild.doubleXpRoles){
+            for(let val of data.guild.plugins.doubleXpRoles){
                 if(val === role.id){
-                    data.guild.doubleXpRoles = data.guild.doubleXpRoles.filter((ch) => ch !== val)
+                    data.guild.plugins.doubleXpRoles = data.guild.plugins.doubleXpRoles.filter((ch) => ch !== val)
                 }
             }
-            data.guild.doubleXpRoles.push(role.id);
+            data.guild.plugins.doubleXpRoles.push(role.id);
             data.guild.markModified("doubleXpRoles");
             await data.guild.save();
 
@@ -132,7 +132,7 @@ class Doublexp extends Command {
                 if(message) return message.send(embed, false);
                 if(interaction) return interaction.send(embed);
             }
-            data.guild.doubleXpRoles = data.guild.doubleXpRoles.filter((ch) => ch !== role.id);
+            data.guild.plugins.doubleXpRoles = data.guild.plugins.doubleXpRoles.filter((ch) => ch !== role.id);
             data.guild.markModified("doubleXpRoles");
             await data.guild.save();
             let embed = new MessageEmbed()
@@ -147,7 +147,7 @@ class Doublexp extends Command {
         }
         if(args[0].toLowerCase() === 'list'){
             let doubleXp = [];
-            for(let id of data.guild.doubleXpRoles){
+            for(let id of data.guild.plugins.doubleXpRoles){
                 let role = guild.roles.cache.get(id)
                 if(role) doubleXp.push(role)
             }

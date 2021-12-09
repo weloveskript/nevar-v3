@@ -1,9 +1,9 @@
-const mongoose = require('mongoose')
-    , Schema = mongoose.Schema
-    , toml = require('toml')
-    , fs = require('fs')
-    , config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'))
-    ,languages = require('../../languages/language-meta.json');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const toml = require('toml');
+const fs = require('fs');
+const config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
+const languages = require('../../languages/language-meta.json');
 
 module.exports = mongoose.model("Guild", new Schema({
 
@@ -13,12 +13,7 @@ module.exports = mongoose.model("Guild", new Schema({
     members: [{ type: Schema.Types.ObjectId, ref: "Member" }],
 
     language: { type: String, default: languages.find((l) => l.default).name },
-    joinToCreate: {
-        voice: false,
-        userLimit: false,
-        bitrate: false,
-        tempChannels: [],
-    },
+
     blocked: { type: Boolean, default: false },
     premium: { type: Boolean, default: false},
     prefix: { type: String, default: config.general.default_prefix },
@@ -28,6 +23,12 @@ module.exports = mongoose.model("Guild", new Schema({
                 channel: null,
                 message: '%user, du bist nun Level %level!',
                 levelroles: []
+            },
+            joinToCreate: {
+                voice: false,
+                userLimit: false,
+                bitrate: false,
+                tempChannels: [],
             },
             blacklist: {
                 list: []
@@ -50,6 +51,11 @@ module.exports = mongoose.model("Guild", new Schema({
                 kick: false,
                 ban: false
             },
+            disabledCommands: { type: Array, default: [] },
+            autoReactChannels: { type: Array, default: []},
+            autoDeleteChannels: { type: Array, default: []},
+            reactionRoles: { type: Array, default: []},
+            doubleXpRoles: { type: Array, default: []},
             logchannel: {
                 enabled: false,
                 channel: null,
@@ -61,11 +67,6 @@ module.exports = mongoose.model("Guild", new Schema({
             }
         }},
     casesCount: { type: Number, default: 0 },
-    autoReactChannels: { type: Array, default: []},
-    autoDeleteChannels: { type: Array, default: []},
-    reactionRoles: { type: Array, default: []},
-    doubleXpRoles: { type: Array, default: []},
     commands: { type: Array, default: [] },
-    disabledCommands: { type: Array, default: [] },
     footer: { type: String, default: config.embeds.footer}
 }));

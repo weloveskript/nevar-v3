@@ -1,4 +1,3 @@
-const {stat} = require("fs");
 module.exports = class {
     constructor(client) {
 
