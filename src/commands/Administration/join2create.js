@@ -57,7 +57,7 @@ class Join2create extends Command {
             }
             msg.delete().catch(() => {});
             data.guild.plugins.joinToCreate.voice = chan.id;
-            data.guild.markModified("joinToCreate")
+            data.guild.markModified("plugins.joinToCreate")
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                 .setDescription(guild.translate("administration/join2create:sendUserlimit")

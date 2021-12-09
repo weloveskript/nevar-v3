@@ -96,7 +96,7 @@ class Doublexp extends Command {
                 }
             }
             data.guild.plugins.doubleXpRoles.push(role.id);
-            data.guild.markModified("doubleXpRoles");
+            data.guild.markModified("plugins.doubleXpRoles");
             await data.guild.save();
 
             let embed = new MessageEmbed()

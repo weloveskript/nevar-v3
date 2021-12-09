@@ -185,7 +185,7 @@ class Autodelete extends Command {
                 let bool;
                 if (data.guild.plugins.autoDeleteChannels.length >= 1) {
                     data.guild.plugins.autoDeleteChannels = [];
-                    data.guild.markModified("autoDeleteChannels");
+                    data.guild.markModified("plugins.autoDeleteChannels");
                     await data.guild.save();
                     bool = true;
                 }

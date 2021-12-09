@@ -93,7 +93,7 @@ class Ignorecommand extends Command {
                     if (interaction) return interaction.send(embed);
                 }else{
                     data.guild.disabledCommands.push(cmd.help.name);
-                    data.guild.markModified("disabledCommand");
+                    data.guild.markModified("plugins.disabledCommand");
                     await data.guild.save();
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
