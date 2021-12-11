@@ -73,9 +73,7 @@ class Addemoji extends Command {
 
         let name = args[1] ? args[1].replace(/[^a-z0-9]/gi, "") : null;
         if(!name){
-            console.log(emote)
             if(emote){
-                name = emote.name;
                 guild.emojis
                     .create(arg, emote.name)
                     .then(emoji => {

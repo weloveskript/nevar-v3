@@ -1,5 +1,4 @@
 const Command = require('../../core/command');
-const Discord = require('discord.js');
 const math = require('mathjs');
 const { MessageEmbed } = require('discord.js');
 
