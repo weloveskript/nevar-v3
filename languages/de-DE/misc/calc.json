@@ -1,0 +1,11 @@
+{
+  "description": "Berechnet jegliche Formeln für dich",
+  "usage": "{emotes.use} Syntax: ```{prefix}calc <Formel>```",
+  "example": "{emotes.example} Beispiel: ```{prefix}calc 1+2-(3*4)/5+sqrt(9)```",
+
+  "slashOption1": "formel",
+  "slashOption1Desc": "Gib hier die Formel an, die ich für dich berechnen soll",
+
+  "formula": "Formel",
+  "result": "Ergebnis"
+}
