@@ -44,13 +44,14 @@ class Nevar extends Client {
         this.website = config.general.website;
 
         this.logger = require('../helper/log');
+        this.logs = require('../models/log');
 
         this.wait = util.promisify(setTimeout);
         this.functions = require('../helper/functions');
 
-        this.guildsData = require('../entities/guild');
-        this.usersData = require('../entities/user');
-        this.membersData = require('../entities/member');
+        this.guildsData = require('../models/guild');
+        this.usersData = require('../models/user');
+        this.membersData = require('../models/member');
 
         this.mathUtils = MathUtils;
 

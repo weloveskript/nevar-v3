@@ -38,7 +38,6 @@ class Addemoji extends Command {
 
         let guild = message?.guild || interaction?.guild;
         let arg = args[0];
-        console.log(args)
         if(!arg){
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)

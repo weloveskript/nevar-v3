@@ -1,3 +1,18 @@
+/* app.js by Tinte @Tinte#1000 - p429344@gmail.com
+
+   9 December, 2021
+   https://github.com/Tintenpatron
+   https://github.com/nevar-bot
+   https://nevar.eu
+
+   --------------------------------------------------------------------------------
+
+   This file is part of the Nevar Bot. This bot is licensed under the AGPL-3.0 license.
+   See the LICENSE file for more information.
+
+   --------------------------------------------------------------------------------
+ */
+
 require('./helper/extenders');
 require('./helper/replier');
 
@@ -21,7 +36,8 @@ try {
 
 // Configure the client
 const client = new Nevar({
-    intents: Discord.Intents.FLAGS.GUILD_MEMBERS |
+    intents:
+        Discord.Intents.FLAGS.GUILD_MEMBERS |
         Discord.Intents.FLAGS.GUILD_PRESENCES |
         Discord.Intents.FLAGS.GUILDS |
         Discord.Intents.FLAGS.GUILD_MESSAGES |
@@ -41,7 +57,6 @@ const client = new Nevar({
     }
 });
 
-module.exports.client = client;
 const init = async () => {
 
     // Load directories
@@ -106,3 +121,5 @@ init().then(res => {
 }).catch((err) => {
     client.logger.log("Failed to initiate client: " + err, "error");
 });
+
+module.exports.client = client;

@@ -99,7 +99,7 @@ module.exports = class {
 
             // Leveling
             let randomXp = Math.floor(Math.random() * 30) + 1;
-            for (let index of data.guild.doubleXpRoles) {
+            for (let index of data.guild.plugins.doubleXpRoles) {
                 if (message.member.roles.cache.get(index)) {
                     randomXp = Math.floor(Math.random() * 60) + 30;
                 }
@@ -312,7 +312,23 @@ module.exports = class {
 
         cmdCooldown[message.author.id][cmd.help.name] = Date.now() + cmd.conf.cooldown;
 
-
+        const log = new this.client.logs({
+            commandName: cmd.help.name,
+            args: args,
+            commandType: 'Message',
+            executor: {
+                username: message.author.username,
+                discriminator: message.author.discriminator,
+                id: message.author.id,
+                createdAt: message.author.createdAt,
+            },
+            guild: {
+                name: message.guild.name,
+                id: message.guild.id,
+                createdAt: message.guild.createdAt,
+            }
+        });
+        log.save();
         try {
             cmd.run(undefined, message, args, data);
         } catch (e) {

@@ -11,7 +11,7 @@ module.exports = class {
         data.config = client.config;
         const guild = await this.client.findOrCreateGuild({ id: messageReaction.message.guild.id });
         messageReaction.message.guild.data = data.guild = guild;
-        for(let value of data.guild.reactionRoles){
+        for(let value of data.guild.plugins.reactionRoles){
             let msgId = value.split(' | ')[0];
             let emote = value.split(' | ')[1];
             let roleId = value.split(' | ')[2];

@@ -191,6 +191,23 @@ module.exports = class {
 
         cmdCooldown[member.user.id][cmd.help.name] = Date.now() + cmd.conf.cooldown;
 
+        const log = new this.client.logs({
+            commandName: cmd.help.name,
+            args: args,
+            commandType: 'Slash',
+            executor: {
+                username: member.user.username,
+                discriminator: member.user.discriminator,
+                id: member.user.id,
+                createdAt: member.user.createdAt,
+            },
+            guild: {
+                name: interaction.guild.name,
+                id: interaction.guild.id,
+                createdAt: interaction.guild.createdAt,
+            }
+        });
+        log.save();
 
         try {
             cmd.run(interaction, undefined, args, data)

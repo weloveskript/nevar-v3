@@ -73,7 +73,7 @@ class Embed extends Command {
         const clicked = await sent.awaitMessageComponent({ filter, time: 20000 }).catch(() => {});
 
         if(clicked){
-            if(clicked.customId === 'consent_'+id+'_yes'){
+            if(clicked?.customId === 'consent_'+id+'_yes'){
                 let collectAuthorEmbed = new MessageEmbed()
                     .setAuthor(guild.translate("administration/embed:author"), this.client.user.displayAvatarURL(), this.client.website)
                     .setDescription(guild.translate("administration/embed:collectAuthor")
@@ -585,7 +585,7 @@ class Embed extends Command {
                     .setFooter(data.guild.footer);
                 await sent.edit({embeds: [errorEmbed], components: []})
             }
-        }else if(clicked.customId === 'consent_'+id+'_no'){
+        }else if(clicked?.customId === 'consent_'+id+'_no'){
             let errorEmbed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                 .setDescription(guild.translate("administration/embed:cancelled")

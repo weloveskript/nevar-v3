@@ -51,11 +51,11 @@ module.exports = mongoose.model("Guild", new Schema({
                 kick: false,
                 ban: false
             },
-            disabledCommands: { type: Array, default: [] },
-            autoReactChannels: { type: Array, default: []},
-            autoDeleteChannels: { type: Array, default: []},
-            reactionRoles: { type: Array, default: []},
-            doubleXpRoles: { type: Array, default: []},
+            disabledCommands: [],
+            autoReactChannels: [],
+            autoDeleteChannels: [],
+            reactionRoles: [],
+            doubleXpRoles: [],
             logchannel: {
                 enabled: false,
                 channel: null,
