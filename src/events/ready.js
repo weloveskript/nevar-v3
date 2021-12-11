@@ -30,7 +30,7 @@ module.exports = class {
 
         //Register & handle slash commands
         const slashCommands = require('../helper/slashCommands');
-        await slashCommands.init(client);
+        await slashCommands.init(client, undefined);
 
         client.logger.log("Loaded " + client.guilds.cache.size + " guilds", "info")
         client.logger.log("Logged in as " + client.user.tag, "ready");

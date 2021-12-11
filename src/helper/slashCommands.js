@@ -42,7 +42,6 @@ module.exports = {
                                     description: guild[1].translate(command.help.description),
                                     options: options
                                 };
-                                if(!guildCount.includes(guild[1].id)) guildCount.push(guild[1].id)
                                 if(givenGuild){
                                     if(givenGuild === guild[0]){
                                         guild[1]?.commands.create(data).catch((e) => {
