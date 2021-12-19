@@ -76,6 +76,19 @@ module.exports = {
                 }
             }
         }
+        for(let guild of client.guilds.cache){
+            client.api.applications(client.user.id).guilds(guild[0]).commands.get()
+                .then(async (slashCommands) => {
+                    for(let slashCommand of slashCommands){
+                        let cmd = !!(await client.commands.get(slashCommand.name))
+                        if(!cmd){
+                            try {
+                                guild[1]?.commands.delete(slashCommand.id).delete().catch(() => {})
+                            }catch(e){}
+                        }
+                    }
+                }).catch((e) => {});
+        }
         client.logger.log('Registered ' + cmdCount + ' slash commands', "info");
     }
 }
