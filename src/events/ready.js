@@ -22,7 +22,7 @@ module.exports = class {
             res.end(client.user.tag + ' is running')
         });
 
-        http.createServer(app).listen(3434);
+        http.createServer(app).listen(5757);
 
         //Top.GG init
         const topgg = require('../helper/topgg');
@@ -36,15 +36,12 @@ module.exports = class {
         client.logger.log("Logged in as " + client.user.tag, "ready");
 
 
-        //Unmute & Unban Checker
-
-        const unmuteChecker = require('../helper/unmuteChecker')
-            , unbanChecker = require('../helper/unbanChecker');
-        await unmuteChecker.init(client);
+        //Unban Checker
+        const unbanChecker = require('../helper/unbanChecker');
         await unbanChecker.init(client);
 
-        let status = config.status
-            , i = 0;
+        let status = config.status;
+        let i = 0;
 
         if(config.support.id){
             setInterval(async function(){
