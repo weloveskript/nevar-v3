@@ -12,27 +12,15 @@ const resolveChannel = async ({ message, search, channelType }) => {
         if (channelFound && channelType && channelFound.type === channelType)
             return channelFound;
     }
-    if (
-        message.guild.channels.cache.some(
-            channel => `#${channel.name}` === search || channel.name === search
-        )
-    ) {
+    if (message.guild.channels.cache.some(channel => `#${channel.name}` === search || channel.name === search)) {
         const channelFound = message.guild.channels.cache.find(
             channel => `#${channel.name}` === search || channel.name === search
         );
         if (channelFound && channelType && channelFound.type === channelType)
             return channelFound;
     }
-    return;
 };
 
-/**
- *
- * @param message
- * @param search
- * @param useMessageContent
- * @returns {Promise<*|V>}
- */
 const resolveMember = async ({ message, search, useMessageContent = true }) => {
     const contentToCheck = search || (useMessageContent ? message.content : null);
     if (!contentToCheck || typeof contentToCheck !== "string") return;
@@ -46,26 +34,15 @@ const resolveMember = async ({ message, search, useMessageContent = true }) => {
         const memberFound = await message.guild.members.fetch(search);
         if (memberFound) return memberFound;
     }
-    await message.guild.members.fetch({
-        query: search
-    });
-    if (message.guild.members.cache.some(
-        member => member.user.tag === search || member.user.username === search)
-    ) {
+    await message.guild.members.fetch({query: search});
+    if (message.guild.members.cache.some(member => member.user.tag === search || member.user.username === search)) {
         const memberFound = message.guild.members.cache.find(
             member => member.user.tag === search || member.user.username === search
         );
         if (memberFound) return memberFound;
     }
-    return;
 };
 
-/**
- *
- * @param message
- * @param search
- * @returns {Promise<V>}
- */
 const resolveRole = async ({ message, search }) => {
     const contentToCheck = search || message.content;
     if (!contentToCheck || typeof contentToCheck !== "string") return;
@@ -80,20 +57,14 @@ const resolveRole = async ({ message, search }) => {
         if (roleFound)
             return roleFound;
     }
-    if (
-        message.guild.roles.cache.some(
-            role => `@${role.name}` === search || role.name === search
-        )
-    ) {
+    if (message.guild.roles.cache.some(role => `@${role.name}` === search || role.name === search)) {
         const roleFound = message.guild.roles.cache.find(
             role => `@${role.name}` === search || role.name === search
         );
         if (roleFound)
             return roleFound;
     }
-    return;
 };
-
 
 module.exports = {
     resolveChannel,
