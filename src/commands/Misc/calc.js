@@ -60,7 +60,7 @@ class Calc extends Command {
         }
         let embed = new MessageEmbed()
             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-            .addField(this.client.emotes.equation + ' ' + guild.translate("misc/calc:formula"), `\`\`\`js\n${args.join("").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/").replace(/[:]/gi, '/')}\`\`\``)
+            .addField(this.client.emotes.formula + ' ' + guild.translate("misc/calc:formula"), `\`\`\`js\n${args.join("").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/").replace(/[:]/gi, '/')}\`\`\``)
             .addField(this.client.emotes.result + ' ' + guild.translate("misc/calc:result"), `\`\`\`js\n${result}\`\`\``)
             .setColor(this.client.embedColor)
             .setFooter(data.guild.footer);

@@ -1,0 +1,5 @@
+{
+  "description": "Gibt ein zufälliges Gesprächsthema zurück",
+  "usage": "{emotes.use} Syntax: ```{prefix}topic```",
+  "example": "{emotes.example} Beispiel: ```{prefix}topic```"
+}
