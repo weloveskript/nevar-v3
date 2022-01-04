@@ -22,13 +22,14 @@ module.exports = mongoose.model("Guild", new Schema({
                 enabled: false,
                 channel: null,
                 message: '%user, du bist nun Level %level!',
-                levelroles: []
+                levelroles: [],
+                doubleXpRoles: []
             },
             joinToCreate: {
                 voice: false,
                 userLimit: false,
                 bitrate: false,
-                tempChannels: [],
+                tempChannels: []
             },
             blacklist: {
                 list: []
@@ -55,18 +56,10 @@ module.exports = mongoose.model("Guild", new Schema({
             autoReactChannels: [],
             autoDeleteChannels: [],
             reactionRoles: [],
-            doubleXpRoles: [],
-            logchannel: {
-                enabled: false,
-                channel: null,
-                emoji: null,
-                members: null,
-                message: null,
-                role: null,
-                moderation: null
-            }
+
         }},
     casesCount: { type: Number, default: 0 },
     commands: { type: Array, default: [] },
     footer: { type: String, default: config.embeds.footer}
+
 }));

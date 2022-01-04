@@ -1,6 +1,6 @@
 {
   "description": "Stelle die Levelnachrichten, dessen Channel und Levelrollen ein",
-  "usage": "{emotes.use} Syntax: ```vb\n{prefix}levelsettings <channel/messages/roles>```",
+  "usage": "{emotes.use} Syntax: ```vb\n{prefix}levelsettings <channel/messages/roles/doublexp>```",
   "example": "{emotes.example} Beispiel: ```vb\n{prefix}levelsettings roles```",
 
   "slashOption1": "aktion",
@@ -8,6 +8,7 @@
   "slashOption1Choice1": "levelchannel",
   "slashOption1Choice2": "levelnachrichten",
   "slashOption1Choice3": "levelrollen",
+  "slashOption1Choice4": "doppelxp",
 
   "sendChannel": "{emotes.arrow} Sende  den Channel. Sende \"current\", wenn die Nachricht im jeweiligen Channel kommen soll",
   "invalidChannel": "{emotes.error} Das ist kein gültiger Channel",
@@ -31,5 +32,16 @@
   "list": "{emotes.arrow} Folgende Levelrollen sind derzeit eingestellt:\n\n```|- {list}```",
   "sendDeleteLevel": "{emotes.arrow} Für welches Level möchtest du die Levelrollen zurücksetzen?",
   "resettedLevel": "{emotes.success} Für Level {level} wurden alle Levelrollen zurückgesetzt",
-  "resettedAll": "{emotes.success} Alle Levelrollen wurden zurückgesetzt"
+  "resettedAll": "{emotes.success} Alle Levelrollen wurden zurückgesetzt",
+
+  "choose1_doublexp": "Doppel-XP Rolle einrichten",
+  "choose2_doublexp": "Doppel-XP Liste ansehen",
+  "choose3_doublexp": "Doppel-XP Rolle löschen",
+  "choose4_doublexp": "Doppel-XP Rollen zurücksetzen",
+  "sendRole_doublexp": "{emotes.arrow} Welche Rolle soll doppeltes XP bekommen?",
+  "doublexp_success": "{emotes.success} Mitglieder mit der {role} Rolle bekommen nun doppeltes XP",
+  "doubleXpList": "{emotes.success} Folgende Rollen erhalten doppeltes XP:\n\n{emotes.arrow} {list}",
+  "deleteRole": "{emotes.arrow} Welche Rolle soll kein doppeltes XP mehr bekommen?",
+  "doublexp_delete_success": "{emotes.success} Mitglieder mit der {role} Rolle bekommen absofort kein doppeltes XP mehr",
+  "successReset": "{emotes.success} Alle Doppel-XP Rollen wurden zurückgesetzt"
 }

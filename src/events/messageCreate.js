@@ -99,7 +99,7 @@ module.exports = class {
 
             // Leveling
             let randomXp = Math.floor(Math.random() * 30) + 1;
-            for (let index of data.guild.plugins.doubleXpRoles) {
+            for (let index of data.guild.plugins.levelsystem.doubleXpRoles) {
                 if (message.member.roles.cache.get(index)) {
                     randomXp = Math.floor(Math.random() * 60) + 30;
                 }

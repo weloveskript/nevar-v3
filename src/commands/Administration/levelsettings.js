@@ -1,5 +1,6 @@
 const Command = require('../../core/command');
-const { MessageEmbed} = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
+const Resolvers = require("../../helper/resolver");
 
 class Levelsettings extends Command {
 
@@ -10,7 +11,7 @@ class Levelsettings extends Command {
             dirname: __dirname,
             aliases: ["levelmessages", "levelroles", "levelsetting"],
             memberPermissions: ["MANAGE_GUILD"],
-            cooldown: 10000,
+            cooldown: 15000,
             slashCommand: {
                 addCommand: true,
                 options: [
@@ -32,6 +33,10 @@ class Levelsettings extends Command {
                             {
                                 name: "administration/levelsettings:slashOption1Choice3",
                                 value: "roles"
+                            },
+                            {
+                                name: "administration/levelsettings:slashOption1Choice4",
+                                value: "doublexp"
                             }
                         ]
                     }
@@ -376,6 +381,176 @@ class Levelsettings extends Command {
                             .setFooter(data.guild.footer);
                         await sent.edit({embeds: [embed]});
                     });
+                }
+            }
+        }
+        if(args[0] === 'doublexp'){
+            let embed = new MessageEmbed()
+                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setDescription(guild.translate("administration/levelsettings:chooseAction")
+                    .replace('{emotes.arrow}', this.client.emotes.arrow))
+                .setColor(this.client.embedColor)
+                .setFooter(data.guild.footer);
+            const { MessageButton, MessageActionRow } = require('discord.js');
+            let id = message?.member?.user?.id || interaction?.member?.user?.id
+            let row = new MessageActionRow()
+                .addComponents(
+                    new MessageButton()
+                        .setCustomId('doublexp_'+ id + '_create')
+                        .setLabel(guild.translate("administration/levelsettings:choose1_doublexp"))
+                        .setEmoji('➕')
+                        .setStyle('PRIMARY'),
+                    new MessageButton()
+                        .setCustomId('doublexp_'+ id + '_list')
+                        .setLabel(guild.translate("administration/levelsettings:choose2_doublexp"))
+                        .setEmoji('📜')
+                        .setDisabled(data.guild.plugins.levelsystem.doubleXpRoles.length < 1)
+                        .setStyle('PRIMARY'),
+                    new MessageButton()
+                        .setCustomId('doublexp_'+ id + '_delete')
+                        .setLabel(guild.translate("administration/levelsettings:choose3_doublexp"))
+                        .setEmoji('➖')
+                        .setDisabled(data.guild.plugins.levelsystem.doubleXpRoles.length < 1)
+                        .setStyle('DANGER'),
+                    new MessageButton()
+                        .setCustomId('doublexp_'+ id + '_reset')
+                        .setLabel(guild.translate("administration/levelsettings:choose4_doublexp"))
+                        .setEmoji('🗑️')
+                        .setDisabled(data.guild.plugins.levelsystem.doubleXpRoles.length < 1)
+                        .setStyle('DANGER'),
+                )
+            let sent;
+            if (message) sent = await message.send(embed, false, [row]);
+            if (interaction) sent = await interaction.send(embed, false, [row]);
+
+            const filter = i => i.customId.startsWith('doublexp_'+ id) && i.user.id === id;
+
+            const clicked = await sent.awaitMessageComponent({ filter, time: 20000 }).catch(() => {})
+
+            if(clicked) {
+                if(clicked.customId === 'doublexp_'+ id + '_create'){
+                    let embed = new MessageEmbed()
+                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setDescription(guild.translate("administration/levelsettings:sendRole_doublexp")
+                            .replace('{emotes.arrow}', this.client.emotes.arrow))
+                        .setColor(this.client.embedColor)
+                        .setFooter(data.guild.footer);
+                    await clicked.update({embeds: [embed], components: []});
+                    const collectMessage = channel.createMessageCollector(
+                        {
+                            filter: m => m.author.id === member.user.id,
+                            time: 120000
+                        }
+                    );
+                    collectMessage.on("collect", async (msg) => {
+                        collectMessage.stop();
+                        let role = await Resolvers.resolveRole({
+                            message: msg,
+                            search: msg.content
+                        });
+                        if(role) {
+                            if (data.guild.plugins.levelsystem.doubleXpRoles.includes(role.id)){
+                                data.guild.plugins.levelsystem.doubleXpRoles = data.guild.plugins.levelsystem.doubleXpRoles.filter(r => r !== role.id);
+                            }
+                            data.guild.plugins.levelsystem.doubleXpRoles.push(role.id);
+                            data.guild.markModified("plugins.levelsystem");
+                            await data.guild.save();
+                            msg.delete().catch(() => {});
+                            let embed2 = new MessageEmbed()
+                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setDescription(guild.translate("administration/levelsettings:doublexp_success")
+                                    .replace('{emotes.success}', this.client.emotes.success)
+                                    .replace('{role}', role))
+                                .setColor(this.client.embedColor)
+                                .setFooter(data.guild.footer);
+                            await sent.edit({embeds: [embed2]});
+                        }else{
+                            msg.delete().catch(() => {});
+                            let embed = new MessageEmbed()
+                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setDescription(guild.translate("administration/levelsettings:invalidRole")
+                                    .replace('{emotes.error}', this.client.emotes.error))
+                                .setColor(this.client.embedColor)
+                                .setFooter(data.guild.footer);
+                            return sent.edit({embeds: [embed]});
+                        }
+                    });
+                }
+                if(clicked.customId === 'doublexp_'+ id + '_list'){
+                    let doubleXp = [];
+                    for(let id of data.guild.plugins.levelsystem.doubleXpRoles){
+                        let role = guild.roles.cache.get(id)
+                        if(role) doubleXp.push(role)
+                    }
+                    if(doubleXp.length < 1) doubleXp = [guild.translate("language:noEntries")];
+                    let embed = new MessageEmbed()
+                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setDescription(guild.translate("administration/levelsettings:doubleXpList")
+                            .replace('{list}', doubleXp.join('\n'+this.client.emotes.arrow+' '))
+                            .replace('{emotes.arrow}', this.client.emotes.arrow)
+                            .replace('{emotes.success}', this.client.emotes.success))
+                        .setColor(this.client.embedColor)
+                        .setFooter(data.guild.footer);
+                    return clicked.update({embeds: [embed], components: []});
+                }
+                if(clicked.customId === 'doublexp_'+ id + '_delete') {
+                    let embed = new MessageEmbed()
+                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setDescription(guild.translate("administration/levelsettings:deleteRole")
+                            .replace('{emotes.arrow}', this.client.emotes.arrow))
+                        .setColor(this.client.embedColor)
+                        .setFooter(data.guild.footer);
+                    await clicked.update({embeds: [embed], components: []});
+                    const collectMessage = channel.createMessageCollector(
+                        {
+                            filter: m => m.author.id === member.user.id,
+                            time: 120000
+                        }
+                    );
+                    collectMessage.on("collect", async (msg) => {
+                        collectMessage.stop();
+                        let role = await Resolvers.resolveRole({
+                            message: msg,
+                            search: msg.content
+                        });
+                        if (role) {
+                            if (data.guild.plugins.levelsystem.doubleXpRoles.includes(role.id)) {
+                                data.guild.plugins.levelsystem.doubleXpRoles = data.guild.plugins.levelsystem.doubleXpRoles.filter(r => r !== role.id);
+                                data.guild.markModified("plugins.levelsystem");
+                                data.guild.save();
+                            }
+                            msg.delete().catch(() => {});
+                            let embed2 = new MessageEmbed()
+                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setDescription(guild.translate("administration/levelsettings:doublexp_delete_success")
+                                    .replace('{emotes.success}', this.client.emotes.success)
+                                    .replace('{role}', role))
+                                .setColor(this.client.embedColor)
+                                .setFooter(data.guild.footer);
+                            await sent.edit({embeds: [embed2]});
+                        } else {
+                            msg.delete().catch(() => {});
+                            let embed = new MessageEmbed()
+                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setDescription(guild.translate("administration/levelsettings:invalidRole")
+                                    .replace('{emotes.error}', this.client.emotes.error))
+                                .setColor(this.client.embedColor)
+                                .setFooter(data.guild.footer);
+                            return sent.edit({embeds: [embed]});
+                        }
+                    });
+                }
+                if(clicked.customId === 'doublexp_'+ id + '_reset'){
+                    data.guild.plugins.levelsystem.doubleXpRoles = [];
+                    data.guild.markModified("plugins.levelsystem");
+                    await data.guild.save();
+                    let embed = new MessageEmbed()
+                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setDescription(guild.translate("administration/levelsettings:successReset")
+                            .replace('{emotes.success}', this.client.emotes.success))
+                        .setColor(this.client.embedColor)
+                        .setFooter(data.guild.footer);
+                    return clicked.update({embeds: [embed], components: []});
                 }
             }
         }

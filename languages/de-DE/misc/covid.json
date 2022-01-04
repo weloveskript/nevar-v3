@@ -1,0 +1,28 @@
+{
+  "description": "Zeigt aktuelle Corona-Zahlen für Deutschland und die Welt an.",
+  "usage": "{emotes.use} Syntax: ```{prefix}covid [Land]```",
+  "example": "{emotes.example} Beispiel: ```{prefix}covid Germany```",
+
+  "slashOption1": "land",
+  "slashOption1Desc": "Gib hier das gewünschte Land an",
+
+  "disclaimer": "{emotes.warn} Alle hier genutzten Daten stammen von der [Disease COVID-19 API](https://disease.sh/docs/) - wir können nicht für die Richtigkeit der Inhalte garantieren\n",
+  "statsWorldwide": "Weltweite COVID-19 Statistiken",
+  "statsIn": "COVID-19 Statistiken in {country}",
+  "infections": "Infektionen insgesamt",
+  "infectionsPercent": "({percent}% der Bevölkerung)",
+  "activeInfections": "Aktuell Erkrankte",
+  "activeInfectionsPercent": "({percent}% der Infektionen)",
+  "recoveries": "Genesungen insgesamt",
+  "recoveriesPercent": "({percent}% der Infektionen)",
+  "deaths": "Todesfälle insgesamt",
+  "deathsPercent": "({percent}% der Infektionen)",
+  "infectionsToday": "Infektionen heute",
+  "infectionsPerMillion": "Infektionen pro Million",
+  "recoveredToday": "Genesungen heute",
+  "deathsToday": "Todesfälle heute",
+  "deathsPerMillion": "Todesfälle pro Million",
+  "vaccines": "Impfdosen insgesamt verabreicht",
+  "vaccinesToday": "Impfdosen heute verabreicht",
+  "stayHealthy": "Bleibt gesund • Zuletzt geupdatet: {date}"
+}
