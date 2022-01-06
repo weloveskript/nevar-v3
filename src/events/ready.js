@@ -131,14 +131,30 @@ module.exports = class {
         }
 
 
+        let text = status[parseInt(i, 10)].name.replace('{servercount}', client.guilds.cache.size);
+
+        //set activity
+        client.user.setActivity({
+            name: text,
+            type: status[parseInt(i, 10)].type.toUpperCase(),
+            url: status[parseInt(i, 10)]?.url
+        });
+        if(status[parseInt(i+1, 10)]) i++;
+        else i = 0;
+
         setInterval(function(){
             let text = status[parseInt(i, 10)].name.replace('{servercount}', client.guilds.cache.size);
 
             //set activity
-            client.user.setActivity(text, { type: status[parseInt(i, 10)].type });
+            client.user.setActivity({
+                    name: text,
+                    type: status[parseInt(i, 10)].type.toUpperCase(),
+                    url: status[parseInt(i, 10)]?.url
+            })
             if(status[parseInt(i+1, 10)]) i++;
             else i = 0;
-        }, 20000)
+        }, 25000)
+
 
 
         if(config.webdashboard.enabled){

@@ -47,13 +47,6 @@ const client = new Nevar({
     restTimeOffset: 200,
     allowedMention: {
         parse: ["users"]
-    },
-    presence: {
-        status: "online",
-        activities: [{
-            name: "⌛ starting up...",
-            type: "PLAYING"
-        }]
     }
 });
 

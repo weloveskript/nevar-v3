@@ -123,13 +123,13 @@ let config =
     "\n" +
     "# Status Section\n" +
     "\n" +
-    "[[status]]\n" +
     "# The different statuses for the bot\n" +
     "\n" +
     "# Every new status must have this structure:\n\n" +
     "#          [[status]]\n" +
     "#          name = \"Status name\"\n" +
-    "#          type = \"PLAYING/WATCHING/LISTENING\"\n" +
+    "#          type = \"PLAYING/WATCHING/LISTENING/STREAMING\"\n" +
+    "#          url = \"Valid Twitch/YouTube URL (only if STREAMING is specified as type)\"\n" +
     "\n" +
     "# Status 1\n" +
     "[[status]]\n" +
@@ -138,8 +138,12 @@ let config =
     "# Status 2\n" +
     "[[status]]\n" +
     "name = \"nevar.eu\"\n" +
-    "type = \"WATCHING\"";
-
+    "type = \"WATCHING\"\n\n" +
+    "# Status 3\n" +
+    "[[status]]\n" +
+    "name = \"nevar.eu\"\n" +
+    "type = \"STREAMING\"\n" +
+    "url = \"https://youtu.be/dQw4w9WgXcQ\"";
 
 fs.writeFile('config-sample.toml', config, async function(err){
     if(err){
