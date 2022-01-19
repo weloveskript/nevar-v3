@@ -1,0 +1,18 @@
+{
+  "general": {
+    "description": "Lade mich ein, um mich auch auf deinem Server zu benutzen \uD83E\uDD1D",
+    "usage": "{emotes.use} Syntax: ```{prefix}invite```",
+    "example": "{emotes.example} Beispiel: ```{prefix}invite```"
+  },
+
+  "invite": {
+    "description": "{emotes.arrow} Hier sind einige hilfreiche Links für dich:",
+    "buttons": {
+      "1": "Einladen",
+      "2": "Supportserver",
+      "3": "Website",
+      "4": "Dashboard",
+      "5": "Voten"
+    }
+  }
+}
