@@ -1,0 +1,11 @@
+{
+  "general": {
+    "description": "Ändert den Command für Message-Commands",
+    "usage": "{emotes.use} Syntax: ```{prefix}setprefix <Prefix>```",
+    "example": "{emotes.example} Beispiel: ```{prefix}setprefix !```"
+  },
+
+  "main": {
+    "set": "{emotes.success} Der Message-Prefix wurde zu {prefix} gesetzt"
+  }
+}

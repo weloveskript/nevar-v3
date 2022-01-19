@@ -1,8 +1,0 @@
-{
-  "description": "Ändert den Command für Message-Commands",
-  "usage": "{emotes.use} Syntax: ```{prefix}setprefix <Prefix>```",
-  "example": "{emotes.example} Beispiel: ```{prefix}setprefix !```",
-
-  "tooLong": "{emotes.error} Der Message-Prefix darf maximal 4 Zeichen lang sein",
-  "set": "{emotes.success} Der Message-Prefix wurde gesetzt"
-}

@@ -6,7 +6,7 @@ class Ignorecommand extends Command {
     constructor(client) {
         super(client, {
             name: "ignorecommand",
-            description: "administration/ignorecommand:description",
+            description: "admin/ignorecommand:description",
             dirname: __dirname,
             memberPermissions: ["MANAGE_GUILD"],
             aliases: ["ignorecommands", "ignore-commands"],
@@ -15,29 +15,29 @@ class Ignorecommand extends Command {
                 addCommand: true,
                 options: [
                     {
-                        name: "administration/ignorecommand:slashOption1",
-                        description: "administration/ignorecommand:slashOption1Desc",
+                        name: "admin/ignorecommand:slashOption1",
+                        description: "admin/ignorecommand:slashOption1Desc",
                         type: "STRING",
                         required: true,
                         choices: [
                             {
-                                name: "administration/ignorecommand:slashOption1Choice1",
+                                name: "admin/ignorecommand:slashOption1Choice1",
                                 value: "add"
                             },
                             {
-                                name: "administration/ignorecommand:slashOption1Choice2",
+                                name: "admin/ignorecommand:slashOption1Choice2",
                                 value: "remove"
 
                             },
                             {
-                                name: "administration/ignorecommand:slashOption1Choice3",
+                                name: "admin/ignorecommand:slashOption1Choice3",
                                 value: "list"
                             }
                         ]
                     },
                     {
-                        name: "administration/ignorecommand:slashOption2",
-                        description: "administration/ignorecommand:slashOption2Desc",
+                        name: "admin/ignorecommand:slashOption2",
+                        description: "admin/ignorecommand:slashOption2Desc",
                         type: "STRING",
                         required: false
                     }
@@ -53,10 +53,10 @@ class Ignorecommand extends Command {
         if(!args[0]){
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/ignorecommand:usage")
+                .setDescription(guild.translate("admin/ignorecommand:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("administration/ignorecommand:example")
+                    guild.translate("admin/ignorecommand:example")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
@@ -69,10 +69,10 @@ class Ignorecommand extends Command {
             if(!args[1]){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/ignorecommand:usage")
+                    .setDescription(guild.translate("admin/ignorecommand:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/ignorecommand:example")
+                        guild.translate("admin/ignorecommand:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example))
                     .setColor(this.client.embedColor)
@@ -85,7 +85,7 @@ class Ignorecommand extends Command {
                 if(data.guild.disabledCommands.includes(cmd.help.name)){
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/ignorecommand:alreadyIgnored")
+                        .setDescription(guild.translate("admin/ignorecommand:alreadyIgnored")
                                 .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
@@ -97,7 +97,7 @@ class Ignorecommand extends Command {
                     await data.guild.save();
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/ignorecommand:ignored")
+                        .setDescription(guild.translate("admin/ignorecommand:ignored")
                             .replace('{cmd}', cmd.help.name.toString().charAt(0).toUpperCase() + cmd.help.name.toString().slice(1))
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
@@ -111,10 +111,10 @@ class Ignorecommand extends Command {
             if(!args[1]){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/ignorecommand:usage")
+                    .setDescription(guild.translate("admin/ignorecommand:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/ignorecommand:example")
+                        guild.translate("admin/ignorecommand:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example))
                     .setColor(this.client.embedColor)
@@ -127,7 +127,7 @@ class Ignorecommand extends Command {
                 if(!data.guild.disabledCommands.includes(cmd.help.name)){
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/ignorecommand:notIgnored")
+                        .setDescription(guild.translate("admin/ignorecommand:notIgnored")
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
@@ -139,7 +139,7 @@ class Ignorecommand extends Command {
                     await data.guild.save();
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/ignorecommand:unignored")
+                        .setDescription(guild.translate("admin/ignorecommand:unignored")
                             .replace('{cmd}', cmd.help.name.toString().charAt(0).toUpperCase() + cmd.help.name.toString().slice(1))
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
@@ -159,7 +159,7 @@ class Ignorecommand extends Command {
             }
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/ignorecommand:list")
+                .setDescription(guild.translate("admin/ignorecommand:list")
                     .replace('{list}', ignored.join('\n|- '))
                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                 .setColor(this.client.embedColor)

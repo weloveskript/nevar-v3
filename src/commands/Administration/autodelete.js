@@ -7,46 +7,46 @@ class Autodelete extends Command {
     constructor(client) {
         super(client, {
             name: "autodelete",
-            description: "administration/autodelete:slashOption1Desc",
+            description: "admin/autodelete:slashOption1Desc",
             dirname: __dirname,
             memberPermissions: ["MANAGE_GUILD"],
             premium: true,
             cooldown: 2000,
             slashCommand: {
                 addCommand: true,
-                description: "administration/autodelete:description",
+                description: "admin/autodelete:description",
                 options: [
                     {
-                        name: "administration/autodelete:slashOption1",
-                        description: "administration/autodelete:slashOption1Desc",
+                        name: "admin/autodelete:slashOption1",
+                        description: "admin/autodelete:slashOption1Desc",
                         type: "STRING",
                         required: true,
                         choices: [
                             {
-                                name: "administration/autodelete:slashOption1Choice1",
+                                name: "admin/autodelete:slashOption1Choice1",
                                 value: "set"
                             },
                             {
-                                name: "administration/autodelete:slashOption1Choice2",
+                                name: "admin/autodelete:slashOption1Choice2",
                                 value: "reset"
 
                             },
                             {
-                                name: "administration/autodelete:slashOption1Choice3",
+                                name: "admin/autodelete:slashOption1Choice3",
                                 value: "list"
                             }
                         ]
 
                     },
                     {
-                        name: "administration/autodelete:slashOption2",
-                        description: "administration/autodelete:slashOption2Desc",
+                        name: "admin/autodelete:slashOption2",
+                        description: "admin/autodelete:slashOption2Desc",
                         type: "CHANNEL",
                         required: false,
                     },
                     {
-                        name: "administration/autodelete:slashOption3",
-                        description: "administration/autodelete:slashOption3Desc",
+                        name: "admin/autodelete:slashOption3",
+                        description: "admin/autodelete:slashOption3Desc",
                         type: "STRING",
                         required: false,
                     }
@@ -60,10 +60,10 @@ class Autodelete extends Command {
         if (!args[0]) {
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/autodelete:usage")
+                .setDescription(guild.translate("admin/autodelete:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("administration/autodelete:example")
+                    guild.translate("admin/autodelete:example")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{channel}', message ? message?.channel?.name : interaction?.channel?.name)
                         .replace('{emotes.example}', this.client.emotes.example))
@@ -79,10 +79,10 @@ class Autodelete extends Command {
                 if (!args[2]) {
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autodelete:usage")
+                        .setDescription(guild.translate("admin/autodelete:usage")
                                 .replace('{prefix}', data.guild.prefix)
                                 .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                            guild.translate("administration/autodelete:example")
+                            guild.translate("admin/autodelete:example")
                                 .replace('{prefix}', data.guild.prefix)
                                 .replace('{channel}', message ? message?.channel?.name : interaction?.channel?.name)
                                 .replace('{emotes.example}', this.client.emotes.example))
@@ -94,10 +94,10 @@ class Autodelete extends Command {
                 if (isNaN(ms(args[2]))) {
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autodelete:usage")
+                        .setDescription(guild.translate("admin/autodelete:usage")
                                 .replace('{prefix}', data.guild.prefix)
                                 .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                            guild.translate("administration/autodelete:example")
+                            guild.translate("admin/autodelete:example")
                                 .replace('{prefix}', data.guild.prefix)
                                 .replace('{channel}', message ? message?.channel?.name : interaction?.channel?.name)
                                 .replace('{emotes.example}', this.client.emotes.example))
@@ -109,7 +109,7 @@ class Autodelete extends Command {
                     if (ms(args[2]) > ms('7d')) {
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("administration/autodelete:maxTime")
+                            .setDescription(guild.translate("admin/autodelete:maxTime")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
@@ -119,7 +119,7 @@ class Autodelete extends Command {
                     if (data.guild.plugins.autoDeleteChannels.length > 10) {
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("administration/autodelete:maxChannels")
+                            .setDescription(guild.translate("admin/autodelete:maxChannels")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
@@ -136,7 +136,7 @@ class Autodelete extends Command {
                     let time = ms(args[2]);
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autodelete:set")
+                        .setDescription(guild.translate("admin/autodelete:set")
                             .replace('{emotes.success}', this.client.emotes.success)
                             .replace('{channel}', channel)
                             .replace('{time}', ms(Number(time))))
@@ -153,10 +153,10 @@ class Autodelete extends Command {
             } else {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autodelete:usage")
+                    .setDescription(guild.translate("admin/autodelete:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/autodelete:example")
+                        guild.translate("admin/autodelete:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{channel}', message ? message?.channel?.name : interaction?.channel?.name)
                             .replace('{emotes.example}', this.client.emotes.example))
@@ -169,10 +169,10 @@ class Autodelete extends Command {
             if (!args[1]) {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autodelete:usage")
+                    .setDescription(guild.translate("admin/autodelete:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/autodelete:example")
+                        guild.translate("admin/autodelete:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{channel}', message ? message?.channel?.name : interaction?.channel?.name)
                             .replace('{emotes.example}', this.client.emotes.example))
@@ -192,7 +192,7 @@ class Autodelete extends Command {
                 if (bool) {
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autodelete:resettedAll")
+                        .setDescription(guild.translate("admin/autodelete:resettedAll")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
@@ -201,7 +201,7 @@ class Autodelete extends Command {
                 } else {
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autodelete:noAutodelete")
+                        .setDescription(guild.translate("admin/autodelete:noAutodelete")
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
@@ -219,7 +219,7 @@ class Autodelete extends Command {
                                 await data.guild.save();
                                 let embed = new MessageEmbed()
                                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                                    .setDescription(guild.translate("administration/autodelete:resettedChannel")
+                                    .setDescription(guild.translate("admin/autodelete:resettedChannel")
                                         .replace('{emotes.success}', this.client.emotes.success)
                                         .replace('{channel}', channel))
                                     .setColor(this.client.embedColor)
@@ -230,7 +230,7 @@ class Autodelete extends Command {
                         }
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("administration/autodelete:noAutodeleteInChannel")
+                            .setDescription(guild.translate("admin/autodelete:noAutodeleteInChannel")
                                 .replace('{emotes.error}', this.client.emotes.error)
                                 .replace('{channel}', channel))
                             .setColor(this.client.embedColor)
@@ -240,10 +240,10 @@ class Autodelete extends Command {
                     } else {
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("administration/autodelete:usage")
+                            .setDescription(guild.translate("admin/autodelete:usage")
                                     .replace('{prefix}', data.guild.prefix)
                                     .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                                guild.translate("administration/autodelete:example")
+                                guild.translate("admin/autodelete:example")
                                     .replace('{prefix}', data.guild.prefix)
                                     .replace('{channel}', message ? message?.channel?.name : interaction?.channel?.name)
                                     .replace('{emotes.example}', this.client.emotes.example))
@@ -261,7 +261,7 @@ class Autodelete extends Command {
             if(channels.length === 0) channels.push('|- '+ guild.translate("language:noEntries"));
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/autodelete:list")
+                .setDescription(guild.translate("admin/autodelete:list")
                     .replace('{emotes.arrow}', this.client.emotes.arrow)
                     .replace('{list}', channels.join('\n')))
                 .setColor(this.client.embedColor)

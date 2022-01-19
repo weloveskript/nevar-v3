@@ -10,6 +10,25 @@ router.get('/', async (req, res) => {
 	await guildsController.guilds();
 });
 
+router.get('/oauth2/authorized', async (req, res) => {
+	res.send("<script>\n" +
+		"if(window.opener && window.opener !== window){\n" +
+		"	let url = window.location.href;\n" +
+		"	let uri = new URL(url);\n" +
+		"	if(uri.searchParams.get('code') && uri.searchParams.get('permissions')){\n" +
+		"		window.self.close();\n" +
+		"	}else{\n" +
+		"		if(uri.searchParams.get('error')){\n" +
+		"			window.self.close();\n" +
+		"		}else{\n" +
+		"			document.title = '403: Forbidden'\n" +
+		"		}\n" +
+		"	}\n" +
+		"}else{\n" +
+		"	document.title = '403: Forbidden'\n" +
+		"}\n" +
+		"</script > ")
+})
 router.get('/guilds/:id(\\d+)/', async (req, res) => {
 	const guildsController = new GuildsController(req, res);
 	if(await guildsController.isPermitted(req.params.id, req.session['discord_id'])) {

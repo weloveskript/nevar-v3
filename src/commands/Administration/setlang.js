@@ -1,18 +1,20 @@
 const Command = require('../../core/command');
 const { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
+const {SlashCommandBuilder} = require("@discordjs/builders");
 
 class Setlang extends Command {
 
     constructor(client) {
         super(client, {
             name: "setlang",
-            description: "administration/setlang:description",
+            description: "admin/sl:general:description",
             dirname: __dirname,
             aliases: ["lang"],
             memberPermissions: ["MANAGE_GUILD"],
             cooldown: 5000,
             slashCommand: {
-                addCommand: true
+                addCommand: true,
+                data: new SlashCommandBuilder()
             }
         });
     }
@@ -22,7 +24,8 @@ class Setlang extends Command {
 
         let embed = new MessageEmbed()
             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-            .setDescription(guild.translate("administration/setlang:chooseLang")
+            .setDescription(guild.translate("admin/sl:main:choose")
+                .replace('{emotes.arrow}', this.client.emotes.arrow)
                 .replace('{emotes.arrow}', this.client.emotes.arrow))
             .setColor(this.client.embedColor)
             .setFooter(data.guild.footer);
@@ -34,10 +37,16 @@ class Setlang extends Command {
                 .setCustomId('lang_'+ id + '_' + lang.name)
                 .setLabel(lang.nativeName)
                 .setStyle('PRIMARY')
+                .setDisabled(!lang.active)
                 .setEmoji(lang.emoji);
            if(lang.name === data.guild.language){
                item.setStyle('SECONDARY')
-              item.setDisabled(true);
+               item.setDisabled(true);
+               item.setLabel(lang.nativeName + ' ' + guild.translate("admin/sl:main:active"))
+           }
+           if(!lang.active){
+               item.setStyle('DANGER')
+               item.setLabel(lang.nativeName + ' ' + guild.translate("admin/sl:main:soon"))
            }
            row.components.push(item);
         }
@@ -56,7 +65,8 @@ class Setlang extends Command {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                     .setDescription(guild.translate("language:error")
-                        .replace('{emotes.error}', this.client.emotes.error))
+                        .replace('{emotes.error}', this.client.emotes.error)
+                        .replace('{support}', this.client.supportUrl))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
                 return sent.edit({embeds:[embed], components: []});
@@ -64,7 +74,7 @@ class Setlang extends Command {
                 data.guild.language = lang.name;
                 await data.guild.save();
                 const slashCommands = require('../../helper/slashCommands.js');
-                await slashCommands.init(this.client, guild.id);
+                slashCommands.init(this.client, guild.id);
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                     .setDescription(guild.translate("language:set")
@@ -72,10 +82,8 @@ class Setlang extends Command {
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
                 return sent.edit({embeds:[embed], components: []});
-
             }
         }
-
     }
 
 }

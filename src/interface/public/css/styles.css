@@ -153,16 +153,17 @@
 }
 
 .copy-button {
+    background-color: #cfcfcf;
     color: black
 }
 
-.ban-button {
-    background-color: red;
-    margin-right: 15px
-}
 
 .kick-button {
     background-color: orangered
+}
+
+.info-button {
+    background-color: green;
 }
 
 .overview-grid {
@@ -203,6 +204,11 @@
 }
 
 .member-item .member-info .name {
+    font-size: x-large;
+    font-weight: bold
+}
+
+.member-item .member-info .crown {
     font-size: x-large;
     font-weight: bold
 }

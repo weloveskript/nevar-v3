@@ -1,6 +1,6 @@
 h1
     i.bi.bi-speedometer2
-    | &nbsp;Übersicht
+    | &nbsp;Overview
 .overview-grid
     .overview-icon
         - var iconUrl = ""
@@ -21,13 +21,13 @@ h1
                         p=guild.name
                 tr
                     td
-                        strong Mitglieder
+                        strong Members
                     td
                         p=guild.memberCount
                 tr
                     td
-                        strong Erstellt am
+                        strong Created on
                     td
-                        - moment.locale("de");
+                        - moment.locale("en");
                         p=moment(guild.createdTimestamp).format('LLLL')
 br

@@ -6,7 +6,7 @@ class Join2create extends Command {
     constructor(client) {
         super(client, {
             name: "join2create",
-            description: "administration/join2create:description",
+            description: "admin/join2create:description",
             dirname: __dirname,
             memberPermissions: ["MANAGE_GUILD"],
             cooldown: 10000,
@@ -23,7 +23,7 @@ class Join2create extends Command {
 
         let embed = new MessageEmbed()
             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-            .setDescription(guild.translate("administration/join2create:sendChannel")
+            .setDescription(guild.translate("admin/join2create:sendChannel")
                 .replace('{emotes.arrow}', this.client.emotes.arrow))
             .setColor(this.client.embedColor)
             .setFooter(data.guild.footer);
@@ -48,7 +48,7 @@ class Join2create extends Command {
             if(!chan || chan.type !== "GUILD_VOICE"){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/join2create:wrongChannel")
+                    .setDescription(guild.translate("admin/join2create:wrongChannel")
                         .replace('{emotes.error}', this.client.emotes.error))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
@@ -60,7 +60,7 @@ class Join2create extends Command {
             data.guild.markModified("plugins.joinToCreate")
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/join2create:sendUserlimit")
+                .setDescription(guild.translate("admin/join2create:sendUserlimit")
                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
@@ -79,7 +79,7 @@ class Join2create extends Command {
                     if(i < 1 && i !== -1 || i > 99 && i !== -1){
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("administration/join2create:invalidUserLimit")
+                            .setDescription(guild.translate("admin/join2create:invalidUserLimit")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
@@ -92,7 +92,7 @@ class Join2create extends Command {
                         data.guild.markModified("joinToCreate");
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("administration/join2create:sendBitrate")
+                            .setDescription(guild.translate("admin/join2create:sendBitrate")
                                 .replace('{emotes.arrow}', this.client.emotes.arrow))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
@@ -114,7 +114,7 @@ class Join2create extends Command {
                                 if (i < 8 || i > 96) {
                                     let embed = new MessageEmbed()
                                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                                        .setDescription(guild.translate("administration/join2create:invalidBitrate")
+                                        .setDescription(guild.translate("admin/join2create:invalidBitrate")
                                             .replace('{emotes.error}', this.client.emotes.error))
                                         .setColor(this.client.embedColor)
                                         .setFooter(data.guild.footer);
@@ -127,7 +127,7 @@ class Join2create extends Command {
                                     data.guild.markModified("joinToCreate");
                                     let embed = new MessageEmbed()
                                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                                        .setDescription(guild.translate("administration/join2create:success")
+                                        .setDescription(guild.translate("admin/join2create:success")
                                             .replace('{emotes.success}', this.client.emotes.success))
                                         .setColor(this.client.embedColor)
                                         .setFooter(data.guild.footer);
@@ -142,7 +142,7 @@ class Join2create extends Command {
                             }else{
                                 let embed = new MessageEmbed()
                                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                                    .setDescription(guild.translate("administration/join2create:invalidBitrate")
+                                    .setDescription(guild.translate("admin/join2create:invalidBitrate")
                                         .replace('{emotes.error}', this.client.emotes.error))
                                     .setColor(this.client.embedColor)
                                     .setFooter(data.guild.footer);
@@ -156,7 +156,7 @@ class Join2create extends Command {
                 }else{
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/join2create:invalidUserLimit")
+                        .setDescription(guild.translate("admin/join2create:invalidUserLimit")
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);

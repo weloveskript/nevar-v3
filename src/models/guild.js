@@ -21,7 +21,7 @@ module.exports = mongoose.model("Guild", new Schema({
             levelsystem: {
                 enabled: false,
                 channel: null,
-                message: '%user, du bist nun Level %level!',
+                message: 'GG %%user, du bist jetzt Level %%level!',
                 levelroles: [],
                 doubleXpRoles: []
             },

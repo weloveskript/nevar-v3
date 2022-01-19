@@ -1,17 +1,19 @@
 const Command = require('../../core/command');
-const {mod} = require("mathjs");
+const {SlashCommandBuilder} = require("@discordjs/builders");
 
 class Topic extends Command {
     constructor(client){
         super(client, {
             name: "topic",
             dirname: __dirname,
-            description: "misc/topic:description",
+            description: "misc/topic:general:description",
             cooldown: 3000,
             slashCommand: {
-                addCommand: true
+                addCommand: true,
+                data:
+                    new SlashCommandBuilder()
             }
-        })
+        });
     }
 
     async run(interaction, message, args, data){

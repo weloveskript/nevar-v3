@@ -1,35 +1,35 @@
 extends partials/layout
 block variables
-    - var title = "\"" + guild.name + "\" verwalten | Nevar"
+    - var title = "Manage \"" + guild.name + "\""
     if !subView
         - var subView = "overview"
 
 block content
     a.back(href="/")
-        | <i class="bi bi-arrow-left"></i>
-    if discordId = owner.user.id
+        | <i class="bi bi-arrow-left"></i> Back to dashboard
+    if isPermitted
         h1 Manage "#{guild.name}"
         //pre=JSON.stringify(guild, null, 4)
         .panel-container
             .panel-bar
                 a(href=baseUrl + "guilds/" + guild.id + "/")
                     i.bi.bi-speedometer2
-                    | &nbsp;Übersicht
+                    | &nbsp;Overview
                 a(href=baseUrl + "guilds/" + guild.id + "/members")
                     i.bi.bi-people
-                    | &nbsp;Mitglieder
+                    | &nbsp;Members
                 a(href=baseUrl + "guilds/" + guild.id + "/bans")
                     i.bi.bi-hammer
-                    | &nbsp;Gebannte Nutzer
+                    | &nbsp;Banned users
                 a(href=baseUrl + "guilds/" + guild.id + "/commands")
                     i.bi.bi-slash-circle
-                    | &nbsp;Ignorierte Commands
+                    | &nbsp;Ignored commands
                 a(href=baseUrl + "guilds/" + guild.id + "/premium")
                     i.bi.bi-gem
                     | &nbsp;Premium
                 a(href=baseUrl + "guilds/" + guild.id + "/settings")
                     i.bi.bi-sliders
-                    | &nbsp;Einstellungen
+                    | &nbsp;Settings
             .panel-content
                 .sub-panel
                     if subView == "overview"
@@ -46,7 +46,7 @@ block content
                         include guild/settings
 
     else
-        h1 401: Unauthoriziert
+        h1 401: Unauthorized
 
 block scripts
     script.
@@ -60,7 +60,7 @@ block scripts
         }
 
         tippy('.copy-button', {
-            content: 'ID Kopieren',
+            content: 'Copy ID',
             placement: "right"
         });
 

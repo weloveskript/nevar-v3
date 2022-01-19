@@ -29,7 +29,7 @@ module.exports = class {
                 }
                 if(state){
                     let member = await messageReaction.message.guild.members.fetch(user.id);
-                    member.roles.remove(roleId).catch(() => {});
+                    member.roles.remove(roleId, 'REACTION ROLE REMOVED | MESSAGE ID: ' + messageReaction.message.id + ' | EMOJI ID: ' + messageReaction.emoji.id).catch(() => {});
                 }
             }
         }

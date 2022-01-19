@@ -7,7 +7,7 @@ class Autorole extends Command {
     constructor(client) {
         super(client, {
             name: "autorole",
-            description: "administration/autorole:description",
+            description: "admin/autorole:description",
             dirname: __dirname,
             aliases: ["joinrole"],
             memberPermissions: ["MANAGE_GUILD"],
@@ -16,46 +16,46 @@ class Autorole extends Command {
                 addCommand: true,
                 options: [
                     {
-                        name: "administration/autorole:slashOption1",
-                        description: "administration/autorole:slashOption1Desc",
+                        name: "admin/autorole:slashOption1",
+                        description: "admin/autorole:slashOption1Desc",
                         type: "STRING",
                         required: true,
                         choices: [
                             {
-                                name: "administration/autorole:slashOption1Choice1",
+                                name: "admin/autorole:slashOption1Choice1",
                                 value: "bot"
                             },
                             {
-                                name: "administration/autorole:slashOption1Choice2",
+                                name: "admin/autorole:slashOption1Choice2",
                                 value: "user"
 
                             },
                             {
-                                name: "administration/autorole:slashOption1Choice3",
+                                name: "admin/autorole:slashOption1Choice3",
                                 value: "list",
                             }
                         ]
                     },
                     {
-                        name: "administration/autorole:slashOption2",
-                        description: "administration/autorole:slashOption2Desc",
+                        name: "admin/autorole:slashOption2",
+                        description: "admin/autorole:slashOption2Desc",
                         type: "STRING",
                         required: false,
                         choices: [
                             {
-                                name: "administration/autorole:slashOption2Choice1",
+                                name: "admin/autorole:slashOption2Choice1",
                                 value: "add"
                             },
                             {
-                                name: "administration/autorole:slashOption2Choice2",
+                                name: "admin/autorole:slashOption2Choice2",
                                 value: "remove"
 
                             },
                         ]
                     },
                     {
-                        name: "administration/autorole:slashOption3",
-                        description: "administration/autorole:slashOption3Desc",
+                        name: "admin/autorole:slashOption3",
+                        description: "admin/autorole:slashOption3Desc",
                         type: "ROLE",
                         required: false
                     }
@@ -79,10 +79,10 @@ class Autorole extends Command {
         if(!args[0]){
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/autorole:usage")
+                .setDescription(guild.translate("admin/autorole:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("administration/autorole:example")
+                    guild.translate("admin/autorole:example")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example)
                         .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -109,7 +109,7 @@ class Autorole extends Command {
             if(userRoles.length === 0 || !userRoles) userRoles = [guild.translate("language:noEntries")]
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/autorole:list")
+                .setDescription(guild.translate("admin/autorole:list")
                     .replace('{emotes.success}', this.client.emotes.success)
                     .replace('{emotes.crown}', this.client.emotes.crown)
                     .replace('{emotes.arrow}', this.client.emotes.arrow)
@@ -126,10 +126,10 @@ class Autorole extends Command {
         if(!args[1]){
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/autorole:usage")
+                .setDescription(guild.translate("admin/autorole:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("administration/autorole:example")
+                    guild.translate("admin/autorole:example")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example)
                         .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -142,10 +142,10 @@ class Autorole extends Command {
             if(!args[2]){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autorole:usage")
+                    .setDescription(guild.translate("admin/autorole:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/autorole:example")
+                        guild.translate("admin/autorole:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example)
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -162,10 +162,10 @@ class Autorole extends Command {
             if(!role){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autorole:usage")
+                    .setDescription(guild.translate("admin/autorole:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/autorole:example")
+                        guild.translate("admin/autorole:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example)
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -184,7 +184,7 @@ class Autorole extends Command {
 
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autorole:userRoleAdded")
+                    .setDescription(guild.translate("admin/autorole:userRoleAdded")
                         .replace('{role}', role)
                         .replace('{emotes.success}', this.client.emotes.success))
                     .setColor(this.client.embedColor)
@@ -201,7 +201,7 @@ class Autorole extends Command {
 
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autorole:botRoleAdded")
+                    .setDescription(guild.translate("admin/autorole:botRoleAdded")
                         .replace('{role}', role)
                         .replace('{emotes.success}', this.client.emotes.success))
                     .setColor(this.client.embedColor)
@@ -215,10 +215,10 @@ class Autorole extends Command {
             if(!args[2]){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autorole:usage")
+                    .setDescription(guild.translate("admin/autorole:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/autorole:example")
+                        guild.translate("admin/autorole:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example)
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -236,10 +236,10 @@ class Autorole extends Command {
             if(!role){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autorole:usage")
+                    .setDescription(guild.translate("admin/autorole:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/autorole:example")
+                        guild.translate("admin/autorole:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example)
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -259,7 +259,7 @@ class Autorole extends Command {
                 if(state){
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autorole:userRoleRemoved")
+                        .setDescription(guild.translate("admin/autorole:userRoleRemoved")
                             .replace('{role}', role)
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
@@ -269,7 +269,7 @@ class Autorole extends Command {
                 }else{
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autorole:notAdded")
+                        .setDescription(guild.translate("admin/autorole:notAdded")
                             .replace('{role}', role)
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
@@ -290,7 +290,7 @@ class Autorole extends Command {
                 if(state){
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autorole:botRoleRemoved")
+                        .setDescription(guild.translate("admin/autorole:botRoleRemoved")
                             .replace('{role}', role)
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
@@ -300,7 +300,7 @@ class Autorole extends Command {
                 }else{
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autorole:notAdded")
+                        .setDescription(guild.translate("admin/autorole:notAdded")
                             .replace('{role}', role)
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)

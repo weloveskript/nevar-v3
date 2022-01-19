@@ -1,6 +1,6 @@
 /* app.js by Tinte @Tinte#1000 - p429344@gmail.com
 
-   9 December, 2021
+   6 January, 2022
    https://github.com/Tintenpatron
    https://github.com/nevar-bot
    https://nevar.eu

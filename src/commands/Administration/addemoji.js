@@ -6,7 +6,7 @@ class Addemoji extends Command {
     constructor(client) {
         super(client, {
             name: "addemoji",
-            description: "administration/addemoji:description",
+            description: "admin/addemoji:description",
             dirname: __dirname,
             aliases: ["addemoji", "createemoji", "add-emoji", "addemote"],
             memberPermissions: ["MANAGE_EMOJIS_AND_STICKERS"],
@@ -18,14 +18,14 @@ class Addemoji extends Command {
                 addCommand: true,
                 options: [
                     {
-                        name: "administration/addemoji:slashOption1",
-                        description: "administration/addemoji:slashOption1Desc",
+                        name: "admin/addemoji:slashOption1",
+                        description: "admin/addemoji:slashOption1Desc",
                         type: "STRING",
                         required: true,
                     },
                     {
-                        name: "administration/addemoji:slashOption2",
-                        description: "administration/addemoji:slashOption2Desc",
+                        name: "admin/addemoji:slashOption2",
+                        description: "admin/addemoji:slashOption2Desc",
                         type: "STRING",
                         required: true,
                     }
@@ -41,10 +41,10 @@ class Addemoji extends Command {
         if(!arg){
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/addemoji:usage")
+                .setDescription(guild.translate("admin/addemoji:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("administration/addemoji:example")
+                    guild.translate("admin/addemoji:example")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
@@ -79,7 +79,7 @@ class Addemoji extends Command {
                     .then(emoji => {
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("administration/addemoji:created")
+                            .setDescription(guild.translate("admin/addemoji:created")
                                 .replace('{emotes.success}', this.client.emotes.success)
                                 .replace('{name}', (emoji.animated ? 'a:'+emoji.name : ':'+emoji.name))
                                 .replace('{id}', emoji.id))
@@ -91,7 +91,7 @@ class Addemoji extends Command {
                     .catch(async (error) => {
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("administration/addemoji:cantCreate")
+                            .setDescription(guild.translate("admin/addemoji:cantCreate")
                                 .replace('{emotes.error}', this.client.emotes.error)
                                 .replace('{emotes.arrow}', this.client.emotes.arrow)
                                 .replace('{emotes.arrow}', this.client.emotes.arrow)
@@ -110,7 +110,7 @@ class Addemoji extends Command {
             }else{
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/addemoji:chooseName")
+                    .setDescription(guild.translate("admin/addemoji:chooseName")
                             .replace('{emotes.error}', this.client.emotes.error))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
@@ -121,7 +121,7 @@ class Addemoji extends Command {
             if(name.length < 2 || name.length > 32){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/addemoji:length")
+                    .setDescription(guild.translate("admin/addemoji:length")
                         .replace('{emotes.error}', this.client.emotes.error))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
@@ -133,7 +133,7 @@ class Addemoji extends Command {
                 .then(emoji => {
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/addemoji:created")
+                        .setDescription(guild.translate("admin/addemoji:created")
                             .replace('{emotes.success}', this.client.emotes.success)
                             .replace('{name}', (emoji.animated ? 'a:'+emoji.name : ':'+emoji.name))
                             .replace('{id}', emoji.id))
@@ -145,7 +145,7 @@ class Addemoji extends Command {
                 .catch(async (error) => {
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/addemoji:cantCreate")
+                        .setDescription(guild.translate("admin/addemoji:cantCreate")
                             .replace('{emotes.error}', this.client.emotes.error)
                             .replace('{emotes.arrow}', this.client.emotes.arrow)
                             .replace('{emotes.arrow}', this.client.emotes.arrow)

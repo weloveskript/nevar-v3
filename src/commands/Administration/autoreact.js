@@ -6,7 +6,7 @@ class Autoreact extends Command {
     constructor(client) {
         super(client, {
             name: "autoreact",
-            description: "administration/autoreact:description",
+            description: "admin/autoreact:description",
             dirname: __dirname,
             memberPermissions: ["MANAGE_GUILD"],
             cooldown: 5000,
@@ -14,39 +14,39 @@ class Autoreact extends Command {
                 addCommand: true,
                 options: [
                     {
-                        name: "administration/autoreact:slashOption1",
-                        description: "administration/autoreact:slashOption1Desc",
+                        name: "admin/autoreact:slashOption1",
+                        description: "admin/autoreact:slashOption1Desc",
                         type: "STRING",
                         required: true,
                         choices: [
                             {
-                                name: "administration/autoreact:slashOption1Choice1",
+                                name: "admin/autoreact:slashOption1Choice1",
                                 value: "add"
                             },
                             {
-                                name: "administration/autoreact:slashOption1Choice2",
+                                name: "admin/autoreact:slashOption1Choice2",
                                 value: "remove"
 
                             },
                             {
-                                name: "administration/autoreact:slashOption1Choice3",
+                                name: "admin/autoreact:slashOption1Choice3",
                                 value: "list"
                             },
                             {
-                                name: "administration/autoreact:slashOption1Choice4",
+                                name: "admin/autoreact:slashOption1Choice4",
                                 value: "reset"
                             }
                         ]
                     },
                     {
-                        name: "administration/autoreact:slashOption2",
-                        description: "administration/autoreact:slashOption2Desc",
+                        name: "admin/autoreact:slashOption2",
+                        description: "admin/autoreact:slashOption2Desc",
                         type: "CHANNEL",
                         required: false
                     },
                     {
-                        name: "administration/autoreact:slashOption3",
-                        description: "administration/autoreact:slashOption3Desc",
+                        name: "admin/autoreact:slashOption3",
+                        description: "admin/autoreact:slashOption3Desc",
                         type: "STRING",
                         required: false
                     }
@@ -59,10 +59,10 @@ class Autoreact extends Command {
         if(!args[0]){
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/autoreact:usage")
+                .setDescription(guild.translate("admin/autoreact:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("administration/autoreact:example")
+                    guild.translate("admin/autoreact:example")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example)
                         .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -78,10 +78,10 @@ class Autoreact extends Command {
                 if(!args[2]){
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autoreact:usage")
+                        .setDescription(guild.translate("admin/autoreact:usage")
                                 .replace('{prefix}', data.guild.prefix)
                                 .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                            guild.translate("administration/autoreact:example")
+                            guild.translate("admin/autoreact:example")
                                 .replace('{prefix}', data.guild.prefix)
                                 .replace('{emotes.example}', this.client.emotes.example)
                                 .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -100,7 +100,7 @@ class Autoreact extends Command {
                     if(data.guild.plugins.autoReactChannels.length > 40){
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("administration/autoreact:maxCount")
+                            .setDescription(guild.translate("admin/autoreact:maxCount")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
@@ -111,7 +111,7 @@ class Autoreact extends Command {
                     await data.guild.save();
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autoreact:added")
+                        .setDescription(guild.translate("admin/autoreact:added")
                             .replace('{emotes.success}', this.client.emotes.success)
                             .replace('{emote}', (emote.animated ? `<a:${emote.name}:${emote.id}>` : `<:${emote.name}:${emote.id}>`))
                             .replace('{channel}', channel))
@@ -133,7 +133,7 @@ class Autoreact extends Command {
                         if(data.guild.plugins.autoReactChannels.length > 40){
                             let embed = new MessageEmbed()
                                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                                .setDescription(guild.translate("administration/autoreact:maxCount")
+                                .setDescription(guild.translate("admin/autoreact:maxCount")
                                     .replace('{emotes.error}', this.client.emotes.error))
                                 .setColor(this.client.embedColor)
                                 .setFooter(data.guild.footer);
@@ -144,7 +144,7 @@ class Autoreact extends Command {
                         await data.guild.save();
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("administration/autoreact:added")
+                            .setDescription(guild.translate("admin/autoreact:added")
                                 .replace('{emotes.success}', this.client.emotes.success)
                                 .replace('{emote}', emote)
                                 .replace('{channel}', channel))
@@ -157,10 +157,10 @@ class Autoreact extends Command {
             }else{
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autoreact:usage")
+                    .setDescription(guild.translate("admin/autoreact:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/autoreact:example")
+                        guild.translate("admin/autoreact:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example)
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -177,10 +177,10 @@ class Autoreact extends Command {
                 if(!args[2]){
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autoreact:usage")
+                        .setDescription(guild.translate("admin/autoreact:usage")
                                 .replace('{prefix}', data.guild.prefix)
                                 .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                            guild.translate("administration/autoreact:example")
+                            guild.translate("admin/autoreact:example")
                                 .replace('{prefix}', data.guild.prefix)
                                 .replace('{emotes.example}', this.client.emotes.example)
                                 .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -200,7 +200,7 @@ class Autoreact extends Command {
                             }
                             let embed = new MessageEmbed()
                                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                                .setDescription(guild.translate("administration/autoreact:removed")
+                                .setDescription(guild.translate("admin/autoreact:removed")
                                     .replace('{emotes.success}', this.client.emotes.success)
                                     .replace('{emote}', (emote.animated ? `<a:${emote.name}:${emote.id}>` : `<:${emote.name}:${emote.id}>`))
                                     .replace('{channel}', channel))
@@ -211,7 +211,7 @@ class Autoreact extends Command {
                         }else{
                             let embed = new MessageEmbed()
                                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                                .setDescription(guild.translate("administration/autoreact:notAdded")
+                                .setDescription(guild.translate("admin/autoreact:notAdded")
                                     .replace('{emotes.error}', this.client.emotes.error)
                                     .replace('{emote}', (emote.animated ? `<a:${emote.name}:${emote.id}>` : `<:${emote.name}:${emote.id}>`))
                                     .replace('{channel}', channel))
@@ -232,7 +232,7 @@ class Autoreact extends Command {
                                 }
                                 let embed = new MessageEmbed()
                                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                                    .setDescription(guild.translate("administration/autoreact:removed")
+                                    .setDescription(guild.translate("admin/autoreact:removed")
                                         .replace('{emotes.success}', this.client.emotes.success)
                                         .replace('{emote}', args[2])
                                         .replace('{channel}', channel))
@@ -243,7 +243,7 @@ class Autoreact extends Command {
                             }else{
                                 let embed = new MessageEmbed()
                                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                                    .setDescription(guild.translate("administration/autoreact:notAdded")
+                                    .setDescription(guild.translate("admin/autoreact:notAdded")
                                         .replace('{emotes.error}', this.client.emotes.error)
                                         .replace('{emote}', args[2])
                                         .replace('{channel}', channel))
@@ -256,10 +256,10 @@ class Autoreact extends Command {
                         }else{
                             let embed = new MessageEmbed()
                                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                                .setDescription(guild.translate("administration/autoreact:usage")
+                                .setDescription(guild.translate("admin/autoreact:usage")
                                         .replace('{prefix}', data.guild.prefix)
                                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                                    guild.translate("administration/autoreact:example")
+                                    guild.translate("admin/autoreact:example")
                                         .replace('{prefix}', data.guild.prefix)
                                         .replace('{emotes.example}', this.client.emotes.example)
                                         .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -274,10 +274,10 @@ class Autoreact extends Command {
             }else{
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autoreact:usage")
+                    .setDescription(guild.translate("admin/autoreact:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/autoreact:example")
+                        guild.translate("admin/autoreact:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example)
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -329,7 +329,7 @@ class Autoreact extends Command {
 
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/autoreact:list")
+                .setDescription(guild.translate("admin/autoreact:list")
                     .replace('{emotes.success}', this.client.emotes.success)
                     .replace('{emotes.arrow}', this.client.emotes.arrow)
                     .replace('{list}', formattedReactChannels.join(`\n${this.client.emotes.arrow} `)))
@@ -343,10 +343,10 @@ class Autoreact extends Command {
             if(!args[1]) {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autoreact:usage")
+                    .setDescription(guild.translate("admin/autoreact:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/autoreact:example")
+                        guild.translate("admin/autoreact:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example)
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -360,7 +360,7 @@ class Autoreact extends Command {
                 await data.guild.save();
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autoreact:resetted")
+                    .setDescription(guild.translate("admin/autoreact:resetted")
                         .replace('{emotes.success}', this.client.emotes.success))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
@@ -373,10 +373,10 @@ class Autoreact extends Command {
             if(!channel){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/autoreact:usage")
+                    .setDescription(guild.translate("admin/autoreact:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/autoreact:example")
+                        guild.translate("admin/autoreact:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example)
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -396,7 +396,7 @@ class Autoreact extends Command {
                     await data.guild.save();
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autoreact:resettedIn")
+                        .setDescription(guild.translate("admin/autoreact:resettedIn")
                             .replace('{emotes.success}', this.client.emotes.success)
                             .replace('{channel}', channel))
                         .setColor(this.client.embedColor)
@@ -406,7 +406,7 @@ class Autoreact extends Command {
                 }else{
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/autoreact:noAutoreact")
+                        .setDescription(guild.translate("admin/autoreact:noAutoreact")
                             .replace('{emotes.error}', this.client.emotes.error)
                             .replace('{channel}', channel))
                         .setColor(this.client.embedColor)

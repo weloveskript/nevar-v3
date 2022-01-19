@@ -2,26 +2,26 @@ const Command = require('../../core/command');
 const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 const formatter = new Intl.NumberFormat('de-DE');
-const moment = require('moment');
+const moment = require('moment-timezone');
+const { SlashCommandBuilder } = require("@discordjs/builders");
 
 class Covid extends Command {
     constructor(client) {
         super(client, {
             name: "covid",
-            description: "misc/covid:description",
+            description: "misc/covid:general:description",
             dirname: __dirname,
             aliases: ["corona", "covid19"],
             cooldown: 5000,
             slashCommand: {
                 addCommand: true,
-                options: [
-                    {
-                        name: "misc/covid:slashOption1",
-                        description: "misc/covid:slashOption1Desc",
-                        type: "STRING",
-                        required: false,
-                    }
-                ]
+                data:
+                    new SlashCommandBuilder()
+                        .addStringOption(option =>
+                            option.setName('misc/covid:slash:1:name')
+                                .setDescription('misc/covid:slash:1:description')
+                                .setRequired(false)
+                        )
             }
         });
     }
@@ -33,7 +33,6 @@ class Covid extends Command {
 
         const guild = interaction?.guild || message.guild;
         const countryNames = new Intl.DisplayNames([data.guild.language.split('-')[0]], {type: 'region'});
-
 
         // get covid data
         let covidUrl = 'https://disease.sh/v3/covid-19/all';
@@ -47,15 +46,12 @@ class Covid extends Command {
         if(vaccineJson && args[0] && !vaccineJson?.message) vaccineJson = vaccineJson.timeline[0];
         if(vaccineJson && !args[0]) vaccineJson = vaccineJson[0];
 
-
         if(covidJson && vaccineJson && !vaccineJson?.message && !covidJson?.message) {
 
-
-            // get native name
-            let country = guild.translate('misc/covid:statsWorldwide');
-            if(args[0]) country = guild.translate('misc/covid:statsIn')
+            // get country name in the guild's language
+            let country = guild.translate('misc/covid:main:stats:worldwide');
+            if(args[0]) country = guild.translate('misc/covid:main:stats:in')
                 .replace('{country}', countryNames.of(covidJson.countryInfo.iso2));
-
 
             const vaccines = {
                 total: formatter.format(vaccineJson.total),
@@ -84,7 +80,6 @@ class Covid extends Command {
                 lastUpdated: moment.tz(covidJson.updated, guild.translate('language:timezone')).format(guild.translate('language:dateformat'))
             };
 
-
             // build embed
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
@@ -92,36 +87,36 @@ class Covid extends Command {
                 .setThumbnail(general.countryFlag)
 
                 // disclaimer
-                .setDescription(guild.translate("misc/covid:disclaimer")
+                .setDescription(guild.translate("misc/covid:main:disclaimer")
                     .replace('{emotes.warn}', this.client.emotes.warn))
                 // cases
-                .addField('🦠 ' + guild.translate("misc/covid:infections"),
-                    '```' + cases.total + ' ' + guild.translate("misc/covid:infectionsPercent").replace('{percent}', cases.totalPercent) + '```')
+                .addField('🦠 ' + guild.translate("misc/covid:infections:total"),
+                    '```' + cases.total + ' ' + guild.translate("misc/covid:main:percentPopulation").replace('{percent}', cases.totalPercent) + '```')
                 // active cases
-                .addField('🦠 ' + guild.translate("misc/covid:activeInfections"),
-                    '```' + cases.activeCases + ' ' + guild.translate("misc/covid:activeInfectionsPercent").replace('{percent}', cases.activeCasesPercent) + '```')
+                .addField('🦠 ' + guild.translate("misc/covid:infections:active"),
+                    '```' + cases.activeCases + ' ' + guild.translate("misc/covid:main:percentInfections").replace('{percent}', cases.activeCasesPercent) + '```')
                 // recoveries
-                .addField('🩹 ' + guild.translate("misc/covid:recoveries"),
-                    '```' + cases.recovered + ' ' + guild.translate("misc/covid:recoveriesPercent").replace('{percent}', cases.recoveredPercent) + '```')
+                .addField('🩹 ' + guild.translate("misc/covid:recoveries:total"),
+                    '```' + cases.recovered + ' ' + guild.translate("misc/covid:main:percentInfections").replace('{percent}', cases.recoveredPercent) + '```')
                 // deaths
-                .addField('🕊️ ' + guild.translate("misc/covid:deaths"),
-                    '```' + cases.deaths + ' ' + guild.translate("misc/covid:deathsPercent").replace('{percent}', cases.deathsPercent) + '```')
+                .addField('🕊️ ' + guild.translate("misc/covid:deaths:total"),
+                    '```' + cases.deaths + ' ' + guild.translate("misc/covid:main:percentInfections").replace('{percent}', cases.deathsPercent) + '```')
                 // today cases
-                .addField('🦠 ' + guild.translate("misc/covid:infectionsToday"), '```' + cases.today + '```', true)
+                .addField('🦠 ' + guild.translate("misc/covid:infections:today"), '```' + cases.today + '```', true)
                 // today recoveries
-                .addField('🩹 ' + guild.translate("misc/covid:recoveredToday"), '```' + cases.todayRecovered + '```', true)
+                .addField('🩹 ' + guild.translate("misc/covid:recoveries:today"), '```' + cases.todayRecovered + '```', true)
                 // today deaths
-                .addField('🕊️ ' + guild.translate("misc/covid:deathsToday"), '```' + cases.todayDeaths + '```', true)
+                .addField('🕊️ ' + guild.translate("misc/covid:deaths:today"), '```' + cases.todayDeaths + '```', true)
                 // cases per million
-                .addField('📊 ' + guild.translate("misc/covid:infectionsPerMillion"), '```' + cases.casesPerMillion + '```', true)
+                .addField('📊 ' + guild.translate("misc/covid:infections:perMillion"), '```' + cases.casesPerMillion + '```', true)
                 // deaths per million
-                .addField('📊 ' + guild.translate("misc/covid:deathsPerMillion"), '```' + cases.deathsPerMillion + '```', true)
+                .addField('📊 ' + guild.translate("misc/covid:deaths:perMillion"), '```' + cases.deathsPerMillion + '```', true)
                 // vaccines total
-                .addField('💉 ' + guild.translate("misc/covid:vaccines"), '```' + vaccines.total + '```')
+                .addField('💉 ' + guild.translate("misc/covid:vaccines:total"), '```' + vaccines.total + '```')
                 // vaccines today
-                .addField('💉 ' + guild.translate("misc/covid:vaccinesToday"), '```' + vaccines.today + '```')
+                .addField('💉 ' + guild.translate("misc/covid:vaccines:today"), '```' + vaccines.today + '```')
                 .setColor(this.client.embedColor)
-                .setFooter(guild.translate("misc/covid:stayHealthy")
+                .setFooter(guild.translate("misc/covid:main:footer")
                     .replace('{date}', general.lastUpdated), 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Twemoji_1f637.svg/1024px-Twemoji_1f637.svg.png');
 
             // send embed
@@ -131,15 +126,15 @@ class Covid extends Command {
             //country does not exist or any other error
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("misc/covid:usage")
+                .setDescription(guild.translate("misc/covid:general:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("misc/covid:example")
+                    guild.translate("misc/covid:general:example")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-            if(message) return message.send(embed, false);
+            if(message) return message.send(embed);
             if(interaction) return interaction.editReply({embeds:[embed]});
         }
     }

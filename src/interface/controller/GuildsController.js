@@ -148,7 +148,7 @@ class GuildsController extends Controller {
 		if(await this.isPermitted(guildId, this.req.session['discord_id'])){
 			const member = await guild.members.fetch(userId);
 			const kicker = await guild.members.fetch(this.req.session['discord_id']);
-			await member.kick({ reason: 'Kicked by ' + kicker.user.username + ' on the web dashboard'});
+			await member.kick('Kicked by ' + kicker.user.username + ' via web dashboard');
 			this.res.redirect(this.baseUrl + "guilds/" + guildId + "/members");
 		}
 	}
@@ -172,9 +172,14 @@ class GuildsController extends Controller {
 		const guild = await client.guilds.fetch(guildId, false, true);
 		const members = []
 		for(let member of (await guild.members.fetch()).values()) {
+			console.log(member.kickable)
 			let memberData = member.toJSON();
 			memberData["iconURL"] = member.user.avatarURL();
 			memberData["tag"] = member.user.tag;
+			memberData["id"] = member.user.id;
+			memberData["name"] = member.user.username;
+			memberData["owner"] = guild.ownerId === member.user.id;
+			memberData["kickable"] = member.kickable;
 			members.push(memberData);
 		}
 		let perms = await this.isPermitted(guildId, this.req.session['discord_id']);

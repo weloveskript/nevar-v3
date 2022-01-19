@@ -4,50 +4,34 @@
     "nativeName": "Deutsch",
     "emoji": "\uD83C\uDDE9\uD83C\uDDEA",
     "default": true,
-    "aliases": [
-      "deutsch",
-      "German",
-      "de",
-      "de-de",
-      "de_de",
-      "de_DE"
-    ]
+    "active": true
   },
   {
     "name": "en-US",
     "nativeName": "English",
     "emoji": "\uD83C\uDDEC\uD83C\uDDE7",
     "default": false,
-    "aliases": [
-      "english",
-      "en",
-      "en-us",
-      "en_us",
-      "en_US"
-    ]
+    "active": false
   },
   {
     "name": "es-ES",
     "nativeName": "Español",
     "emoji": "\uD83C\uDDEA\uD83C\uDDF8",
     "default": false,
-    "aliases": [
-      "spanish",
-      "es",
-      "es-es"
-    ]
+    "active": false
   },
   {
-    "name": "it-IT",
-    "nativeName": "Italiano",
-    "emoji": "\uD83C\uDDEE\uD83C\uDDF9",
+    "name": "fr-FR",
+    "nativeName": "Français",
+    "emoji": "\uD83C\uDDEB\uD83C\uDDF7",
     "default": false,
-    "aliases": [
-      "italy",
-      "italienisch",
-      "italiano",
-      "it",
-      "it_it"
-    ]
+    "active": false
+  },
+  {
+    "name": "ru-RU",
+    "nativeName": "Pусский",
+    "emoji": "\uD83C\uDDF7\uD83C\uDDFA",
+    "default": false,
+    "active": false
   }
 ]

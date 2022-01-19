@@ -9,6 +9,6 @@
  "activated": "Aktiviert",
  "deactivated": "Deaktiviert",
  "notFound": "Nicht gefunden",
- "error": "{emotes.error} Ein Fehler ist aufgetreten",
- "set": "\uD83C\uDDE9\uD83C\uDDEA Die Sprache wurde auf Deutsch gestellt"
+ "error": "{emotes.error} Ein unerwarteter Fehler ist aufgetreten. Bitte melde dich auf unserem [Supportserver]({support})",
+ "set": "\uD83C\uDDE9\uD83C\uDDEA Meine Sprache wurde auf Deutsch gesetzt. Bitte beachte: bis die Sprache sich bei den Slash-Commands aktualisiert, kann es einen Moment dauern"
 }

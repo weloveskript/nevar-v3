@@ -1,0 +1,20 @@
+{
+  "general": {
+    "description": "Aktiviert alle Premium-Funktionen \uD83D\uDD11",
+    "usage": "{emotes.use} Syntax: ```{prefix}usekey <Key>```",
+    "example": "{emotes.example} Beispiel: ```{prefix}usekey SpecialKey2022```"
+  },
+
+  "slash": {
+    "1": {
+      "name": "key",
+      "description": "Gib hier deinen Premiumkey an"
+    }
+  },
+
+  "text": {
+    "invalid": "{emotes.error} Fehler beim Einlösen - an folgenden Gründen kann das liegen:\n```|- der Key existiert nicht\n|- der Key wurde bereits zu oft benutzt\n|- der Key ist abgelaufen```\n{emotes.arrow} Wenn du alle genannten Gründe ausschließen kannst, probiere es noch einmal\n{emotes.arrow} Wenn du denkst der Fehler liegt bei uns, melde dich auf unserem [Supportserver]({support})",
+    "redeemed": "{emotes.success} Der Premiumkey wurde erfolgreich eingelöst, ihr habt nun Zugriff auf alle Premiumfunktionen",
+    "alreadyActivated": "{emotes.error} Ihr habt bereits Zugriff auf alle Premiumfunktionen"
+  }
+}

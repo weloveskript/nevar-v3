@@ -1,0 +1,51 @@
+{
+  "general": {
+    "description": "Stellt die Willkommens- und Verabschiedungsnachrichten ein \uD83D\uDC4B",
+    "usage": "{emotes.use} Syntax: ```{prefix}systemmessages <welcome/goodbye>```",
+    "example": "{emotes.example} Beispiel: ```{prefix}systemmessages welcome```"
+  },
+
+  "slash": {
+    "1": {
+      "name": "typ",
+      "description": "Was möchtest du bearbeiten? (welcome/goodbye)",
+      "choices": {
+        "1": {
+          "name": "welcome"
+        },
+        "2": {
+          "name": "goodbye"
+        }
+      }
+    }
+  },
+
+  "main": {
+    "chooseAction": "{emotes.arrow} Wähle eine Aktion",
+    "actions": {
+      "1": "Bearbeiten",
+      "2": "Testen",
+      "3": "Aktivieren",
+      "4": "Deaktivieren"
+    },
+    "invalidChannel": "{emotes.error} Du musst einen gültigen Channel angeben. Die Aktion wurde abgebrochen",
+    "executed": "{emotes.success} Der Test wird durchgeführt"
+  },
+
+  "collectors": {
+    "message": "{emotes.arrow} Sende die Nachricht - folgende Variablen stehen dir zu Verfügung:\n```|- %%user - Erwähnt das Mitglied\n|- %%username - Gibt den Usernamen des Mitgliedes zurück\n|- %%usertag - Nennt den Usertag des Mitgliedes\n|- %%membercount - Zeigt die neue Mitgliedszahl des Discords\n|- %%servername - Gibt den Namen des Discords zurück```\n\n{emotes.arrow} Hier sind 2 Beispielnachrichten:\n```|- Herzlich Willkommen auf %%servername, %%user!\n|- Mach's gut, %%usertag!```",
+    "channel": "{emotes.arrow} Sende den Channel"
+  },
+
+  "goodbye": {
+    "success": "{emotes.success} Die Goodbye Nachricht wurde erfolgreich eingestellt",
+    "enabled": "{emotes.success} Die Goodbye Nachricht wurde erfolgreich aktiviert",
+    "disabled": "{emotes.success} Die Goodbye Nachricht wurde erfolgreich deaktiviert"
+  },
+
+  "welcome": {
+    "success": "{emotes.success} Die Welcome Nachricht wurde erfolgreich eingestellt",
+    "enabled": "{emotes.success} Die Welcome Nachricht wurde erfolgreich aktiviert",
+    "disabled": "{emotes.success} Die Welcome Nachricht wurde erfolgreich deaktiviert"
+  }
+}

@@ -6,7 +6,7 @@ class Backup extends Command {
     constructor(client) {
         super(client, {
             name: "backup",
-            description: "administration/backup:description",
+            description: "admin/backup:description",
             dirname: __dirname,
             memberPermissions: ['MANAGE_GUILD'],
             botPermissions: ['ADMINISTRATOR'],
@@ -16,29 +16,29 @@ class Backup extends Command {
                 addCommand: true,
                 options: [
                     {
-                        name: "administration/backup:slashOption1",
-                        description: "administration/backup:slashOption1Desc",
+                        name: "admin/backup:slashOption1",
+                        description: "admin/backup:slashOption1Desc",
                         type: "STRING",
                         required: true,
                         choices: [
                             {
-                                name: "administration/backup:slashOption1Choice1",
+                                name: "admin/backup:slashOption1Choice1",
                                 value: "create"
                             },
                             {
-                                name: "administration/backup:slashOption1Choice2",
+                                name: "admin/backup:slashOption1Choice2",
                                 value: "load"
 
                             },
                             {
-                                name: "administration/backup:slashOption1Choice3",
+                                name: "admin/backup:slashOption1Choice3",
                                 value: "info"
                             },
                         ]
                     },
                     {
-                        name: "administration/backup:slashOption2",
-                        description: "administration/backup:slashOption2Desc",
+                        name: "admin/backup:slashOption2",
+                        description: "admin/backup:slashOption2Desc",
                         type: "STRING",
                         required: false,
                     }
@@ -52,10 +52,10 @@ class Backup extends Command {
         if(!args[0]){
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/backup:usage")
+                .setDescription(guild.translate("admin/backup:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("administration/backup:example")
+                    guild.translate("admin/backup:example")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example)
                         .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -84,14 +84,14 @@ class Backup extends Command {
             await backups.create(guild, options).then(async (backup) => {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/backup:created")
+                    .setDescription(guild.translate("admin/backup:created")
                         .replace('{emotes.success}', this.client.emotes.success)
                         .replace('{id}', backup.id))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
                 let embed2 = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/backup:createdGuild")
+                    .setDescription(guild.translate("admin/backup:createdGuild")
                         .replace('{emotes.success}', this.client.emotes.success))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
@@ -101,7 +101,7 @@ class Backup extends Command {
                     backups.remove(backup.id).catch(() => {})
                     let embed3 = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/backup:cantDm")
+                        .setDescription(guild.translate("admin/backup:cantDm")
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
@@ -120,10 +120,10 @@ class Backup extends Command {
             if(!args[1]){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/backup:usage")
+                    .setDescription(guild.translate("admin/backup:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/backup:example")
+                        guild.translate("admin/backup:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example)
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -136,7 +136,7 @@ class Backup extends Command {
             backups.fetch(args[1]).then(async () => {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/backup:loadBackup")
+                    .setDescription(guild.translate("admin/backup:loadBackup")
                             .replace('{emotes.loading}', this.client.emotes.loading))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
@@ -169,7 +169,7 @@ class Backup extends Command {
                     if(clicked.customId === 'backup_'+id+'_yes'){
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("administration/backup:loadNow")
+                            .setDescription(guild.translate("admin/backup:loadNow")
                                 .replace('{emotes.loading}', this.client.emotes.loading))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
@@ -198,7 +198,7 @@ class Backup extends Command {
                     }else if(clicked.customId === 'backup_'+id+'_no'){
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("administration/backup:cancelled")
+                            .setDescription(guild.translate("admin/backup:cancelled")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
@@ -223,7 +223,7 @@ class Backup extends Command {
                 }else{
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/backup:cancelled")
+                        .setDescription(guild.translate("admin/backup:cancelled")
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
@@ -253,7 +253,7 @@ class Backup extends Command {
             }).catch(() => {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/backup:notFound")
+                    .setDescription(guild.translate("admin/backup:notFound")
                         .replace('{emotes.error}', this.client.emotes.error))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
@@ -269,10 +269,10 @@ class Backup extends Command {
             if(!args[1]){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/backup:usage")
+                    .setDescription(guild.translate("admin/backup:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/backup:example")
+                        guild.translate("admin/backup:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example)
                             .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
@@ -287,7 +287,7 @@ class Backup extends Command {
 
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/backup:info")
+                    .setDescription(guild.translate("admin/backup:info")
                         .replace('{id}', args[1])
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
@@ -306,7 +306,7 @@ class Backup extends Command {
                 .catch(() => {
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/backup:notFound")
+                        .setDescription(guild.translate("admin/backup:notFound")
                                 .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);

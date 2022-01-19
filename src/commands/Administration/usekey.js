@@ -1,41 +1,41 @@
 const Command = require('../../core/command');
 const { MessageEmbed } = require('discord.js');
 const fs = require('fs');
+const {SlashCommandBuilder} = require("@discordjs/builders");
 
 class Usekey extends Command {
 
     constructor(client) {
         super(client, {
             name: "usekey",
-            description: "administration/usekey:description",
+            description: "admin/usekey:general:description",
             dirname: __dirname,
-            aliases: ["redeemcode", "redeem-code", "redeen", "redeemkey", "redeem-key"],
+            aliases: ["redeemcode", "redeem-code", "redeem", "redeemkey", "redeem-key"],
             memberPermissions: ["MANAGE_GUILD"],
             cooldown: 10000,
             slashCommand: {
                 addCommand: true,
-                options: [
-                    {
-                        name: "administration/usekey:slashOption1",
-                        description: "administration/usekey:slashOption1Desc",
-                        type: "STRING",
-                        required: true,
-                    },
-                ]
+                data:
+                    new SlashCommandBuilder()
+                        .addStringOption(option =>
+                            option.setName('admin/usekey:slash:1:name')
+                                .setDescription('admin/usekey:slash:1:description')
+                                .setRequired(true)
+                        )
             }
         });
     }
 
     async run(interaction, message, args, data){
-        let guild = message?.guild || interaction?.guild;
+        const guild = message?.guild || interaction?.guild;
 
         if(!args[0]){
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/usekey:usage")
+                .setDescription(guild.translate("admin/usekey:general:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("administration/usekey:example")
+                    guild.translate("admin/usekey:general:example")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
@@ -70,7 +70,7 @@ class Usekey extends Command {
                 fs.writeFileSync(path, newJson);
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/usekey:invalidKey")
+                    .setDescription(guild.translate("admin/usekey:text:invalid")
                             .replace('{emotes.error}', this.client.emotes.error)
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
@@ -93,7 +93,7 @@ class Usekey extends Command {
                     }
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/usekey:redeemed")
+                        .setDescription(guild.translate("admin/usekey:text:redeemed")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
@@ -102,7 +102,7 @@ class Usekey extends Command {
                 }else{
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/usekey:alreadyPremium")
+                        .setDescription(guild.translate("admin/usekey:text:alreadyActivated")
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
@@ -113,7 +113,7 @@ class Usekey extends Command {
         }else{
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/usekey:invalidKey")
+                .setDescription(guild.translate("admin/usekey:text:invalid")
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{emotes.arrow}', this.client.emotes.arrow)
                     .replace('{emotes.arrow}', this.client.emotes.arrow)
@@ -123,7 +123,6 @@ class Usekey extends Command {
             if(message) return message.send(embed, false);
             if(interaction) return interaction.send(embed, true);
         }
-
     }
 }
 

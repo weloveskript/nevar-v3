@@ -26,7 +26,7 @@ module.exports = class {
                 }
                 if(state){
                     let member = await messageReaction.message.guild.members.fetch(user.id);
-                    member.roles.add(roleId).catch(() => {});
+                    member.roles.add(roleId, 'REACTION ROLE ADDED | MESSAGE ID: ' + messageReaction.message.id + ' | EMOJI ID: ' + messageReaction.emoji.id).catch(() => {});
                 }
             }
         }

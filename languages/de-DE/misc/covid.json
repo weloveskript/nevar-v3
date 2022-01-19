@@ -1,28 +1,57 @@
 {
-  "description": "Zeigt aktuelle Corona-Zahlen für Deutschland und die Welt an.",
-  "usage": "{emotes.use} Syntax: ```{prefix}covid [Land]```",
-  "example": "{emotes.example} Beispiel: ```{prefix}covid Germany```",
+  "general": {
+    "description": "Zeigt aktuelle Zahlen zum Coronavirus (COVID-19) an • bleibt gesund ❤️",
+    "usage": "{emotes.use} Syntax: ```{prefix}covid [Land]```",
+    "example": "{emotes.example} Beispiel: ```{prefix}covid Germany```"
+  },
 
-  "slashOption1": "land",
-  "slashOption1Desc": "Gib hier das gewünschte Land an",
+  "slash": {
+    "1": {
+      "name": "land",
+      "description": "Zu welchem Land möchtest du die Zahlen sehen? (optional)",
+      "choices": {
+        "1": {
+          "name": "Test Choice Name"
+        },
+        "2": {
+          "name": "Test Choice Name 2"
+        }
+      }
+    }
+  },
 
-  "disclaimer": "{emotes.warn} Alle hier genutzten Daten stammen von der [Disease COVID-19 API](https://disease.sh/docs/) - wir können nicht für die Richtigkeit der Inhalte garantieren\n",
-  "statsWorldwide": "Weltweite COVID-19 Statistiken",
-  "statsIn": "COVID-19 Statistiken in {country}",
-  "infections": "Infektionen insgesamt",
-  "infectionsPercent": "({percent}% der Bevölkerung)",
-  "activeInfections": "Aktuell Erkrankte",
-  "activeInfectionsPercent": "({percent}% der Infektionen)",
-  "recoveries": "Genesungen insgesamt",
-  "recoveriesPercent": "({percent}% der Infektionen)",
-  "deaths": "Todesfälle insgesamt",
-  "deathsPercent": "({percent}% der Infektionen)",
-  "infectionsToday": "Infektionen heute",
-  "infectionsPerMillion": "Infektionen pro Million",
-  "recoveredToday": "Genesungen heute",
-  "deathsToday": "Todesfälle heute",
-  "deathsPerMillion": "Todesfälle pro Million",
-  "vaccines": "Impfdosen insgesamt verabreicht",
-  "vaccinesToday": "Impfdosen heute verabreicht",
-  "stayHealthy": "Bleibt gesund • Zuletzt geupdatet: {date}"
+
+  "main": {
+    "disclaimer": "{emotes.warn} Alle hier genutzten Daten stammen von der [Disease COVID-19 API](https://disease.sh/docs/) - wir können nicht für die Richtigkeit der Inhalte garantieren",
+    "percentPopulation": "({percent}% der Bevölkerung)",
+    "percentInfections": "({percent}% der Infektionen)",
+    "footer": "Bleibt gesund • Zuletzt geupdatet: {date}",
+    "stats": {
+      "worldwide": "Weltweite COVID-19 Statistiken",
+      "in": "COVID-19 Statistiken in {country}"
+    }
+  },
+
+  "infections": {
+    "total": "Infektionen insgesamt",
+    "active": "Aktuell Erkrankte",
+    "today": "Infektionen heute",
+    "perMillion": "Infektionen pro Million"
+  },
+
+  "recoveries": {
+    "total": "Genesungen insgesamt",
+    "today": "Genesungen heute"
+  },
+
+  "deaths": {
+    "total": "Todesfälle insgesamt",
+    "today": "Todesfälle heute",
+    "perMillion": "Todesfälle pro Million"
+  },
+
+  "vaccines": {
+    "total": "Impfdosen insgesamt verabreicht",
+    "today": "Impfdosen heute verabreicht"
+  }
 }

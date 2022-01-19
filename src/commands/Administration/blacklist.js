@@ -6,7 +6,7 @@ class Blacklist extends Command {
     constructor(client) {
         super(client, {
             name: "blacklist",
-            description: "administration/blacklist:description",
+            description: "admin/blacklist:description",
             dirname: __dirname,
             aliases: ["bl"],
             memberPermissions: ["MANAGE_GUILD"],
@@ -16,33 +16,33 @@ class Blacklist extends Command {
                 addCommand: true,
                 options: [
                     {
-                        name: "administration/blacklist:slashOption1",
-                        description: "administration/blacklist:slashOption1Desc",
+                        name: "admin/blacklist:slashOption1",
+                        description: "admin/blacklist:slashOption1Desc",
                         type: "STRING",
                         required: true,
                         choices: [
                             {
-                                name: "administration/blacklist:slashOption1Choice1",
+                                name: "admin/blacklist:slashOption1Choice1",
                                 value: "add"
                             },
                             {
-                                name: "administration/blacklist:slashOption1Choice2",
+                                name: "admin/blacklist:slashOption1Choice2",
                                 value: "remove"
 
                             },
                             {
-                                name: "administration/blacklist:slashOption1Choice3",
+                                name: "admin/blacklist:slashOption1Choice3",
                                 value: "reset"
                             },
                             {
-                                name: "administration/blacklist:slashOption1Choice4",
+                                name: "admin/blacklist:slashOption1Choice4",
                                 value: "list"
                             }
                         ]
                     },
                     {
-                        name: "administration/blacklist:slashOption2",
-                        description: "administration/blacklist:slashOption2Desc",
+                        name: "admin/blacklist:slashOption2",
+                        description: "admin/blacklist:slashOption2Desc",
                         type: "STRING",
                         required: false
                     }
@@ -66,10 +66,10 @@ class Blacklist extends Command {
         if(!args[0]){
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/blacklist:usage")
+                .setDescription(guild.translate("admin/blacklist:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("administration/blacklist:example")
+                    guild.translate("admin/blacklist:example")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
@@ -81,10 +81,10 @@ class Blacklist extends Command {
             if(!args[1]){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/blacklist:usage")
+                    .setDescription(guild.translate("admin/blacklist:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/blacklist:example")
+                        guild.translate("admin/blacklist:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example))
                     .setColor(this.client.embedColor)
@@ -100,7 +100,7 @@ class Blacklist extends Command {
                 await data.guild.save();
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/blacklist:added")
+                    .setDescription(guild.translate("admin/blacklist:added")
                         .replace('{word}', args[1])
                         .replace('{emotes.success}', this.client.emotes.success))
                     .setColor(this.client.embedColor)
@@ -114,10 +114,10 @@ class Blacklist extends Command {
             if(!args[1]){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("administration/blacklist:usage")
+                    .setDescription(guild.translate("admin/blacklist:usage")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("administration/blacklist:example")
+                        guild.translate("admin/blacklist:example")
                             .replace('{prefix}', data.guild.prefix)
                             .replace('{emotes.example}', this.client.emotes.example))
                     .setColor(this.client.embedColor)
@@ -131,7 +131,7 @@ class Blacklist extends Command {
                     await data.guild.save();
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/blacklist:removed")
+                        .setDescription(guild.translate("admin/blacklist:removed")
                             .replace('{word}', args[1])
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
@@ -141,7 +141,7 @@ class Blacklist extends Command {
                 }else{
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("administration/blacklist:isNotAdded")
+                        .setDescription(guild.translate("admin/blacklist:isNotAdded")
                             .replace('{word}', args[1])
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
@@ -159,7 +159,7 @@ class Blacklist extends Command {
             await data.guild.save();
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/blacklist:resetted")
+                .setDescription(guild.translate("admin/blacklist:resetted")
                     .replace('{emotes.success}', this.client.emotes.success))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
@@ -169,11 +169,11 @@ class Blacklist extends Command {
         if(args[0].toLowerCase() === 'list'){
             let filter = data.guild.plugins.blacklist.list.join(`\n${this.client.emotes.arrow} `);
 
-            if(filter.length === 0) filter = [guild.translate("administration/blacklist:noWords")];
+            if(filter.length === 0) filter = [guild.translate("admin/blacklist:noWords")];
 
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("administration/blacklist:list")
+                .setDescription(guild.translate("admin/blacklist:list")
                     .replace('{emotes.success}', this.client.emotes.success)
                     .replace('{list}', this.client.emotes.arrow + ' ' + filter))
                 .setColor(this.client.embedColor)

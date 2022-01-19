@@ -1,4 +1,9 @@
 {
+  "general": {
+    "description": "Stellt einen Join2Create Channel ein",
+    "usage": "{emotes.use} Syntax: ```{prefix}join2create```",
+    "example": "{emotes.example} Beispiel: ```{prefix}join2create```"
+  },
   "description": "Setze einen Join2Create Channel",
   "usage": "{emotes.use} Syntax: ```{prefix}join2create```",
   "example": "{emotes.example} Beispiel: ```{prefix}join2create```",

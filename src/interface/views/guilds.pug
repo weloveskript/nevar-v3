@@ -18,6 +18,8 @@ block content
 						.guild-text=guild.name
 						if guild.owner
 							span.crown 👑
+	h1 Unsupported guilds (#{unsupportedGuilds.length})
+		.guilds-container
 			each guild in unsupportedGuilds
 				div
 					- var iconUrl = ""
@@ -26,9 +28,9 @@ block content
 					else
 						- iconUrl = "https://cdn.discordapp.com/icons/" + guild.id + "/" + guild.icon + ""
 
-					.guild-container.unsupported-guild(onclick="location.href = '" +
-						"https://discord.com/oauth2/authorize?client_id="+client.user.id+"&permissions=1899359446&scope=bot%20applications.commands&guild_id="+guild.id+"'")
+					.guild-container.unsupported-guild(onclick="popupWindow('"+client.config.webdashboard.base_url+"', 'https://discord.com/oauth2/authorize?client_id="+client.user.id+"&redirect_uri="+encodeURIComponent(client.config.webdashboard.authorized_url)+"&response_type=code&permissions=1899359446&scope=bot%20applications.commands&guild_id="+guild.id+"&disable_guild_select=true', 'name', window, 500, 750)")
 						img(height=192 width=192 src=iconUrl)
+						.guild-text=guild.name
 						if guild.owner
 							span.crown 👑
 block scripts
@@ -37,3 +39,24 @@ block scripts
 			content: "This is your guild",
 			placement: "bottom"
 		});
+		tippy('.unsupported-guild', {
+			content: "This guild is not supported. Click to invite",
+			placement: "bottom"
+		});
+		function popupWindow(baseUrl, url, windowName, win, w, h) {
+			const y = win.top.outerHeight / 2 + win.top.screenY - (h / 2);
+			const x = win.top.outerWidth / 2 + win.top.screenX - (w / 2);
+			let uri = new URL(url);
+			let window = win.open(url, windowName, `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${y}, left=${x}`);
+			let timer = setInterval(function () {
+				if (window.closed) {
+					clearInterval(timer);
+					let callbackUri = new URL(window.location.href);
+					if(callbackUri.searchParams.get('code') && callbackUri.searchParams.get('permissions')){
+						win.location.replace(baseUrl + 'guilds/' + uri.searchParams.get('guild_id'));
+					}else{
+						console.log('NOT AUTHORIZED')
+					}
+				}
+			}, 20);
+		}
