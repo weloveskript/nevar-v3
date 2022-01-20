@@ -53,7 +53,6 @@ module.exports = mongoose.model("Guild", new Schema({
                 kick: false,
                 ban: false
             },
-            disabledCommands: [],
             autoReactChannels: [],
             autoDeleteChannels: [],
             reactionRoles: [],
