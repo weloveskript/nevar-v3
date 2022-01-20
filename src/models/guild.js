@@ -26,9 +26,10 @@ module.exports = mongoose.model("Guild", new Schema({
                 doubleXpRoles: []
             },
             joinToCreate: {
-                voice: false,
-                userLimit: false,
-                bitrate: false,
+                enabled: false,
+                voice: null,
+                userLimit: null,
+                bitrate: null,
                 tempChannels: []
             },
             blacklist: {
