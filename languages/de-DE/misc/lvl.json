@@ -1,0 +1,19 @@
+{
+  "general": {
+    "description": "Zeigt dein aktuelles Level als übersichtliches Bild \uD83C\uDD99",
+    "usage": "{emotes.use} Syntax: ```vb\n{prefix}level [Mitglied]```",
+    "example": "{emotes.example} Beispiel: ```vb\n{prefix}level```"
+  },
+
+  "slash": {
+    "1": {
+      "name": "mitglied",
+      "description": "Von welchem Mitglied möchtest du das Level sehen?"
+    }
+  },
+
+  "level": {
+    "rank": "Rang",
+    "level": "Level"
+  }
+}
