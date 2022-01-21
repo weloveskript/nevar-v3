@@ -63,7 +63,6 @@ class Level extends Command {
         if(args[0]) member = await this.client.resolveMember(args[0], guild);
         const dbUser = await this.client.findOrCreateUser({id:member.user.id});
 
-        console.log(dbUser)
         await Levels.createUser(member.user.id, guild.id, true);
 
         const user = {

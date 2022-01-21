@@ -1,322 +1,270 @@
 const Command = require('../../core/command');
 const backups = require('discord-backup');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
+const {SlashCommandBuilder} = require("@discordjs/builders");
+const moment = require("moment");
 
 class Backup extends Command {
     constructor(client) {
         super(client, {
             name: "backup",
-            description: "admin/backup:description",
+            description: "admin/ba:general:description",
             dirname: __dirname,
             memberPermissions: ['MANAGE_GUILD'],
             botPermissions: ['ADMINISTRATOR'],
-            cooldown: 10000,
+            cooldown: 20000,
             premium: true,
             slashCommand: {
                 addCommand: true,
-                options: [
-                    {
-                        name: "admin/backup:slashOption1",
-                        description: "admin/backup:slashOption1Desc",
-                        type: "STRING",
-                        required: true,
-                        choices: [
-                            {
-                                name: "admin/backup:slashOption1Choice1",
-                                value: "create"
-                            },
-                            {
-                                name: "admin/backup:slashOption1Choice2",
-                                value: "load"
-
-                            },
-                            {
-                                name: "admin/backup:slashOption1Choice3",
-                                value: "info"
-                            },
-                        ]
-                    },
-                    {
-                        name: "admin/backup:slashOption2",
-                        description: "admin/backup:slashOption2Desc",
-                        type: "STRING",
-                        required: false,
-                    }
-                ]
+                data: new SlashCommandBuilder()
             }
         });
     }
     async run(interaction, message, args, data){
-        let guild = message?.guild || interaction?.guild
-            , user = message?.author || interaction?.user;
-        if(!args[0]){
-            let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("admin/backup:usage")
-                        .replace('{prefix}', data.guild.prefix)
-                        .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("admin/backup:example")
-                        .replace('{prefix}', data.guild.prefix)
-                        .replace('{emotes.example}', this.client.emotes.example)
-                        .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
-                .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
-            if (message) return message.send(embed);
-            if (interaction) return interaction.send(embed);
-        }
-        if(args[0].toLowerCase() === 'create'){
-            let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("language:wait")
-                    .replace('{emotes.loading}', this.client.emotes.loading))
-                .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
-            let answer;
-            if (message) answer = await message.send(embed);
-            if (interaction) answer = await interaction.send(embed);
+        const guild = message?.guild || interaction?.guild;
+        const user = message?.author || interaction?.user;
+        const channel = message?.channel || interaction?.channel;
+        const member = message?.member || interaction?.member;
 
-            let options = {
-                maxMessagesPerChannel: 0,
-                jsonSave: true,
-                jsonBeautify: true,
-                saveImages: "base64"
-            }
-            await backups.create(guild, options).then(async (backup) => {
+        let embed = new MessageEmbed()
+            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setDescription(guild.translate("admin/ba:main:choose")
+                .replace('{emotes.arrow}', this.client.emotes.arrow))
+            .setColor(this.client.embedColor)
+            .setFooter(data.guild.footer);
+        let id = message?.member?.user?.id || interaction?.member?.user?.id
+        let row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setCustomId('backup_' + id + '_create')
+                    .setLabel(guild.translate("admin/ba:main:actions:1"))
+                    .setEmoji('➕')
+                    .setStyle('SUCCESS'),
+                new MessageButton()
+                    .setCustomId('backup_' + id + '_info')
+                    .setLabel(guild.translate("admin/ba:main:actions:2"))
+                    .setEmoji('💾')
+                    .setStyle('PRIMARY'),
+                new MessageButton()
+                    .setCustomId('backup_' + id + '_load')
+                    .setLabel(guild.translate("admin/ba:main:actions:3"))
+                    .setEmoji('⌛')
+                    .setStyle('PRIMARY'),
+            )
+        let sent;
+        if (message) sent = await message.send(embed, false, [row]);
+        if (interaction) sent = await interaction.send(embed, false, [row]);
+
+        const filter = i => i.customId.startsWith('backup_' + id) && i.user.id === id;
+
+        const clicked = await sent.awaitMessageComponent({filter, time: 120000}).catch(() => {})
+
+        if (clicked) {
+            if (clicked.customId === 'backup_' + id + '_create') {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/backup:created")
-                        .replace('{emotes.success}', this.client.emotes.success)
-                        .replace('{id}', backup.id))
+                    .setDescription(guild.translate("language:wait")
+                        .replace('{emotes.loading}', this.client.emotes.loading))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                let embed2 = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/backup:createdGuild")
-                        .replace('{emotes.success}', this.client.emotes.success))
-                    .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                await clicked.update({embeds: [embed], components: []});
 
-                let error;
-                await user.send({embeds:[embed]}).catch(() => {
-                    backups.remove(backup.id).catch(() => {})
-                    let embed3 = new MessageEmbed()
+                let options = {
+                    maxMessagesPerChannel: 0,
+                    jsonSave: true,
+                    jsonBeautify: true,
+                    saveImages: "base64"
+                }
+                await backups.create(guild, options).then(async (backup) => {
+                    let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/backup:cantDm")
-                            .replace('{emotes.error}', this.client.emotes.error))
+                        .setDescription(guild.translate("admin/ba:main:created:private")
+                            .replace('{emotes.success}', this.client.emotes.success)
+                            .replace('{emotes.arrow}', this.client.emotes.arrow)
+                            .replace('{id}', backup.id))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
-                    error = true;
-                    if(interaction) return answer.edit({embeds:[embed3]});
-                    if(message) return answer.edit({embeds:[embed3]});
+                    let embed2 = new MessageEmbed()
+                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setDescription(guild.translate("admin/ba:main:created:guild")
+                            .replace('{emotes.success}', this.client.emotes.success))
+                        .setColor(this.client.embedColor)
+                        .setFooter(data.guild.footer);
+
+                    await user.send({embeds: [embed]}).catch(() => {
+                        backups.remove(backup.id).catch(() => {})
+                        let embed3 = new MessageEmbed()
+                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setDescription(guild.translate("admin/ba:main:created:cannotDm")
+                                .replace('{emotes.error}', this.client.emotes.error))
+                            .setColor(this.client.embedColor)
+                            .setFooter(data.guild.footer);
+                        return sent.edit({embeds: [embed3]});
+                    });
+                    return sent.edit({embeds: [embed2]});
                 });
-                if(!error){
-                    if(interaction) answer.edit({embeds:[embed2]});
-                    if(message) answer.edit({embeds:[embed2]});
-                }
-            })
-        }
-        if(args[0].toLowerCase() === 'load'){
-
-            if(!args[1]){
-                let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/backup:usage")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("admin/backup:example")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.example}', this.client.emotes.example)
-                            .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
-                    .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
-                if (message) return  message.send(embed);
-                if (interaction) return interaction.send(embed);
             }
-
-            backups.fetch(args[1]).then(async () => {
+            if (clicked.customId === 'backup_' + id + '_info') {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/backup:loadBackup")
-                            .replace('{emotes.loading}', this.client.emotes.loading))
+                    .setDescription(guild.translate("admin/ba:main:collectors:id")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                const { MessageButton, MessageActionRow } = require('discord.js');
-                let id = message?.member?.user?.id || interaction?.member?.user?.id
-                let row = new MessageActionRow()
-                    .addComponents(
-                        new MessageButton()
-                            .setCustomId('backup_'+ id + '_yes')
-                            .setLabel(guild.translate("language:yes"))
-                            .setStyle('PRIMARY')
-                            .setEmoji('✅'),
-                        new MessageButton()
-                            .setCustomId('backup_'+ id + '_no')
-                            .setLabel(guild.translate("language:no"))
-                            .setStyle('PRIMARY')
-                            .setEmoji('❌')
+                await clicked.update({embeds: [embed], components: []});
 
-                    )
+                const collectMessage = channel.createMessageCollector(
+                    {
+                        filter: m => m.author.id === member.user.id,
+                        time: 120000
+                    }
+                );
+                collectMessage.on("collect", async (msg) => {
+                    collectMessage.stop();
+                    msg.delete().catch(() => {});
+                    backups.fetch(msg.content).then(async (backupData) => {
+                        const createdAt = moment.tz(backupData.data.createdTimestamp, guild.translate("language:timezone")).format(guild.translate("language:dateformat"))
 
-                let sent;
-                if (message) sent = await message.send(embed, false, [row]);
-                if (interaction) sent = await interaction.send(embed, false, [row]);
-
-                const filter = i => i.customId.startsWith('backup_'+ id) && i.user.id === id;
-
-                const clicked = await sent.awaitMessageComponent({ filter, time: 20000 }).catch(() => {})
-
-                if(clicked){
-                    if(clicked.customId === 'backup_'+id+'_yes'){
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("admin/backup:loadNow")
+                            .setDescription(guild.translate("admin/ba:main:info")
+                                .replace('{id}', msg.content)
+                                .replace('{emotes.arrow}', this.client.emotes.arrow)
+                                .replace('{emotes.arrow}', this.client.emotes.arrow)
+                                .replace('{emotes.arrow}', this.client.emotes.arrow)
+                                .replace('{emotes.arrow}', this.client.emotes.arrow)
+                                .replace('{guild}', backupData.data.name)
+                                .replace('{creationDate}', createdAt)
+                                .replace('{size}', backupData.size)
+                                .replace('{emotes.arrow}', this.client.emotes.arrow))
+                            .setThumbnail(backupData.data.iconURL)
+                            .setColor(this.client.embedColor)
+                            .setFooter(data.guild.footer);
+                        return sent.edit({embeds: [embed]});
+                    })
+                        .catch(() => {
+                            let embed = new MessageEmbed()
+                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setDescription(guild.translate("admin/ba:main:notFound")
+                                    .replace('{emotes.error}', this.client.emotes.error))
+                                .setColor(this.client.embedColor)
+                                .setFooter(data.guild.footer);
+                            return sent.edit({embeds: [embed]});
+                        })
+                });
+            }
+            if (clicked.customId === 'backup_' + id + '_load') {
+                let embed = new MessageEmbed()
+                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setDescription(guild.translate("admin/ba:main:collectors:id")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow))
+                    .setColor(this.client.embedColor)
+                    .setFooter(data.guild.footer);
+                await clicked.update({embeds: [embed], components: []});
+
+                const collectMessage = channel.createMessageCollector(
+                    {
+                        filter: m => m.author.id === member.user.id,
+                        time: 120000
+                    }
+                );
+                collectMessage.on("collect", async (msg) => {
+                    collectMessage.stop();
+                    msg.delete().catch(() => {});
+
+                    backups.fetch(msg.content).then(async () => {
+                        let embed = new MessageEmbed()
+                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setDescription(guild.translate("admin/ba:main:load:consent")
                                 .replace('{emotes.loading}', this.client.emotes.loading))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
+                        let id = member.user.id;
                         let row = new MessageActionRow()
                             .addComponents(
                                 new MessageButton()
                                     .setCustomId('backup_'+ id + '_yes')
                                     .setLabel(guild.translate("language:yes"))
-                                    .setStyle('PRIMARY')
-                                    .setDisabled(true)
+                                    .setStyle('SUCCESS')
                                     .setEmoji('✅'),
                                 new MessageButton()
                                     .setCustomId('backup_'+ id + '_no')
                                     .setLabel(guild.translate("language:no"))
-                                    .setStyle('PRIMARY')
-                                    .setDisabled(true)
+                                    .setStyle('DANGER')
                                     .setEmoji('❌')
 
                             )
-                        await clicked.update({ embeds: [embed], components: [row] });
-                        await this.client.wait(4000)
-                        backups.load(args[1], guild, {
-                            clearGuildBeforeRestore: true
-                        }).then(async () => {})
-                            .catch(() => {});
-                    }else if(clicked.customId === 'backup_'+id+'_no'){
+
+                        sent.edit({embeds: [embed], components: [row]});
+
+                        const filter = i => i.customId.startsWith('backup_'+ id) && i.user.id === id;
+
+                        const clicked = await sent.awaitMessageComponent({ filter, time: 20000 }).catch(() => {})
+
+                        if(clicked){
+                            if(clicked.customId === 'backup_'+id+'_yes'){
+                                let embed = new MessageEmbed()
+                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setDescription(guild.translate("language:wait")
+                                        .replace('{emotes.loading}', this.client.emotes.loading))
+                                    .setColor(this.client.embedColor)
+                                    .setFooter(data.guild.footer);
+                                let row = new MessageActionRow()
+                                    .addComponents(
+                                        new MessageButton()
+                                            .setCustomId('backup_'+ id + '_yes')
+                                            .setLabel(guild.translate("language:yes"))
+                                            .setStyle('PRIMARY')
+                                            .setDisabled(true)
+                                            .setEmoji('✅'),
+                                        new MessageButton()
+                                            .setCustomId('backup_'+ id + '_no')
+                                            .setLabel(guild.translate("language:no"))
+                                            .setStyle('PRIMARY')
+                                            .setDisabled(true)
+                                            .setEmoji('❌')
+
+                                    )
+                                await clicked.update({ embeds: [embed], components: [row] });
+                                await this.client.wait(4000)
+                                backups.load(msg.content, guild, {
+                                    clearGuildBeforeRestore: true
+                                })
+                                    .then(() => {})
+                                    .catch(() => {});
+                            }else if(clicked.customId === 'backup_'+id+'_no'){
+                                let embed = new MessageEmbed()
+                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setDescription(guild.translate("admin/ba:main:cancelled")
+                                        .replace('{emotes.error}', this.client.emotes.error))
+                                    .setColor(this.client.embedColor)
+                                    .setFooter(data.guild.footer);
+
+                                await clicked.update({ embeds: [embed], components: [] });
+                            }
+                        }else{
+                            let embed = new MessageEmbed()
+                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setDescription(guild.translate("admin/ba:main:cancelled")
+                                    .replace('{emotes.error}', this.client.emotes.error))
+                                .setColor(this.client.embedColor)
+                                .setFooter(data.guild.footer);
+
+                            await clicked.update({ embeds: [embed], components: [] });
+                        }
+                    }).catch(() => {
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("admin/backup:cancelled")
+                            .setDescription(guild.translate("admin/ba:main:notFound")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
-                        let row = new MessageActionRow()
-                            .addComponents(
-                                new MessageButton()
-                                    .setCustomId('backup_'+ id + '_yes')
-                                    .setLabel(guild.translate("language:yes"))
-                                    .setStyle('PRIMARY')
-                                    .setDisabled(true)
-                                    .setEmoji('✅'),
-                                new MessageButton()
-                                    .setCustomId('backup_'+ id + '_no')
-                                    .setLabel(guild.translate("language:no"))
-                                    .setStyle('PRIMARY')
-                                    .setDisabled(true)
-                                    .setEmoji('❌')
-
-                            )
-                        await clicked.update({ embeds: [embed], components: [row] });
-                    }
-                }else{
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/backup:cancelled")
-                            .replace('{emotes.error}', this.client.emotes.error))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    let row = new MessageActionRow()
-                        .addComponents(
-                            new MessageButton()
-                                .setCustomId('backup_'+ id + '_yes')
-                                .setLabel(guild.translate("language:yes"))
-                                .setStyle('PRIMARY')
-                                .setDisabled(true)
-                                .setEmoji('✅'),
-                            new MessageButton()
-                                .setCustomId('backup_'+ id + '_no')
-                                .setLabel(guild.translate("language:no"))
-                                .setStyle('PRIMARY')
-                                .setDisabled(true)
-                                .setEmoji('❌')
-
-                        )
-                    await sent.edit({ embeds: [embed], components: [row] });
-                }
-
-
-
-
-
-            }).catch(() => {
-                let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/backup:notFound")
-                        .replace('{emotes.error}', this.client.emotes.error))
-                    .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
-                if (message) return  message.send(embed);
-                if (interaction) return interaction.send(embed);
-            })
-
-
-
-        }
-
-        if(args[0].toLowerCase() === 'info'){
-            if(!args[1]){
-                let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/backup:usage")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("admin/backup:example")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.example}', this.client.emotes.example)
-                            .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
-                    .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
-                if (message) return  message.send(embed);
-                if (interaction) return interaction.send(embed);
+                        return sent.edit({embeds: [embed]});
+                    });
+                });
             }
-            backups.fetch(args[1]).then(async (backupData) => {
-                const moment = require('moment')
-                    , createdAt = moment.tz(backupData.data.createdTimestamp, guild.translate("language:timezone")).format(guild.translate("language:dateformat"))
-
-                let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/backup:info")
-                        .replace('{id}', args[1])
-                        .replace('{emotes.arrow}', this.client.emotes.arrow)
-                        .replace('{emotes.arrow}', this.client.emotes.arrow)
-                        .replace('{emotes.arrow}', this.client.emotes.arrow)
-                        .replace('{emotes.arrow}', this.client.emotes.arrow)
-                        .replace('{guild}', backupData.data.name)
-                        .replace('{creationDate}', createdAt)
-                        .replace('{size}', backupData.size)
-                        .replace('{emotes.loading}', this.client.emotes.loading))
-                    .setThumbnail(backupData.data.iconURL)
-                    .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
-                if (message) return  message.send(embed);
-                if (interaction) return interaction.send(embed);
-            })
-                .catch(() => {
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/backup:notFound")
-                                .replace('{emotes.error}', this.client.emotes.error))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if (message) return  message.send(embed);
-                    if (interaction) return interaction.send(embed);
-                })
         }
-
-
-    }
+    };
 }
 
 module.exports = Backup;
