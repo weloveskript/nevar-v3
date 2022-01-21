@@ -1,13 +1,15 @@
 const Command = require('../../core/command');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
 const ms = require('ms');
+const {SlashCommandBuilder} = require("@discordjs/builders");
+const Resolver = require('../../helper/resolver');
 
 class Autodelete extends Command {
 
     constructor(client) {
         super(client, {
             name: "autodelete",
-            description: "admin/autodelete:slashOption1Desc",
+            description: "admin/ad:general:description",
             dirname: __dirname,
             memberPermissions: ["MANAGE_GUILD"],
             premium: true,
@@ -15,261 +17,216 @@ class Autodelete extends Command {
             slashCommand: {
                 addCommand: true,
                 description: "admin/autodelete:description",
-                options: [
-                    {
-                        name: "admin/autodelete:slashOption1",
-                        description: "admin/autodelete:slashOption1Desc",
-                        type: "STRING",
-                        required: true,
-                        choices: [
-                            {
-                                name: "admin/autodelete:slashOption1Choice1",
-                                value: "set"
-                            },
-                            {
-                                name: "admin/autodelete:slashOption1Choice2",
-                                value: "reset"
-
-                            },
-                            {
-                                name: "admin/autodelete:slashOption1Choice3",
-                                value: "list"
-                            }
-                        ]
-
-                    },
-                    {
-                        name: "admin/autodelete:slashOption2",
-                        description: "admin/autodelete:slashOption2Desc",
-                        type: "CHANNEL",
-                        required: false,
-                    },
-                    {
-                        name: "admin/autodelete:slashOption3",
-                        description: "admin/autodelete:slashOption3Desc",
-                        type: "STRING",
-                        required: false,
-                    }
-                ]
+                data: new SlashCommandBuilder(),
             }
         });
     }
 
     async run(interaction, message, args, data) {
-        let guild = message?.guild || interaction?.guild;
-        if (!args[0]) {
-            let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("admin/autodelete:usage")
-                        .replace('{prefix}', data.guild.prefix)
-                        .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("admin/autodelete:example")
-                        .replace('{prefix}', data.guild.prefix)
-                        .replace('{channel}', message ? message?.channel?.name : interaction?.channel?.name)
-                        .replace('{emotes.example}', this.client.emotes.example))
-                .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
-            if (message) return message.send(embed);
-            if (interaction) return interaction.send(embed);
-        }
-        if (args[0].toLowerCase() === 'set') {
-            let channel = guild.channels.cache.filter(ch => ch.type === 'GUILD_TEXT').get(args[1]);
-            if (message) channel = message.mentions.channels.filter((ch) => ch.type === "GUILD_TEXT" || ch.type === "GUILD_NEWS" && ch.guild.id === message.guild.id).first();
-            if (channel) {
-                if (!args[2]) {
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/autodelete:usage")
-                                .replace('{prefix}', data.guild.prefix)
-                                .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                            guild.translate("admin/autodelete:example")
-                                .replace('{prefix}', data.guild.prefix)
-                                .replace('{channel}', message ? message?.channel?.name : interaction?.channel?.name)
-                                .replace('{emotes.example}', this.client.emotes.example))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if (message) return message.send(embed);
-                    if (interaction) return interaction.send(embed);
-                }
-                if (isNaN(ms(args[2]))) {
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/autodelete:usage")
-                                .replace('{prefix}', data.guild.prefix)
-                                .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                            guild.translate("admin/autodelete:example")
-                                .replace('{prefix}', data.guild.prefix)
-                                .replace('{channel}', message ? message?.channel?.name : interaction?.channel?.name)
-                                .replace('{emotes.example}', this.client.emotes.example))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if (message) return message.send(embed);
-                    if (interaction) return interaction.send(embed);
-                } else {
-                    if (ms(args[2]) > ms('7d')) {
-                        let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("admin/autodelete:maxTime")
-                                .replace('{emotes.error}', this.client.emotes.error))
-                            .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
-                        if (message) return message.send(embed);
-                        if (interaction) return interaction.send(embed);
-                    }
-                    if (data.guild.plugins.autoDeleteChannels.length > 10) {
-                        let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("admin/autodelete:maxChannels")
-                                .replace('{emotes.error}', this.client.emotes.error))
-                            .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
-                        if (message) return message.send(embed);
-                        if (interaction) return interaction.send(embed);
-                    }
 
-                    for (let val of data.guild.plugins.autoDeleteChannels) {
-                        if (val.split(' | ')[0] === channel.id) {
-                            data.guild.plugins.autoDeleteChannels = data.guild.plugins.autoDeleteChannels.filter((ch) => ch !== val)
-                        }
-                    }
+        const guild = message?.guild || interaction?.guild;
+        const channel = message?.channel || interaction?.channel;
+        const member = message?.member || interaction?.member;
 
-                    let time = ms(args[2]);
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/autodelete:set")
-                            .replace('{emotes.success}', this.client.emotes.success)
-                            .replace('{channel}', channel)
-                            .replace('{time}', ms(Number(time))))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if (message) await message.send(embed);
-                    if (interaction) await interaction.send(embed);
-                    await this.client.wait(500);
-                    data.guild.plugins.autoDeleteChannels.push(`${channel.id} | ${time}`);
-                    await data.guild.save();
+        let embed = new MessageEmbed()
+            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setDescription(guild.translate("admin/ad:main:choose")
+                .replace('{emotes.arrow}', this.client.emotes.arrow))
+            .setColor(this.client.embedColor)
+            .setFooter(data.guild.footer);
+        let id = message?.member?.user?.id || interaction?.member?.user?.id
+        let row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setCustomId('autodelete_' + id + '_add')
+                    .setLabel(guild.translate("admin/ad:main:actions:1"))
+                    .setEmoji('➕')
+                    .setStyle('SUCCESS'),
+                new MessageButton()
+                    .setCustomId('autodelete_' + id + '_list')
+                    .setLabel(guild.translate("admin/ad:main:actions:2"))
+                    .setEmoji('📝')
+                    .setDisabled(data.guild.plugins.autoDeleteChannels.length === 0)
+                    .setStyle('PRIMARY'),
+                new MessageButton()
+                    .setCustomId('autodelete_' + id + '_remove')
+                    .setLabel(guild.translate("admin/ad:main:actions:3"))
+                    .setEmoji('➖')
+                    .setDisabled(data.guild.plugins.autoDeleteChannels.length === 0)
+                    .setStyle('DANGER'),
+            )
+        let sent;
+        if (message) sent = await message.send(embed, false, [row]);
+        if (interaction) sent = await interaction.send(embed, false, [row]);
 
-                }
+        const filter = i => i.customId.startsWith('autodelete_' + id) && i.user.id === id;
 
-            } else {
+        const clicked = await sent.awaitMessageComponent({filter, time: 120000}).catch(() => {})
+
+        if (clicked) {
+            if (clicked.customId === 'autodelete_' + id + '_add') {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/autodelete:usage")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("admin/autodelete:example")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{channel}', message ? message?.channel?.name : interaction?.channel?.name)
-                            .replace('{emotes.example}', this.client.emotes.example))
+                    .setDescription(guild.translate("admin/ad:main:collectors:channel")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return message.send(embed);
-                if (interaction) return interaction.send(embed);
-            }
-        } else if (args[0].toLowerCase() === 'reset') {
-            if (!args[1]) {
-                let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/autodelete:usage")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("admin/autodelete:example")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{channel}', message ? message?.channel?.name : interaction?.channel?.name)
-                            .replace('{emotes.example}', this.client.emotes.example))
-                    .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
-                if (message) return message.send(embed);
-                if (interaction) return interaction.send(embed);
-            }
-            if (args[1].toLowerCase() === 'all') {
-                let bool;
-                if (data.guild.plugins.autoDeleteChannels.length >= 1) {
-                    data.guild.plugins.autoDeleteChannels = [];
-                    data.guild.markModified("plugins.autoDeleteChannels");
-                    await data.guild.save();
-                    bool = true;
-                }
-                if (bool) {
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/autodelete:resettedAll")
-                            .replace('{emotes.success}', this.client.emotes.success))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if (message) await message.send(embed);
-                    if (interaction) await interaction.send(embed);
-                } else {
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/autodelete:noAutodelete")
-                            .replace('{emotes.error}', this.client.emotes.error))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if (message) await message.send(embed);
-                    if (interaction) await interaction.send(embed);
+                await clicked.update({embeds: [embed], components: []});
+                const collectMessage = channel.createMessageCollector(
+                    {
+                        filter: m => m.author.id === member.user.id,
+                        time: 120000
+                    }
+                );
+                collectMessage.on("collect", async (msg) => {
+                    collectMessage.stop();
+                    msg.delete().catch(() => {});
+                    let channelSent = await Resolver.resolveChannel({
+                        message: msg,
+                        search: msg.content,
+                        channelType: 'GUILD_TEXT',
+                    });
+                    if(channelSent){
+                        let embed = new MessageEmbed()
+                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setDescription(guild.translate("admin/ad:main:collectors:time")
+                                .replace('{emotes.arrow}', this.client.emotes.arrow)
+                                .replace('{emotes.arrow}', this.client.emotes.arrow))
+                            .setColor(this.client.embedColor)
+                            .setFooter(data.guild.footer);
+                        await sent.edit({embeds: [embed]});
+                        const collectMessage = channel.createMessageCollector(
+                            {
+                                filter: m => m.author.id === member.user.id,
+                                time: 120000
+                            }
+                        );
+                        collectMessage.on("collect", async (msg) => {
+                            collectMessage.stop();
+                            msg.delete().catch(() => {});
+                            let time = ms(msg.content);
+                            if(time){
+                                if(time <= 604800000){
+                                    for (let val of data.guild.plugins.autoDeleteChannels) {
+                                        if (val.split(' | ')[0] === channelSent.id) {
+                                            data.guild.plugins.autoDeleteChannels = data.guild.plugins.autoDeleteChannels.filter((ch) => ch !== val)
+                                        }
+                                    }
+                                    data.guild.plugins.autoDeleteChannels.push(channelSent.id + ' | ' + time);
+                                    data.guild.markModified("plugins.autoDeleteChannels");
+                                    await data.guild.save();
+                                    let embed = new MessageEmbed()
+                                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                        .setDescription(guild.translate("admin/ad:main:set")
+                                            .replace('{emotes.success}', this.client.emotes.success)
+                                            .replace('{channel}', channelSent)
+                                            .replace('{time}', ms(time)))
+                                        .setColor(this.client.embedColor)
+                                        .setFooter(data.guild.footer);
+                                    await sent.edit({embeds: [embed]});
 
-                }
-            }else{
-                    let channel = guild.channels.cache.filter(ch => ch.type === 'GUILD_TEXT').get(args[1]);
-                    if (message) channel = message.mentions.channels.filter((ch) => ch.type === "GUILD_TEXT" || ch.type === "GUILD_NEWS" && ch.guild.id === message.guild.id).first();
-                    if (channel) {
-                        for (let val of data.guild.plugins.autoDeleteChannels) {
-                            if (val.split(' | ')[0] === channel.id) {
-                                data.guild.plugins.autoDeleteChannels = data.guild.plugins.autoDeleteChannels.filter((ch) => ch !== val);
-                                await data.guild.save();
+                                }else{
+                                    let embed = new MessageEmbed()
+                                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                        .setDescription(guild.translate("admin/ad:main:maxTime")
+                                            .replace('{emotes.error}', this.client.emotes.error))
+                                        .setColor(this.client.embedColor)
+                                        .setFooter(data.guild.footer);
+                                    return sent.edit({embeds: [embed]});
+                                }
+                            }else{
                                 let embed = new MessageEmbed()
                                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                                    .setDescription(guild.translate("admin/autodelete:resettedChannel")
-                                        .replace('{emotes.success}', this.client.emotes.success)
-                                        .replace('{channel}', channel))
+                                    .setDescription(guild.translate("admin/ad:main:invalid:time")
+                                        .replace('{emotes.error}', this.client.emotes.error))
                                     .setColor(this.client.embedColor)
                                     .setFooter(data.guild.footer);
-                                if (message) await message.send(embed);
-                                if (interaction) await interaction.send(embed);
+                                return sent.edit({embeds: [embed]});
+                            }
+                        });
+
+                    }else{
+                        let embed = new MessageEmbed()
+                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setDescription(guild.translate("admin/ad:main:invalid:channel")
+                                .replace('{emotes.error}', this.client.emotes.error))
+                            .setColor(this.client.embedColor)
+                            .setFooter(data.guild.footer);
+                        return sent.edit({embeds: [embed]});
+                    }
+                });
+            }
+            if (clicked.customId === 'autodelete_' + id + '_list') {
+                let autodelete = [];
+                for(let val of data.guild.plugins.autoDeleteChannels){
+                    let channelId = val.split(' | ')[0];
+                    let time = Number(val.split(' | ')[1]);
+                    let channel = guild.channels.cache.get(channelId);
+                    if(channel){
+                        autodelete.push(channel.name + ' | ' + ms(time));
+                    }
+                }
+                let embed = new MessageEmbed()
+                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setDescription(guild.translate("admin/ad:main:list")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+                        .replace('{list}', autodelete.join('\n|- ')))
+                    .setColor(this.client.embedColor)
+                    .setFooter(data.guild.footer);
+                await clicked.update({embeds: [embed], components: []});
+
+            }
+            if (clicked.customId === 'autodelete_' + id + '_remove') {
+                let embed = new MessageEmbed()
+                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setDescription(guild.translate("admin/ad:main:collectors:channelReset")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow))
+                    .setColor(this.client.embedColor)
+                    .setFooter(data.guild.footer);
+                await clicked.update({embeds: [embed], components: []});
+                const collectMessage = channel.createMessageCollector(
+                    {
+                        filter: m => m.author.id === member.user.id,
+                        time: 120000
+                    }
+                );
+                collectMessage.on("collect", async (msg) => {
+                    collectMessage.stop();
+                    msg.delete().catch(() => {});
+                    let channelSent = await Resolver.resolveChannel({
+                        message: msg,
+                        search: msg.content,
+                        channelType: 'GUILD_TEXT',
+                    });
+                    if (channelSent) {
+                        for(let val of data.guild.plugins.autoDeleteChannels){
+                            if(val.split(' | ')[0].toString() === channelSent.id.toString()) {
+                                data.guild.plugins.autoDeleteChannels.splice(data.guild.plugins.autoDeleteChannels.indexOf(val), 1);
+                                data.guild.markModified("plugins.autoDeleteChannels");
+                                await data.guild.save();
                             }
                         }
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("admin/autodelete:noAutodeleteInChannel")
-                                .replace('{emotes.error}', this.client.emotes.error)
-                                .replace('{channel}', channel))
+                            .setDescription(guild.translate("admin/ad:main:removed")
+                                .replace('{emotes.success}', this.client.emotes.success)
+                                .replace('{channel}', channelSent))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
-                        if (message) await message.send(embed);
-                        if (interaction) await interaction.send(embed);
-                    } else {
+                        return sent.edit({embeds: [embed]});
+                    }else{
                         let embed = new MessageEmbed()
                             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("admin/autodelete:usage")
-                                    .replace('{prefix}', data.guild.prefix)
-                                    .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                                guild.translate("admin/autodelete:example")
-                                    .replace('{prefix}', data.guild.prefix)
-                                    .replace('{channel}', message ? message?.channel?.name : interaction?.channel?.name)
-                                    .replace('{emotes.example}', this.client.emotes.example))
+                            .setDescription(guild.translate("admin/ad:main:invalid:channel")
+                                .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
                             .setFooter(data.guild.footer);
-                        if (message) return message.send(embed);
-                        if (interaction) return interaction.send(embed);}
+                        return sent.edit({embeds: [embed]});
+                    }
+                });
             }
-        }else if(args[0].toLowerCase() === 'list'){
-            let channels = [];
-            for(let val of data.guild.plugins.autoDeleteChannels){
-                let channel = guild.channels.cache.get(val.split(' | ')[0]);
-                if(channel) channels.push('|- #' + channel.name + ' | ' + ms(Number(val.split(' | ')[1])));
-            }
-            if(channels.length === 0) channels.push('|- '+ guild.translate("language:noEntries"));
-            let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("admin/autodelete:list")
-                    .replace('{emotes.arrow}', this.client.emotes.arrow)
-                    .replace('{list}', channels.join('\n')))
-                .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
-            if (message) await message.send(embed);
-            if (interaction) await interaction.send(embed);
         }
-    }
+    };
 }
 
 module.exports = Autodelete;

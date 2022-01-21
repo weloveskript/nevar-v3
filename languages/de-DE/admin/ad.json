@@ -1,0 +1,29 @@
+{
+  "general": {
+    "description": "Richtet die automatische Löschung von Nachrichten in bestimmten Channeln ein \uD83D\uDDD1️",
+    "usage": "{emotes.use} Syntax: ```{prefix}autodelete```",
+    "example": "{emotes.example} Beispiel: ```{prefix}autodelete```"
+  },
+
+  "main": {
+    "choose": "Wähle eine Aktion",
+    "set": "{emotes.success} In {channel} werden neue Nachrichten ab jetzt nach {time} gelöscht",
+    "maxTime": "{emotes.error} Die maximale Löschzeit beträgt 7 Tage",
+    "list": "{emotes.arrow} In folgenden Channeln ist ein Autodelete eingestellt:\n\n```|- {list}```",
+    "removed": "{emotes.success} In {channel} werden neue Nachrichten ab jetzt nicht mehr gelöscht",
+    "invalid": {
+      "time": "{emotes.error} Du musst eine gültige Zeit angeben. Die Aktion wurde abgebrochen",
+      "channel": "{emotes.error} Du musst einen gültigen Channel angeben. Die Aktion wurde abgebrochen"
+    },
+    "actions": {
+      "1": "Autodelete einrichten",
+      "2": "Autodelete-Liste ansehen",
+      "3": "Autodelete löschen"
+    },
+    "collectors": {
+      "channel": "{emotes.arrow} Sende den Channel in dem du neue Nachrichten löschen möchtest",
+      "time": "{emotes.arrow} Gib die Zeit an, nach der die Nachrichten gelöscht werden sollen\n{emotes.arrow} Hier sind ein paar Beispiele, wie du die Zeit angibst:\n```|- 5d = 5 Tage\n|- 3m = 3 Minuten\n|- 1h = 1 Stunde\n|- 1w = 1 Woche\n|- 5s = 5 Sekunden```",
+      "channelReset": "{emotes.arrow} Sende den Channel, in dem du den Autodelete zurücksetzen möchtest"
+    }
+  }
+}

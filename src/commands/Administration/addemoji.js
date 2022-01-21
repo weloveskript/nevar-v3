@@ -1,35 +1,32 @@
 const Command = require('../../core/command');
 const { MessageEmbed } = require('discord.js');
 const Discord = require('discord.js');
+const {SlashCommandBuilder} = require("@discordjs/builders");
 
 class Addemoji extends Command {
     constructor(client) {
         super(client, {
             name: "addemoji",
-            description: "admin/addemoji:description",
+            description: "admin/ae:general:description",
             dirname: __dirname,
             aliases: ["addemoji", "createemoji", "add-emoji", "addemote"],
             memberPermissions: ["MANAGE_EMOJIS_AND_STICKERS"],
             botPermissions: ["MANAGE_EMOJIS_AND_STICKERS"],
             premium: true,
-            ownerOnly: false,
-            cooldown: 20000,
+            cooldown: 10000,
             slashCommand: {
                 addCommand: true,
-                options: [
-                    {
-                        name: "admin/addemoji:slashOption1",
-                        description: "admin/addemoji:slashOption1Desc",
-                        type: "STRING",
-                        required: true,
-                    },
-                    {
-                        name: "admin/addemoji:slashOption2",
-                        description: "admin/addemoji:slashOption2Desc",
-                        type: "STRING",
-                        required: true,
-                    }
-                ]
+                data: new SlashCommandBuilder()
+                    .addStringOption(option =>
+                        option.setName('admin/ae:slash:1:name')
+                            .setDescription('admin/ae:slash:1:description')
+                            .setRequired(true)
+                    )
+                    .addStringOption(option =>
+                        option.setName('admin/ae:slash:2:name')
+                            .setDescription('admin/ae:slash:2:description')
+                            .setRequired(false)
+                    )
             }
         });
     }
@@ -41,10 +38,10 @@ class Addemoji extends Command {
         if(!arg){
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("admin/addemoji:usage")
+                .setDescription(guild.translate("admin/ae:general:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("admin/addemoji:example")
+                    guild.translate("admin/ae:general:example")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
@@ -63,105 +60,87 @@ class Addemoji extends Command {
             return (res !== null)
         }
 
-        let emote;
-        if(!isUrl(arg)){
-            emote = Discord.Util.parseEmoji(args[0]);
-            if(emote){
-                arg = `https://cdn.discordapp.com/emojis/${emote.id}.${emote.animated ? 'gif' : 'png'}`;
-            }
+        function isImage(string){
+            return(string.match(/\.(jpeg|jpg|gif|png|webp)$/) != null);
         }
 
-        let name = args[1] ? args[1].replace(/[^a-z0-9]/gi, "") : null;
-        if(!name){
-            if(emote){
-                guild.emojis
-                    .create(arg, emote.name)
-                    .then(emoji => {
-                        let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("admin/addemoji:created")
-                                .replace('{emotes.success}', this.client.emotes.success)
-                                .replace('{name}', (emoji.animated ? 'a:'+emoji.name : ':'+emoji.name))
-                                .replace('{id}', emoji.id))
-                            .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
-                        if(message) return message.send(embed);
-                        if(interaction) return interaction.send(embed);
-                    })
-                    .catch(async (error) => {
-                        let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                            .setDescription(guild.translate("admin/addemoji:cantCreate")
-                                .replace('{emotes.error}', this.client.emotes.error)
-                                .replace('{emotes.arrow}', this.client.emotes.arrow)
-                                .replace('{emotes.arrow}', this.client.emotes.arrow)
-                                .replace('{support}', this.client.supportUrl))
-                            .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
-                        if(message) message.send(embed);
-                        if(interaction) interaction.send(embed, true)
-                        let user = message?.author || interaction?.member.user
-                        let type = 'Message-Command'
-                        if(interaction) {
-                            type = 'Slash-Command'
-                        }
-                        this.client.logError(error, user, guild, `${message ? data.guild.prefix : '/'}addemoji ${args[0]} ${args[1]}`, type)
-                    })
+        let emoji = {
+            url: undefined,
+            name: undefined
+        };
+
+        if(isUrl(arg)){
+            if(isImage(arg)){
+                if(!args[1]){
+                    let embed = new MessageEmbed()
+                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setDescription(guild.translate("admin/ae:main:errors:urlButNoName")
+                            .replace('{emotes.error}', this.client.emotes.error))
+                        .setColor(this.client.embedColor)
+                        .setFooter(data.guild.footer);
+                    if(message) return message.send(embed);
+                    if(interaction) return interaction.send(embed, true)
+                }else{
+                    emoji.name = args[1];
+                    emoji.url = arg;
+                }
             }else{
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/addemoji:chooseName")
-                            .replace('{emotes.error}', this.client.emotes.error))
-                    .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
-                if(message) return message.send(embed);
-                if(interaction) return interaction.send(embed);
-            }
-        }else{
-            if(name.length < 2 || name.length > 32){
-                let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/addemoji:length")
+                    .setDescription(guild.translate("admin/ae:main:errors:invalidUrl")
                         .replace('{emotes.error}', this.client.emotes.error))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
                 if(message) return message.send(embed);
-                if(interaction) return interaction.send(embed, true);
+                if(interaction) return interaction.send(embed, true)
             }
-            guild.emojis
-                .create(arg, name)
-                .then(emoji => {
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/addemoji:created")
-                            .replace('{emotes.success}', this.client.emotes.success)
-                            .replace('{name}', (emoji.animated ? 'a:'+emoji.name : ':'+emoji.name))
-                            .replace('{id}', emoji.id))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if(message) return message.send(embed);
-                    if(interaction) return interaction.send(embed);
-                })
-                .catch(async (error) => {
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/addemoji:cantCreate")
-                            .replace('{emotes.error}', this.client.emotes.error)
-                            .replace('{emotes.arrow}', this.client.emotes.arrow)
-                            .replace('{emotes.arrow}', this.client.emotes.arrow)
-                            .replace('{support}', this.client.supportUrl))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if(message) message.send(embed);
-                    if(interaction) interaction.send(embed, true)
-                    let user = message?.author || interaction?.member.user
-                    let type = 'Message-Command'
-                    if(interaction) {
-                        type = 'Slash-Command'
-                    }
-                    this.client.logError(error, user, guild, `${message ? data.guild.prefix : '/'}addemoji ${args[0]} ${args[1]}`, type)
-                })
+        }else{
+            let dEmoji = Discord.Util.parseEmoji(arg);
+            if(dEmoji){
+                emoji.name = dEmoji.name;
+                emoji.url = 'https://cdn.discordapp.com/emojis/' + dEmoji.id + '.' + (dEmoji.animated ? 'gif' : 'png');
+                if(args[1]) emoji.name = args[1];
+            }
         }
+
+        if(emoji.name.toString().length < 2 || emoji.name.toString().length > 32){
+            let embed = new MessageEmbed()
+                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setDescription(guild.translate("admin/ae:main:errors:length")
+                    .replace('{emotes.error}', this.client.emotes.error))
+                .setColor(this.client.embedColor)
+                .setFooter(data.guild.footer);
+            if(message) return message.send(embed);
+            if(interaction) return interaction.send(embed, true)
+        }
+
+        guild.emojis.create(emoji.url, emoji.name)
+            .then(async (emote) => {
+                let embed = new MessageEmbed()
+                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setDescription(guild.translate("admin/ae:main:created")
+                        .replace('{emotes.success}', this.client.emotes.success)
+                        .replace('{name}', (emote.animated ? 'a:'+emote.name : ':'+emote.name))
+                        .replace('{id}', emote.id))
+                    .setColor(this.client.embedColor)
+                    .setFooter(data.guild.footer);
+                if(message) return message.send(embed);
+                if(interaction) return interaction.send(embed);
+
+            })
+            .catch(async (error) => {
+                let embed = new MessageEmbed()
+                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setDescription(guild.translate("admin/ae:main:cantCreate")
+                        .replace('{emotes.error}', this.client.emotes.error)
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+                        .replace('{support}', this.client.supportUrl))
+                    .setColor(this.client.embedColor)
+                    .setFooter(data.guild.footer);
+                if(message) message.send(embed);
+                if(interaction) interaction.send(embed, true)
+            });
     }
 }
 

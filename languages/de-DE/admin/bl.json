@@ -19,24 +19,5 @@
       "wordAdd": "{emotes.arrow} Welches Wort möchtest du hinzufügen?",
       "wordRemove": "{emotes.arrow} Welches Wort möchtest du entfernen?"
     }
-  },
-
-
-  "slashOption1": "aktion",
-  "slashOption1Desc": "Was möchtest du machen?",
-  "slashOption1Choice1": "add",
-  "slashOption1Choice2": "remove",
-  "slashOption1Choice3": "reset",
-  "slashOption1Choice4": "list",
-
-  "slashOption2": "wort",
-  "slashOption2Desc": "Welches Wort möchtest du hinzufügen/entfernen?",
-
-  "added": "{emotes.success} `{word}` wurde zur Blacklist hinzugefügt",
-  "removed": "{emotes.success} `{word}` wurde von der Blacklist entfernt",
-  "isNotAdded": "{emotes.error} `{word}` ist nicht in der Blacklist enthalten",
-  "resetted": "{emotes.success} Die Blacklist wurde zurückgesetzt",
-  "noWords": "Keine Wörter in der Blacklist",
-
-  "list": "{emotes.success} Folgende Wörter befinden sich in der Blacklist:\n\n{list}"
+  }
 }

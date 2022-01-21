@@ -56,8 +56,8 @@ module.exports = class {
             return message.send(embed, true);
         }
 
-        if (data.guild?.autoDeleteChannels && data.guild?.autoDeleteChannels?.length > 0) {
-            for (let val of data.guild.autoDeleteChannels) {
+        if (data.guild.plugins?.autoDeleteChannels && data.guild.plugins?.autoDeleteChannels?.length > 0) {
+            for (let val of data.guild.plugins.autoDeleteChannels) {
                 if (val.split(' | ')[0].toString() === message.channel.id.toString()) {
                     new Promise(resolve => setTimeout(resolve, Number(val.split(' | ')[1]))).then(async () => {
                         message.delete().catch(() => {});
