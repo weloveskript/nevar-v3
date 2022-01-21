@@ -1,12 +1,13 @@
 const Command = require('../../core/command');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
+const {SlashCommandBuilder} = require("@discordjs/builders");
 
 class Blacklist extends Command {
 
     constructor(client) {
         super(client, {
             name: "blacklist",
-            description: "admin/blacklist:description",
+            description: "admin/bl:general:description",
             dirname: __dirname,
             aliases: ["bl"],
             memberPermissions: ["MANAGE_GUILD"],
@@ -14,45 +15,17 @@ class Blacklist extends Command {
             cooldown: 3000,
             slashCommand: {
                 addCommand: true,
-                options: [
-                    {
-                        name: "admin/blacklist:slashOption1",
-                        description: "admin/blacklist:slashOption1Desc",
-                        type: "STRING",
-                        required: true,
-                        choices: [
-                            {
-                                name: "admin/blacklist:slashOption1Choice1",
-                                value: "add"
-                            },
-                            {
-                                name: "admin/blacklist:slashOption1Choice2",
-                                value: "remove"
-
-                            },
-                            {
-                                name: "admin/blacklist:slashOption1Choice3",
-                                value: "reset"
-                            },
-                            {
-                                name: "admin/blacklist:slashOption1Choice4",
-                                value: "list"
-                            }
-                        ]
-                    },
-                    {
-                        name: "admin/blacklist:slashOption2",
-                        description: "admin/blacklist:slashOption2Desc",
-                        type: "STRING",
-                        required: false
-                    }
-                ]
+                data: new SlashCommandBuilder()
             }
         });
 
     }
 
     async run(interaction, message, args, data){
+
+        const guild = message?.guild || interaction?.guild;
+        const channel = message?.channel || interaction?.channel;
+        const member = message?.member || interaction?.member;
 
         if(!data.guild.plugins.blacklist?.list){
             data.guild.plugins.blacklist = {
@@ -62,127 +35,122 @@ class Blacklist extends Command {
             await data.guild.save();
         }
 
-        let guild = message?.guild || interaction?.guild;
-        if(!args[0]){
-            let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("admin/blacklist:usage")
-                        .replace('{prefix}', data.guild.prefix)
-                        .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("admin/blacklist:example")
-                        .replace('{prefix}', data.guild.prefix)
-                        .replace('{emotes.example}', this.client.emotes.example))
-                .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
-            if (message) return message.send(embed);
-            if (interaction) return interaction.send(embed);
-        }
-        if(args[0].toLowerCase() === 'add'){
-            if(!args[1]){
-                let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/blacklist:usage")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("admin/blacklist:example")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.example}', this.client.emotes.example))
-                    .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
-                if (message) return message.send(embed);
-                if (interaction) return interaction.send(embed);
-            }else{
-                if(data.guild.plugins.blacklist.list.includes(args[1].toLowerCase())){
-                    data.guild.plugins.blacklist.list = data.guild.plugins.blacklist.list.filter((val) => val !== args[1].toLowerCase())
-                }
-                data.guild.plugins.blacklist.list.push(args[1].toLowerCase());
-                data.guild.markModified("plugins.blacklist");
-                await data.guild.save();
-                let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/blacklist:added")
-                        .replace('{word}', args[1])
-                        .replace('{emotes.success}', this.client.emotes.success))
-                    .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
-                if (message) return message.send(embed);
-                if (interaction) return interaction.send(embed);
 
-            }
-        }
-        if(args[0].toLowerCase() === 'remove'){
-            if(!args[1]){
+        let embed = new MessageEmbed()
+            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setDescription(guild.translate("admin/bl:main:choose")
+                .replace('{emotes.arrow}', this.client.emotes.arrow))
+            .setColor(this.client.embedColor)
+            .setFooter(data.guild.footer);
+        let id = message?.member?.user?.id || interaction?.member?.user?.id
+        let row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setCustomId('blacklist_' + id + '_add')
+                    .setLabel(guild.translate("admin/bl:main:actions:1"))
+                    .setEmoji('➕')
+                    .setStyle('SUCCESS'),
+                new MessageButton()
+                    .setCustomId('blacklist_' + id + '_list')
+                    .setLabel(guild.translate("admin/bl:main:actions:2"))
+                    .setEmoji('📝')
+                    .setDisabled(data.guild.plugins.blacklist.list.length === 0)
+                    .setStyle('PRIMARY'),
+                new MessageButton()
+                    .setCustomId('blacklist_' + id + '_remove')
+                    .setLabel(guild.translate("admin/bl:main:actions:3"))
+                    .setEmoji('➖')
+                    .setDisabled(data.guild.plugins.blacklist.list.length === 0)
+                    .setStyle('DANGER'),
+            )
+        let sent;
+        if (message) sent = await message.send(embed, false, [row]);
+        if (interaction) sent = await interaction.send(embed, false, [row]);
+
+        const filter = i => i.customId.startsWith('blacklist_' + id) && i.user.id === id;
+
+        const clicked = await sent.awaitMessageComponent({filter, time: 120000}).catch(() => {})
+
+        if (clicked) {
+            if (clicked.customId === 'blacklist_' + id + '_add') {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/blacklist:usage")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("admin/blacklist:example")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.example}', this.client.emotes.example))
+                    .setDescription(guild.translate("admin/bl:main:collectors:wordAdd")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return message.send(embed);
-                if (interaction) return interaction.send(embed);
-            }else{
-                if(data.guild.plugins.blacklist.list.includes(args[1].toLowerCase())){
-                    data.guild.plugins.blacklist.list = data.guild.plugins.blacklist.list.filter((val) => val !== args[1].toLowerCase())
+                await clicked.update({embeds: [embed], components: []});
+                const collectMessage = channel.createMessageCollector(
+                    {
+                        filter: m => m.author.id === member.user.id,
+                        time: 120000
+                    }
+                );
+                collectMessage.on("collect", async (msg) => {
+                    collectMessage.stop();
+                    msg.delete().catch(() => {})
+                    if(data.guild.plugins.blacklist.list.includes(msg.content.toLowerCase())){
+                        data.guild.plugins.blacklist.list = data.guild.plugins.blacklist.list.filter(v => v !== msg.content.toLowerCase());
+                    }
+                    data.guild.plugins.blacklist.list.push(msg.content.toLowerCase());
                     data.guild.markModified("plugins.blacklist");
                     await data.guild.save();
                     let embed = new MessageEmbed()
                         .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/blacklist:removed")
-                            .replace('{word}', args[1])
-                            .replace('{emotes.success}', this.client.emotes.success))
+                        .setDescription(guild.translate("admin/bl:main:added")
+                            .replace('{emotes.success}', this.client.emotes.success)
+                            .replace('{word}', msg.content))
                         .setColor(this.client.embedColor)
                         .setFooter(data.guild.footer);
-                    if (message) return message.send(embed);
-                    if (interaction) return interaction.send(embed);
-                }else{
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/blacklist:isNotAdded")
-                            .replace('{word}', args[1])
-                            .replace('{emotes.error}', this.client.emotes.error))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if (message) return message.send(embed);
-                    if (interaction) return interaction.send(embed);
-                }
-
+                    return sent.edit({embeds: [embed]});
+                });
 
             }
-        }
-        if(args[0].toLowerCase() === 'reset'){
-            data.guild.plugins.blacklist.list = [];
-            data.guild.markModified("plugins.blacklist");
-            await data.guild.save();
-            let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("admin/blacklist:resetted")
-                    .replace('{emotes.success}', this.client.emotes.success))
-                .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
-            if (message) return message.send(embed);
-            if (interaction) return interaction.send(embed);
-        }
-        if(args[0].toLowerCase() === 'list'){
-            let filter = data.guild.plugins.blacklist.list.join(`\n${this.client.emotes.arrow} `);
+            if (clicked.customId === 'blacklist_' + id + '_list') {
+                let embed = new MessageEmbed()
+                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setDescription(guild.translate("admin/bl:main:list")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+                        .replace('{list}', data.guild.plugins.blacklist.list.join('\n|- ')))
+                    .setColor(this.client.embedColor)
+                    .setFooter(data.guild.footer);
+                await clicked.update({embeds: [embed], components: []});
+            }
+            if (clicked.customId === 'blacklist_' + id + '_remove') {
+                let embed = new MessageEmbed()
+                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setDescription(guild.translate("admin/bl:main:collectors:wordRemove")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow))
+                    .setColor(this.client.embedColor)
+                    .setFooter(data.guild.footer);
+                await clicked.update({embeds: [embed], components: []});
+                const collectMessage = channel.createMessageCollector(
+                    {
+                        filter: m => m.author.id === member.user.id,
+                        time: 120000
+                    }
+                );
+                collectMessage.on("collect", async (msg) => {
+                    collectMessage.stop();
+                    msg.delete().catch(() => {})
+                    if(data.guild.plugins.blacklist.list.includes(msg.content.toLowerCase())){
+                        data.guild.plugins.blacklist.list = data.guild.plugins.blacklist.list.filter(v => v !== msg.content.toLowerCase());
+                        data.guild.markModified("plugins.blacklist");
+                        await data.guild.save();
+                    }
 
-            if(filter.length === 0) filter = [guild.translate("admin/blacklist:noWords")];
-
-            let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("admin/blacklist:list")
-                    .replace('{emotes.success}', this.client.emotes.success)
-                    .replace('{list}', this.client.emotes.arrow + ' ' + filter))
-                .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
-            if (message) return message.send(embed);
-            if (interaction) return interaction.send(embed);
+                    let embed = new MessageEmbed()
+                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setDescription(guild.translate("admin/bl:main:removed")
+                            .replace('{emotes.success}', this.client.emotes.success)
+                            .replace('{word}', msg.content))
+                        .setColor(this.client.embedColor)
+                        .setFooter(data.guild.footer);
+                    return sent.edit({embeds: [embed]});
+                });
+            }
         }
-
-    }
+    };
 }
 
 module.exports = Blacklist;
