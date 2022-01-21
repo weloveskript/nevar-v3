@@ -1,316 +1,182 @@
 const Command = require('../../core/command');
 const Resolvers = require('../../helper/resolver');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
+const {SlashCommandBuilder} = require("@discordjs/builders");
 
 class Autorole extends Command {
 
     constructor(client) {
         super(client, {
             name: "autorole",
-            description: "admin/autorole:description",
+            description: "admin/ar:general:description",
             dirname: __dirname,
             aliases: ["joinrole"],
             memberPermissions: ["MANAGE_GUILD"],
             cooldown: 3000,
             slashCommand: {
                 addCommand: true,
-                options: [
-                    {
-                        name: "admin/autorole:slashOption1",
-                        description: "admin/autorole:slashOption1Desc",
-                        type: "STRING",
-                        required: true,
-                        choices: [
-                            {
-                                name: "admin/autorole:slashOption1Choice1",
-                                value: "bot"
-                            },
-                            {
-                                name: "admin/autorole:slashOption1Choice2",
-                                value: "user"
-
-                            },
-                            {
-                                name: "admin/autorole:slashOption1Choice3",
-                                value: "list",
-                            }
-                        ]
-                    },
-                    {
-                        name: "admin/autorole:slashOption2",
-                        description: "admin/autorole:slashOption2Desc",
-                        type: "STRING",
-                        required: false,
-                        choices: [
-                            {
-                                name: "admin/autorole:slashOption2Choice1",
-                                value: "add"
-                            },
-                            {
-                                name: "admin/autorole:slashOption2Choice2",
-                                value: "remove"
-
-                            },
-                        ]
-                    },
-                    {
-                        name: "admin/autorole:slashOption3",
-                        description: "admin/autorole:slashOption3Desc",
-                        type: "ROLE",
-                        required: false
-                    }
-                ]
+                data: new SlashCommandBuilder()
 
             }
         });
     }
     async run(interaction, message, args, data){
-        if(!data.guild.plugins?.autorole?.user){
-            data.guild.plugins.autorole.user = [];
-            data.guild.markModified("plugins.autorole");
-            await data.guild.save();
-        }
-        if(!data.guild.plugins?.autorole?.bot){
-            data.guild.plugins.autorole.bot = [];
-            data.guild.markModified("plugins.autorole");
-            await data.guild.save();
-        }
-        let guild = interaction?.guild || message?.guild;
-        if(!args[0]){
-            let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("admin/autorole:usage")
-                        .replace('{prefix}', data.guild.prefix)
-                        .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("admin/autorole:example")
-                        .replace('{prefix}', data.guild.prefix)
-                        .replace('{emotes.example}', this.client.emotes.example)
-                        .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
-                .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
-            if (message) return message.send(embed);
-            if (interaction) return interaction.send(embed);
-        }
-        let type = args[0].toLowerCase();
-        if(args[0].toLowerCase() === 'list'){
-            let botRolesRaw = data.guild.plugins.autorole.bot;
-            let userRolesRaw = data.guild.plugins.autorole.user;
-            let botRoles = [];
-            let userRoles = [];
-            for(let id of botRolesRaw){
-                let role = guild.roles.cache.get(id);
-                if(role) botRoles.push('<@&'+id+'>');
-            }
-            for(let id of userRolesRaw){
-                let role = guild.roles.cache.get(id);
-                if(role) userRoles.push('<@&'+id+'>');
-            }
-            if(botRoles.length === 0 || !botRoles) botRoles = [guild.translate("language:noEntries")]
-            if(userRoles.length === 0 || !userRoles) userRoles = [guild.translate("language:noEntries")]
-            let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("admin/autorole:list")
-                    .replace('{emotes.success}', this.client.emotes.success)
-                    .replace('{emotes.crown}', this.client.emotes.crown)
-                    .replace('{emotes.arrow}', this.client.emotes.arrow)
-                    .replace('{userRoles}', userRoles.join(`\n${this.client.emotes.arrow} `))
-                    .replace('{emotes.crown}', this.client.emotes.crown)
-                    .replace('{emotes.arrow}', this.client.emotes.arrow)
-                    .replace('{botRoles}', botRoles.join(`\n${this.client.emotes.arrow} `)))
-                .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
-            if (message) return message.send(embed);
-            if (interaction) return interaction.send(embed);
-            return;
-        }
-        if(!args[1]){
-            let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                .setDescription(guild.translate("admin/autorole:usage")
-                        .replace('{prefix}', data.guild.prefix)
-                        .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                    guild.translate("admin/autorole:example")
-                        .replace('{prefix}', data.guild.prefix)
-                        .replace('{emotes.example}', this.client.emotes.example)
-                        .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
-                .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
-            if (message) return message.send(embed);
-            if (interaction) return interaction.send(embed);
-        }
-        if(args[1].toLowerCase() === 'add'){
-            if(!args[2]){
+
+        const guild = message?.guild || interaction?.guild;
+        const channel = message?.channel || interaction?.channel;
+        const member = message?.member || interaction?.member;
+
+        let embed = new MessageEmbed()
+            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setDescription(guild.translate("admin/ar:main:choose")
+                .replace('{emotes.arrow}', this.client.emotes.arrow))
+            .setColor(this.client.embedColor)
+            .setFooter(data.guild.footer);
+        let id = message?.member?.user?.id || interaction?.member?.user?.id
+        let row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setCustomId('autorole_' + id + '_add')
+                    .setLabel(guild.translate("admin/ar:main:actions:1"))
+                    .setEmoji('➕')
+                    .setStyle('SUCCESS'),
+                new MessageButton()
+                    .setCustomId('autorole_' + id + '_list')
+                    .setLabel(guild.translate("admin/ar:main:actions:2"))
+                    .setEmoji('📝')
+                    .setDisabled(data.guild.plugins.autoroles.list.length === 0)
+                    .setStyle('PRIMARY'),
+                new MessageButton()
+                    .setCustomId('autorole_' + id + '_remove')
+                    .setLabel(guild.translate("admin/ar:main:actions:3"))
+                    .setEmoji('➖')
+                    .setDisabled(data.guild.plugins.autoroles.list.length === 0)
+                    .setStyle('DANGER'),
+            )
+        let sent;
+        if (message) sent = await message.send(embed, false, [row]);
+        if (interaction) sent = await interaction.send(embed, false, [row]);
+
+        const filter = i => i.customId.startsWith('autorole_' + id) && i.user.id === id;
+
+        const clicked = await sent.awaitMessageComponent({filter, time: 120000}).catch(() => {})
+
+        if (clicked) {
+            if (clicked.customId === 'autorole_' + id + '_add') {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/autorole:usage")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("admin/autorole:example")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.example}', this.client.emotes.example)
-                            .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
+                    .setDescription(guild.translate("admin/ar:main:collectors:roleAdd")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return message.send(embed);
-                if (interaction) return interaction.send(embed);
+                await clicked.update({embeds: [embed], components: []});
+                const collectMessage = channel.createMessageCollector(
+                    {
+                        filter: m => m.author.id === member.user.id,
+                        time: 120000
+                    }
+                );
+                collectMessage.on("collect", async (msg) => {
+                    collectMessage.stop();
+                    msg.delete().catch(() => {});
+                    const role = await Resolvers.resolveRole({
+                        message: msg,
+                        search: msg.content
+                    });
+                    if(role){
+                        if(data.guild.plugins.autoroles.list.includes(role.id)) {
+                            data.guild.plugins.autoroles.list = data.guild.plugins.autoroles.list.filter(s => s !== role.id);
+                        }
+                        data.guild.plugins.autoroles.list.push(role.id);
+                        data.guild.markModified("plugins.autoroles");
+                        await data.guild.save();
+                        let embed = new MessageEmbed()
+                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setDescription(guild.translate("admin/ar:main:added")
+                                .replace('{emotes.success}', this.client.emotes.success))
+                            .setColor(this.client.embedColor)
+                            .setFooter(data.guild.footer);
+                        return sent.edit({embeds: [embed]});
+                    }else{
+                        await data.guild.save();
+                        let embed = new MessageEmbed()
+                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setDescription(guild.translate("admin/ar:main:invalid:role")
+                                .replace('{emotes.error}', this.client.emotes.error))
+                            .setColor(this.client.embedColor)
+                            .setFooter(data.guild.footer);
+                        return sent.edit({embeds: [embed]});
+                    }
+                });
             }
-            let role = guild.roles.cache.get(args[2]);
-            if(message) role = await Resolvers.resolveRole({
-                message,
-                search: args.slice(2).join(" ")
-            });
-            if(!role){
-                let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/autorole:usage")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("admin/autorole:example")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.example}', this.client.emotes.example)
-                            .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
-                    .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
-                if (message) return message.send(embed);
-                if (interaction) return interaction.send(embed);
-            }
-            if(type === 'user'){
-                if(data.guild.plugins.autorole.user.includes(role.id)){
-                    data.guild.plugins.autorole.user = data.guild.plugins.autorole.user.filter((val) => val !== role.id);
+            if (clicked.customId === 'autorole_' + id + '_list') {
+                let roles = [];
+                for(let id of data.guild.plugins.autoroles.list){
+                    let role = guild.roles.cache.get(id);
+                    if(role) roles.push(role.name);
+                    else data.guild.plugins.autoroles.list = data.guild.plugins.autoroles.list.filter(s => s !== id);
+
                 }
-                data.guild.plugins.autorole.user.push(role.id);
-                data.guild.markModified("plugins.autorole");
+                data.guild.markModified("plugins.autoroles");
                 await data.guild.save();
-
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/autorole:userRoleAdded")
-                        .replace('{role}', role)
-                        .replace('{emotes.success}', this.client.emotes.success))
+                    .setDescription(guild.translate("admin/ar:main:list")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+                        .replace('{list}', roles.join('\n|- ')))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return message.send(embed);
-                if (interaction) return interaction.send(embed);
-            }else if(type === 'bot'){
-                if(data.guild.plugins.autorole.bot.includes(role.id)){
-                    data.guild.plugins.autorole.bot = data.guild.plugins.autorole.bot.filter((val) => val !== role.id);
-                }
-                data.guild.plugins.autorole.bot.push(role.id);
-                data.guild.markModified("plugins.autorole");
-                await data.guild.save();
-
+                return clicked.update({embeds: [embed], components: []});
+            }
+            if (clicked.customId === 'autorole_' + id + '_remove') {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/autorole:botRoleAdded")
-                        .replace('{role}', role)
-                        .replace('{emotes.success}', this.client.emotes.success))
+                    .setDescription(guild.translate("admin/ar:main:collectors:roleRemove")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
                     .setFooter(data.guild.footer);
-                if (message) return message.send(embed);
-                if (interaction) return interaction.send(embed);
-            }
-
-        }
-        if(args[1].toLowerCase() === 'remove'){
-            if(!args[2]){
-                let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/autorole:usage")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("admin/autorole:example")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.example}', this.client.emotes.example)
-                            .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
-                    .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
-                if (message) return message.send(embed);
-                if (interaction) return interaction.send(embed);
-            }
-
-            let role = guild.roles.cache.get(args[2]);
-            if(message) role = await Resolvers.resolveRole({
-                message,
-                search: args.slice(2).join(" ")
-            });
-            if(!role){
-                let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                    .setDescription(guild.translate("admin/autorole:usage")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.use}', this.client.emotes.use) + '\n' +
-                        guild.translate("admin/autorole:example")
-                            .replace('{prefix}', data.guild.prefix)
-                            .replace('{emotes.example}', this.client.emotes.example)
-                            .replace('{channel}', message?.channel?.name || interaction?.channel?.name))
-                    .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
-                if (message) return message.send(embed);
-                if (interaction) return interaction.send(embed);
-            }
-            if(type === 'user'){
-                let state;
-                if(data.guild.plugins.autorole.user.includes(role.id)){
-                    data.guild.plugins.autorole.user = data.guild.plugins.autorole.user.filter((s) => s !== role.id);
-                    data.guild.markModified("plugins.autorole");
-                    await data.guild.save();
-                    state = true;
-                }
-                if(state){
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/autorole:userRoleRemoved")
-                            .replace('{role}', role)
-                            .replace('{emotes.success}', this.client.emotes.success))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if (message) return message.send(embed);
-                    if (interaction) return interaction.send(embed);
-                }else{
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/autorole:notAdded")
-                            .replace('{role}', role)
-                            .replace('{emotes.error}', this.client.emotes.error))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if (message) return message.send(embed);
-                    if (interaction) return interaction.send(embed);
-                }
-
-            }
-            if(type === 'bot'){
-                let state;
-                if(data.guild.plugins.autorole.bot.includes(role.id)){
-                    data.guild.plugins.autorole.bot = data.guild.plugins.autorole.bot.filter((s) => s !== role.id);
-                    data.guild.markModified("plugins.autorole");
-                    await data.guild.save();
-                    state = true;
-                }
-                if(state){
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/autorole:botRoleRemoved")
-                            .replace('{role}', role)
-                            .replace('{emotes.success}', this.client.emotes.success))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if (message) return message.send(embed);
-                    if (interaction) return interaction.send(embed);
-                }else{
-                    let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
-                        .setDescription(guild.translate("admin/autorole:notAdded")
-                            .replace('{role}', role)
-                            .replace('{emotes.error}', this.client.emotes.error))
-                        .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
-                    if (message) return message.send(embed);
-                    if (interaction) return interaction.send(embed);
-                }
+                await clicked.update({embeds: [embed], components: []});
+                const collectMessage = channel.createMessageCollector(
+                    {
+                        filter: m => m.author.id === member.user.id,
+                        time: 120000
+                    }
+                );
+                collectMessage.on("collect", async (msg) => {
+                    collectMessage.stop();
+                    msg.delete().catch(() => {
+                    });
+                    const role = await Resolvers.resolveRole({
+                        message: msg,
+                        search: msg.content
+                    });
+                    if (role) {
+                        if (data.guild.plugins.autoroles.list.includes(role.id)) {
+                            data.guild.plugins.autoroles.list = data.guild.plugins.autoroles.list.filter(s => s !== role.id);
+                            data.guild.markModified("plugins.autoroles");
+                            await data.guild.save();
+                        }
+                        let embed = new MessageEmbed()
+                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setDescription(guild.translate("admin/ar:main:removed")
+                                .replace('{emotes.success}', this.client.emotes.success))
+                            .setColor(this.client.embedColor)
+                            .setFooter(data.guild.footer);
+                        return sent.edit({embeds: [embed]});
+                    } else {
+                        await data.guild.save();
+                        let embed = new MessageEmbed()
+                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setDescription(guild.translate("admin/ar:main:invalid:role")
+                                .replace('{emotes.error}', this.client.emotes.error))
+                            .setColor(this.client.embedColor)
+                            .setFooter(data.guild.footer);
+                        return sent.edit({embeds: [embed]});
+                    }
+                });
             }
         }
-    }
+    };
 }
 
 module.exports = Autorole;

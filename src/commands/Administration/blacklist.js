@@ -27,15 +27,6 @@ class Blacklist extends Command {
         const channel = message?.channel || interaction?.channel;
         const member = message?.member || interaction?.member;
 
-        if(!data.guild.plugins.blacklist?.list){
-            data.guild.plugins.blacklist = {
-                list: []
-            }
-            data.guild.markModified("plugins.blacklist");
-            await data.guild.save();
-        }
-
-
         let embed = new MessageEmbed()
             .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
             .setDescription(guild.translate("admin/bl:main:choose")

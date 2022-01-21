@@ -35,9 +35,8 @@ module.exports = mongoose.model("Guild", new Schema({
             blacklist: {
                 list: []
             },
-            autorole: {
-                bot: [],
-                user: []
+            autoroles: {
+                list: []
             },
             welcome: {
                 enabled: false,
