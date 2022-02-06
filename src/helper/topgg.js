@@ -1,4 +1,4 @@
-const {  MessageEmbed } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { AutoPoster } = require("topgg-autoposter");
 const Topgg = require("@top-gg/sdk");
 const express = require("express");

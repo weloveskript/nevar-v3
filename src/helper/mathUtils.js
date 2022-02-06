@@ -40,5 +40,15 @@ module.exports = class MathUtils{
         return a % 2 !== 0;
     }
 
+    // Check if a has decimals
+    static hasDecimals(a){
+        return a % 1 !== 0;
+    }
+
+    // Return a without decimals
+    static removeDecimals(a){
+        return parseInt(a);
+    }
+
 }
 

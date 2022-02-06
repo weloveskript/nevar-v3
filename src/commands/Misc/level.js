@@ -56,6 +56,8 @@ class Level extends Command {
         });
     }
     async run(interaction, message, args, data){
+
+        // Get the user, channel, and guild
         const channel = interaction?.channel || message?.channel;
         const guild = interaction?.guild || message?.guild;
         let member = interaction?.member || message?.member;
@@ -75,14 +77,16 @@ class Level extends Command {
         const canvas = Canvas.createCanvas(1000, 300);
         const ctx = canvas.getContext('2d');
 
-        // set gray background
+        // draw gray background
         ctx.fillStyle = "#23272a";
         ctx.roundRect(0, 0, canvas.width, canvas.height, 8).fill();
 
+        // draw black square if no custom image is chosen
         if(user.db.levelBackground === 0){
             ctx.fillStyle = "#090a0b";
             ctx.roundRect(25, 25, 950, 250, 15).fill();
         }else{
+            // draw background image
             const background = await Canvas.loadImage("./storage/levelcards/" + user.db.levelBackground + ".png");
             ctx.save();
             roundedImage(ctx, 25, 25, 950, 250, 10);

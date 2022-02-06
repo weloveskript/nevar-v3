@@ -7,17 +7,40 @@ const languages = require('../../languages/language-meta.json');
 
 module.exports = mongoose.model("Guild", new Schema({
 
-    id: { type: String },
+    id: {
+        type: String
+    },
 
-    membersData: { type: Object, default: {} },
-    members: [{ type: Schema.Types.ObjectId, ref: "Member" }],
+    membersData: {
+        type: Object,
+        default: {}
+    },
+    members: [{
+        type: Schema.Types.ObjectId,
+        ref: "Member"
+    }],
 
-    language: { type: String, default: languages.find((l) => l.default).name },
+    language: {
+        type: String,
+        default: languages.find((l) => l.default)
+            .name
+    },
 
-    blocked: { type: Boolean, default: false },
-    premium: { type: Boolean, default: false},
-    prefix: { type: String, default: config.general.default_prefix },
-    plugins: { type: Object, default: {
+    blocked: {
+        type: Boolean,
+        default: false
+    },
+    premium: {
+        type: Boolean,
+        default: false
+    },
+    prefix: {
+        type: String,
+        default: config.general.default_prefix
+    },
+    plugins: {
+        type: Object,
+        default: {
             levelsystem: {
                 enabled: false,
                 channel: null,
@@ -55,9 +78,19 @@ module.exports = mongoose.model("Guild", new Schema({
             autoDeleteChannels: [],
             reactionRoles: [],
 
-        }},
-    casesCount: { type: Number, default: 0 },
-    commands: { type: Array, default: [] },
-    footer: { type: String, default: config.embeds.footer}
+        }
+    },
+    casesCount: {
+        type: Number,
+        default: 0
+    },
+    commands: {
+        type: Array,
+        default: []
+    },
+    footer: {
+        type: String,
+        default: config.embeds.footer
+    }
 
 }));

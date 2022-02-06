@@ -192,9 +192,9 @@ module.exports = class {
         cmdCooldown[member.user.id][cmd.help.name] = Date.now() + cmd.conf.cooldown;
 
         const log = new this.client.logs({
-            commandName: cmd.help.name,
+            command: cmd.help.name,
             args: args,
-            commandType: 'Slash',
+            type: 'Slash',
             executor: {
                 username: member.user.username,
                 discriminator: member.user.discriminator,
@@ -219,8 +219,7 @@ module.exports = class {
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-            await interaction.send(embed, true);
-            return this.client.logError(e, interaction.member.user, cachedGuild, `/${command} ${args[0] ? args.join(' ') : ''}`, 'Slash-Command')
+            return await interaction.send(embed, true);
         }
     }
 }

@@ -1,6 +1,7 @@
-const toml = require('toml');
+const { loadConfig } = require('../helper/loader');
+const config = loadConfig();
 const fs = require('fs');
-const config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
+
 
 module.exports = class {
     constructor(client) {
@@ -10,18 +11,14 @@ module.exports = class {
     async run() {
         const client = this.client;
 
-
-        const connect = require('connect')
-            , http = require('http')
-            , app = connect()
-            , bodyParser = require('body-parser');
-
+        const connect = require('connect');
+        const http = require('http');
+        const app = connect();
+        const bodyParser = require('body-parser');
         app.use(bodyParser.urlencoded( { extended: false } ));
-
         app.use(function(req, res){
             res.end(client.user.tag + ' is running')
         });
-
         http.createServer(app).listen(5757);
 
         //Top.GG init
@@ -59,18 +56,20 @@ module.exports = class {
                 //set channel names
                 if(serverChannel) serverChannel.setName(config.channels.design_server_count_channel
                     .replace('{count}', client.guilds.cache.size));
+
                 await client.wait(2000);
+
                 if(userChannel) userChannel.setName(config.channels.design_user_count_channel
                     .replace('{count}', client.format(client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0))));
 
                 if(config.apikeys.topgg && config.apikeys.topgg !== ""){
                     let res = await fetch("https://discordbots.org/api/bots/"+client.user.id, {
                         headers: { "Authorization": config.apikeys.topgg}
-                    })
-                        , data = await res.json()
-                        , votes = 0
-                        , date = new Date()
-                        , month = date.toLocaleString('en-GB', { month: "long" });
+                    });
+                    const data = await res.json();
+                    let votes = 0;
+                    const date = new Date();
+                    const month = date.toLocaleString('en-GB', { month: "long" });
 
                     if(!data.error){
                         votes = data.monthlyPoints;
@@ -97,17 +96,17 @@ module.exports = class {
                     let res = await fetch("https://discordbots.org/api/bots/" + client.user.id, {
                         headers: {"Authorization": config.apikeys.topgg}
                     })
-                        , data = await res.json();
+                    const data = await res.json();
 
                     if (!data.error) votes = data.monthlyPoints;
                 }
 
 
-                let serverCount = client.guilds.cache.size
-                    , userCount = client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0)
-                    , channelCount = client.channels.cache.size
-                    , commandCount = client.commands.size
-                    , obj = {
+                let serverCount = client.guilds.cache.size;
+                let userCount = client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0);
+                let channelCount = client.channels.cache.size;
+                let commandCount = client.commands.size;
+                let obj = {
                         servers: serverCount,
                         users: userCount,
                         channels: channelCount,
@@ -117,8 +116,7 @@ module.exports = class {
                         votes: votes,
                         support: client.support,
                         lastUpdated: Date.now(),
-                }
-                    , fs = require('fs');
+                };
 
                 fs.writeFile(config.datatransfer.path, JSON.stringify(obj, null, 4), function(err){
                     if(err) {
@@ -155,12 +153,8 @@ module.exports = class {
             else i = 0;
         }, 25000)
 
-
-
         if(config.webdashboard.enabled){
             await require("../interface/app.js")();
         }
-
-
     }
 };

@@ -2,14 +2,15 @@ const { black, green, magenta, yellow, red, blue } = require("chalk");
 
 function dateTimePad(value, digits) {
     let number = value;
-    while (number.toString().length < digits) {
+    while (number.toString()
+        .length < digits) {
         number = "0" + number;
     }
     return number;
 }
 
 function format(tDate) {
-     return (dateTimePad(tDate.getDate(), 2) + "." +
+    return (dateTimePad(tDate.getDate(), 2) + "." +
         dateTimePad(tDate.getMonth(), 2) + "." +
         dateTimePad(tDate.getFullYear()) + " " +
         dateTimePad(tDate.getHours(), 2) + ":" +
@@ -22,25 +23,32 @@ module.exports = class Logger {
         const date = `[${format(new Date(Date.now()))}]:`;
         switch (type) {
 
-            case "log": {
+            case "log":
+            {
                 return console.log(`${date} ${magenta(type.toUpperCase())} ${content} `);
             }
-            case "warn": {
+            case "warn":
+            {
                 return console.log(`${date} ${yellow(type.toUpperCase())} ${content} `);
             }
-            case "error": {
+            case "error":
+            {
                 return console.log(`${date} ${red(type.toUpperCase())} ${content} `);
             }
-            case "debug": {
+            case "debug":
+            {
                 return console.log(`${date} ${black(type.toUpperCase())} ${content} `);
             }
-            case "ready": {
+            case "ready":
+            {
                 return console.log(`${date} ${green(type.toUpperCase())} ${content}`);
             }
-            case "success": {
+            case "success":
+            {
                 return console.log(`${date} ${green(type.toUpperCase())} ${content}`)
             }
-            case "info": {
+            case "info":
+            {
                 return console.log(`${date} ${blue(type.toUpperCase())} ${content}`)
             }
             default:

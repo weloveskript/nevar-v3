@@ -313,9 +313,9 @@ module.exports = class {
         cmdCooldown[message.author.id][cmd.help.name] = Date.now() + cmd.conf.cooldown;
 
         const log = new this.client.logs({
-            commandName: cmd.help.name,
+            command: cmd.help.name,
             args: args,
-            commandType: 'Message',
+            type: 'Message',
             executor: {
                 username: message.author.username,
                 discriminator: message.author.discriminator,
@@ -339,8 +339,7 @@ module.exports = class {
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
                 .setFooter(data.guild.footer);
-            await message.send(embed, true);
-            return this.client.logError(e, message.member.user, cachedGuild, `${data.guild.prefix}${command} ${args[0] ? args.join(' ') : ''}`, 'Message-Command')
+            return await message.send(embed, true);
         }
     }
 }

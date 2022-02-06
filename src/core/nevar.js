@@ -1,38 +1,18 @@
 const util = require('util');
 const path = require('path');
-const moment = require('moment');
-const toml = require('toml');
-const fs = require('fs');
 const { GiveawaysManager } = require('discord-giveaways');
 const { Client, Collection, MessageEmbed } = require('discord.js');
 const { Player } = require('discord-player');
-const MathUtils = require('../helper/mathUtils');
+const { loadConfig } = require('../helper/loader');
+const config = loadConfig();
 
-let config;
-
-try {
-    config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
-} catch (err){
-    require('../helper/log').log("NO VALID CONFIG FOUND", "error");
-    require('../helper/log').log("To create the config, run npm install or node storage/assets/scripts/install.js", "error")
-    process.exit();
-}
-
-
-moment.relativeTimeThreshold("s", 60);
-moment.relativeTimeThreshold("ss", 5);
-moment.relativeTimeThreshold("m", 60);
-moment.relativeTimeThreshold("h", 60);
-moment.relativeTimeThreshold("d", 24);
-moment.relativeTimeThreshold("M", 12);
 
 class Nevar extends Client {
     constructor(options) {
         super(options);
+
         this.config = config;
-
         this.emotes = require("../../storage/assets/emojis.json");
-
         this.languages = require('../../languages/language-meta.json');
 
         this.commands = new Collection();
@@ -42,28 +22,21 @@ class Nevar extends Client {
         this.footerText = config.embeds.footer;
         this.supportUrl = config.support.invite;
         this.website = config.general.website;
+        this.wait = util.promisify(setTimeout);
 
         this.logger = require('../helper/log');
         this.logs = require('../models/log');
-
-        this.wait = util.promisify(setTimeout);
         this.functions = require('../helper/functions');
-
         this.guildsData = require('../models/guild');
         this.usersData = require('../models/user');
         this.membersData = require('../models/member');
-
-        this.mathUtils = MathUtils;
+        this.mathUtils = require('../helper/mathUtils');
 
         this.databaseCache = {};
         this.databaseCache.users = new Collection();
         this.databaseCache.guilds = new Collection();
         this.databaseCache.members = new Collection();
-
-        this.databaseCache.mutedUsers = new Collection();
         this.databaseCache.bannedUsers = new Collection();
-
-        this.databaseCache.economy = new Collection();
 
         this.filters = config.music.filters;
 
@@ -104,21 +77,6 @@ class Nevar extends Client {
             }
             return result;
         }
-
-        //multi language machen
-        this.logError = function(err, user, guild, command, type) {
-            let embed = new MessageEmbed()
-                .setAuthor(this.user.username, this.user.displayAvatarURL(), this.website)
-                .setDescription(`${this.emotes.error} Bei der Ausführung eines Commands kam es zu einem Fehler\n\n${this.emotes.arrow} Ausgeführter Command: \n\`\`\`vb\n${command}\`\`\`\n${this.emotes.arrow} Fehler\n\`\`\`js\n${err}\`\`\`\n${this.emotes.arrow} Informationen\n\`\`\`vb\nAusgeführt von: ${user.tag} (ID: ${user.id})\nAusgeführt auf: ${guild.name} (ID: ${guild.id})\nCommand-Art: ${type}\`\`\``)
-                .setColor(this.embedColor)
-                .setFooter(this.footerText);
-            let g = this.guilds.cache.get(config.support.id);
-            let channel = g.channels.cache.get(config.support.bot_log);
-
-            channel?.send({embeds: [embed]}).catch(() => {});
-
-        }
-
     }
     get defaultLanguage(){
         return this.languages.find((language) => language.default).name;
