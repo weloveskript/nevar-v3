@@ -1,0 +1,11 @@
+{
+  "general": {
+    "description": "Zeigt die aktuelle Latenz des Bots an",
+    "usage": "{emotes.use} Syntax: ```{prefix}ping```",
+    "example": "{emotes.example} Beispiel: ```{prefix}ping```"
+  },
+
+  "main": {
+    "ping": "{emotes.arrow} Pong!\n```|- Ping: {ping}ms\n|- WS Ping: {wsping}ms```"
+  }
+}
