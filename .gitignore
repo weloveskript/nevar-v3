@@ -1,10 +1,16 @@
-config.toml
-node_modules
-.idea/
+# Node
+node_modules/
 package-lock.json
+
+# IDE's
+.idea/
+
+# Bot
+config.toml
 storage/disabledcmds.json
 storage/giveaways.json
 storage/premiumKeys.json
-storage/partners.json
-data.json
 storage/images/
+data.json
+
+
