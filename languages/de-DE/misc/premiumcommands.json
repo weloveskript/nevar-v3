@@ -1,0 +1,11 @@
+{
+  "general": {
+    "description": "Zeigt für welche Commands die Premium-Version benötigt ist \uD83D\uDC8E",
+    "usage": "{emotes.use} Syntax: ```{prefix}premiumcommands```",
+    "example": "{emotes.example} Beispiel: ```{prefix}premiumcommands```"
+  },
+
+  "main": {
+    "list": "{emotes.arrow} Folgende Commands setzen die Premium-Version von {client} voraus:\n```|- {list}```"
+  }
+}
