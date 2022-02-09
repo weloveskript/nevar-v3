@@ -1,0 +1,14 @@
+{
+  "general": {
+    "description": "Setzt die Wiedergabeliste zurück \uD83D\uDD04",
+    "usage": "{emotes.use} Syntax: ```{prefix}clear```",
+    "example": "{emotes.example} Beispiel: ```{prefix}clear```"
+  },
+  "main": {
+    "noQueue": "{emotes.error} In der Queue sind aktuell keine Songs vorhanden",
+    "cleared": "{emotes.success} Die Queue wurde zurückgesetzt",
+    "errors": {
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    }
+  }
+}

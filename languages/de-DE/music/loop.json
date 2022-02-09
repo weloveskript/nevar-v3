@@ -1,0 +1,29 @@
+{
+  "general": {
+    "description": "Stellt den Loopmode ein (off/queue/track/autoplay) \uD83D\uDD01",
+    "usage": "{emotes.use} Syntax: ```{prefix}loop <off/queue/track/autoplay>```",
+    "example": "{emotes.example} Beispiel: ```{prefix}loop autoplay```"
+  },
+  "slash": {
+    "1": {
+      "name": "typ",
+      "description": "Was möchtest du in den Loop setzen? (queue, track, autoplay)",
+      "choices": {
+        "1": "off",
+        "2": "track",
+        "3": "queue",
+        "4": "autoplay"
+      }
+    }
+  },
+
+  "main": {
+    "set": "{emotes.loop} Der Loopmodus wurde eingestellt",
+    "errors": {
+      "cantSet": "{emotes.error} Der Loopmodus konnte nicht eingestellt werden",
+      "notPlaying": "{emotes.error} Aktuell wird nichts abgespielt",
+      "notConnected": "{emotes.error} Du bist zu keinem Voicechannel verbunden",
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    }
+  }
+}

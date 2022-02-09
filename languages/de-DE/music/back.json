@@ -1,0 +1,15 @@
+{
+  "general": {
+    "description": "Spielt das vorherige Lied ab \uD83D\uDD19",
+    "usage": "{emotes.use} Syntax: ```{prefix}back```",
+    "example": "{emotes.example} Beispiel: ```{prefix}back```"
+  },
+
+  "main": {
+    "errors": {
+      "notPlaying": "{emotes.error} Aktuell wird nichts abgespielt",
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    },
+    "back": "{emotes.success} Das vorherige Lied wird jetzt abgespielt"
+  }
+}

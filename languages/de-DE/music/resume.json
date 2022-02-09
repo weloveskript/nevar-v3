@@ -1,0 +1,17 @@
+{
+  "general": {
+    "description": "Setzt die Wiedergabe fort ▶️",
+    "usage": "{emotes.use} Syntax: ```{prefix}resume```",
+    "example": "{emotes.example} Beispiel: ```{prefix}resume```"
+  },
+
+  "main": {
+    "resumed": "{emotes.success} Die Wiedergabe wurde fortgesetzt",
+    "errors": {
+      "cantResume": "{emotes.error} Die Wiedergabe konnte nicht fortgesetzt werden",
+      "notPlaying": "{emotes.error} Aktuell wird nichts abgespielt",
+      "notConnected": "{emotes.error} Du bist zu keinem Voicechannel verbunden",
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    }
+  }
+}

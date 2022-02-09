@@ -1,0 +1,17 @@
+{
+  "general": {
+    "description": "Pausiert die Wiedergabe ⏸️",
+    "usage": "{emotes.use} Syntax: ```{prefix}pause```",
+    "example": "{emotes.example} Beispiel: ```{prefix}pause```"
+  },
+
+  "main": {
+    "paused": "{emotes.success} Die Wiedergabe wurde pausiert",
+    "errors": {
+      "cantPause": "{emotes.error} Die Wiedergabe konnte nicht pausiert werden",
+      "notPlaying": "{emotes.error} Aktuell wird nichts abgespielt",
+      "notConnected": "{emotes.error} Du bist zu keinem Voicechannel verbunden",
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    }
+  }
+}

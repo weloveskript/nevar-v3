@@ -1,0 +1,22 @@
+{
+  "general": {
+    "description": "Überspringt eine Anzahl an Liedern ⏭️",
+    "usage": "{emotes.use} Syntax: ```{prefix}jump <Anzahl>```",
+    "example": "{emotes.example} Beispiel: ```{prefix}jump 5```"
+  },
+  "slash": {
+    "1": {
+      "name": "anzahl",
+      "description": "Wieviele Lieder möchtest du überspringen?"
+    }
+  },
+
+  "main": {
+    "noQueue": "{emotes.error} In der Queue sind aktuell keine Songs vorhanden",
+    "jumped": "{emotes.success} Du hast {amount} Lieder übersprungen",
+    "errors": {
+      "noTrack": "{emotes.error} So lang ist die Wiedergabeliste nicht",
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    }
+  }
+}
