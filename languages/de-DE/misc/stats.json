@@ -1,0 +1,65 @@
+{
+  "general": {
+    "description": "Zeigt Informationen zum Bot an",
+    "usage": "{emotes.use} Syntax: ```{prefix}stats```",
+    "example": "{emotes.example} Beispiel: ```{prefix}stats```"
+  },
+
+  "main": {
+    "title": "Statistiken",
+    "staffRoles": {
+      "head_staff": "Head-Staff",
+      "staff": "Staff"
+    },
+    "fields": {
+      "staffs": {
+        "name": "{emotes.people} Staffs",
+        "value": "```{staffs}```"
+      },
+      "uptime": {
+        "name": "{emotes.clock} Laufzeit",
+        "value": "```{uptime}```"
+      },
+      "os":{
+        "name": "{emotes.server} Betriebssystem",
+        "value": "```{os}```"
+      },
+      "memory": {
+        "name": "{emotes.server} RAM Nutzung",
+        "value": "```{memory}```"
+      },
+      "guilds": {
+        "name": "{emotes.server} Server",
+        "value": "```{guilds}```"
+      },
+      "users": {
+        "name": "{emotes.people} Nutzer",
+        "value": "```{users}```"
+      },
+      "averageMembers": {
+        "name": "{emotes.people} Nutzer/Server",
+        "value": "```Ø {averageMembers}```"
+      },
+      "channels": {
+        "name": "{emotes.channel} Channel",
+        "value": "```{channels}```"
+      },
+      "commands": {
+        "name": "{emotes.command} Befehle",
+        "value": "```{commands}```"
+      },
+      "nodejs": {
+        "name": "{emotes.js} NodeJS",
+        "value": "```{nodeVer}```"
+      },
+      "library": {
+        "name": "{emotes.book} Library",
+        "value": "```{library}```"
+      },
+      "botVersion": {
+        "name": "{emotes.version} Bot-Version",
+        "value": "```v{botVersion}```"
+      }
+    }
+  }
+}
