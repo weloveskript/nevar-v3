@@ -87,10 +87,15 @@ module.exports = class {
         if(config.datatransfer.state){
             const transferData = new cron.CronJob('* * * * *', async() => {
                 let staffs = [];
-                for(let id of config.team.staff_ids){
-                    let user = await client.users.fetch(id);
-                    staffs.push(user.username + '#'+user.discriminator + ' |?| ' + user.id + ' |?| ' + user.displayAvatarURL());
+                let staffJson = JSON.parse(fs.readFileSync('./storage/staffs.json'));
+                let staffIds = Object.keys(staffJson);
+                let botOwner = await this.client.users.fetch(this.client.config.team.owner_id);
+                staffs.push(botOwner.tag + ' |?| ' + botOwner.id + ' |?| ' + botOwner.displayAvatarURL() + ' |?| ' + 'head_staff')
+                for(let id of staffIds){
+                    let staffMember = await client.users.fetch(id);
+                    staffs.push(staffMember.tag + ' |?| ' + staffMember.id + ' |?| ' + staffMember.displayAvatarURL() + ' |?| ' + Object.values(staffJson)[staffIds.indexOf(id)]);
                 }
+
                 let votes = 0;
                 if(config.apikeys.topgg && config.apikeys.topgg !== "") {
                     let res = await fetch("https://discordbots.org/api/bots/" + client.user.id, {

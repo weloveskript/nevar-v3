@@ -16,7 +16,7 @@ let config =
     "#####################################################################################\n" +
     `## Automatically generated config for Nevar-v${require('../../../package.json').version}\n` +
     "#####################################################################################\n\n" +
-    "# Don't change anything here except the necessary data, unless you know what you're doing here!\n" +
+    "# Don't change anything here except the necessary data\n" +
     "# If you change the wrong things, the bot will not start\n" +
     "# All fields with an * behind are absolutely necessary, all fields without can be left blank\n\n" +
     "#####################################################################################\n" +
@@ -39,8 +39,6 @@ let config =
     "invite = \"\"\n" +
     "# ID of the channel where the bot sends its information (server joined, left, etc.)*\n" +
     "bot_log = \"\"\n" +
-    "# ID of the channel where the bot sends in new partners\n" +
-    "partner_channel = \"\"\n" +
     "# ID of the channel where the bot displays the current server count\n" +
     "server_count_channel = \"\"\n" +
     "# ID of the channel where the bot displays the current user count (of all servers)\n" +
@@ -68,6 +66,8 @@ let config =
     "scopes = [\"identify\", \"guilds\", \"guilds.join\"]\n" +
     "# The OAuth2 URL used for the redirect - can simply be left as it is\n" +
     "oauth2_url = \"https://discord.com/api/oauth2/authorize?client_id={clientId}&redirect_uri={redirectUrl}&response_type=code&scope={scopes}\"\n" +
+    "# The URL to which you will be redirected after successful authorization \n" +
+    "authorized_url = \"http://localhost:3030/oauth2/authorized\"\n" +
     "\n" +
     "[ embeds ]\n" +
     "# The default footer text for embeds*\n" +
@@ -86,8 +86,6 @@ let config =
     "[ team ]\n" +
     "# Your Discord ID*\n" +
     "owner_id = \"\"\n" +
-    "# The Discord IDs of all staffs, the owner ID is automatically included\n" +
-    "staff_ids = [\"\", \"\"]\n" +
     "\n" +
     "[ datatransfer ]\n" +
     "# Whether current bot data (number of servers, votes, etc.) is written to a file every minute*\n" +
