@@ -33,6 +33,8 @@ class Serverinfo extends Command {
             createdAgo.push(createdDiff.days + ' ' + (createdDiff.days > 1 ? guild.translate("timeUnits:days") : guild.translate("timeUnits:day")));
         if(createdDiff.hours > 0)
             createdAgo.push(createdDiff.hours + ' ' + (createdDiff.hours > 1 ? guild.translate("timeUnits:hours") : guild.translate("timeUnits:hour")));
+        if(createdDiff.minutes > 0)
+            createdAgo.push(createdDiff.minutes + ' ' + (createdDiff.minutes > 1 ? guild.translate("timeUnits:minutes") : guild.translate("timeUnits:minute")));
 
         createdAgo = createdAgo.join(', ')
 

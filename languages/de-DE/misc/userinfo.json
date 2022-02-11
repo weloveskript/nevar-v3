@@ -1,0 +1,78 @@
+{
+  "general": {
+    "description": "Zeigt Informationen zu einem Mitglied an \uD83D\uDC64",
+    "usage": "{emotes.use} Syntax: ```{prefix}userinfo [Mitglied]```",
+    "example": "{emotes.example} Beispiel: ```{prefix}userinfo```"
+  },
+
+  "slash": {
+    "1": {
+      "name": "mitglied",
+      "description": "Zu welchem Mitglied möchtest du Informationen sehen?"
+    }
+  },
+
+  "main": {
+    "flags": {
+      "employee": "Discord Mitarbeiter",
+      "partner": "Eigentümer eines Partner-Servers",
+      "bughunter_1": "Bug Hunter (Level 1)",
+      "bughunter_2": "Bug Hunter (Level 2)",
+      "hypesquad_events": "HypeSquad Events",
+      "hypesquad_bravery": "Hypesquad Bravery",
+      "hypesquad_brilliance": "Hypesquad Brilliance",
+      "hypesquad_balance": "Hypesquad Balance",
+      "early_supporter": "Supporter der ersten Stunden",
+      "verified_bot": "Verifizierter Bot",
+      "verified_dev": "Verifizierter Bot-Entwickler der ersten Stunde"
+    },
+    "fields": {
+      "name": {
+        "name": "{emotes.pencil} Name",
+        "value": "```{name}```"
+      },
+      "createdAt": {
+        "name": "{emotes.calendar} Erstellt am",
+        "value": "```{createdAt}```"
+      },
+      "createdBefore": {
+        "name": "{emotes.calendar} Erstellt vor",
+        "value": "```{createdBefore}```"
+      },
+      "nick": {
+        "name": "{emotes.pencil} Nickname",
+        "value": "```{nick}```"
+      },
+      "bot": {
+        "name": "{emotes.robot} Bot",
+        "value": "```{bot}```"
+      },
+      "joinedAt": {
+        "name": "{emotes.calendar} Beigetreten am",
+        "value": "```{joinedAt}```"
+      },
+      "joinedBefore": {
+        "name": "{emotes.calendar} Beigetreten vor",
+        "value": "```{joinedBefore}```"
+      },
+      "flags": {
+        "name": "{emotes.flag} Flags",
+        "value": "```{flags}```"
+      },
+      "presences": {
+        "name": "{emotes.play} Aktivitäten",
+        "value": "```{presences}```"
+      }
+    },
+    "presenceTypes": {
+      "playing": "Spielt",
+      "streaming": "Streamt",
+      "listening": "Hört",
+      "watching": "Schaut",
+      "custom": "Customstatus"
+    },
+    "emoji": "Emoji",
+    "elapsed": "verstrichen"
+
+  }
+}
