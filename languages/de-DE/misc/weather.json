@@ -1,0 +1,51 @@
+{
+  "general": {
+    "description": "Zeigt das aktuelle Wetter für einen Ort ☁️",
+    "usage": "{emotes.use} Syntax: ```vb\n{prefix}weather <Ort>```",
+    "example": "{emotes.example} Beispiel: ```vb\n{prefix}weather Berlin```"
+  },
+
+  "slash": {
+    "1": {
+      "name": "ort",
+      "description": "Zu welchem Ort möchtest du das Wetter sehen?"
+    }
+  },
+
+  "main": {
+    "fields": {
+      "temp": {
+        "name": "{emotes.temp} Temperatur",
+        "value": "```{temp}°C```"
+      },
+      "tempFeels": {
+        "name": "{emotes.temp} Gefühlte Temp.",
+        "value": "```{tempFeels}°C```"
+      },
+      "tempMin": {
+        "name": "{emotes.temp} Min. Temp.",
+        "value": "```{tempMin}°C```"
+      },
+      "tempMax": {
+        "name": "{emotes.temp} Max. Temp.",
+        "value": "```{tempMax}°C```"
+      },
+      "humidity": {
+        "name": "{emotes.humidity} Luftfeuchtigkeit",
+        "value": "```{humidity}%```"
+      },
+      "windSpeed": {
+        "name": "{emotes.wind} Windgeschwindigkeit",
+        "value": "```{windSpeedkmh}km/h ({windSpeedms}m/s)```"
+      },
+      "sunrise": {
+        "name": "{emotes.sunrise} Sonnenaufgang",
+        "value": "```{sunrise}```"
+      },
+      "sunset": {
+        "name": "{emotes.sunset} Sonnenuntergang",
+        "value": "```{sunset}```"
+      }
+    }
+  }
+}
