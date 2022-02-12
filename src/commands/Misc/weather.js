@@ -59,7 +59,6 @@ class Weather extends Command {
             if(message) return message.send(embed, false);
             if(interaction) return interaction.send(embed);
         }
-        console.log(res)
         let weather = {
             description: res.weather[0].description,
             temp: res.main.temp,
@@ -74,7 +73,6 @@ class Weather extends Command {
             sunrise: res.sys.sunrise,
             sunset: res.sys.sunset
         };
-        console.log(weather)
 
         let sunriseDate = new Date(weather.sunrise * 1000);
         let sunriseHours = sunriseDate.getHours();
