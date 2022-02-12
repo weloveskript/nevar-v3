@@ -241,7 +241,8 @@ module.exports = class {
             }
         }
         if (disabled) {
-            if (message.author.id !== config.team.owner_id || !config.team.staff_ids.includes(message.author.id) && message.author.id !== config.team.owner_id) {
+            let staffs = JSON.parse(fs.readFileSync('./storage/staffs.json'));
+            if (message.author.id !== config.team.owner_id || !staffs[message.author.id] && message.author.id !== config.team.owner_id) {
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                     .setDescription(message.translate("general/commandHandler:disabledCommand")
@@ -262,7 +263,8 @@ module.exports = class {
                 .setFooter(data.guild.footer);
             return message.send(embed)
         }
-        if (cmd.conf.staffOnly && !config.team.staff_ids.includes(message.author.id) && message.author.id !== config.team.owner_id) {
+        let staffs = JSON.parse(fs.readFileSync('./storage/staffs.json'));
+        if (cmd.conf.staffOnly && !staffs[message.author.id] && message.author.id !== config.team.owner_id) {
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                 .setDescription(message.translate("general/commandHandler:staffCommand")
@@ -291,7 +293,8 @@ module.exports = class {
         }
         const time = uCooldown[cmd.help.name] || 0;
         if (time && (time > Date.now())) {
-            if (message.author.id !== config.team.owner_id || !config.team.staff_ids.includes(message.author.id) && message.author.id !== config.team.owner_id) {
+            let staffs = JSON.parse(fs.readFileSync('./storage/staffs.json'));
+            if (message.author.id !== config.team.owner_id || !staffs[message.author.id] && message.author.id !== config.team.owner_id) {
                 let seconds = Math.ceil((time - Date.now()) / 1000)
                 let desc = message.translate("general/commandHandler:remainingCooldown").split('?')[0]
                     .replace('{emotes.error}', this.client.emotes.error)

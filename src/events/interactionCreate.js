@@ -114,7 +114,8 @@ module.exports = class {
         }
 
         if (disabled) {
-            if (member.user.id !== config.team.owner_id || !config.team.staff_ids.includes(member.user.id) && member.user.id !== config.team.owner_id){
+            let staffs = JSON.parse(fs.readFileSync('./storage/staffs.json'));
+            if (member.user.id !== config.team.owner_id || !staffs[member.user.id] && member.user.id !== config.team.owner_id){
                 let embed = new MessageEmbed()
                     .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                     .setDescription(cachedGuild.translate("general/commandHandler:disabledCommand")
@@ -137,7 +138,8 @@ module.exports = class {
             return interaction.send(embed);
         }
 
-        if(cmd.conf.staffOnly && !config.team.staff_ids.includes(member.user.id) && member.user.id !== config.team.owner_id){
+        let staffs = JSON.parse(fs.readFileSync('./storage/staffs.json'));
+        if(cmd.conf.staffOnly && !staffs[member.user.id] && member.user.id !== config.team.owner_id){
             let embed = new MessageEmbed()
                 .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
                 .setDescription(cachedGuild.translate("general/commandHandler:staffCommand")
@@ -169,7 +171,8 @@ module.exports = class {
 
         const time = uCooldown[cmd.help.name] || 0;
         if (time && (time > Date.now())) {
-            if (member.user.id !== config.team.owner_id || !config.team.staff_ids.includes(member.user.id) && member.user.id !== config.team.owner_id) {
+            let staffs = JSON.parse(fs.readFileSync('./storage/staffs.json'));
+            if (member.user.id !== config.team.owner_id || !staffs[member.user.id] && member.user.id !== config.team.owner_id) {
                 let seconds = Math.ceil((time - Date.now()) / 1000)
                 let desc = cachedGuild.translate("general/commandHandler:remainingCooldown").split('?')[0]
                     .replace('{emotes.error}', this.client.emotes.error)
