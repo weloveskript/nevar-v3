@@ -28,11 +28,11 @@ class Blacklist extends Command {
         const member = message?.member || interaction?.member;
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("admin/bl:main:choose")
                 .replace('{emotes.arrow}', this.client.emotes.arrow))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         let id = message?.member?.user?.id || interaction?.member?.user?.id
         let row = new MessageActionRow()
             .addComponents(
@@ -65,11 +65,11 @@ class Blacklist extends Command {
         if (clicked) {
             if (clicked.customId === 'blacklist_' + id + '_add') {
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/bl:main:collectors:wordAdd")
                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({embeds: [embed], components: []});
                 const collectMessage = channel.createMessageCollector(
                     {
@@ -87,33 +87,33 @@ class Blacklist extends Command {
                     data.guild.markModified("plugins.blacklist");
                     await data.guild.save();
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/bl:main:added")
                             .replace('{emotes.success}', this.client.emotes.success)
                             .replace('{word}', msg.content))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     return sent.edit({embeds: [embed]});
                 });
 
             }
             if (clicked.customId === 'blacklist_' + id + '_list') {
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/bl:main:list")
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                         .replace('{list}', data.guild.plugins.blacklist.list.join('\n|- ')))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({embeds: [embed], components: []});
             }
             if (clicked.customId === 'blacklist_' + id + '_remove') {
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/bl:main:collectors:wordRemove")
                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({embeds: [embed], components: []});
                 const collectMessage = channel.createMessageCollector(
                     {
@@ -131,12 +131,12 @@ class Blacklist extends Command {
                     }
 
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/bl:main:removed")
                             .replace('{emotes.success}', this.client.emotes.success)
                             .replace('{word}', msg.content))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     return sent.edit({embeds: [embed]});
                 });
             }

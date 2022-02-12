@@ -32,22 +32,22 @@ class Clearqueue extends Command {
 
         if(!queue){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("music/clear:main:noQueue")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
             if(interaction) return interaction.editReply({embeds:[embed]});
         }
 
         if(!member.voice?.channel || queue.connection.channel.id !== member.voice.channel.id){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("music/clear:main:errors:sameChannel")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
             if(interaction) return interaction.editReply({embeds: [embed]});
         }
@@ -55,11 +55,11 @@ class Clearqueue extends Command {
         queue.clear();
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("music/clear:main:cleared")
                 .replace('{emotes.success}', this.client.emotes.success))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         if(message) return message.send(embed);
         if(interaction) return interaction.editReply({embeds:[embed]});
     }

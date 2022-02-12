@@ -1,9 +1,0 @@
-{
-    "description": "Deaktiviert einen Command",
-    "usage": "{emotes.use} Syntax: ```{prefix}disable <list/command>```",
-    "example": "{emotes.example} Beispiel: ```{prefix}disable ban```",
-
-    "disabledList": "{emotes.arrow} Folgende Commands sind deaktiviert:\n\n```|- {list}```",
-    "alreadyDisabled": "{emotes.error} {cmd} ist bereits deaktiviert",
-    "disabled": "{emotes.success} {cmd} wurde deaktiviert"
-  }

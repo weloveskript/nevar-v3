@@ -85,7 +85,7 @@ class Weather extends Command {
         let sunset = sunsetHours + ':' + sunsetMinutes.substr(-2);
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setTitle(weather.description)
             .setThumbnail('http://openweathermap.org/img/w/' + res.weather[0].icon + '.png')
 
@@ -133,7 +133,7 @@ class Weather extends Command {
 
 
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         if(message) return message.send(embed, false);
         if(interaction) return interaction.send(embed);
 

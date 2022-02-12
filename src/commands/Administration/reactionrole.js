@@ -29,11 +29,11 @@ class Reactionrole extends Command {
         let sent;
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("admin/rr:main:collectors:id")
                 .replace('{emotes.arrow}', this.client.emotes.arrow))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         if (message) sent = await message.send(embed);
         if (interaction) sent = await interaction.send(embed);
 
@@ -47,31 +47,31 @@ class Reactionrole extends Command {
             collectId.stop();
             if(isNaN(msg.content)){
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/rr:main:invalid:id")
                         .replace('{emotes.error}', this.client.emotes.error))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 sent.edit({embeds: [embed]});
                 return await msg.delete().catch(() => {});
             }else {
                 if(msg.content.length === 18){
                     channel.messages.fetch(msg.content).catch(async () => {
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/rr:invalid:id")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         sent.edit({embeds: [embed]});
                         return await msg.delete().catch(() => {});
                     }).then(async (fetchedMsg) => {
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/rr:main:collectors:role")
                                 .replace('{emotes.arrow}', this.client.emotes.arrow))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         sent.edit({embeds: [embed]});
                         msg.delete().catch(() => {});
                         const collectRole = channel.createMessageCollector(
@@ -89,11 +89,11 @@ class Reactionrole extends Command {
                             }
                             if(role){
                                 let embed = new MessageEmbed()
-                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                     .setDescription(guild.translate("admin/rr:main:collectors:emoji")
                                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                                     .setColor(this.client.embedColor)
-                                    .setFooter(data.guild.footer);
+                                    .setFooter({text: data.guild.footer});
                                 sent.edit({embeds: [embed]});
                                 msg.delete().catch(() => {});
                                 const collectEmoji = channel.createMessageCollector(
@@ -113,43 +113,43 @@ class Reactionrole extends Command {
                                             emote = msg.content.split(' ')[0];
                                         }else{
                                             let embed = new MessageEmbed()
-                                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                 .setDescription(guild.translate("admin/rr:main:invalid:emoji")
                                                     .replace('{emotes.error}', this.client.emotes.error))
                                                 .setColor(this.client.embedColor)
-                                                .setFooter(data.guild.footer);
+                                                .setFooter({text: data.guild.footer});
                                             sent.edit({embeds: [embed]});
                                             return await msg.delete().catch(() => {});
                                         }
                                     }
                                     fetchedMsg.react(emote).catch(() => {
                                         let embed = new MessageEmbed()
-                                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                             .setDescription(guild.translate("language:error")
                                                 .replace('{emotes.success}', this.client.emotes.success))
                                             .setColor(this.client.embedColor)
-                                            .setFooter(data.guild.footer);
+                                            .setFooter({text: data.guild.footer});
                                         return sent.edit({embeds: [embed]});
                                     });
                                     data.guild.plugins.reactionRoles.push(fetchedMsg.id + ' | ' + emote + ' | ' + role.id);
                                     data.guild.markModified("plugins.reactionRoles");
                                     await data.guild.save();
                                     let embed = new MessageEmbed()
-                                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                         .setDescription(guild.translate("admin/rr:main:setup")
                                             .replace('{emotes.success}', this.client.emotes.success))
                                         .setColor(this.client.embedColor)
-                                        .setFooter(data.guild.footer);
+                                        .setFooter({text: data.guild.footer});
                                     sent.edit({embeds: [embed]});
                                     return await msg.delete().catch(() => {});
                                 });
                             }else{
                                 let embed = new MessageEmbed()
-                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                     .setDescription(guild.translate("admin/rr:main:invalid:role")
                                         .replace('{emotes.error}', this.client.emotes.error))
                                     .setColor(this.client.embedColor)
-                                    .setFooter(data.guild.footer);
+                                    .setFooter({text: data.guild.footer});
                                 sent.edit({embeds: [embed]});
                                 return await msg.delete().catch(() => {});
                             }
@@ -157,11 +157,11 @@ class Reactionrole extends Command {
                     })
                 }else{
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/rr:main:invalid:id")
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     sent.edit({embeds: [embed]});
                     return await msg.delete().catch(() => {});
                 }

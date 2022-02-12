@@ -1,7 +1,0 @@
-{
-    "description": "Startet den Bot neu",
-    "usage": "{emotes.use} Syntax: ```{prefix}reboot```",
-    "example": "{emotes.example} Beispiel: ```{prefix}reboot```",
-
-    "reboot": "{emotes.arrow} Ich starte neu.."
-  }

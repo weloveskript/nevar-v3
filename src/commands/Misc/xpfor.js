@@ -43,21 +43,21 @@ class Xpfor extends Command {
             let neededXp = this.client.format(Levels.xpFor(parseInt(args[0])));
             let time = secondsToTime(Levels.xpFor(parseInt(args[0])) / 15 * 25);
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("misc/xpfor:main:text")
-                        .replace('{level}', parseInt(args[0]))
-                        .replace('{xp}', neededXp)
-                        .replace('{count}', this.client.format(Math.round(Levels.xpFor(parseInt(args[0])) / 15)))
-                        .replace('{time}', time)
-                        .replace('{emotes.arrow}', this.client.emotes.arrow))
+                    .replace('{level}', parseInt(args[0]))
+                    .replace('{xp}', neededXp)
+                    .replace('{count}', this.client.format(Math.round(Levels.xpFor(parseInt(args[0])) / 15)))
+                    .replace('{time}', time)
+                    .replace('{emotes.arrow}', this.client.emotes.arrow))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed, false);
             if(interaction) return interaction.send(embed);
 
         }else{
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("misc/xpfor:general:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
@@ -65,7 +65,7 @@ class Xpfor extends Command {
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed, false);
             if(interaction) return interaction.send(embed);
         }

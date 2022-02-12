@@ -23,12 +23,12 @@ class Setlang extends Command {
         let guild = message?.guild || interaction?.guild;
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("admin/sl:main:choose")
                 .replace('{emotes.arrow}', this.client.emotes.arrow)
                 .replace('{emotes.arrow}', this.client.emotes.arrow))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
 
         let id = message?.member?.user?.id || interaction?.member?.user?.id
         let row = new MessageActionRow();
@@ -39,16 +39,16 @@ class Setlang extends Command {
                 .setStyle('PRIMARY')
                 .setDisabled(!lang.active)
                 .setEmoji(lang.emoji);
-           if(lang.name === data.guild.language){
-               item.setStyle('SECONDARY')
-               item.setDisabled(true);
-               item.setLabel(lang.nativeName + ' ' + guild.translate("admin/sl:main:active"))
-           }
-           if(!lang.active){
-               item.setStyle('DANGER')
-               item.setLabel(lang.nativeName + ' ' + guild.translate("admin/sl:main:soon"))
-           }
-           row.components.push(item);
+            if(lang.name === data.guild.language){
+                item.setStyle('SECONDARY')
+                item.setDisabled(true);
+                item.setLabel(lang.nativeName + ' ' + guild.translate("admin/sl:main:active"))
+            }
+            if(!lang.active){
+                item.setStyle('DANGER')
+                item.setLabel(lang.nativeName + ' ' + guild.translate("admin/sl:main:soon"))
+            }
+            row.components.push(item);
         }
 
         let sent;
@@ -63,12 +63,12 @@ class Setlang extends Command {
             let lang = this.client.languages.find((l) => l.name === clicked.customId.toString().split('_')[2]);
             if(!lang){
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("language:error")
                         .replace('{emotes.error}', this.client.emotes.error)
                         .replace('{support}', this.client.supportUrl))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 return sent.edit({embeds:[embed], components: []});
             }else{
                 data.guild.language = lang.name;
@@ -76,11 +76,11 @@ class Setlang extends Command {
                 const slashCommands = require('../../helper/slashCommands.js');
                 slashCommands.init(this.client, guild.id);
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("language:set")
                         .replace('{emotes.error}', this.client.emotes.error))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 return sent.edit({embeds:[embed], components: []});
             }
         }

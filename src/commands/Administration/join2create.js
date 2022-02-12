@@ -27,11 +27,11 @@ class Join2create extends Command {
         const channel = interaction?.channel || message?.channel;
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("admin/j2c:main:choose")
                 .replace('{emotes.arrow}', this.client.emotes.arrow))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         let id = message?.member?.user?.id || interaction?.member?.user?.id
         console.log(data.guild.plugins.joinToCreate.voice)
         let row = new MessageActionRow()
@@ -65,11 +65,11 @@ class Join2create extends Command {
         if (clicked) {
             if (clicked.customId === 'join2create_' + id + '_edit') {
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/j2c:main:collectors:channel")
                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({embeds: [embed], components: []})
 
                 const collectChannel = channel.createMessageCollector(
@@ -88,19 +88,19 @@ class Join2create extends Command {
                     });
                     if (!channelSent) {
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/j2c:main:invalid:channel")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         return sent.edit({embeds: [embed]});
                     } else {
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/j2c:main:collectors:userlimit")
                                 .replace('{emotes.arrow}', this.client.emotes.arrow))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         await sent.edit({embeds: [embed]});
                         const collectUserlimit = channel.createMessageCollector(
                             {
@@ -115,11 +115,11 @@ class Join2create extends Command {
                             let userlimit = parseInt(msg.content);
                             if (userlimit && (userlimit >= 1 && userlimit <= 99) || userlimit === -1) {
                                 let embed = new MessageEmbed()
-                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                     .setDescription(guild.translate("admin/j2c:main:collectors:bitrate")
                                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                                     .setColor(this.client.embedColor)
-                                    .setFooter(data.guild.footer);
+                                    .setFooter({text: data.guild.footer});
                                 await sent.edit({embeds: [embed]});
                                 const collectBitrate = channel.createMessageCollector(
                                     {
@@ -143,29 +143,29 @@ class Join2create extends Command {
                                         data.guild.markModified("plugins.joinToCreate");
                                         await data.guild.save();
                                         let embed = new MessageEmbed()
-                                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                             .setDescription(guild.translate("admin/j2c:main:set")
                                                 .replace('{emotes.success}', this.client.emotes.success))
                                             .setColor(this.client.embedColor)
-                                            .setFooter(data.guild.footer);
+                                            .setFooter({text: data.guild.footer});
                                         await sent.edit({embeds: [embed]});
                                     } else {
                                         let embed = new MessageEmbed()
-                                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                             .setDescription(guild.translate("admin/j2c:main:invalid:bitrate")
                                                 .replace('{emotes.error}', this.client.emotes.error))
                                             .setColor(this.client.embedColor)
-                                            .setFooter(data.guild.footer);
+                                            .setFooter({text: data.guild.footer});
                                         return sent.edit({embeds: [embed]});
                                     }
                                 });
                             } else {
                                 let embed = new MessageEmbed()
-                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                     .setDescription(guild.translate("admin/j2c:main:invalid:userlimit")
                                         .replace('{emotes.error}', this.client.emotes.error))
                                     .setColor(this.client.embedColor)
-                                    .setFooter(data.guild.footer);
+                                    .setFooter({text: data.guild.footer});
                                 return sent.edit({embeds: [embed]});
                             }
                         });
@@ -177,14 +177,14 @@ class Join2create extends Command {
                 if (j2cChannel) j2cChannel = j2cChannel.name;
                 if (!j2cChannel) j2cChannel = guild.translate("language:notFound");
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/j2c:main:show")
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                         .replace('{channel}', '#' + j2cChannel)
                         .replace('{userlimit}', data.guild.plugins.joinToCreate.userLimit)
                         .replace('{bitrate}', data.guild.plugins.joinToCreate.bitrate + 'kbps'))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({embeds: [embed], components: []})
             }
             if (clicked.customId === 'join2create_' + id + '_disable') {
@@ -198,11 +198,11 @@ class Join2create extends Command {
                 data.guild.markModified("plugins.joinToCreate");
                 await data.guild.save();
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/j2c:main:disabled")
                         .replace('{emotes.success}', this.client.emotes.success))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({embeds: [embed], components: []})
             }
         }

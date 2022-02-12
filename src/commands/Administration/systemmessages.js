@@ -36,7 +36,7 @@ class Systemmessages extends Command {
 
         if (!args[0]) {
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("admin/sm:general:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
@@ -44,18 +44,18 @@ class Systemmessages extends Command {
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if (message) return message.send(embed);
             if (interaction) return interaction.send(embed);
         }
 
         if (args[0].toLowerCase() === "goodbye") {
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("admin/sm:main:chooseAction")
                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             let id = message?.member?.user?.id || interaction?.member?.user?.id
             let row = new MessageActionRow()
                 .addComponents(
@@ -96,12 +96,12 @@ class Systemmessages extends Command {
             if (clicked) {
                 if (clicked.customId === 'systemmessages_' + id + '_edit') {
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/sm:collectors:message")
                             .replace('{emotes.arrow}', this.client.emotes.arrow)
                             .replace('{emotes.arrow}', this.client.emotes.arrow))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
                     const collectMessage = channel.createMessageCollector(
                         {
@@ -116,11 +116,11 @@ class Systemmessages extends Command {
                         });
                         if (content.length > 1800) content = content.substring(0, 1800);
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/sm:collectors:channel")
                                 .replace('{emotes.arrow}', this.client.emotes.arrow))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         await sent.edit({embeds: [embed]});
                         const collectChannel = channel.createMessageCollector(
                             {
@@ -144,19 +144,19 @@ class Systemmessages extends Command {
                                 data.guild.markModified("plugins.goodbye");
                                 await data.guild.save();
                                 let embed = new MessageEmbed()
-                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                     .setDescription(guild.translate("admin/sm:goodbye:success")
                                         .replace('{emotes.success}', this.client.emotes.success))
                                     .setColor(this.client.embedColor)
-                                    .setFooter(data.guild.footer);
+                                    .setFooter({text: data.guild.footer});
                                 await sent.edit({embeds: [embed]});
                             } else {
                                 let embed = new MessageEmbed()
-                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                     .setDescription(guild.translate("admin/sm:main:invalidChannel")
                                         .replace('{emotes.error}', this.client.emotes.error))
                                     .setColor(this.client.embedColor)
-                                    .setFooter(data.guild.footer);
+                                    .setFooter({text: data.guild.footer});
                                 await sent.edit({embeds: [embed]});
                             }
                         });
@@ -165,11 +165,11 @@ class Systemmessages extends Command {
                 if (clicked.customId === 'systemmessages_' + id + '_test') {
                     this.client.emit("guildMemberRemove", member);
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/sm:main:executed")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
                 }
                 if (clicked.customId === 'systemmessages_' + id + '_enable') {
@@ -177,11 +177,11 @@ class Systemmessages extends Command {
                     data.guild.markModified("plugins.goodbye");
                     await data.guild.save();
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/sm:goodbye:enabled")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
                 }
                 if (clicked.customId === 'systemmessages_' + id + '_disable') {
@@ -189,22 +189,22 @@ class Systemmessages extends Command {
                     data.guild.markModified("plugins.goodbye");
                     await data.guild.save();
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/sm:goodbye:disabled")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
                 }
             }
         }
         if (args[0].toLowerCase() === "welcome") {
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("admin/sm:main:chooseAction")
                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             let id = message?.member?.user?.id || interaction?.member?.user?.id
             let row = new MessageActionRow()
                 .addComponents(
@@ -245,12 +245,12 @@ class Systemmessages extends Command {
             if (clicked) {
                 if (clicked.customId === 'systemmessages_' + id + '_edit') {
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/sm:collectors:message")
                             .replace('{emotes.arrow}', this.client.emotes.arrow)
                             .replace('{emotes.arrow}', this.client.emotes.arrow))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
                     const collectMessage = channel.createMessageCollector(
                         {
@@ -265,11 +265,11 @@ class Systemmessages extends Command {
                         });
                         if (content.length > 1800) content = content.substring(0, 1800);
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/sm:collectors:channel")
                                 .replace('{emotes.arrow}', this.client.emotes.arrow))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         await sent.edit({embeds: [embed]});
                         const collectChannel = channel.createMessageCollector(
                             {
@@ -293,19 +293,19 @@ class Systemmessages extends Command {
                                 data.guild.markModified("plugins.welcome");
                                 await data.guild.save();
                                 let embed = new MessageEmbed()
-                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                     .setDescription(guild.translate("admin/sm:welcome:success")
                                         .replace('{emotes.success}', this.client.emotes.success))
                                     .setColor(this.client.embedColor)
-                                    .setFooter(data.guild.footer);
+                                    .setFooter({text: data.guild.footer});
                                 await sent.edit({embeds: [embed]});
                             } else {
                                 let embed = new MessageEmbed()
-                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                     .setDescription(guild.translate("admin/sm:main:invalidChannel")
                                         .replace('{emotes.error}', this.client.emotes.error))
                                     .setColor(this.client.embedColor)
-                                    .setFooter(data.guild.footer);
+                                    .setFooter({text: data.guild.footer});
                                 await sent.edit({embeds: [embed]});
                             }
                         });
@@ -314,11 +314,11 @@ class Systemmessages extends Command {
                 if (clicked.customId === 'systemmessages_' + id + '_test') {
                     this.client.emit("guildMemberAdd", member);
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/sm:main:executed")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
                 }
                 if (clicked.customId === 'systemmessages_' + id + '_enable') {
@@ -326,11 +326,11 @@ class Systemmessages extends Command {
                     data.guild.markModified("plugins.welcome");
                     await data.guild.save();
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/sm:welcome:enabled")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
                 }
                 if (clicked.customId === 'systemmessages_' + id + '_disable') {
@@ -338,11 +338,11 @@ class Systemmessages extends Command {
                     data.guild.markModified("plugins.welcome");
                     await data.guild.save();
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/sm:welcome:disabled")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
                 }
             }

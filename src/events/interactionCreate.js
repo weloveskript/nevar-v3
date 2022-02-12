@@ -40,11 +40,11 @@ module.exports = class {
 
         if(data.guild.plugins.disabledCommands?.includes(cmd.help.name)){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(cachedGuild.translate("general/commandHandler:ignoredCmd")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             return interaction.send(embed, true);
         }
 
@@ -64,13 +64,13 @@ module.exports = class {
         if (neededPermissions.length > 0) {
             let perms = neededPermissions.map((p) => `|- ${p}`).join("\n");
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(cachedGuild.translate("general/commandHandler:botPermsMissing")
                     .replace('{perms}', perms)
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             return interaction.send(embed, true);
         }
 
@@ -86,22 +86,22 @@ module.exports = class {
         if (neededPermissions.length > 0) {
             let perms = neededPermissions.map((p) => `|- ${p}`).join("\n")
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(cachedGuild.translate("general/commandHandler:memberPermsMissing")
                     .replace('{perms}', perms)
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             return interaction.send(embed, true);
         }
 
         if (!channel.nsfw && cmd.conf.nsfw) {
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(cachedGuild.translate("general/commandHandler:nsfwCommand")
                     .replace('{emotes.error}', this.client.emotes.error))
-                   .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setColor(this.client.embedColor)
+                .setFooter({text: data.guild.footer});
             return interaction.send(embed, true);
         }
 
@@ -117,49 +117,49 @@ module.exports = class {
             let staffs = JSON.parse(fs.readFileSync('./storage/staffs.json'));
             if (member.user.id !== config.team.owner_id || !staffs[member.user.id] && member.user.id !== config.team.owner_id){
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(cachedGuild.translate("general/commandHandler:disabledCommand")
                         .replace('{emotes.error}', this.client.emotes.error)
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                         .replace('{support}', this.client.supportUrl))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 return interaction.send(embed);
             }
         }
 
         if (cmd.conf.ownerOnly && (member.user.id !== config.team.owner_id)) {
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(cachedGuild.translate("general/commandHandler:ownerCommand")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             return interaction.send(embed);
         }
 
         let staffs = JSON.parse(fs.readFileSync('./storage/staffs.json'));
         if(cmd.conf.staffOnly && !staffs[member.user.id] && member.user.id !== config.team.owner_id){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(cachedGuild.translate("general/commandHandler:staffCommand")
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{client}', this.client.user.username))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             return interaction.send(embed);
         }
 
         if(cmd.conf.premium && !data.guild.premium) {
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(cachedGuild.translate("general/commandHandler:premiumCommand")
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{client}', this.client.user.username)
                     .replace('{emotes.arrow}', this.client.emotes.arrow)
                     .replace('{support}', this.client.supportUrl))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             return interaction.send(embed);
         }
 
@@ -184,10 +184,10 @@ module.exports = class {
                 }
                 desc += cachedGuild.translate("general/commandHandler:remainingCooldown").split('?')[3]
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(desc)
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 return interaction.send(embed, true);
             }
         }
@@ -216,12 +216,12 @@ module.exports = class {
             cmd.run(interaction, undefined, args, data)
         }catch (e) {
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(g.translate("general/commandHandler:unknownError")
                     .replace('{support}', this.client.supportUrl)
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             return await interaction.send(embed, true);
         }
     }

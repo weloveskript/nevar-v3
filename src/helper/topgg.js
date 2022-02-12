@@ -36,12 +36,12 @@ module.exports = {
                     votes = data.monthlyPoints;
                 }
                 let embed = new MessageEmbed()
-                    .setAuthor(client.user.username, client.user.displayAvatarURL(), client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setTitle("Thank you for your vote ❤️")
                     .setThumbnail(user.displayAvatarURL())
                     .setDescription(`${client.emotes.boost} | **${user.username}** just voted for our bot!\n${client.emotes.nevar.logo_small_transparent} Here you can vote every 12 hours: **[Click](https://top.gg/bot/${client.user.id}/vote)**`)
                     .setColor(client.embedColor)
-                    .setFooter(`${votes} votes in ${month} | Thank you 🖤`);
+                    .setFooter({text: `${votes} votes in ${month} | Thank you 🖤`});
                 client.channels.cache.get(config.support.vote_announce_channel).send({embeds: [embed]});
 
             }));

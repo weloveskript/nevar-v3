@@ -36,7 +36,7 @@ class Loop extends Command {
 
         if(!args[0]){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("music/loop:general:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
@@ -44,7 +44,7 @@ class Loop extends Command {
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
             if(interaction) return interaction.editReply({embeds:[embed]});
         }
@@ -53,21 +53,21 @@ class Loop extends Command {
 
         if(!queue || !queue.playing){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("music/loop:main:errors:notPlaying")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
             if(interaction) return interaction.editReply({embeds:[embed]});
         }
         if(!member.voice?.channel || queue.connection.channel.id !== member.voice.channel.id){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("music/loop:main:errors:sameChannel")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
             if(interaction) return interaction.editReply({embeds: [embed]});
         }
@@ -76,7 +76,7 @@ class Loop extends Command {
 
         if(loopMode !== 'off' && loopMode !== 'queue' && loopMode !== 'track' && loopMode !== 'autoplay'){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("music/loop:general:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
@@ -84,7 +84,7 @@ class Loop extends Command {
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
             if(interaction) return interaction.editReply({embeds:[embed]});
         }
@@ -98,20 +98,20 @@ class Loop extends Command {
         let success = queue.setRepeatMode(parseInt(loopMode));
         if(success){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("music/loop:main:set")
                     .replace('{emotes.loop}', this.client.emotes.loop))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
             if(interaction) return interaction.editReply({embeds:[embed]});
         }else{
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("music/loop:main:errors:cantSet")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
             if(interaction) return interaction.editReply({embeds:[embed]});
         }

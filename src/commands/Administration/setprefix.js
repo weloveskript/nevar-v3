@@ -21,7 +21,7 @@ class Setprefix extends Command {
         let guild = message?.guild || interaction?.guild;
         if(!prefix){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("admin/sp:general:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
@@ -29,7 +29,7 @@ class Setprefix extends Command {
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if (message) return message.send(embed);
             if (interaction) return interaction.send(embed);
         }
@@ -39,12 +39,12 @@ class Setprefix extends Command {
         await data.guild.save();
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("admin/sp:main:set")
                 .replace('{emotes.success}', this.client.emotes.success)
                 .replace('{prefix}', prefix))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         if (message) return message.send(embed);
         if (interaction) return interaction.send(embed);
 

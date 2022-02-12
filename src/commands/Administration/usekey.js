@@ -31,7 +31,7 @@ class Usekey extends Command {
 
         if(!args[0]){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("admin/usekey:general:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
@@ -39,7 +39,7 @@ class Usekey extends Command {
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed, false);
             if(interaction) return interaction.send(embed);
         }
@@ -69,14 +69,14 @@ class Usekey extends Command {
                 let newJson = JSON.stringify(json);
                 fs.writeFileSync(path, newJson);
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/usekey:text:invalid")
-                            .replace('{emotes.error}', this.client.emotes.error)
+                        .replace('{emotes.error}', this.client.emotes.error)
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                         .replace('{support}', this.client.supportUrl))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 if(message) return message.send(embed, false);
                 if(interaction) return interaction.send(embed);
             }else{
@@ -92,34 +92,34 @@ class Usekey extends Command {
                         fs.writeFileSync(path, newJson);
                     }
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/usekey:text:redeemed")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     if(message) await message.send(embed);
                     if(interaction) await interaction.send(embed);
                 }else{
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/usekey:text:alreadyActivated")
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     if(message) return message.send(embed);
                     if(interaction) return  interaction.send(embed);
                 }
             }
         }else{
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("admin/usekey:text:invalid")
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{emotes.arrow}', this.client.emotes.arrow)
                     .replace('{emotes.arrow}', this.client.emotes.arrow)
                     .replace('{support}', this.client.supportUrl))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed, false);
             if(interaction) return interaction.send(embed, true);
         }

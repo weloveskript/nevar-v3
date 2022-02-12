@@ -39,11 +39,11 @@ class Embed extends Command {
         let authorText, authorIcon, title, thumbnail, image, description, footerText, footerIcon, color;
 
         let disclaimer = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("admin/embed:embed:disclaimer")
                 .replace('{emotes.arrow}', this.client.emotes.arrow))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
 
         let row = new MessageActionRow()
             .addComponents(
@@ -72,11 +72,11 @@ class Embed extends Command {
         if (clicked) {
             if (clicked?.customId === 'consent_' + id + '_yes') {
                 let collectAuthorEmbed = new MessageEmbed()
-                    .setAuthor(guild.translate("admin/embed:embed:collectors:author:example"), this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: guild.translate("admin/embed:embed:collectors:author:example"), iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/embed:embed:collectors:author:description")
                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({
                     embeds: [collectAuthorEmbed],
                     components: []
@@ -94,11 +94,11 @@ class Embed extends Command {
                         authorText = msg.content;
 
                         let collectAuthorIconEmbed = new MessageEmbed()
-                            .setAuthor(guild.translate("admin/embed:embed:collectors:authorIcon:example"), this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: guild.translate("admin/embed:embed:collectors:authorIcon:example"),  iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/embed:embed:collectors:authorIcon:description")
                                 .replace('{emotes.arrow}', this.client.emotes.arrow))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         await sent.edit({
                             embeds: [collectAuthorIconEmbed]
                         });
@@ -114,11 +114,11 @@ class Embed extends Command {
                             if (msg.attachments.size < 1 && msg.content !== "/") {
                                 msg.delete().catch(() => {});
                                 let errorEmbed = new MessageEmbed()
-                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                     .setDescription(guild.translate("admin/embed:embed:cancelled")
                                         .replace('{emotes.error}', this.client.emotes.error))
                                     .setColor(this.client.embedColor)
-                                    .setFooter(data.guild.footer);
+                                    .setFooter({text: data.guild.footer});
                                 return sent.edit({
                                     embeds: [errorEmbed]
                                 });
@@ -137,11 +137,11 @@ class Embed extends Command {
                                             //Image is larger than 10mb
                                             msg.delete().catch(() => {});
                                             let errorEmbed = new MessageEmbed()
-                                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                 .setDescription(guild.translate("admin/embed:embed:maximumSize")
                                                     .replace('{emotes.error}', this.client.emotes.error))
                                                 .setColor(this.client.embedColor)
-                                                .setFooter(data.guild.footer);
+                                                .setFooter({text: data.guild.footer});
                                             return sent.edit({
                                                 embeds: [errorEmbed]
                                             })
@@ -155,12 +155,12 @@ class Embed extends Command {
                                         }
                                     } else {
                                         let errorEmbed = new MessageEmbed()
-                                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                             .setDescription(guild.translate("admin/embed:embed:invalid:image")
                                                 .replace('{emotes.error}', this.client.emotes.error)
                                                 .replace('{emotes.arrow}', this.client.emotes.arrow))
                                             .setColor(this.client.embedColor)
-                                            .setFooter(data.guild.footer);
+                                            .setFooter({text: data.guild.footer});
                                         await sent.edit({
                                             embeds: [errorEmbed]
                                         });
@@ -173,7 +173,7 @@ class Embed extends Command {
                                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                                     .setThumbnail(this.client.user.displayAvatarURL())
                                     .setColor(this.client.embedColor)
-                                    .setFooter(data.guild.footer);
+                                    .setFooter({text: data.guild.footer});
                                 await sent.edit({
                                     embeds: [collectThumbnailEmbed]
                                 });
@@ -188,11 +188,11 @@ class Embed extends Command {
                                     if (msg.attachments.size < 1 && msg.content !== "/") {
                                         msg.delete().catch(() => {});
                                         let errorEmbed = new MessageEmbed()
-                                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                             .setDescription(guild.translate("admin/embed:embed:cancelled")
                                                 .replace('{emotes.error}', this.client.emotes.error))
                                             .setColor(this.client.embedColor)
-                                            .setFooter(data.guild.footer);
+                                            .setFooter({text: data.guild.footer});
                                         return sent.edit({
                                             embeds: [errorEmbed]
                                         });
@@ -211,11 +211,11 @@ class Embed extends Command {
                                                     //Image is larger than 10mb
                                                     msg.delete().catch(() => {});
                                                     let errorEmbed = new MessageEmbed()
-                                                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                         .setDescription(guild.translate("admin/embed:embed:maximumSize")
                                                             .replace('{emotes.error}', this.client.emotes.error))
                                                         .setColor(this.client.embedColor)
-                                                        .setFooter(data.guild.footer);
+                                                        .setFooter({text: data.guild.footer});
                                                     return sent.edit({
                                                         embeds: [errorEmbed]
                                                     })
@@ -229,12 +229,12 @@ class Embed extends Command {
                                                 }
                                             } else {
                                                 let errorEmbed = new MessageEmbed()
-                                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                     .setDescription(guild.translate("admin/embed:embed:invalid:image")
                                                         .replace('{emotes.error}', this.client.emotes.error)
                                                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                                                     .setColor(this.client.embedColor)
-                                                    .setFooter(data.guild.footer);
+                                                    .setFooter({text: data.guild.footer});
                                                 return sent.edit({
                                                     embeds: [errorEmbed]
                                                 });
@@ -246,7 +246,7 @@ class Embed extends Command {
                                             .setDescription(guild.translate("admin/embed:embed:collectors:title:description")
                                                 .replace('{emotes.arrow}', this.client.emotes.arrow))
                                             .setColor(this.client.embedColor)
-                                            .setFooter(data.guild.footer);
+                                            .setFooter({text: data.guild.footer});
                                         await sent.edit({
                                             embeds: [collectTitleEmbed]
                                         });
@@ -264,12 +264,12 @@ class Embed extends Command {
                                                 title = msg.content;
                                             }
                                             let collectDescEmbed = new MessageEmbed()
-                                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                 .setDescription(guild.translate("admin/embed:embed:collectors:description")
                                                     .replace('{emotes.arrow}', this.client.emotes.arrow)
                                                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                                                 .setColor(this.client.embedColor)
-                                                .setFooter(data.guild.footer);
+                                                .setFooter({text: data.guild.footer});
                                             await sent.edit({
                                                 embeds: [collectDescEmbed]
                                             });
@@ -287,12 +287,12 @@ class Embed extends Command {
                                                     description = msg.content;
                                                 }
                                                 let collectImageEmbed = new MessageEmbed()
-                                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                     .setDescription(guild.translate("admin/embed:embed:collectors:image")
                                                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                                                     .setColor(this.client.embedColor)
                                                     .setImage('https://preview.redd.it/4zh2hgl46cp51.png?width=3325&format=png&auto=webp&s=b9123bff12e1d5b86248d27a059104b4c92e05b5')
-                                                    .setFooter(data.guild.footer);
+                                                    .setFooter({text: data.guild.footer});
                                                 await sent.edit({
                                                     embeds: [collectImageEmbed]
                                                 });
@@ -307,11 +307,11 @@ class Embed extends Command {
                                                     if (msg.attachments.size < 1 && msg.content !== "/") {
                                                         msg.delete().catch(() => {});
                                                         let errorEmbed = new MessageEmbed()
-                                                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                             .setDescription(guild.translate("admin/embed:embed:cancelled")
                                                                 .replace('{emotes.error}', this.client.emotes.error))
                                                             .setColor(this.client.embedColor)
-                                                            .setFooter(data.guild.footer);
+                                                            .setFooter({text: data.guild.footer});
                                                         return sent.edit({
                                                             embeds: [errorEmbed]
                                                         });
@@ -330,11 +330,11 @@ class Embed extends Command {
                                                                     //Image is larger than !=mb
                                                                     msg.delete().catch(() => {});
                                                                     let errorEmbed = new MessageEmbed()
-                                                                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                                         .setDescription(guild.translate("admin/embed:embed:maximumSize")
                                                                             .replace('{emotes.error}', this.client.emotes.error))
                                                                         .setColor(this.client.embedColor)
-                                                                        .setFooter(data.guild.footer);
+                                                                        .setFooter({text: data.guild.footer});
                                                                     return sent.edit({
                                                                         embeds: [errorEmbed]
                                                                     })
@@ -348,12 +348,12 @@ class Embed extends Command {
                                                                 }
                                                             } else {
                                                                 let errorEmbed = new MessageEmbed()
-                                                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                                     .setDescription(guild.translate("admin/embed:embed:invalid:image")
                                                                         .replace('{emotes.error}', this.client.emotes.error)
                                                                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                                                                     .setColor(this.client.embedColor)
-                                                                    .setFooter(data.guild.footer);
+                                                                    .setFooter({text: data.guild.footer});
                                                                 return sent.edit({
                                                                     embeds: [errorEmbed]
                                                                 });
@@ -361,7 +361,7 @@ class Embed extends Command {
                                                         }
                                                         msg.delete().catch(() => {});
                                                         let collectFooterEmbed = new MessageEmbed()
-                                                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                             .setDescription(guild.translate("admin/embed:embed:collectors:footer:description")
                                                                 .replace('{emotes.arrow}', this.client.emotes.arrow))
                                                             .setColor(this.client.embedColor)
@@ -383,7 +383,7 @@ class Embed extends Command {
                                                                 footerText = msg.content;
                                                             }
                                                             let collectFooterIconEmbed = new MessageEmbed()
-                                                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                                 .setDescription(guild.translate("admin/embed:embed:collectors:footerIcon:description")
                                                                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                                                                 .setColor(this.client.embedColor)
@@ -402,11 +402,11 @@ class Embed extends Command {
                                                                 if (msg.attachments.size < 1 && msg.content !== "/") {
                                                                     msg.delete().catch(() => {});
                                                                     let errorEmbed = new MessageEmbed()
-                                                                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                                         .setDescription(guild.translate("admin/embed:embed:cancelled")
                                                                             .replace('{emotes.error}', this.client.emotes.error))
                                                                         .setColor(this.client.embedColor)
-                                                                        .setFooter(data.guild.footer);
+                                                                        .setFooter({text: data.guild.footer});
                                                                     return sent.edit({
                                                                         embeds: [errorEmbed]
                                                                     });
@@ -425,11 +425,11 @@ class Embed extends Command {
                                                                                 //Image is larger than 10mb
                                                                                 msg.delete().catch(() => {});
                                                                                 let errorEmbed = new MessageEmbed()
-                                                                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                                                     .setDescription(guild.translate("admin/embed:embed:maximumSize")
                                                                                         .replace('{emotes.error}', this.client.emotes.error))
                                                                                     .setColor(this.client.embedColor)
-                                                                                    .setFooter(data.guild.footer);
+                                                                                    .setFooter({text: data.guild.footer});
                                                                                 return sent.edit({
                                                                                     embeds: [errorEmbed]
                                                                                 })
@@ -443,12 +443,12 @@ class Embed extends Command {
                                                                             }
                                                                         } else {
                                                                             let errorEmbed = new MessageEmbed()
-                                                                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                                                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                                                 .setDescription(guild.translate("admin/embed:embed:invalid:image")
                                                                                     .replace('{emotes.error}', this.client.emotes.error)
                                                                                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                                                                                 .setColor(this.client.embedColor)
-                                                                                .setFooter(data.guild.footer);
+                                                                                .setFooter({text: data.guild.footer});
                                                                             return sent.edit({
                                                                                 embeds: [errorEmbed]
                                                                             });
@@ -456,12 +456,12 @@ class Embed extends Command {
                                                                     }
                                                                     msg.delete().catch();
                                                                     let collectColorEmbed = new MessageEmbed()
-                                                                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                                         .setTitle(guild.translate("admin/embed:embed:collectors:color:example"))
                                                                         .setDescription(guild.translate("admin/embed:embed:collectors:color:description")
                                                                             .replace('{emotes.arrow}', this.client.emotes.arrow))
                                                                         .setColor(this.client.embedColor)
-                                                                        .setFooter(data.guild.footer);
+                                                                        .setFooter({text: data.guild.footer});
                                                                     await sent.edit({
                                                                         embeds: [collectColorEmbed]
                                                                     });
@@ -512,11 +512,11 @@ class Embed extends Command {
                                                                         }
 
                                                                         let generateEmbed = new MessageEmbed()
-                                                                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                                             .setDescription(guild.translate("admin/embed:embed:generate")
                                                                                 .replace('{emotes.arrow}', this.client.emotes.arrow))
                                                                             .setColor(this.client.embedColor)
-                                                                            .setFooter(data.guild.footer);
+                                                                            .setFooter({text: data.guild.footer});
                                                                         await sent.edit({
                                                                             embeds: [generateEmbed]
                                                                         });
@@ -582,22 +582,22 @@ class Embed extends Command {
                                                                         })
                                                                             .catch(async (err) => {
                                                                                 let errorEmbed = new MessageEmbed()
-                                                                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                                                     .setDescription(guild.translate("admin/embed:embed:error")
                                                                                         .replace('{emotes.error}', this.client.emotes.error))
                                                                                     .setColor(this.client.embedColor)
-                                                                                    .setFooter(data.guild.footer);
+                                                                                    .setFooter({text: data.guild.footer});
                                                                                 await sent.edit({
                                                                                     embeds: [errorEmbed]
                                                                                 });
                                                                             })
                                                                             .then(async () => {
                                                                                 let successfullEmbed = new MessageEmbed()
-                                                                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                                                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                                                                     .setDescription(guild.translate("admin/embed:embed:success")
                                                                                         .replace('{emotes.success}', this.client.emotes.success))
                                                                                     .setColor(this.client.embedColor)
-                                                                                    .setFooter(data.guild.footer);
+                                                                                    .setFooter({text: data.guild.footer});
                                                                                 await sent.edit({
                                                                                     embeds: [successfullEmbed]
                                                                                 });
@@ -623,11 +623,11 @@ class Embed extends Command {
                         });
                     } else {
                         let errorEmbed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/embed:embed:cancelled")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         await sent.edit({
                             embeds: [errorEmbed]
                         });
@@ -635,11 +635,11 @@ class Embed extends Command {
                 })
             } else {
                 let errorEmbed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/embed:embed:cancelled")
                         .replace('{emotes.error}', this.client.emotes.error))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await sent.edit({
                     embeds: [errorEmbed],
                     components: []
@@ -647,11 +647,11 @@ class Embed extends Command {
             }
         } else if (clicked?.customId === 'consent_' + id + '_no') {
             let errorEmbed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("admin/embed:embed:cancelled")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             await sent.edit({
                 embeds: [errorEmbed],
                 components: []

@@ -27,11 +27,11 @@ class Autorole extends Command {
         const member = message?.member || interaction?.member;
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("admin/ar:main:choose")
                 .replace('{emotes.arrow}', this.client.emotes.arrow))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         let id = message?.member?.user?.id || interaction?.member?.user?.id
         let row = new MessageActionRow()
             .addComponents(
@@ -64,11 +64,11 @@ class Autorole extends Command {
         if (clicked) {
             if (clicked.customId === 'autorole_' + id + '_add') {
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/ar:main:collectors:roleAdd")
                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({embeds: [embed], components: []});
                 const collectMessage = channel.createMessageCollector(
                     {
@@ -91,20 +91,20 @@ class Autorole extends Command {
                         data.guild.markModified("plugins.autoroles");
                         await data.guild.save();
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/ar:main:added")
                                 .replace('{emotes.success}', this.client.emotes.success))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         return sent.edit({embeds: [embed]});
                     }else{
                         await data.guild.save();
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/ar:main:invalid:role")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         return sent.edit({embeds: [embed]});
                     }
                 });
@@ -120,21 +120,21 @@ class Autorole extends Command {
                 data.guild.markModified("plugins.autoroles");
                 await data.guild.save();
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/ar:main:list")
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                         .replace('{list}', roles.join('\n|- ')))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 return clicked.update({embeds: [embed], components: []});
             }
             if (clicked.customId === 'autorole_' + id + '_remove') {
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/ar:main:collectors:roleRemove")
                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({embeds: [embed], components: []});
                 const collectMessage = channel.createMessageCollector(
                     {
@@ -157,20 +157,20 @@ class Autorole extends Command {
                             await data.guild.save();
                         }
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/ar:main:removed")
                                 .replace('{emotes.success}', this.client.emotes.success))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         return sent.edit({embeds: [embed]});
                     } else {
                         await data.guild.save();
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/ar:main:invalid:role")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         return sent.edit({embeds: [embed]});
                     }
                 });

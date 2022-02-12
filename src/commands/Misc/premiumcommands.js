@@ -28,13 +28,13 @@ class Premiumcommands extends Command {
         }
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("misc/premiumcommands:main:list")
                 .replace('{emotes.arrow}', this.client.emotes.arrow)
                 .replace('{client}', this.client.user.username)
                 .replace('{list}', premiumCommands.join('\n|- ')))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         if(message) return message.send(embed);
         if(interaction) return interaction.send(embed);
     }

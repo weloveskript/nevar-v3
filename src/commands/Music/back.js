@@ -26,33 +26,33 @@ class Back extends Command {
         const queue = this.client.player.getQueue(guild.id);
         if(!queue || !queue.playing) {
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("music/back:main:errors:notPlaying")
-                        .replace('{emotes.error}', this.client.emotes.error))
+                    .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
             if(interaction) return interaction.editReply({embeds:[embed]});
         }
 
         if(!member.voice?.channel || queue.connection.channel.id !== member.voice.channel.id){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("music/back:main:errors:sameChannel")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
             if(interaction) return interaction.editReply({embeds: [embed]});
         }
 
         await queue.back();
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("music/back:main:back")
                 .replace('{emotes.success}', this.client.emotes.success))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         if(message) return message.send(embed);
         if(interaction) return interaction.editReply({embeds: [embed]});
     }

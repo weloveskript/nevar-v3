@@ -1,7 +1,7 @@
 const util = require('util');
 const path = require('path');
 const { GiveawaysManager } = require('discord-giveaways');
-const { Client, Collection, MessageEmbed } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const { Player } = require('discord-player');
 const { loadConfig } = require('../helper/loader');
 const config = loadConfig();

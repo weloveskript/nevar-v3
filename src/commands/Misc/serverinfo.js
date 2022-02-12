@@ -50,16 +50,16 @@ class Serverinfo extends Command {
 
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setThumbnail(guild.iconURL({dynamic: true}))
 
             .addField(guild.translate("misc/si:main:fields:name:name")
-                .replace('{emotes.pencil}', this.client.emotes.pencil),
+                    .replace('{emotes.pencil}', this.client.emotes.pencil),
                 guild.translate("misc/si:main:fields:name:value")
                     .replace('{guildName}', guild.name), true)
 
             .addField(guild.translate("misc/si:main:fields:id:name")
-                .replace('{emotes.id}', this.client.emotes.id),
+                    .replace('{emotes.id}', this.client.emotes.id),
                 guild.translate("misc/si:main:fields:id:value")
                     .replace('{guildId}', guild.id), true)
 
@@ -120,7 +120,7 @@ class Serverinfo extends Command {
                     .replace('{boostsUntil}', (boostsForLevel[guild.premiumTier.replace('NONE', 'TIER_1')] - guild.premiumSubscriptionCount)), true)
 
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         if(message) return message.send(embed);
         if(interaction) return interaction.send(embed);
 

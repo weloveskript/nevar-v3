@@ -28,7 +28,7 @@ class Calc extends Command {
 
         if(!args[0]){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("misc/calc:general:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
@@ -36,7 +36,7 @@ class Calc extends Command {
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed, false);
             if(interaction) return interaction.send(embed);
         }
@@ -46,7 +46,7 @@ class Calc extends Command {
             result = math.evaluate(args.join(' ').replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/").replace(/[:]/gi, '/'));
         }catch (e) {
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("misc/calc:general:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
@@ -54,16 +54,16 @@ class Calc extends Command {
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed, false);
             if(interaction) return interaction.send(embed);
         }
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .addField(this.client.emotes.formula + ' ' + guild.translate("misc/calc:embed:formula"), `\`\`\`js\n${args.join("").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/").replace(/[:]/gi, '/')}\`\`\``)
             .addField(this.client.emotes.result + ' ' + guild.translate("misc/calc:embed:result"), `\`\`\`js\n${result}\`\`\``)
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         if(message) return message.send(embed, false);
         if(interaction) return interaction.send(embed);
     }

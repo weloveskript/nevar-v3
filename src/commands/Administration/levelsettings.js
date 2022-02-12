@@ -38,7 +38,7 @@ class Levelsettings extends Command {
 
         if(!args[0]){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("admin/ls:general:usage")
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.use}', this.client.emotes.use) + '\n' +
@@ -46,17 +46,17 @@ class Levelsettings extends Command {
                         .replace('{prefix}', data.guild.prefix)
                         .replace('{emotes.example}', this.client.emotes.example))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if (message) return message.send(embed);
             if (interaction) return interaction.send(embed);
         }
         if(args[0].toLowerCase() === "channel"){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("admin/ls:channel:collectors:channel")
                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             let sent;
             if (message) sent = await message.send(embed);
             if (interaction) sent = await interaction.send(embed);
@@ -86,30 +86,30 @@ class Levelsettings extends Command {
                         data.guild.markModified("plugins.levelsystem");
                         await data.guild.save();
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/ls:channel:set:current")
                                 .replace('{emotes.success}', this.client.emotes.success))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         msg.delete().catch(() => {});
                         return sent.edit({embeds:[embed]});
                     }
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:channel:invalid")
                             .replace('{emotes.error}', this.client.emotes.error))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     msg.delete().catch(() => {});
                     return sent.edit({embeds:[embed]});
                 }
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/ls:channel:set:other")
                         .replace('{emotes.success}', this.client.emotes.success)
                         .replace('{channel}', chan))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 msg.delete().catch(() => {});
                 await sent.edit({embeds:[embed]});
                 data.guild.plugins.levelsystem.enabled = true;
@@ -120,11 +120,11 @@ class Levelsettings extends Command {
         }
         if(args[0].toLowerCase() === 'messages'){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("admin/ls:message:choose")
                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             let id = message?.member?.user?.id || interaction?.member?.user?.id
             let row = new MessageActionRow()
                 .addComponents(
@@ -164,12 +164,12 @@ class Levelsettings extends Command {
             if (clicked) {
                 if (clicked.customId === 'levelmessages_' + id + '_edit') {
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:message:collectors:message")
                             .replace('{emotes.arrow}', this.client.emotes.arrow)
                             .replace('{emotes.arrow}', this.client.emotes.arrow))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
 
                     const collectMessage = channel.createMessageCollector(
@@ -186,21 +186,21 @@ class Levelsettings extends Command {
                         msg.delete().catch(() => {
                         });
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/ls:message:set")
                                 .replace('{emotes.success}', this.client.emotes.success))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         await sent.edit({embeds: [embed]});
                     });
                 }
                 if (clicked.customId === 'levelmessages_' + id + '_test') {
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:message:test")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
 
                     await this.client.wait(2000);
@@ -225,11 +225,11 @@ class Levelsettings extends Command {
                     data.guild.markModified("plugins.levelsystem");
                     await data.guild.save();
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:message:enabled")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
                 }
                 if (clicked.customId === 'levelmessages_' + id + '_disable') {
@@ -237,11 +237,11 @@ class Levelsettings extends Command {
                     data.guild.markModified("plugins.levelsystem");
                     await data.guild.save();
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:message:disabled")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
 
                 }
@@ -250,11 +250,11 @@ class Levelsettings extends Command {
         }
         if(args[0].toLowerCase() === 'roles'){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("admin/ls:roles:choose")
                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             let id = message?.member?.user?.id || interaction?.member?.user?.id
             let row = new MessageActionRow()
                 .addComponents(
@@ -293,11 +293,11 @@ class Levelsettings extends Command {
             if(clicked) {
                 if (clicked.customId === 'levelroles_' + id + '_create') {
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:roles:collectors:role")
                             .replace('{emotes.arrow}', this.client.emotes.arrow))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
 
                     const collectRole = channel.createMessageCollector(
@@ -317,20 +317,20 @@ class Levelsettings extends Command {
                         if(!role){
                             msg.delete().catch(() => {});
                             let embed = new MessageEmbed()
-                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                 .setDescription(guild.translate("admin/ls:roles:invalid:role")
                                     .replace('{emotes.error}', this.client.emotes.error))
                                 .setColor(this.client.embedColor)
-                                .setFooter(data.guild.footer);
+                                .setFooter({text: data.guild.footer});
                             return sent.edit({embeds:[embed]});
                         }
                         msg.delete().catch(() => {});
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/ls:roles:collectors:level")
                                 .replace('{emotes.arrow}', this.client.emotes.arrow))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         await sent.edit({embeds:[embed]});
                         const collectLevel = channel.createMessageCollector(
                             {
@@ -342,23 +342,23 @@ class Levelsettings extends Command {
                             collectLevel.stop();
                             if(isNaN(Number(msg.content))){
                                 let embed = new MessageEmbed()
-                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                     .setDescription(guild.translate("admin/ls:invalid:level")
                                         .replace('{emotes.error}', this.client.emotes.error))
                                     .setColor(this.client.embedColor)
-                                    .setFooter(data.guild.footer);
+                                    .setFooter({text: data.guild.footer});
                                 return sent.edit({embeds:[embed]});
                             }
                             const level = msg.content;
                             msg.delete().catch(() => {});
                             let embed = new MessageEmbed()
-                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                 .setDescription(guild.translate("admin/ls:roles:set")
                                     .replace('{emotes.success}', this.client.emotes.success)
                                     .replace('{level}', level)
                                     .replace('{role}', role))
                                 .setColor(this.client.embedColor)
-                                .setFooter(data.guild.footer);
+                                .setFooter({text: data.guild.footer});
                             for(let value of data.guild.plugins.levelsystem.levelroles){
                                 if(value.split(' | ')[0] === level){
                                     data.guild.plugins.levelsystem.levelroles = data.guild.plugins.levelsystem.levelroles.filter(s => s !== value);
@@ -383,22 +383,22 @@ class Levelsettings extends Command {
                     if(roles.length < 1) roles = [guild.translate("language:noEntries")];
 
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:roles:list:list")
                             .replace('{emotes.arrow}', this.client.emotes.arrow)
                             .replace('{list}', roles.join('\n|- ')))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     clicked.update({embeds:[embed], components: []});
 
                 }
                 if(clicked.customId === 'levelroles_' + id + '_delete'){
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:roles:collectors:level")
                             .replace('{emotes.arrow}', this.client.emotes.arrow))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
                     const collectLevel = channel.createMessageCollector(
                         {
@@ -411,11 +411,11 @@ class Levelsettings extends Command {
                         if (isNaN(Number(msg.content))) {
                             msg.delete().catch(() => {});
                             let embed = new MessageEmbed()
-                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                 .setDescription(guild.translate("admin/ls:roles:invalid:level")
                                     .replace('{emotes.error}', this.client.emotes.error))
                                 .setColor(this.client.embedColor)
-                                .setFooter(data.guild.footer);
+                                .setFooter({text: data.guild.footer});
                             return sent.edit({embeds: [embed]});
                         }
                         const level = msg.content;
@@ -428,12 +428,12 @@ class Levelsettings extends Command {
                             }
                         }
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/ls:roles:deleted")
                                 .replace('{emotes.success}', this.client.emotes.success)
                                 .replace('{level}', msg.content))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         await sent.edit({embeds: [embed]});
                     });
                 }
@@ -442,22 +442,22 @@ class Levelsettings extends Command {
                     data.guild.markModified("plugins.levelsystem");
                     await data.guild.save();
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:roles:resetted")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     return clicked.update({embeds: [embed], components: []});
                 }
             }
         }
         if(args[0] === 'doublexp'){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("admin/ls:doublexp:choose")
                     .replace('{emotes.arrow}', this.client.emotes.arrow))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             let id = message?.member?.user?.id || interaction?.member?.user?.id
             let row = new MessageActionRow()
                 .addComponents(
@@ -496,11 +496,11 @@ class Levelsettings extends Command {
             if(clicked) {
                 if(clicked.customId === 'doublexp_'+ id + '_create'){
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:doublexp:collectors:role")
                             .replace('{emotes.arrow}', this.client.emotes.arrow))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
                     const collectMessage = channel.createMessageCollector(
                         {
@@ -523,21 +523,21 @@ class Levelsettings extends Command {
                             await data.guild.save();
                             msg.delete().catch(() => {});
                             let embed = new MessageEmbed()
-                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                 .setDescription(guild.translate("admin/ls:doublexp:set")
                                     .replace('{emotes.success}', this.client.emotes.success)
                                     .replace('{role}', role))
                                 .setColor(this.client.embedColor)
-                                .setFooter(data.guild.footer);
+                                .setFooter({text: data.guild.footer});
                             await sent.edit({embeds: [embed]});
                         }else{
                             msg.delete().catch(() => {});
                             let embed = new MessageEmbed()
-                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                 .setDescription(guild.translate("admin/ls:doublexp:invalid")
                                     .replace('{emotes.error}', this.client.emotes.error))
                                 .setColor(this.client.embedColor)
-                                .setFooter(data.guild.footer);
+                                .setFooter({text: data.guild.footer});
                             return sent.edit({embeds: [embed]});
                         }
                     });
@@ -550,21 +550,21 @@ class Levelsettings extends Command {
                     }
                     if(doubleXp.length < 1) doubleXp = [guild.translate("language:noEntries")];
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:doublexp:list")
                             .replace('{list}', doubleXp.join('\n|- '))
                             .replace('{emotes.arrow}', this.client.emotes.arrow))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     return clicked.update({embeds: [embed], components: []});
                 }
                 if(clicked.customId === 'doublexp_'+ id + '_delete') {
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:doublexp:collectors:role")
                             .replace('{emotes.arrow}', this.client.emotes.arrow))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     await clicked.update({embeds: [embed], components: []});
                     const collectMessage = channel.createMessageCollector(
                         {
@@ -586,20 +586,20 @@ class Levelsettings extends Command {
                             }
                             msg.delete().catch(() => {});
                             let embed2 = new MessageEmbed()
-                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                 .setDescription(guild.translate("admin/ls:doublexp:deleted")
                                     .replace('{emotes.success}', this.client.emotes.success))
                                 .setColor(this.client.embedColor)
-                                .setFooter(data.guild.footer);
+                                .setFooter({text: data.guild.footer});
                             await sent.edit({embeds: [embed2]});
                         } else {
                             msg.delete().catch(() => {});
                             let embed = new MessageEmbed()
-                                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                 .setDescription(guild.translate("admin/ls:doublexp:invalid")
                                     .replace('{emotes.error}', this.client.emotes.error))
                                 .setColor(this.client.embedColor)
-                                .setFooter(data.guild.footer);
+                                .setFooter({text: data.guild.footer});
                             return sent.edit({embeds: [embed]});
                         }
                     });
@@ -609,11 +609,11 @@ class Levelsettings extends Command {
                     data.guild.markModified("plugins.levelsystem");
                     await data.guild.save();
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("admin/ls:doublexp:resetted")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     return clicked.update({embeds: [embed], components: []});
                 }
             }

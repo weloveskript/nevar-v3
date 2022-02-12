@@ -50,11 +50,11 @@ class Invite extends Command {
             )
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("misc/invite:invite:description")
-                    .replace('{emotes.arrow}', this.client.emotes.arrow))
+                .replace('{emotes.arrow}', this.client.emotes.arrow))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         if(message) return message.send(embed, false, [row]);
         if(interaction) return interaction.send(embed, false, [row]);
     }

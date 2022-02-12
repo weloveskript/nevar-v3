@@ -29,11 +29,11 @@ class Autodelete extends Command {
         const member = message?.member || interaction?.member;
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("admin/ad:main:choose")
                 .replace('{emotes.arrow}', this.client.emotes.arrow))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         let id = message?.member?.user?.id || interaction?.member?.user?.id
         let row = new MessageActionRow()
             .addComponents(
@@ -66,11 +66,11 @@ class Autodelete extends Command {
         if (clicked) {
             if (clicked.customId === 'autodelete_' + id + '_add') {
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/ad:main:collectors:channel")
                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({embeds: [embed], components: []});
                 const collectMessage = channel.createMessageCollector(
                     {
@@ -88,12 +88,12 @@ class Autodelete extends Command {
                     });
                     if(channelSent){
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/ad:main:collectors:time")
                                 .replace('{emotes.arrow}', this.client.emotes.arrow)
                                 .replace('{emotes.arrow}', this.client.emotes.arrow))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         await sent.edit({embeds: [embed]});
                         const collectMessage = channel.createMessageCollector(
                             {
@@ -116,42 +116,42 @@ class Autodelete extends Command {
                                     data.guild.markModified("plugins.autoDeleteChannels");
                                     await data.guild.save();
                                     let embed = new MessageEmbed()
-                                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                         .setDescription(guild.translate("admin/ad:main:set")
                                             .replace('{emotes.success}', this.client.emotes.success)
                                             .replace('{channel}', channelSent)
                                             .replace('{time}', ms(time)))
                                         .setColor(this.client.embedColor)
-                                        .setFooter(data.guild.footer);
+                                        .setFooter({text: data.guild.footer});
                                     await sent.edit({embeds: [embed]});
 
                                 }else{
                                     let embed = new MessageEmbed()
-                                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                         .setDescription(guild.translate("admin/ad:main:maxTime")
                                             .replace('{emotes.error}', this.client.emotes.error))
                                         .setColor(this.client.embedColor)
-                                        .setFooter(data.guild.footer);
+                                        .setFooter({text: data.guild.footer});
                                     return sent.edit({embeds: [embed]});
                                 }
                             }else{
                                 let embed = new MessageEmbed()
-                                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                                     .setDescription(guild.translate("admin/ad:main:invalid:time")
                                         .replace('{emotes.error}', this.client.emotes.error))
                                     .setColor(this.client.embedColor)
-                                    .setFooter(data.guild.footer);
+                                    .setFooter({text: data.guild.footer});
                                 return sent.edit({embeds: [embed]});
                             }
                         });
 
                     }else{
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/ad:main:invalid:channel")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         return sent.edit({embeds: [embed]});
                     }
                 });
@@ -167,22 +167,22 @@ class Autodelete extends Command {
                     }
                 }
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/ad:main:list")
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                         .replace('{list}', autodelete.join('\n|- ')))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({embeds: [embed], components: []});
 
             }
             if (clicked.customId === 'autodelete_' + id + '_remove') {
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("admin/ad:main:collectors:channelReset")
                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({embeds: [embed], components: []});
                 const collectMessage = channel.createMessageCollector(
                     {
@@ -207,20 +207,20 @@ class Autodelete extends Command {
                             }
                         }
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/ad:main:removed")
                                 .replace('{emotes.success}', this.client.emotes.success)
                                 .replace('{channel}', channelSent))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         return sent.edit({embeds: [embed]});
                     }else{
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("admin/ad:main:invalid:channel")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         return sent.edit({embeds: [embed]});
                     }
                 });

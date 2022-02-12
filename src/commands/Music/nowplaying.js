@@ -32,11 +32,11 @@ class Nowplaying extends Command {
 
         if(!queue || !queue.playing){
             let embed = new MessageEmbed()
-                .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("music/loop:main:errors:notPlaying")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
-                .setFooter(data.guild.footer);
+                .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
             if(interaction) return interaction.editReply({embeds:[embed]});
         }
@@ -51,7 +51,7 @@ class Nowplaying extends Command {
         if(repeatMode === QueueRepeatMode.AUTOPLAY) repeatMode = guild.translate("music/np:main:loopModes:3")
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .addField(guild.translate("music/np:main:current"), '```' + queue.current.title + '```')
             .addField(guild.translate("music/np:main:uploaded"), '```' + queue.current.author + '```', true)
             .addField(guild.translate("music/np:main:views"), '```' + formatter.format(queue.current.views) + '```', true)
@@ -62,7 +62,7 @@ class Nowplaying extends Command {
             .addField('\u200b', progress.replace(/ 0:00/g, ' ◉ LIVE'))
             .setThumbnail(queue.current?.thumbnail)
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
 
         return interaction.editReply({embeds: [ embed ]})
 

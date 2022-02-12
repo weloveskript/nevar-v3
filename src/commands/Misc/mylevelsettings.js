@@ -23,11 +23,11 @@ class Mylevelsettings extends Command {
         let channel = message?.channel || interaction?.channel;
 
         let embed = new MessageEmbed()
-            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("misc/mylevelsettings:main:chooseAction")
                 .replace('{emotes.arrow}', this.client.emotes.arrow))
             .setColor(this.client.embedColor)
-            .setFooter(data.guild.footer);
+            .setFooter({text: data.guild.footer});
         let id = message?.member?.user?.id || interaction?.member?.user?.id
         let row = new MessageActionRow()
             .addComponents(
@@ -62,11 +62,11 @@ class Mylevelsettings extends Command {
                             .setPlaceholder(guild.translate("misc/mylevelsettings:main:collectors:image"))
                     )
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("misc/mylevelsettings:main:bgImage:choose")
                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
 
                 row.components[0].options.push({
                     label: guild.translate("misc/mylevelsettings:main:bgImage:image") + ' ' + '0',
@@ -94,21 +94,21 @@ class Mylevelsettings extends Command {
                     await data.userData.save();
 
                     let embed = new MessageEmbed()
-                        .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("misc/mylevelsettings:main:bgImage:set")
                             .replace('{emotes.success}', this.client.emotes.success))
                         .setColor(this.client.embedColor)
-                        .setFooter(data.guild.footer);
+                        .setFooter({text: data.guild.footer});
                     return clickedMenu.update({embeds: [embed], components: []});
                 }
             }
             if(clicked.customId === 'mylevelsettings_' + id + '_color'){
                 let embed = new MessageEmbed()
-                    .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(guild.translate("misc/mylevelsettings:main:collectors:color")
                         .replace('{emotes.arrow}', this.client.emotes.arrow))
                     .setColor(this.client.embedColor)
-                    .setFooter(data.guild.footer);
+                    .setFooter({text: data.guild.footer});
                 await clicked.update({embeds: [embed], components: []});
 
                 let color;
@@ -161,19 +161,19 @@ class Mylevelsettings extends Command {
                         data.userData.markModified("levelColor");
                         await data.userData.save();
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("misc/mylevelsettings:main:color:set")
                                 .replace('{emotes.success}', this.client.emotes.success))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         return sent.edit({embeds: [embed]});
                     }else{
                         let embed = new MessageEmbed()
-                            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL(), this.client.website)
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                             .setDescription(guild.translate("misc/mylevelsettings:main:color:invalid")
                                 .replace('{emotes.error}', this.client.emotes.error))
                             .setColor(this.client.embedColor)
-                            .setFooter(data.guild.footer);
+                            .setFooter({text: data.guild.footer});
                         return sent.edit({embeds: [embed]});
                     }
                 });
