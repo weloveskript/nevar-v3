@@ -1,0 +1,11 @@
+{
+  "general": {
+    "description": "Mutet ein Mitglied \uD83D\uDD28",
+    "usage": "|- mute <Mitglied> [Dauer] <Grund>",
+    "example": "|- mute @Tinte 1h Spam -> mutet @Tinte eine Stunde für Spam\n|- ban @Tinte Werbung -> mutet @Tinte permanent für Werbung"
+  },
+
+  "main": {
+    "info": "{emotes.info} **UPDATE DEZEMBER 2021:**\n```|- Da Discord absofort das Muten von Mitgliedern per Timeout von Haus aus anbietet, haben wir uns entschieden unseren Mute-Command nicht länger anzubieten```"
+  }
+}
