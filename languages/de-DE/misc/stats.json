@@ -1,8 +1,8 @@
 {
   "general": {
     "description": "Zeigt Informationen zum Bot an \uD83E\uDD16",
-    "usage": "{emotes.use} Syntax: ```{prefix}stats```",
-    "example": "{emotes.example} Beispiel: ```{prefix}stats```"
+    "syntax": "|- stats",
+    "examples": "|- stats » Zeigt allgemeine Informationen zum Bot an"
   },
 
   "main": {

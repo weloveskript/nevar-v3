@@ -1,0 +1,19 @@
+{
+  "general": {
+    "description": "Zeigt dein aktuelles Level als übersichtliches Bild \uD83C\uDD99",
+    "syntax": "|- level [Mitglied]",
+    "examples": "|- level @Tinte » Zeigt die Levelcard von Tinte"
+  },
+
+  "slash": {
+    "1": {
+      "name": "mitglied",
+      "description": "» Von welchem Mitglied möchtest du das Level sehen?"
+    }
+  },
+
+  "main": {
+    "rank": "Rang",
+    "level": "Level"
+  }
+}

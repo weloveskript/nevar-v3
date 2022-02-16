@@ -1,11 +1,10 @@
 {
   "general": {
     "description": "Lässt dich die Farbe oder das Hintergrundbild deiner Level-Card einstellen \uD83D\uDDBC️",
-    "usage": "{emotes.use} Syntax: ```{prefix}mylevelsettings```",
-    "example": "{emotes.example} Beispiel: ```{prefix}mylevelsettings```"
+    "syntax": "|- mylevelsettings",
+    "examples": "|- mylevelsettings » Sendet dein Level-Menü"
   },
   "main": {
-    "chooseAction": "{emotes.arrow} Wähle eine Aktion",
     "actions": {
       "1": "Hintergrundbild",
       "2": "Farbe"

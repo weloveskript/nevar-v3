@@ -1,0 +1,93 @@
+{
+  "general": {
+    "description": "Stelle die Levelnachrichten, dessen Channel und Levelrollen sowie Doppel-XP Rollen ein \uD83C\uDD99",
+    "syntax": "|- levelsettings <channel/message/roles/doublexp>",
+    "examples": "|- levelsettings roles » Sendet das Levelrollen-Menü"
+  },
+
+  "slash": {
+    "1": {
+      "name": "aktion",
+      "description": "» Was möchtest du einstellen?",
+      "choices": {
+        "1": {
+          "name": "channel",
+          "value": "channel"
+        },
+        "2": {
+          "name": "nachrichten",
+          "value": "message"
+        },
+        "3": {
+          "name": "rollen",
+          "value": "roles"
+        },
+        "4": {
+          "name": "doppelxp",
+          "value": "doublexp"
+        }
+      }
+    }
+  },
+
+
+  "channel": {
+    "current": "Wenn die Level-UP Nachrichten im aktuellen Channel des Mitgliedes kommen sollen, sende \"current\"",
+    "set": {
+      "current": "{emotes.success} Level-UP Nachrichten kommen ab jetzt im Channel des Mitgliedes",
+      "other": "{emotes.success} Level-UP Nachrichten kommen ab jetzt in {channel}"
+    }
+  },
+
+  "message": {
+    "actions": {
+      "1": "Nachricht bearbeiten",
+      "2": "Nachricht testen",
+      "3": "Nachricht aktivieren",
+      "4": "Nachricht deaktivieren"
+    },
+    "collectors": {
+      "message": "{emotes.arrow} Sende die Nachricht - folgende Variablen stehen dir zu Verfügung:\n```|- %%user - Erwähnt das Mitglied\n|- %%username - Gibt den Usernamen des Mitgliedes zurück\n|- %%usertag - Nennt den Usertag des Mitgliedes\n|- %%level - Zeigt das neue Level des Mitglieds\n|- %%rank - Gibt den Platz des Mitglieds im Levelsystem zurück```\n{emotes.arrow} Hier sind 2 Beispielnachrichten:\n```|- GG %%user, du bist jetzt Level %%level!\n|- %%username ist jetzt Level %%level und damit Platz %%rank auf unserem Server!```"
+    },
+    "set": "{emotes.success} Die Level-UP Nachricht wurde gespeichert",
+    "test": "{emotes.arrow} Der Test wird durchgeführt",
+    "enabled": "{emotes.success} Die Level-UP Nachricht wurde aktiviert",
+    "disabled": "{emotes.success} Die Level-UP Nachricht wurde deaktiviert"
+  },
+
+  "roles": {
+    "actions": {
+      "1": "Levelrolle erstellen",
+      "2": "Liste aller Levelrollen ansehen",
+      "3": "Levelrolle löschen",
+      "4": "Levelrollen zurücksetzen"
+    },
+    "collectors": {
+      "level": "{emotes.arrow} Sende das Level"
+    },
+    "invalid": {
+      "level": "{emotes.error} Du musst ein gültiges Level angeben. Die Aktion wurde abgebrochen"
+    },
+    "set": "{emotes.success} Beim Erreichen von Level {level} wird {role} ab jetzt automatisch gegeben",
+    "list": {
+      "level": "Level",
+      "list": "{emotes.arrow} Folgende Levelrollen sind derzeit eingestellt:\n\n```|- {list}```"
+    },
+    "deleted": "{emotes.success} Die Levelrolle für Level {level} wurde gelöscht",
+    "resetted": "{emotes.success} Alle Levelrollen wurden zurückgesetzt"
+
+  },
+
+  "doublexp": {
+    "actions": {
+      "1": "Doppel-XP Rolle erstellen",
+      "2": "Liste aller Doppel-XP Rollen ansehen",
+      "3": "Doppel-XP Rolle löschen",
+      "4": "Doppel-XP Rollen zurücksetzen"
+    },
+    "set": "{emotes.success} {role} bekommt ab jetzt doppeltes XP",
+    "list": "{emotes.arrow} Folgende Rollen bekommen doppeltes XP:\n\n```|- {list}```",
+    "deleted": "{emotes.success} {role} bekommt ab jetzt kein doppeltes XP mehr",
+    "resetted": "{emotes.success} Alle Doppel-XP Rollen wurden zurückgesetzt"
+  }
+}

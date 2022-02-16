@@ -1,0 +1,20 @@
+{
+  "general": {
+    "description": "Lässt dich in wenigen Schritten Reactionroles einrichten ➕",
+    "syntax": "|- reactionrole",
+    "examples": "|- reactionrole » Startet das Reactionrole-Setup"
+  },
+
+  "main": {
+    "collectors": {
+      "id": "{emotes.arrow} [Schritt 1/3] Sende die ID der Nachricht",
+      "role": "{emotes.arrow} [Schritt 2/3] Welche Rolle soll beim Reagieren vergeben werden?",
+      "emoji": "{emotes.arrow} [Schritt 3/3] Sende den dazugehörigen Emote"
+    },
+    "invalid": {
+      "id": "{emotes.error} Du musst eine gültige ID-Angabe machen. Die Aktion wurde abgebrochen",
+      "emoji": "{emotes.error} Du musst eine gültige Emoji-Angabe machen. Die Aktion wurde abgebrochen"
+    },
+    "setup": "{emotes.success} Die Reaction-Role wurde erfolgreich erstellt"
+  }
+}

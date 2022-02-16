@@ -1,15 +1,14 @@
 {
   "general": {
     "description": "Zeigt wieviele XP du für ein bestimmtes Level brauchst \uD83C\uDD99",
-    "usage": "{emotes.use} Syntax: ```vb\n{prefix}xpfor <Level>```",
-
-    "example": "{emotes.example} Beispiel: ```vb\n{prefix}xpfor 13```"
+    "syntax": "|- xpfor <Level>",
+    "examples": "|- xpfor 13 » Zeigt wieviele XP du für Level 13 brauchst"
   },
 
   "slash": {
     "1": {
       "name": "level",
-      "description": "Zu welchem Level möchtest du die benötigten XP erfahren?"
+      "description": "» Zu welchem Level möchtest du die benötigten XP erfahren?"
     }
   },
 

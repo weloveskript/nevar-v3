@@ -1,8 +1,8 @@
 {
   "general": {
     "description": "Zeigt die aktuelle Latenz des Bots an \uD83E\uDD71",
-    "usage": "{emotes.use} Syntax: ```{prefix}ping```",
-    "example": "{emotes.example} Beispiel: ```{prefix}ping```"
+    "syntax": "|- ping",
+    "examples": "|- ping » Sendet die Latenz des Bots"
   },
 
   "main": {

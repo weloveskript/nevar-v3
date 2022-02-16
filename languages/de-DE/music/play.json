@@ -1,13 +1,13 @@
 {
   "general": {
     "description": "Spielt deine Lieblingsmusik ab \uD83C\uDFB5",
-    "usage": "{emotes.use} Syntax: ```{prefix}play <Name/URL>```",
-    "example": "{emotes.example} Beispiel: ```{prefix}play https://www.youtube.com/watch?v=dQw4w9WgXcQ```"
+    "syntax": "|- play <Name/URL>",
+    "examples": "|- play gzuz » Sucht auf Youtube nach gzuz und spielt das erste Ergebnis\n|- play https://youtu.be/dQw4w9WgXcQ » Spielt das Video von Youtube\n|- play https://open.spotify.com/track/6HxFJbQahRd5rWQ752D710 » Spielt das Lied von Spotify\n|- play https://soundcloud.com/scar_official/infinity-colin-hennerz-x-scar-bootleg » Spielt das Lied von Soundcloud"
   },
   "slash": {
     "1": {
       "name": "name",
-      "description": "Gib hier den Namen oder die URL an"
+      "description": "» Gib hier den Namen oder die URL an"
     }
   },
 

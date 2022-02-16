@@ -1,8 +1,8 @@
 {
   "general": {
-    "description": "Quasi wie ein Taschenrechner ➗",
-    "usage": "{emotes.use} Syntax: ```{prefix}calc <Formel>```",
-    "example": "{emotes.example} Beispiel: ```{prefix}calc 1+2-(3*4)/5+sqrt(9)```"
+    "description": "Lässt dich alles ausrechnen, was womöglich für den Kopf zu schwer ist ➗",
+    "syntax": "|- calc <Formel>",
+    "examples": "|- calc 1+2-(3*4)/5+sqrt(9) » Wird vermutlich 3.6 zurückgeben"
   },
 
   "slash": {
@@ -12,7 +12,7 @@
     }
   },
 
-  "embed": {
+  "main": {
     "formula": "Formel",
     "result": "Ergebnis"
   }

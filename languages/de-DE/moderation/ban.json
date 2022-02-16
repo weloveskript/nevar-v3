@@ -1,0 +1,24 @@
+{
+  "general": {
+    "description": "Bannt böse Menschen vom Server \uD83D\uDD28",
+    "syntax": "|- ban <Mitglied> [Dauer] <Grund>",
+    "examples": "|- ban @Tinte mehrfacher Spam 1h » bannt @Tinte eine Stunde für mehrfachen Spam\n|- ban @Tinte unerlaubte Wertbung » bannt @Tinte permanent für unerlaubte Werbung"
+  },
+
+  "slash": {
+    "1": {
+      "name": "mitglied",
+      "description": "» Welches Mitglied willst du bannen?"
+    },
+    "2": {
+      "name": "grund",
+      "description": "» Wieso möchtest du das Mitglied bannen?"
+    },
+    "3": {
+      "name": "dauer",
+      "description": "» Wie lange soll das Mitglied gebannt werden?"
+    }
+  }
+
+
+}

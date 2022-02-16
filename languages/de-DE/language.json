@@ -1,14 +1,37 @@
 {
- "noEntries": "Keine Einträge vorhanden",
- "wait": "{emotes.loading} Einen Moment bitte..",
  "yes": "Ja",
  "no": "Nein",
+
  "dateformat": "DD.MM.yyyy, HH:mm:ss",
  "timezone": "Europe/Berlin",
  "language": "Deutsch",
+
  "activated": "Aktiviert",
  "deactivated": "Deaktiviert",
+ "cancelled": "{emotes.error} Die Aktion wurde abgebrochen",
+
+ "noEntries": "Keine Einträge vorhanden",
  "notFound": "Nicht gefunden",
  "error": "{emotes.error} Ein unerwarteter Fehler ist aufgetreten. Bitte melde dich auf unserem [Supportserver]({support})",
- "set": "\uD83C\uDDE9\uD83C\uDDEA Meine Sprache wurde auf Deutsch gesetzt. Bitte beachte: bis die Sprache sich bei den Slash-Commands aktualisiert, kann es einen Moment dauern"
+
+ "set": "\uD83C\uDDE9\uD83C\uDDEA Meine Sprache wurde auf Deutsch gesetzt. Bitte beachte: bis die Sprache sich bei den Slash-Commands aktualisiert, kann es einen Moment dauern",
+ "wait": "{emotes.loading} Bitte warte einen Moment...",
+
+ "usage": "{emotes.error} Du hast falsche oder keine Argumente angegeben, die für diesen Command benötigt sind. Der Syntax für diesen Command ist:\n```vb\n{syntax}```\n{emotes.arrow} Hier hast du Beispiele für die korrekte Anwendung:\n```vb\n{example}```",
+
+ "collectors": {
+  "action": "{emotes.arrow} Wähle eine Aktion",
+  "id": "{emotes.arrow} Sende die ID",
+  "channel": "{emotes.arrow} Sende den Channel",
+  "user": "{emotes.arrow} Sende das Mitglied",
+  "role": "{emotes.arrow} Sende die Rolle",
+  "time": "{emotes.arrow} Sende die Zeit\n{emotes.arrow} Hier sind ein paar Beispiele, wie du die Zeit angibst:\n```|- 5d = 5 Tage\n|- 3m = 3 Minuten\n|- 1h = 1 Stunde\n|- 1w = 1 Woche\n|- 5s = 5 Sekunden```"
+ },
+ "invalid": {
+  "time": "{emotes.error} Du musst eine gültige Zeitangabe machen. Die Aktion wurde abgebrochen",
+  "channel": "{emotes.error} Du musst eine gültige Channelangabe machen. Die Aktion wurde abgebrochen",
+  "id": "{emotes.error} Du musst eine gültige ID-Angabe machen. Die Aktion wurde abgebrochen",
+  "user": "{emotes.error} Du musst eine gültige Mitgliedangabe machen. Die Aktion wurde abgebrochen",
+  "role": "{emotes.error} Du musst eine gültige Rollenangabe machen. Die Aktion wurde abgebrochen"
+ }
 }

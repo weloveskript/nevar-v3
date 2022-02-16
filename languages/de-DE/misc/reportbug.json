@@ -1,0 +1,20 @@
+{
+  "general": {
+    "description": "Sendet Bugs an unser Entwicklerteam \uD83D\uDC1B",
+    "syntax": "|- reportbug <Beschreibung>",
+    "examples": "|- reportbug Bot kaputt :( » Sendet \"Bot kaputt :(\" an unser Team"
+  },
+
+  "slash": {
+    "1": {
+      "name": "beschreibung",
+      "description": "» Beschreibe hier den Bug ein wenig"
+    }
+  },
+
+  "main": {
+    "bugPrivate": "{emotes.bug} Ein Bug wurde eingereicht: \n```|- {bug}```",
+    "privateFooter": "Eingereicht von {user} ({userId}) auf {guild} ({guildId}) am {time} (lokale Zeit)",
+    "bugPublic": "{emotes.bug} Danke, dass du einen Bug eingereicht hast. Sollten wir Rückfragen haben, kontaktieren wir dich\n```|- {bug}```"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "general": {
+    "description": "Leert die Queue \uD83D\uDD04",
+    "syntax": "|- clearqueue",
+    "examples": "|- clearqueue » Leert die Queue"
+  },
+  "main": {
+    "noQueue": "{emotes.error} In der Queue sind aktuell keine Songs vorhanden",
+    "cleared": "{emotes.success} Die Queue wurde zurückgesetzt",
+    "errors": {
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    }
+  }
+}

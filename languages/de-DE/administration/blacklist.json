@@ -1,0 +1,21 @@
+{
+  "general": {
+    "description": "Lässt dich bestimmte Wörter automatisch löschen \uD83D\uDEAB",
+    "syntax": "|- blacklist",
+    "examples": "|- blacklist » Sendet das Blacklist-Menü"
+  },
+
+  "main": {
+    "added": "{emotes.success} Nachrichten die \"{word}\" enthalten werden jetzt automatisch gelöscht",
+    "list": "{emotes.arrow} Nachrichten die folgende Wörter enthalten werden automatisch gelöscht:\n\n```|- {list}```",
+    "removed": "{emotes.success} Nachrichten die \"{word}\" enthalten werden jetzt nicht mehr automatisch gelöscht",
+    "actions": {
+      "1": "Wort hinzufügen",
+      "2": "Liste ansehen",
+      "3": "Wort entfernen"
+    },
+    "collectors": {
+      "word": "{emotes.arrow} Sende das Wort"
+    }
+  }
+}

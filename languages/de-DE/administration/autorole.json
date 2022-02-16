@@ -1,0 +1,19 @@
+{
+  "general": {
+    "description": "Lässt dich neuen Mitgliedern automatisch beliebig viele Rollen geben \uD83D\uDC4B",
+    "syntax": "|- autorole",
+    "examples": "|- autorole » Sendet das Autorole-Menü"
+  },
+
+  "main": {
+    "added": "{emotes.success} Neuen Mitgliedern wird jetzt automatisch {role} gegeben",
+    "removed": "{emotes.success} Neuen Mitgliedern wird {role} jetzt nicht mehr automatisch gegeben",
+    "list": "{emotes.arrow} Neue Mitglieder bekommen automatisch folgende Rollen:\n\n```|- {list}```",
+
+    "actions": {
+      "1": "Rolle hinzufügen",
+      "2": "Liste ansehen",
+      "3": "Rolle entfernen"
+    }
+  }
+}

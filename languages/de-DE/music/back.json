@@ -1,8 +1,8 @@
 {
   "general": {
     "description": "Spielt das vorherige Lied ab \uD83D\uDD19",
-    "usage": "{emotes.use} Syntax: ```{prefix}back```",
-    "example": "{emotes.example} Beispiel: ```{prefix}back```"
+    "syntax": "|- back",
+    "examples": "|- back » Springt zum letzten Lied zurück"
   },
 
   "main": {

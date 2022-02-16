@@ -1,0 +1,29 @@
+{
+  "general": {
+    "description": "Lässt dich in wenigen Schritten einen Join2Create Channel einstellen \uD83D\uDD0A",
+    "usage": "|- join2create",
+    "example": "|- join2create » Sendet das Join2Create-Menü"
+  },
+
+  "main": {
+    "set": "{emotes.success} Wer in {channel} joint, bekommt ab jetzt einen temporären Sprachchannel",
+
+    "actions": {
+      "1": "Join2Create einstellen",
+      "2": "Aktuelles Join2Create anzeigen",
+      "3": "Join2Create deaktivieren"
+    },
+
+    "collectors": {
+      "channel": "{emotes.arrow} [Schritt 1/3] Sende den Channel für die Join2Create Channel",
+      "userlimit": "{emotes.arrow} [Schritt 2/3] Sende das Userlimit für die Join2Create Channel\n```|- minimal: 1\n|- maximal: 99\n|- unendlich: -1```",
+      "bitrate": "{emotes.arrow} [Schritt 3/3] Sende die Bitrate für die Join2Create Channel\n```|- minimal: 8\n|- maximal: 96```"
+    },
+    "invalid": {
+      "userlimit": "{emotes.error} Du musst ein gültiges Userlimit angeben. Die Aktion wurde abgebrochen",
+      "bitrate": "{emotes.error} Du musst eine gültige Bitrate angeben. Die Aktion wurde abgebrochen"
+    },
+    "show": "{emotes.arrow} Hier sind deine Join2Create-Einstellungen:\n\n```|- Channel: {channel}\n|- Userlimit: {userlimit}\n|- Bitrate: {bitrate}```",
+    "disabled": "{emotes.success} Es werden ab jetzt keine temporären Channel mehr erstellt"
+  }
+}

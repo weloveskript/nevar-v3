@@ -1,7 +1,7 @@
 {
   "general": {
     "description": "Gibt ein zufälliges Gesprächsthema zurück \uD83D\uDCAC",
-    "usage": "{emotes.use} Syntax: ```{prefix}topic```",
-    "example": "{emotes.example} Beispiel: ```{prefix}topic```"
+    "usage": "| topic",
+    "example": "|- topic » Sendet ein zufälliges Gesprächsthema"
   }
 }

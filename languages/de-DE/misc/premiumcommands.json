@@ -1,8 +1,8 @@
 {
   "general": {
     "description": "Zeigt für welche Commands die Premium-Version benötigt ist \uD83D\uDC8E",
-    "usage": "{emotes.use} Syntax: ```{prefix}premiumcommands```",
-    "example": "{emotes.example} Beispiel: ```{prefix}premiumcommands```"
+    "syntax": "|- premiumcommands",
+    "examples": "|- premiumcommands » Sendet eine Liste mit allen Commands für die die Premium-Version benötigt wird"
   },
 
   "main": {

@@ -1,13 +1,13 @@
 {
   "general": {
     "description": "Überspringt eine Anzahl an Liedern ⏭️",
-    "usage": "{emotes.use} Syntax: ```{prefix}jump <Anzahl>```",
-    "example": "{emotes.example} Beispiel: ```{prefix}jump 5```"
+    "syntax": "|- jump <Anzahl>",
+    "examples": "|- jump 5 » überspringt 5 Lieder"
   },
   "slash": {
     "1": {
       "name": "anzahl",
-      "description": "Wieviele Lieder möchtest du überspringen?"
+      "description": "» Wieviele Lieder möchtest du überspringen?"
     }
   },
 

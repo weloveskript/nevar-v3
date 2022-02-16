@@ -1,10 +1,9 @@
 {
-  "general": {
+  "general":  {
     "description": "Setzt die Wiedergabe fort ▶️",
-    "usage": "{emotes.use} Syntax: ```{prefix}resume```",
-    "example": "{emotes.example} Beispiel: ```{prefix}resume```"
+    "syntax": "|- resume",
+    "examples": "|- resume » Setzt die Wiedergabe fort"
   },
-
   "main": {
     "resumed": "{emotes.success} Die Wiedergabe wurde fortgesetzt",
     "errors": {

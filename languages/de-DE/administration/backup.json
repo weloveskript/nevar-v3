@@ -1,0 +1,25 @@
+{
+  "general": {
+    "description": "Lässt dich in wenigen Schritten Backups erstellen und verwalten \uD83D\uDCBE",
+    "syntax": "|- backup",
+    "examples": "|- backup » Sendet das Backup-Menü"
+  },
+
+  "main": {
+    "info": "{emotes.info} Hier sind die Informationen zum angeforderten Backup:\n\n{emotes.arrow} ID\n```{id}```\n{emotes.arrow} Server\n```{guild}```\n{emotes.arrow} Erstellt am\n```{creationDate}```\n{emotes.arrow} Größe\n```{size}mb```",
+    "notFound": "{emotes.error} Mit der ID habe ich kein Backup gefunden",
+    "load": "{emotes.loading} Bist du sicher, dass das Backup geladen werden soll? Achtung: Dabei wird der gesamte Server zurückgesetzt",
+
+    "actions": {
+      "1": "Backup erstellen",
+      "2": "Infos zu einem Backup anzeigen",
+      "3": "Backup laden"
+    },
+
+    "created": {
+      "private": "{emotes.success} Hier ist deine Backup-ID: {id}\n{emotes.arrow} Behalte sie für dich!",
+      "guild": "{emotes.success} Das Backup wurde erstellt und ich habe dir die ID privat gesendet",
+      "cannotDm": "{emotes.error} Ich konnte dir die Backup-ID nicht schicken. Die Aktion wurde abgebrochen"
+    }
+  }
+}

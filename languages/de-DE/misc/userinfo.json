@@ -1,14 +1,14 @@
 {
   "general": {
     "description": "Zeigt Informationen zu einem Mitglied an \uD83D\uDC64",
-    "usage": "{emotes.use} Syntax: ```{prefix}userinfo [Mitglied]```",
-    "example": "{emotes.example} Beispiel: ```{prefix}userinfo```"
+    "usage": "|- userinfo [Mitglied]",
+    "example": "|- userinfo @Tinte » Zeigt allgemeine Informationen zu Tinte an"
   },
 
   "slash": {
     "1": {
       "name": "mitglied",
-      "description": "Zu welchem Mitglied möchtest du Informationen sehen?"
+      "description": "» Zu welchem Mitglied möchtest du Informationen sehen?"
     }
   },
 

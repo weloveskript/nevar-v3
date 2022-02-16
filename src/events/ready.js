@@ -19,7 +19,7 @@ module.exports = class {
         app.use(function(req, res){
             res.end(client.user.tag + ' is running')
         });
-        http.createServer(app).listen(5757);
+        http.createServer(app).listen(5757)
 
         //Top.GG init
         const topgg = require('../helper/topgg');

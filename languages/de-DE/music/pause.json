@@ -1,8 +1,8 @@
 {
   "general": {
     "description": "Pausiert die Wiedergabe ⏸️",
-    "usage": "{emotes.use} Syntax: ```{prefix}pause```",
-    "example": "{emotes.example} Beispiel: ```{prefix}pause```"
+    "syntax": "|- pause",
+    "examples": "|- pause » Pausiert die Wiedergabe"
   },
 
   "main": {

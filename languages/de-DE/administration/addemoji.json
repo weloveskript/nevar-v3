@@ -1,0 +1,26 @@
+{
+  "general": {
+    "description": "Lässt dich in nur einem Schritt Emojis für deinen Discord-Server erstellen \uD83D\uDE0A",
+    "syntax": "|- addemoji <URL/Emoji> [Name]",
+    "examples": "|- addemoji www.seite.de/bild.png cooler_emoji » fügt das Bild mit dem Namen cooler_emoji hinzu\n|- addemoji <:SadChaton:934265471103025162> » fügt den Emoji mit seinem Originalnamen hinzu"
+  },
+  "slash": {
+    "1": {
+      "name": "bild",
+      "description": "» URL oder Emoji"
+    },
+    "2": {
+      "name": "name",
+      "description": "» Name"
+    }
+  },
+  "main": {
+    "created": "{emotes.success} Der Emoji <{name}:{id}> wurde erstellt",
+    "errors": {
+      "urlButNoName": "{emotes.error} Wenn du einen Emoji über eine URL hinzufügst, musst du einen Namen angeben",
+      "invalidUrl": "{emotes.error} Du musst eine gültige URL zu einem Bild angeben",
+      "length": "{emotes.error} Der Name muss zwischen 2 und 32 Zeichen lang sein",
+      "cantCreate": "{emotes.error} Ich konnte den Emoji nicht hinzufügen - hier sind mögliche Gründe woran das liegen kann:\n```|- der Server hat nicht mehr genug freie Plätze\n|- die angegebene URL führt zu keinem Bild\n|- der angegebene Emoji ist nicht mehr verfügbar\n|- du hast keine(n) gültigen URL oder Emoji angegeben\n|- der Emoji überschreitet die Maximalgröße von Discord```\n{emotes.arrow} Kannst du alle genannten Gründe ausschließen? Probiere es ein weiteres Mal\n{emotes.arrow} Du denkst, der Fehler liegt nicht bei dir? Melde dich auf unserem [Supportserver]({support})"
+    }
+  }
+}

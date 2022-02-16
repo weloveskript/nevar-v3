@@ -1,0 +1,30 @@
+{
+  "general": {
+    "description": "Zeigt welches Lied aktuell abgespielt wird \uD83C\uDFB5",
+    "syntax": "{emotes.use} Syntax: ```{prefix}nowplaying```",
+    "examples": "{emotes.example} Beispiel: ```{prefix}nowplaying```"
+  },
+
+
+  "main": {
+    "current": "Aktuell spielt",
+    "uploaded": "Hochgeladen von",
+    "views": "Aufrufe",
+    "requested": "Angefordert von",
+    "duration": "Dauer",
+    "volume": "Lautstärke",
+    "loop": "Loop-Modus",
+    "loopModes": {
+      "0": "Deaktiviert",
+      "1": "Track",
+      "2": "Queue",
+      "3": "Autoplay"
+    },
+    "notFound": "{emotes.error} Dazu habe ich kein Ergebnis gefunden",
+    "errors": {
+      "notPlaying": "{emotes.error} Aktuell wird nichts abgespielt",
+      "notConnected": "{emotes.error} Du bist zu keinem Voicechannel verbunden",
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    }
+  }
+}

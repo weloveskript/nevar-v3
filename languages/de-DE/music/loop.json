@@ -1,18 +1,30 @@
 {
   "general": {
     "description": "Stellt den Loopmode ein (off/queue/track/autoplay) \uD83D\uDD01",
-    "usage": "{emotes.use} Syntax: ```{prefix}loop <off/queue/track/autoplay>```",
-    "example": "{emotes.example} Beispiel: ```{prefix}loop autoplay```"
+    "syntax": "|- loop <off/queue/track/autoplay>",
+    "examples": "|- loop autoplay » Aktiviert Autoplay"
   },
   "slash": {
     "1": {
       "name": "typ",
-      "description": "Was möchtest du in den Loop setzen? (queue, track, autoplay)",
+      "description": "» Was möchtest du in den Loop setzen?",
       "choices": {
-        "1": "off",
-        "2": "track",
-        "3": "queue",
-        "4": "autoplay"
+        "1": {
+          "name": "off",
+          "value": "off"
+        },
+        "2": {
+          "name": "track",
+          "value": "track"
+        },
+        "3": {
+          "name": "queue",
+          "value": "queue"
+        },
+        "4": {
+          "name": "autoplay",
+          "value": "autoplay"
+        }
       }
     }
   },

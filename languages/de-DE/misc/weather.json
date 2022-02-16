@@ -1,14 +1,14 @@
 {
   "general": {
     "description": "Zeigt das aktuelle Wetter für einen Ort ☁️",
-    "usage": "{emotes.use} Syntax: ```vb\n{prefix}weather <Ort>```",
-    "example": "{emotes.example} Beispiel: ```vb\n{prefix}weather Berlin```"
+    "syntax": "|- weather <Ort>",
+    "examples": "|- weather Berlin » Zeigt das aktuelle Wetter für Berlin"
   },
 
   "slash": {
     "1": {
       "name": "ort",
-      "description": "Zu welchem Ort möchtest du das Wetter sehen?"
+      "description": "» Für welchen Ort möchtest du das Wetter sehen?"
     }
   },
 
