@@ -1,7 +1,7 @@
 const util = require('util');
 const path = require('path');
 const { GiveawaysManager } = require('discord-giveaways');
-const { Client, Collection } = require('discord.js');
+const { Client, Collection, MessageEmbed} = require('discord.js');
 const { Player } = require('discord-player');
 const { loadConfig } = require('../helper/loader');
 const config = loadConfig();
@@ -161,6 +161,19 @@ class Nevar extends Client {
                 return isLean ? memberData.toJSON() : memberData;
             }
         }
+    }
+
+    usageEmbed(guild, command, data){
+        const { client } = require('../app')
+        return new MessageEmbed()
+            .setAuthor({name: client.user.username, iconURL: client.user.displayAvatarURL(), url: client.website})
+            .setDescription(guild.translate("language:usage")
+                .replace('{syntax}', guild.translate(command.help.category + "/" + command.help.name  + ":general:syntax"))
+                .replace('{emotes.error}', client.emotes.error)
+                .replace('{emotes.arrow}', client.emotes.arrow)
+                .replace('{example}', guild.translate(command.help.category + "/" + command.help.name  + ":general:examples")))
+            .setColor(client.embedColor)
+            .setFooter({text: data.guild.footer});
     }
 
     async findGuild(guildId) {

@@ -33,7 +33,7 @@ const init = async() => {
 
     client.logger.log("Loaded " + playerFiles.length + " player events", "debug");
     client.logger.log("Loaded " + events.length + " discord events", "debug");
-    client.logger.log("Loaded " + client.commands.length + ' commands', "debug");
+    client.logger.log("Loaded " + client.commands.size + ' commands', "debug");
 
     await client.login(config.general.bot_token);
 };

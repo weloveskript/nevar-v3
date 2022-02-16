@@ -33,7 +33,7 @@ class GuildsController extends Controller {
 			// Check if the bot is on the guild
 			let cachedGuild = client.guilds.cache.get(guild.id);
 			if(cachedGuild){
-				//Check whether the user is the owner or just an admin
+				//Check whether the user is the owner or just an administration
 				let member = await cachedGuild.members.fetch(this.req.session['discord_id'])
 				if(member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) {
 					hasPermissions = true;

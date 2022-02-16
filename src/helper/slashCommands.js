@@ -32,14 +32,19 @@ module.exports = {
                                     // translate language strings (description, options, choices)
                                     data.name = cmd.help.name
                                     data.description = guild[1].translate(cmd.help.description)
+                                    let iOptions = 1;
                                     for (let option of data.options) {
-                                        option.name = guild[1].translate(option.name);
-                                        option.description = guild[1].translate(option.description);
+                                        option.name = guild[1].translate(cmd.help.category + '/' + cmd.help.name + ':slash:' + iOptions + ':name');
+                                        option.description = guild[1].translate(cmd.help.category + '/' + cmd.help.name + ':slash:' + iOptions + ':description');
+                                        let iChoices = 1;
                                         if (option?.choices) {
                                             for (let choice of option?.choices) {
-                                                choice.name = guild[1].translate(choice.name);
+                                                choice.name = guild[1].translate(cmd.help.category + '/' + cmd.help.name + ':slash:' + iOptions + ':choices:' + iChoices + ':name');
+                                                choice.value = guild[1].translate(cmd.help.category + '/' + cmd.help.name + ':slash:' + iOptions + ':choices:' + iChoices + ':value');
+                                                iChoices++;
                                             }
                                         }
+                                        iOptions++;
                                     }
                                     // push the command to the guild's slash command list
                                     slashCommands.push(data.toJSON());
