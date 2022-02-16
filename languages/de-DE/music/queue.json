@@ -1,0 +1,17 @@
+{
+  "general":  {
+    "description": "Zeigt die Queue an \uD83D\uDC49",
+    "syntax": "|- queue",
+    "examples": "|- queue » Zeigt die Queue an"
+  },
+  "main": {
+    "errors": {
+      "cantResume": "{emotes.error} Die Wiedergabe konnte nicht fortgesetzt werden",
+      "notPlaying": "{emotes.error} Aktuell wird nichts abgespielt",
+      "notConnected": "{emotes.error} Du bist zu keinem Voicechannel verbunden",
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    },
+    "queue": "{emotes.arrow} Folgende Lieder sind in der Queue:\n```{queue}\n\n{andmore}```",
+    "andmore": "... und {count} weitere"
+  }
+}
