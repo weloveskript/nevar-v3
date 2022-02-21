@@ -18,19 +18,12 @@ module.exports = mongoose.model("Member", new mongoose.Schema({
         type: Array,
         default: []
     },
-    mute: {
-        type: Object,
-        default: {
-            muted: false,
-            case: null,
-            endDate: null
-        }
-    },
     ban: {
         type: Object,
         default: {
             banned: false,
-            case: null,
+            reason: null,
+            moderator: null,
             endDate: null
         }
     },

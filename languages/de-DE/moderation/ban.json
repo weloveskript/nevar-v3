@@ -1,8 +1,8 @@
 {
   "general": {
     "description": "Bannt böse Menschen vom Server \uD83D\uDD28",
-    "syntax": "|- ban <Mitglied> [Dauer] <Grund>",
-    "examples": "|- ban @Tinte mehrfacher Spam 1h » bannt @Tinte eine Stunde für mehrfachen Spam\n|- ban @Tinte unerlaubte Wertbung » bannt @Tinte permanent für unerlaubte Werbung"
+    "syntax": "|- ban <Mitglied> <Grund> [Dauer] | [Grund] <Dauer>",
+    "examples": "|- ban @Tinte Nerven 1h » bannt @Tinte eine Stunde für Nerven\n|- ban @Tinte Werbung » bannt @Tinte permanent für Werbung\n|- ban @Tinte 1d » bannt @Tinte für einen Tag"
   },
 
   "slash": {
@@ -17,6 +17,22 @@
     "3": {
       "name": "dauer",
       "description": "» Wie lange soll das Mitglied gebannt werden?"
+    }
+  },
+
+  "main": {
+    "errors": {
+      "alreadyBanned": "{emotes.error} {user} ist bereits gebannt\n```|- {reason}```",
+      "cantBanSelf": "{emotes.error} Du kannst dich nicht selbst bannen",
+      "cantBan": "{emotes.error} Du kannst {user} nicht bannen\n{emotes.arrow} Hier sind mögliche Gründe woran das liegen kann:\n```|- {user} hat eine höhere Rolle als du\n|- {user} hat eine höhere Rolle als ich```",
+      "unknown": "{emotes.error} Beim Bannen ist ein unerwarteter Fehler aufgetreten. Die Aktion wurde abgebrochen"
+    },
+    "notGiven": "Kein Grund angegeben",
+    "perma": "Permanent",
+    "reason": "Moderator: {moderator} | Gebannt am: {date} | Dauer: {duration} | Grund: {reason}",
+    "success": {
+      "private": "{emotes.error} Du wurdest von **{guild}** gebannt :(\n```|- Grund: {reason}\n|- Gebannt von: {moderator}\n|- Dauer: {duration}\n|- Gebannt bis: {bannedUntil}```",
+      "public": "{emotes.success} **{user}** wurde erfolgreich gebannt\n```|- Grund: {reason}\n|- Gebannt von: {moderator}\n|- Dauer: {duration}\n|- Gebannt bis: {bannedUntil}```"
     }
   }
 
