@@ -32,7 +32,7 @@
     "perma": "Permanent",
     "reason": "Moderator: {moderator} | Gebannt am: {date} | Dauer: {duration} | Grund: {reason}",
     "success": {
-      "private": "{emotes.error} Du wurdest von **{guild}** gebannt :(\n```|- Grund: {reason}\n|- Gebannt von: {moderator}\n|- Dauer: {duration}\n|- Gebannt bis: {bannedUntil}```",
+      "private": "{emotes.error} Du wurdest von **{guild}** gebannt!\n```|- Grund: {reason}\n|- Gebannt von: {moderator}\n|- Dauer: {duration}\n|- Gebannt bis: {bannedUntil}```",
       "public": "{emotes.success} **{user}** wurde erfolgreich gebannt\n```|- Grund: {reason}\n|- Gebannt von: {moderator}\n|- Dauer: {duration}\n|- Gebannt bis: {bannedUntil}```"
     },
     "autoUnban": "Automatisch entbannt, Bannzeit abgelaufen | Gebannt von {moderator} am {date} | Bangrund: {reason}"

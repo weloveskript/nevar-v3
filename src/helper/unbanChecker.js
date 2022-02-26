@@ -20,8 +20,10 @@ module.exports = {
 
                 memberData.ban.banned = false;
                 memberData.ban.reason = null;
-                memberData.ban.moderator.id = null;
-                memberData.ban.moderator.tag = null;
+                memberData.ban.moderator = {
+                    id: null,
+                    tag: null
+                };
                 memberData.ban.bannedAt = null;
                 memberData.ban.endDate = null;
                 memberData.markModified("ban");
