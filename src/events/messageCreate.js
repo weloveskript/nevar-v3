@@ -107,7 +107,7 @@ module.exports = class {
 
             if (!this.timeouts.has(message.author.id)) {
                 const leveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomXp);
-                let user = await Levels.fetch(message.author.id, message.guild.id);
+                let user = await Levels.fetch(message.author.id, message.guild.id, true);
                 if (leveledUp) {
                     if (message.guild.id === config.support.id && Number(user.level) === 5) {
 
@@ -122,7 +122,7 @@ module.exports = class {
 
                         let embed = new MessageEmbed()
                             .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                            .setDescription(message.translate("general/commandHandler:premiumKey")
+                            .setDescription(message.translate("commandHandler:premiumKey")
                                 .replace('{emotes.success}', this.client.emotes.success)
                                 .replace('{user}', message.member.user.username)
                                 .replace('{client}', this.client.user.username)
@@ -142,19 +142,21 @@ module.exports = class {
                         if (data.guild.plugins.levelsystem.channel !== "current") {
                             let channel = this.client.channels.cache.get(data.guild.plugins.levelsystem.channel);
                             let text = data.guild.plugins.levelsystem.message
-                                .replace('%userName', message.author.username)
-                                .replace('%mentionUser', message.author)
-                                .replace('%userTag', message.author.tag)
-                                .replace('%level', user.level);
+                                .replace('%%user', message.member)
+                                .replace('%%username', message.member.user.username)
+                                .replace('%%usertag', message.member.user.tag)
+                                .replace('%%level', user.level)
+                                .replace('%%rank', user.position);
                             if(channel.permissionsFor(message.guild.me).has(Permissions.FLAGS.SEND_MESSAGES)){
                                 channel.send(text).catch(() => {});
                             }
                         } else {
                             let text = data.guild.plugins.levelsystem?.message
-                                .replace('%userName', message.author.username)
-                                .replace('%mentionUser', message.author)
-                                .replace('%userTag', message.author.tag)
-                                .replace('%level', user.level);
+                                .replace('%%user', message.member)
+                                .replace('%%username', message.member.user.username)
+                                .replace('%%usertag', message.member.user.tag)
+                                .replace('%%level', user.level)
+                                .replace('%%rank', user.position);
                             if (message.channel.permissionsFor(message.guild.me).has(Permissions.FLAGS.SEND_MESSAGES)) {
                                 message.channel.send(text).catch(() => {});
                             }
@@ -176,7 +178,7 @@ module.exports = class {
         if(data.guild.plugins.disabledCommands?.includes(cmd.help.name)) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("general/commandHandler:ignoredCmd")
+                .setDescription(message.translate("commandHandler:ignoredCmd")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
                 .setFooter({text: data.guild.footer});
@@ -199,7 +201,7 @@ module.exports = class {
             let perms = neededPermissions.map((p) => `|- ${p}`).join("\n")
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("general/commandHandler:botPermsMissing")
+                .setDescription(message.translate("commandHandler:botPermsMissing")
                     .replace('{perms}', perms)
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{emotes.arrow}', this.client.emotes.arrow))
@@ -217,7 +219,7 @@ module.exports = class {
             let perms = neededPermissions.map((p) => `|- ${p}`).join("\n")
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("general/commandHandler:memberPermsMissing")
+                .setDescription(message.translate("commandHandler:memberPermsMissing")
                     .replace('{perms}', perms)
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
@@ -227,7 +229,7 @@ module.exports = class {
         if (!message.channel.nsfw && cmd.conf.nsfw) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("general/commandHandler:nsfwCommand")
+                .setDescription(message.translate("commandHandler:nsfwCommand")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
                 .setFooter({text: data.guild.footer});
@@ -245,7 +247,7 @@ module.exports = class {
             if (message.author.id !== config.team.owner_id || !staffs[message.author.id] && message.author.id !== config.team.owner_id) {
                 let embed = new MessageEmbed()
                     .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                    .setDescription(message.translate("general/commandHandler:disabledCommand")
+                    .setDescription(message.translate("commandHandler:disabledCommand")
                         .replace('{emotes.error}', this.client.emotes.error)
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                         .replace('{support}', this.client.supportUrl))
@@ -257,7 +259,7 @@ module.exports = class {
         if (cmd.conf.ownerOnly && (message.member.user.id !== config.team_owner_id)) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("general/commandHandler:ownerCommand")
+                .setDescription(message.translate("commandHandler:ownerCommand")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
                 .setFooter({text: data.guild.footer});
@@ -267,7 +269,7 @@ module.exports = class {
         if (cmd.conf.staffOnly && !staffs[message.author.id] && message.author.id !== config.team.owner_id) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("general/commandHandler:staffCommand")
+                .setDescription(message.translate("commandHandler:staffCommand")
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{client}', this.client.user.username))
                 .setColor(this.client.embedColor)
@@ -277,7 +279,7 @@ module.exports = class {
         if (cmd.conf.premium && !data.guild.premium) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("general/commandHandler:premiumCommand")
+                .setDescription(message.translate("commandHandler:premiumCommand")
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{client}', this.client.user.username)
                     .replace('{emotes.arrow}', this.client.emotes.arrow)
@@ -296,14 +298,14 @@ module.exports = class {
             let staffs = JSON.parse(fs.readFileSync('./storage/staffs.json'));
             if (message.author.id !== config.team.owner_id || !staffs[message.author.id] && message.author.id !== config.team.owner_id) {
                 let seconds = Math.ceil((time - Date.now()) / 1000)
-                let desc = message.translate("general/commandHandler:remainingCooldown").split('?')[0]
+                let desc = message.translate("commandHandler:remainingCooldown").split('?')[0]
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{time}', seconds);
 
-                if (seconds > 1) desc += message.translate("general/commandHandler:remainingCooldown").split('?')[2]
-                else desc += message.translate("general/commandHandler:remainingCooldown").split('?')[1]
+                if (seconds > 1) desc += message.translate("commandHandler:remainingCooldown").split('?')[2]
+                else desc += message.translate("commandHandler:remainingCooldown").split('?')[1]
 
-                desc += message.translate("general/commandHandler:remainingCooldown").split('?')[3]
+                desc += message.translate("commandHandler:remainingCooldown").split('?')[3]
                 let embed = new MessageEmbed()
                     .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(desc)
@@ -337,7 +339,7 @@ module.exports = class {
         } catch (e) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("general/commandHandler:error")
+                .setDescription(message.translate("commandHandler:error")
                     .replace('{support}', this.client.supportUrl)
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
