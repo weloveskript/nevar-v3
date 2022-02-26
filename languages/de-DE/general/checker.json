@@ -1,6 +1,0 @@
-{
-  "autoUnban": "{emotes.arrow} {user} wurde entbannt: Bannzeit abgelaufen (#{case})",
-  "autoUnbanReason": "Automatische Entbannung - Banzeit abgelaufen",
-
-  "autoUnmute": "{emotes.arrow} {user} wurde entmutet: Mutezeit abgelaufen (#{case})"
-}

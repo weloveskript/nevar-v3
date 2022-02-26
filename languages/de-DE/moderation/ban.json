@@ -27,13 +27,15 @@
       "cantBan": "{emotes.error} Du kannst {user} nicht bannen\n{emotes.arrow} Hier sind mögliche Gründe woran das liegen kann:\n```|- {user} hat eine höhere Rolle als du\n|- {user} hat eine höhere Rolle als ich```",
       "unknown": "{emotes.error} Beim Bannen ist ein unerwarteter Fehler aufgetreten. Die Aktion wurde abgebrochen"
     },
+    "confirm": "{emotes.arrow} Bist du sicher, dass du **{user}** bannen möchtest?",
     "notGiven": "Kein Grund angegeben",
     "perma": "Permanent",
     "reason": "Moderator: {moderator} | Gebannt am: {date} | Dauer: {duration} | Grund: {reason}",
     "success": {
       "private": "{emotes.error} Du wurdest von **{guild}** gebannt :(\n```|- Grund: {reason}\n|- Gebannt von: {moderator}\n|- Dauer: {duration}\n|- Gebannt bis: {bannedUntil}```",
       "public": "{emotes.success} **{user}** wurde erfolgreich gebannt\n```|- Grund: {reason}\n|- Gebannt von: {moderator}\n|- Dauer: {duration}\n|- Gebannt bis: {bannedUntil}```"
-    }
+    },
+    "autoUnban": "Automatisch entbannt, Bannzeit abgelaufen | Gebannt von {moderator} am {date} | Bangrund: {reason}"
   }
 
 

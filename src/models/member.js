@@ -23,7 +23,12 @@ module.exports = mongoose.model("Member", new mongoose.Schema({
         default: {
             banned: false,
             reason: null,
-            moderator: null,
+            moderator: {
+              id: null,
+              tag: null
+            },
+            duration: null,
+            bannedAt: null,
             endDate: null
         }
     },

@@ -1,5 +1,5 @@
 const Command = require('../../core/command');
-const { MessageEmbed} = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
 const {SlashCommandBuilder} = require("@discordjs/builders");
 const Resolver = require('../../helper/resolver');
 const ms = require('ms');
@@ -28,6 +28,7 @@ class Ban extends Command {
         let guild = interaction?.guild || message?.guild;
         let member = interaction?.member || message?.member;
         let channel = interaction?.channel || message?.channel;
+        let id = interaction?.member?.user?.id || message?.author?.id;
 
         if(!args[0]){
             if(message) return message.send(this.client.usageEmbed(guild, this, data));
@@ -125,85 +126,136 @@ class Ban extends Command {
         let duration = banData.time.toString()
             .replace((100 * 60 * 60 * 24 * 365 * 1000).toString(), guild.translate("moderation/ban:main:perma"))
 
-        guild.members.ban(banData.user, {
-            reason: guild.translate("moderation/ban:main:reason")
-                .replace('{moderator}', member.user.tag)
-                .replace('{date}', moment.tz(new Date(Date.now()), guild.translate("language:timezone")).format(guild.translate("language:dateformat")))
-                .replace('{duration}', duration)
-                .replace('{reason}', banData.reason)
-        })
-            .then(async () => {
-                victimMemberData.ban.banned = true;
-                victimMemberData.ban.reason = banData.reason;
-                victimMemberData.ban.moderator = member.user.id;
-                victimMemberData.ban.endDate = Date.now() + (duration === guild.translate("moderation/ban:main:perma") ? banData.time : ms(banData.time))
+        let confirmEmbed = new MessageEmbed()
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+            .setDescription(guild.translate("moderation/ban:main:confirm")
+                .replace('{emotes.arrow}', this.client.emotes.arrow)
+                .replace('{user}', fetchUser.tag))
+            .setColor(this.client.embedColor)
+            .setFooter({text: data.guild.footer});
 
-                victimMemberData.markModified("ban");
-                await victimMemberData.save();
+        let row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setCustomId('confirm_' + id + '_yes')
+                    .setLabel(guild.translate("language:yes"))
+                    .setStyle('SUCCESS')
+                    .setEmoji('✅'),
+                new MessageButton()
+                    .setCustomId('confirm_' + id + '_no')
+                    .setLabel(guild.translate("language:no"))
+                    .setStyle('DANGER')
+                    .setEmoji('❌')
+            )
 
-                let bannedUntil = duration === guild.translate("moderation/ban:main:perma") ? '/' : moment.tz(new Date(
-                    Date.now() +
-                    (duration === guild.translate("moderation/ban:main:perma") ? banData.time : ms(banData.time))
-                ), guild.translate("language:timezone")).format(guild.translate("language:dateformat"));
+        let sent;
+        if (message) sent = await message.send(confirmEmbed, false, [row]);
+        if (interaction) sent = await interaction.send(confirmEmbed, false, [row]);
 
-                let bannedDif = moment.duration(moment(Date.now()).diff(victimMemberData.ban.endDate))._data;
-                let bannedDuration = [];
-                if(bannedDif.years < 0)
-                    bannedDuration.push(bannedDif.years.toString().replace('-', '') + ' ' + (bannedDif.years < -1 ? guild.translate("timeUnits:years") : guild.translate("timeUnits:year")));
-                if(bannedDif.months < 0)
-                    bannedDuration.push(bannedDif.months.toString().replace('-', '') + ' ' + (bannedDif.months < -1 ? guild.translate("timeUnits:months") : guild.translate("timeUnits:month")));
-                if(bannedDif.days < 0)
-                    bannedDuration.push(bannedDif.days.toString().replace('-', '') + ' ' + (bannedDif.days < -1 ? guild.translate("timeUnits:days") : guild.translate("timeUnits:day")));
-                if(bannedDif.hours < 0)
-                    bannedDuration.push(bannedDif.hours.toString().replace('-', '') + ' ' + (bannedDif.hours < -1 ? guild.translate("timeUnits:hours") : guild.translate("timeUnits:hour")));
-                if(bannedDif.minutes < 0)
-                    bannedDuration.push(bannedDif.minutes.toString().replace('-', '') + ' ' + (bannedDif.minutes < -1 ? guild.translate("timeUnits:minutes") : guild.translate("timeUnits:minute")));
-                if(bannedDif.seconds < 0)
-                    bannedDuration.push(bannedDif.seconds.toString().replace('-', '') + ' ' + (bannedDif.seconds < -1 ? guild.translate("timeUnits:seconds") : guild.translate("timeUnits:second")));
-                if(duration !== guild.translate("moderation/ban:main:perma")){
-                    duration = bannedDuration.slice(0, 2).join(', ');
-                }
+        const filter = i => i.customId.startsWith('confirm_' + id) && i.user.id === id;
+        const clicked = await sent.awaitMessageComponent({
+            filter,
+            time: 20000
+        }).catch(() => {});
 
-                let privateEmbed = new MessageEmbed()
-                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                    .setDescription(guild.translate("moderation/ban:main:success:private")
-                        .replace('{emotes.error}', this.client.emotes.error)
-                        .replace('{guild}', guild.name)
-                        .replace('{reason}', banData.reason)
+        if (clicked) {
+            if(clicked.customId === 'confirm_' + id + '_yes'){
+                guild.members.ban(banData.user, {
+                    reason: guild.translate("moderation/ban:main:reason")
                         .replace('{moderator}', member.user.tag)
+                        .replace('{date}', moment.tz(new Date(Date.now()), guild.translate("language:timezone")).format(guild.translate("language:dateformat")))
                         .replace('{duration}', duration)
-                        .replace('{bannedUntil}', bannedUntil))
-                    .setColor(this.client.embedColor)
-                    .setFooter({text: data.guild.footer});
-                fetchUser.send({embeds:[privateEmbed]}).catch(() => {});
-
-                let publicEmbed = new MessageEmbed()
-                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                    .setDescription(guild.translate("moderation/ban:main:success:public")
-                        .replace('{emotes.success}', this.client.emotes.success)
-                        .replace('{user}', fetchUser.tag)
                         .replace('{reason}', banData.reason)
-                        .replace('{moderator}', member.user.tag)
-                        .replace('{duration}', duration)
-                        .replace('{bannedUntil}', bannedUntil))
-                    .setImage('https://c.tenor.com/SglvezQEKnAAAAAC/discord-ban.gif')
-                    .setColor(this.client.embedColor)
-                    .setFooter({text: data.guild.footer});
-                if(message) await message.send(publicEmbed);
-                if(interaction) await interaction.send(publicEmbed);
+                })
+                    .then(async () => {
+                        victimMemberData.ban.banned = true;
+                        victimMemberData.ban.reason = banData.reason;
+                        victimMemberData.ban.moderator = {
+                            id: member.user.id,
+                            tag: member.user.tag
+                        };
+                        victimMemberData.ban.duration = duration;
+                        victimMemberData.ban.bannedAt = Date.now();
+                        victimMemberData.ban.endDate = Date.now() + (duration === guild.translate("moderation/ban:main:perma") ? banData.time : ms(banData.time))
 
-                this.client.databaseCache.bannedUsers.set(fetchUser.id + guild.id, victimMemberData);
-            })
-            .catch(async () => {
+                        victimMemberData.markModified("ban");
+                        await victimMemberData.save();
+
+                        let bannedUntil = duration === guild.translate("moderation/ban:main:perma") ? '/' : moment.tz(new Date(
+                            Date.now() +
+                            (duration === guild.translate("moderation/ban:main:perma") ? banData.time : ms(banData.time))
+                        ), guild.translate("language:timezone")).format(guild.translate("language:dateformat"));
+
+                        let bannedDif = moment.duration(moment(Date.now()).diff(victimMemberData.ban.endDate))._data;
+                        let bannedDuration = [];
+                        if(bannedDif.years < 0)
+                            bannedDuration.push(bannedDif.years.toString().replace('-', '') + ' ' + (bannedDif.years < -1 ? guild.translate("timeUnits:years") : guild.translate("timeUnits:year")));
+                        if(bannedDif.months < 0)
+                            bannedDuration.push(bannedDif.months.toString().replace('-', '') + ' ' + (bannedDif.months < -1 ? guild.translate("timeUnits:months") : guild.translate("timeUnits:month")));
+                        if(bannedDif.days < 0)
+                            bannedDuration.push(bannedDif.days.toString().replace('-', '') + ' ' + (bannedDif.days < -1 ? guild.translate("timeUnits:days") : guild.translate("timeUnits:day")));
+                        if(bannedDif.hours < 0)
+                            bannedDuration.push(bannedDif.hours.toString().replace('-', '') + ' ' + (bannedDif.hours < -1 ? guild.translate("timeUnits:hours") : guild.translate("timeUnits:hour")));
+                        if(bannedDif.minutes < 0)
+                            bannedDuration.push(bannedDif.minutes.toString().replace('-', '') + ' ' + (bannedDif.minutes < -1 ? guild.translate("timeUnits:minutes") : guild.translate("timeUnits:minute")));
+                        if(bannedDif.seconds < 0)
+                            bannedDuration.push(bannedDif.seconds.toString().replace('-', '') + ' ' + (bannedDif.seconds < -1 ? guild.translate("timeUnits:seconds") : guild.translate("timeUnits:second")));
+                        if(duration !== guild.translate("moderation/ban:main:perma")){
+                            duration = bannedDuration.slice(0, 2).join(', ');
+                        }
+
+                        let privateEmbed = new MessageEmbed()
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                            .setDescription(guild.translate("moderation/ban:main:success:private")
+                                .replace('{emotes.error}', this.client.emotes.error)
+                                .replace('{guild}', guild.name)
+                                .replace('{reason}', banData.reason)
+                                .replace('{moderator}', member.user.tag)
+                                .replace('{duration}', duration)
+                                .replace('{bannedUntil}', bannedUntil))
+                            .setColor(this.client.embedColor)
+                            .setFooter({text: data.guild.footer});
+                        fetchUser.send({embeds:[privateEmbed]}).catch(() => {});
+
+                        let publicEmbed = new MessageEmbed()
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                            .setDescription(guild.translate("moderation/ban:main:success:public")
+                                .replace('{emotes.success}', this.client.emotes.success)
+                                .replace('{user}', fetchUser.tag)
+                                .replace('{reason}', banData.reason)
+                                .replace('{moderator}', member.user.tag)
+                                .replace('{duration}', duration)
+                                .replace('{bannedUntil}', bannedUntil))
+                            .setImage('https://c.tenor.com/SglvezQEKnAAAAAC/discord-ban.gif')
+                            .setColor(this.client.embedColor)
+                            .setFooter({text: data.guild.footer});
+                        await sent.edit({embeds:[publicEmbed], components: []})
+
+                        this.client.databaseCache.bannedUsers.set(fetchUser.id + guild.id, victimMemberData);
+                    })
+                    .catch(async () => {
+                        let embed = new MessageEmbed()
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                            .setDescription(guild.translate("moderation/ban:main:errors:unknown")
+                                .replace('{emotes.error}', this.client.emotes.error))
+                            .setColor(this.client.embedColor)
+                            .setFooter({text: data.guild.footer});
+                        await sent.edit({embeds:[embed], components: []})
+                    });
+            }
+            if(clicked.customId === 'confirm_' + id + '_no'){
                 let embed = new MessageEmbed()
                     .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                    .setDescription(guild.translate("moderation/ban:main:errors:unknown")
+                    .setDescription(guild.translate("language:cancelled")
                         .replace('{emotes.error}', this.client.emotes.error))
                     .setColor(this.client.embedColor)
                     .setFooter({text: data.guild.footer});
-                if(message) return message.send(embed);
-                if(interaction) return interaction.send(embed);
-            });
+                await sent.edit({embeds:[embed], components: []})
+
+            }
+
+
+        }
     }
 }
 
