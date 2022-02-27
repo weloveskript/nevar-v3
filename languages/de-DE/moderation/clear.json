@@ -1,0 +1,23 @@
+{
+  "general": {
+    "description": "Löscht eine bestimmte Anzahl an Nachrichten \uD83D\uDDD1️",
+    "syntax": "|- clear <Anzahl> [Mitglied]",
+    "examples": "|- clear 7 -> löscht die letzten 7 Nachrichten\n|- clear 7 @Tinte -> löscht die letzten 7 Nachrichten von @Tinte"
+  },
+
+  "slash": {
+    "1": {
+      "name": "anzahl",
+      "description": "» Anzahl der Nachrichten die du löschen möchtest"
+    },
+    "2": {
+      "name": "mitglied",
+      "description": "» Mitglied, dessen Nachrichten du löschen möchtest"
+    }
+  },
+
+  "main": {
+    "deleted": "{emotes.success} Ich habe {count} Nachrichten gelöscht",
+    "deletedUser": "{emotes.success} Ich habe {count} Nachrichten von {user} gelöscht"
+  }
+}

@@ -1,8 +1,8 @@
 {
   "general": {
     "description": "Mutet ein Mitglied \uD83D\uDD28",
-    "usage": "|- mute <Mitglied> [Dauer] <Grund>",
-    "example": "|- mute @Tinte 1h Spam -> mutet @Tinte eine Stunde für Spam\n|- ban @Tinte Werbung -> mutet @Tinte permanent für Werbung"
+    "syntax": "|- mute <Mitglied> [Dauer] <Grund>",
+    "examples": "|- mute @Tinte 1h Spam -> mutet @Tinte eine Stunde für Spam\n|- ban @Tinte Werbung -> mutet @Tinte permanent für Werbung"
   },
 
   "main": {
