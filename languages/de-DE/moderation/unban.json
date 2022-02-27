@@ -1,0 +1,19 @@
+{
+  "general": {
+    "description": "Entbannt einen Nutzer \uD83D\uDD28",
+    "syntax": "|- unban <ID/Tag>",
+    "examples": "|- unban Tinte#1000 -> entbannt Tinte#1000"
+  },
+  "slash": {
+    "1": {
+      "name": "nutzer",
+      "description": "» Welchen Nutzer willst du entbannen?"
+    }
+  },
+  "main": {
+    "errors": {
+      "notBanned": "{emotes.error} {user} ist nicht gebannt"
+    },
+    "unbanned": "{emotes.success} {user} wurde entbannt"
+  }
+}
