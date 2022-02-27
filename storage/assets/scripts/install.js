@@ -156,7 +156,7 @@ fs.writeFile('config-sample.toml', config, async function(err){
 let disabledCommands = {};
 let giveaways = [];
 let keys = {};
-let partners = {};
+let staffs = {};
 
 fs.writeFile('./storage/disabledcmds.json', JSON.stringify(disabledCommands, null, 4), function(err){
     if(err){
@@ -186,12 +186,12 @@ fs.writeFile('./storage/premiumKeys.json', JSON.stringify(keys, null, 4), functi
     }
 });
 
-fs.writeFile('./storage/partners.json', JSON.stringify(partners, null, 4), function(err){
+fs.writeFile('./storage/staffs.json', JSON.stringify(staffs, null, 4), function(err){
     if(err){
-        logger.log("Couldn't create storage/partners.json", "error");
+        logger.log("Couldn't create storage/staffs.json", "error");
         console.error(new Error(err));
     }else{
-        logger.log('Successfully created storage/partners.json', "success");
+        logger.log('Successfully created storage/staffs.json', "success");
     }
 });
 

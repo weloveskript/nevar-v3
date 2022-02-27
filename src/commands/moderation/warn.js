@@ -120,8 +120,6 @@ class Warn extends Command {
             .setFooter({text: data.guild.footer});
         if (message) return message.send(publicEmbed, false);
         if (interaction) return interaction.send(publicEmbed);
-
-
     }
 }
 module.exports = Warn;

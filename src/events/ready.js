@@ -89,7 +89,7 @@ module.exports = class {
                 let staffs = [];
                 let staffJson = JSON.parse(fs.readFileSync('./storage/staffs.json'));
                 let staffIds = Object.keys(staffJson);
-                let botOwner = await this.client.users.fetch(this.client.config.team.owner_id);
+                let botOwner = await this.client.users.fetch(this.client.config.team.owner_id).catch(() => {});
                 staffs.push(botOwner.tag + ' |?| ' + botOwner.id + ' |?| ' + botOwner.displayAvatarURL() + ' |?| ' + 'head_staff')
                 for(let id of staffIds){
                     let staffMember = await client.users.fetch(id);

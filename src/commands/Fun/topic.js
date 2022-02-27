@@ -6,7 +6,7 @@ class Topic extends Command {
         super(client, {
             name: "topic",
             dirname: __dirname,
-            description: "misc/topic:general:description",
+            description: "fun/topic:general:description",
             cooldown: 3000,
             slashCommand: {
                 addCommand: true,
