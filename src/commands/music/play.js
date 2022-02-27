@@ -15,7 +15,9 @@ class Play extends Command {
                 addCommand: true,
                 data:
                     new SlashCommandBuilder()
-                        .addStringOption(option => option.setRequired(true))
+                        .addStringOption(option =>
+                            option.setRequired(true)
+                            .setAutocomplete(true))
             }
         });
     }

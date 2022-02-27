@@ -2,6 +2,7 @@ const {MessageEmbed, Permissions} = require("discord.js");
 const cmdCooldown = {};
 const toml = require('toml');
 const fs = require("fs");
+const {QueryType} = require("discord-player");
 const config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
 
 module.exports = class {
@@ -11,7 +12,29 @@ module.exports = class {
 
     async run(interaction) {
         if(!interaction) return;
-        if(!interaction.isCommand()) return;
+        if(!interaction.isCommand()) {
+            if(interaction.isAutocomplete()){
+                console.log(interaction.options.getFocused())
+                if(interaction.commandName === 'play'){
+                    const searchResult = await this.client.player
+                        .search(interaction.options.getFocused(), {
+                            requestedBy: interaction.user,
+                            searchEngine: QueryType.AUTO,
+                        })
+                        .catch(() => {});
+                    let results = [];
+                    for(let track of searchResult.tracks){
+                        if(results.length >= 5) continue;
+                        results.push({
+                            name: track.title,
+                            value: track.title
+                        });
+                    }
+                    interaction.respond(results)
+                }
+            }
+            return;
+        }
 
         let command = interaction.commandName;
         let args = [];
