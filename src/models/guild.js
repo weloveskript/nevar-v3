@@ -80,10 +80,6 @@ module.exports = mongoose.model("Guild", new Schema({
 
         }
     },
-    casesCount: {
-        type: Number,
-        default: 0
-    },
     commands: {
         type: Array,
         default: []

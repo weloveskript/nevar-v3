@@ -1,0 +1,29 @@
+{
+  "general": {
+    "description": "Verwarnt ein Mitglied ⚠️",
+    "syntax": "|- warn <Mitglied> <Grund>",
+    "examples": "|- warn @Tinte Spam -> Warnt @Tinte für Spam"
+  },
+  "slash": {
+    "1": {
+      "name": "mitglied",
+      "description": "» Wen möchtest du verwarnen?"
+    },
+    "2": {
+      "name": "grund",
+      "description": "» Warum möchtest du das Mitglied verwarnen?"
+    }
+  },
+  "main": {
+    "errors": {
+      "bot": "{emotes.error} Bots können nicht verwarnt werden",
+      "yourSelf": "{emotes.error} Du kannst dich nicht selber verwarnen",
+      "cantWarn": "{emotes.error} Du kannst {user} nicht verwarnen{emotes.arrow} Hier sind mögliche Gründe woran das liegen kann:\n```|- {user} hat eine höhere Rolle als du```"
+    },
+    "noReason": "Kein Grund angegeben",
+    "embeds": {
+      "private": "{emotes.error} Du wurdest auf **{guild}** verwarnt!\n```|- Grund: {reason}\n|- Verwarnt von: {moderator}\n|- Verwarnt am: {date}```",
+      "public": "{emotes.error} **{user}** wurde erfolgreich verwarnt\n```|- Grund: {reason}\n|- Verwarnt von: {moderator}\n|- Verwarnt am: {date}```"
+    }
+  }
+}

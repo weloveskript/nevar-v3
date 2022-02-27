@@ -1,6 +1,8 @@
 const Command = require('../../core/command');
 const { MessageEmbed} = require('discord.js');
 const {SlashCommandBuilder} = require("@discordjs/builders");
+const Resolver = require('../../helper/resolver');
+
 
 class Resetwarns extends Command {
 
@@ -25,7 +27,7 @@ class Resetwarns extends Command {
         let channel = interaction?.channel || message?.channel;
 
         let member = await guild.members.fetch(args[0]).catch(() => {});
-        if(message) member = await this.client.resolveMember({
+        if(message) member = await Resolver.resolveMember({
             message: message,
             search: args[0]
         });

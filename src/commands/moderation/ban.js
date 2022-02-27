@@ -256,8 +256,6 @@ class Ban extends Command {
                 await sent.edit({embeds:[embed], components: []})
 
             }
-
-
         }
     }
 }

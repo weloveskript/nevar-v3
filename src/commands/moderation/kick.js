@@ -2,6 +2,8 @@ const Command = require('../../core/command');
 const { MessageEmbed} = require('discord.js');
 const {SlashCommandBuilder} = require("@discordjs/builders");
 const moment = require("moment");
+const Resolver = require('../../helper/resolver');
+
 
 class Kick extends Command {
 
@@ -30,7 +32,7 @@ class Kick extends Command {
         let channel = interaction?.channel || message?.channel;
 
         let member = await guild.members.fetch(args[0]).catch(() => {});
-        if(message) member = await this.client.resolveMember({
+        if(message) member = await Resolver.resolveMember({
             message: message,
             search: args[0]
         });
