@@ -9,14 +9,9 @@ module.exports = mongoose.model("Member", new mongoose.Schema({
         type: String
     },
 
-    registeredAt: {
-        type: Number,
-        default: Date.now()
-    },
-
-    sanctions: {
-        type: Array,
-        default: []
+    warnings: {
+        list: [],
+        count: { type: Number, default: 0 }
     },
     ban: {
         type: Object,
@@ -30,21 +25,6 @@ module.exports = mongoose.model("Member", new mongoose.Schema({
             duration: null,
             bannedAt: null,
             endDate: null
-        }
-    },
-
-    economy: {
-        type: Object,
-        default: {
-            pocket: 0,
-            bank: 0,
-            lastDaily: null,
-            lastWeekly: null,
-            lastRob: null,
-            lastWork: null,
-            job: null,
-            workedHours: 0,
-            lastBeg: null
         }
     }
 }));

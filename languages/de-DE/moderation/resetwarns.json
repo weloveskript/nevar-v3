@@ -1,0 +1,16 @@
+{
+  "general": {
+    "description": "Setzt alle Warns eines Mitgliedes zurück ❌",
+    "syntax": "|- resetwarns <Mitglied>",
+    "examples": "|- resetwarns @Tinte -> setzt alle Warns von @Tinte zurück"
+  },
+  "slash": {
+    "1": {
+      "name": "mitglied",
+      "description": "» Wessen Warns möchtest du zurücksetzen"
+    }
+  },
+  "main": {
+    "cleared": "{emotes.success} Alle Warns von {user} wurden zurückgesetzt"
+  }
+}
