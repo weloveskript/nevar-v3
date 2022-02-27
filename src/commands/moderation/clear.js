@@ -9,6 +9,8 @@ class Clear extends Command {
             name: "clear",
             description: "moderation/clear:general:description",
             dirname: __dirname,
+            memberPermissions: ["MANAGE_MESSAGES"],
+            botPermissions: ["MANAGE_MESSAGES"],
             cooldown: 5000,
             slashCommand: {
                 addCommand: true,

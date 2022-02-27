@@ -13,6 +13,8 @@ class Ban extends Command {
             description: "moderation/ban:general:description",
             dirname: __dirname,
             cooldown: 5000,
+            memberPermissions: ["BAN_MEMBERS"],
+            botPermissions: ["BAN_MEMBERS"],
             slashCommand: {
                 addCommand: true,
                 data: new SlashCommandBuilder()

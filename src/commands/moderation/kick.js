@@ -10,6 +10,8 @@ class Kick extends Command {
             name: "kick",
             description: "moderation/kick:general:description",
             dirname: __dirname,
+            memberPermissions: ["KICK_MEMBERS"],
+            botPermissions: ["KICK_MEMBERS"],
             cooldown: 5000,
             slashCommand: {
                 addCommand: true,
