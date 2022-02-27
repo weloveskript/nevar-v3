@@ -4,7 +4,7 @@
   "description": "A Discord multipurpose bot with more than 100 commands based on Javascript and Discord.js",
   "main": "src/app.js",
   "author": "Tinte",
-  "license": "ISC",
+  "license": "AGPL-3.0",
   "homepage": "https://nevar.eu",
   "scripts": {
     "start": "node src/app.js",
