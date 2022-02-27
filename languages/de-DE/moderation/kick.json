@@ -1,0 +1,27 @@
+{
+  "general": {
+    "description": "Kickt ein Mitglied vom Server ✈️",
+    "syntax": "|- kick <Mitglied>",
+    "examples": "|- kick @Tinte -> kickt @Tinte vom Server"
+  },
+
+  "slash": {
+    "1": {
+      "name": "mitglied",
+      "description": "» Mitglied, welches du kicken möchtest"
+    },
+    "2": {
+      "name": "grund",
+      "description": "» Grund, warum du das Mitglied kicken möchtest"
+    }
+  },
+  "main": {
+    "errors": {
+      "cantKickYourself": "{emotes.error} Du kannst dich nicht selber kicken",
+      "cantKick": "{emotes.error} Du kannst {user} nicht kicken\n{emotes.arrow} Hier sind mögliche Gründe woran das liegen kann:\n```|- {user} hat eine höhere Rolle als du\n|- {user} hat eine höhere Rolle als ich```"
+    },
+    "noReason": "Kein Grund angegeben",
+    "reason": "Moderator: {moderator} | Gekickt am: {date} | Grund: {reason}",
+    "kicked": "{emotes.success} {user} wurde erfolgreich gekickt\n```|- Grund: {reason}\n|- Gekickt von: {moderator}```"
+  }
+}
