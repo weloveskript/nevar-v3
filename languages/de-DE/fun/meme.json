@@ -1,0 +1,7 @@
+{
+  "general": {
+    "description": "Sendet ein zufälliges Meme \uD83D\uDC38",
+    "usage": "| meme",
+    "example": "|- meme » Sendet ein zufälliges Meme"
+  }
+}
