@@ -62,7 +62,7 @@ Nevar is a multipurpose Discord bot, made with JavaScript.
 
 ### Built With
 
--   [JavaScript](https://npm.io/https://nodejs.org/en/)
+-   [JavaScript](https://nodejs.org/en/)
 -   [discord.js](https://npm.io/discord.js)
 -   [Mongoose](https://npm.io/https://mongoosejs.com/)
 
