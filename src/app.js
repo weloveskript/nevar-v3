@@ -3,7 +3,7 @@ require('./helper/replier');
 
 const { Intents, Constants } = require('discord.js');
 const Nevar = require('./core/nevar');
-const { loadConfig, loadCommands, loadPlayerEvents, loadEvents, connectMongo, loadLanguages } = require('./helper/loader');
+const { loadConfig, loadCommands, loadPlayerEvents, loadEvents, connectMongo, loadLanguages, loadGiveawaysEvents } = require('./helper/loader');
 
 const client = new Nevar({
     intents: [
@@ -27,6 +27,7 @@ const init = async() => {
 
     const playerFiles = await loadPlayerEvents(client);
     const events = await loadEvents(client);
+    const giveawayEvents = await loadGiveawaysEvents(client);
     await loadCommands(client);
     await connectMongo(config, client);
     await loadLanguages(client);
@@ -41,6 +42,5 @@ const init = async() => {
 init()
     .then(res => client.logger.log('Initiated client', 'info'))
     .catch(err => client.logger.log('Failed to initiate client: ' + err, 'error'));
-
 
 module.exports.client = client;

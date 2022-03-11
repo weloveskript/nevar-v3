@@ -38,6 +38,15 @@ async function loadPlayerEvents(client){
     }
     return playerFiles;
 }
+async function loadGiveawaysEvents(client){
+    const giveawayEventFiles = fs.readdirSync('./src/events/giveawayManager/');
+    for(let file of giveawayEventFiles){
+        if(!file.endsWith('.js')) continue;
+        let eventName = file.split('.')[0];
+        let event = new(require('../events/giveawayManager/' + file))(client);
+        client.giveawaysManager.on(eventName, (...args) => event.run(...args));
+    }
+}
 
 async function loadEvents(client){
     const evtFiles = fs.readdirSync("./src/events/");
@@ -79,5 +88,6 @@ module.exports = {
     loadPlayerEvents,
     loadEvents,
     connectMongo,
-    loadLanguages
+    loadLanguages,
+    loadGiveawaysEvents
 }

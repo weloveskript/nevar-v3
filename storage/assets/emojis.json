@@ -9,13 +9,16 @@
   "moon": "<:nev_moon:941857164669096007>",
   "formula": "<:nev_formula:919222407829536778>",
   "result": "<:nev_result:919222576998383678>",
+  "giveaway": "<a:nev_giveaway:949063875221921843>",
   "image": "<:nev_image:919223017282895922>",
   "sun": "<:nev_sun:919223547379978300>",
   "js": "<:nev_javascript:919223787394846782>",
   "members": "<:nev_members:919224059953283142>",
   "url": "<:nev_url:919224293563453441>",
   "sound": "<:nev_sound:919224577786257438>",
+  "mee6": "<:nev_mee6:950367428884455464>",
   "help": "<:nev_help:919225294169178133>",
+  "info2": "<:nev_star:949066007299911730> ",
   "warn": "<:nev_warning:919233717749305364>",
   "error": "<:nev_error:919234017721741383>",
   "success": "<:nev_success:919234347180109825>",
@@ -43,6 +46,7 @@
   "listening": "<:nev_headphones:919252841397379094>",
   "watching": "<:nev_eye:919253455741280286>",
   "custom": "<:nev_settings:919254839656054794>",
+  "amari": "<:nev_amari:950158528356700231>",
   "play": "<:nev_play:919255195244978226>",
   "pause": "<:nev_pause:919255360458592327>",
   "skip": "<:nev_skip:919255505183064156>",
@@ -68,6 +72,8 @@
     "staff": "<:nev_members:919224059953283142>"
   },
   "logo": {
+    "normal": "<:nev_logo:950160874293825546>",
+    "round": "<:nev_logo_round:950368500554293258>",
     "transparent": "<:nev_logo_transparent:919261877647847424>",
     "transparent_shadow": "<:nev_logo_transparent_shadow:919262039740928060>"
   },

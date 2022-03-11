@@ -41,19 +41,20 @@ class Nevar extends Client {
         this.filters = config.music.filters;
 
         this.giveawaysManager = new GiveawaysManager(this, {
-            storage: "./storage/giveaways.json",
-            updateCountdownEvery: 20000,
+            storage: './storage/giveaways.json',
             default: {
                 botsCanWin: false,
-                embedColor: config.embeds.color,
-                reaction: "🎉"
+                embedColor: this.embedColor,
+                embedColorEnd: '#fc0a43',
+                //exemptPermissions: ["ADMINISTRATOR", "MANAGE_GUILD"],
+                reaction: '🎉'
             }
-        });
+        })
 
         this.player = new Player(this, {
             leaveOnEnd: false,
             autoSelfDeaf: false,
-            ytdlDownloadOptions: {
+            ytdlOptions: {
                 requestOptions: {
                     headers: {
                         cookie: config.music.youtube_cookie
@@ -61,6 +62,10 @@ class Nevar extends Client {
                 }
             }
         });
+
+        this.invite = function(){
+            return 'https://discord.com/api/oauth2/authorize?client_id=' + this.user.id + '&permissions=1899359446&scope=bot%20applications.commands'
+        }
 
         this.format = function (integer){
             let formatter = new Intl.NumberFormat('de-DE');

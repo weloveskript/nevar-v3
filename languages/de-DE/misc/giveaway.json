@@ -1,0 +1,98 @@
+{
+  "general": {
+    "description": "Verwalte Giveaways auf deinem Server und mache deinen Mitgliedern eine Freude \uD83C\uDF89",
+    "syntax": "|- giveaways",
+    "examples": "|- giveaways » Sendet das Giveaways-Menü"
+  },
+
+  "main": {
+
+    "actions": {
+      "1": "Giveaway starten",
+      "2": "Alle Giveaways ansehen",
+      "3": "Neuen Gewinner wählen",
+      "4": "Giveaway beenden"
+    },
+
+    "start": {
+      "collectors": {
+        "channel": "{emotes.arrow} [Schritt 1/5] Sende den Channel, in dem du das Giveaway starten möchtest",
+        "win": "{emotes.arrow} [Schritt 2/5] Sende den Preis, den du als Gewinn setzen möchtest",
+        "duration": "{emotes.arrow} [Schritt 3/5] Sende die Dauer des Giveaways\n{emotes.arrow} Hier hast du ein paar Beispiele wie du die Dauer richtig angibst:\n```|- 2d » 2 Tage\n|- 1w » 1 Woche\n|- 30m » 30 Minuten\n|- 1h » 1 Stunde```",
+        "winners": "{emotes.arrow} [Schritt 4/5] Sende die Anzahl an Leuten, die gewinnen sollen",
+        "condition": "{emotes.arrow} [Schritt 5/5] Wähle die Bedingung, die erfüllt sein muss um am Giveaway teilnehmen zu können",
+        "conditionMenu": "Wähle eine Teilnahmebedingung"
+      },
+      "conditions": {
+        "1": {
+          "label": "⭕ Keine Bedingung",
+          "description": "» Es gibt keine Bedingung, um am Giveaway teilnehmen zu können"
+        },
+        "2": {
+          "label": "⬆️ Rolle besitzen",
+          "description": "» Es können nur Mitglieder teilnehmen, die eine bestimmte Rolle haben"
+        },
+        "3": {
+          "label": "\uD83C\uDD99 Bestimmtes Level",
+          "description": "» Teilnehmer müssen ein bestimmtes Level bei {client} oder Amari erreicht haben"
+        },
+        "4": {
+          "label": "\uD83D\uDD22 Mitgliedsdauer",
+          "description": "» Um teilzunehmen, muss man mindestens eine bestimmte Anzahl an Tagen Mitglied des Servers sein"
+        },
+        "5": {
+          "label": "\uD83D\uDD17 Server-Empfehlung",
+          "description": "» Erwähnt einen anderen Discord-Server, es ist aber keine Pflicht diesen zu betreten"
+        },
+        "6": {
+          "label": "✨ Eigene Bedingung",
+          "description": "» Gib deine eigene Bedingung ein, diese kann aber nicht vom Bot automatisch überprüft werden"
+        }
+      },
+      "conditionTexts": {
+        "1": "Um teilnehmen zu dürfen, musst du **keine Bedingung** erfüllen!",
+        "2": "Um teilnehmen zu dürfen, musst du **{role} besitzen**!",
+        "3": "Um teilnehmen zu dürfen, musst du im Levelsystem von {bot} **mindestens Level {level}** sein!",
+        "4": "Um teilnehmen zu dürfen, musst du mindestens **{amount} Tage** Mitglied des Servers sein!",
+        "5": "**Keine Pflicht** | Bitte tritt folgendem Server bei:\n» **{invite}**",
+        "6": "{text}"
+      },
+      "conditionDetailCollectors": {
+        "2": "{emotes.arrow} Sende die Rolle, die benötigt wird zum teilnehmen",
+        "3": {
+          "1": "{emotes.arrow} Von welchem Bot soll das Level überprüft werden?",
+          "2": "{emotes.arrow} Sende das Level, das für die Teilnahme benötigt wird"
+        },
+        "4": "{emotes.arrow} Wieviele Tage muss man Mitglied sein um teilnehmen zu dürfen?",
+        "5": "{emotes.arrow} Sende den Einladungslink",
+        "6": "{emotes.arrow} Sende deine eigene Bedingung"
+      },
+      "created": "{emotes.success} Das Giveaway wurde erstellt",
+      "invalid": "{emotes.error} Du hast eine ungültige Angabe gemacht. Die Aktion wurde abgebrochen"
+    },
+
+    "list": {
+      "list": "{emotes.arrow} Auf dem Server laufen gerade **{count} Giveaways**:\n\n```{list}```",
+      "gw": "» Preis: {prize}\n» Erstellt von: {hostedBy}\n» ID: {id}\n» Gewinner: {winnerCount}\n» Gestartet am: {startedAt}\n» Endet am: {endAt}\n» Channel: {channel}\n\n"
+    },
+
+    "reroll": {
+      "collector": "{emotes.arrow} Sende die ID eines beendeten Giveaways"
+
+
+    },
+
+    "gwMessages": {
+      "giveaway": "{emotes.giveaway} **NEUES GIVEAWAY** {emotes.giveaway}",
+      "giveawayEnd": "{emotes.giveaway} **GIVEAWAY BEENDET** {emotes.giveaway}",
+      "participate": "{emotes.support} **Lade {client} [hier]({invite}) ein**\n\nReagiere mit \uD83C\uDF89 um teilzunehmen!",
+      "win": "{emotes.giveaway} Herzlichen Glückwunsch {winners} {emotes.giveaway}\n\n{emotes.arrow} {this.messageURL}",
+      "timeLeft": "\n{emotes.info} **Informationen**\n» **{this.winnerCount}** Gewinner\n» Erstellt von **{this.hostedBy}**\n» Endet **{timestamp}** (<t:{Math.round(this.endAt / 1000)}:f>)\n\n{emotes.info} **Bedingung**\n» {condition}",
+      "embedFooter": "{this.winnerCount} Gewinner",
+      "noWinner": "{emotes.support} **Lade {client} [hier]({invite}) ein**\n\n» **Es gibt keinen Gewinner, da niemand teilgenommen hat**\n\n{emotes.info} **Informationen**\n» **{this.winnerCount}** Gewinner\n» Erstellt von **{this.hostedBy}**\n» Endete **<t:{Math.round(this.endAt / 1000)}:R>** (<t:{Math.round(this.endAt / 1000)}:f>)\n\n{emotes.info} **Bedingung**\n» {condition}",
+      "winners": "{emotes.support} **Lade {client} [hier]({invite}) ein**\n\n» **Gewinner: {winners}**\n\n{emotes.info} **Informationen**\n» **{this.winnerCount}** Gewinner\n» Erstellt von **{this.hostedBy}**\n» Endete **{timestamp1}** ({timestamp2})\n\n{emotes.info} **Bedingung**\n» {condition}",
+      "endedAt": "Endete",
+      "endAt": "Endet"
+    }
+  }
+}
