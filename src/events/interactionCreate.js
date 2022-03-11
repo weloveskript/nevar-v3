@@ -24,10 +24,10 @@ module.exports = class {
                         .catch(() => {});
                     let results = [];
                     for(let track of searchResult.tracks){
-                        if(results.length >= 5) continue;
+                        if(results.length >= 8) continue;
                         results.push({
                             name: track.title,
-                            value: track.title
+                            value: track.url,
                         });
                     }
                     interaction.respond(results)
