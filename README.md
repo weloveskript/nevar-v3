@@ -62,9 +62,9 @@ Nevar is a multipurpose Discord bot, made with JavaScript.
 
 ### Built With
 
--   [JavaScript](https://nodejs.org/en/)
+-   [JavaScript](https://nodejs.org)
 -   [discord.js](https://npm.io/discord.js)
--   [Mongoose](https://npm.io/https://mongoosejs.com/)
+-   [Mongoose](https://mongoosejs.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -78,7 +78,7 @@ To get a local copy up and running follow these simple example steps.
 
 -   [NodeJS v17](https://nodejs.org)
 -   An [MongoDB](https://mongodb.org) Server
--   An [Discord Bot](https://discord.com) application
+-   An [Discord Bot](https://discord.com/developers/applications) application
 
 ### Installation
 
@@ -101,7 +101,7 @@ To get a local copy up and running follow these simple example steps.
 To start the bot, use:
 
 ```sh
-node src/app.js
+node .
 ```
 
 If you run the bot in production, we recommend using an process manager like [PM2](https://npm.io/pm2)
