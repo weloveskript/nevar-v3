@@ -1,13 +1,33 @@
 {
-  "name": "Nevar",
+  "name": "nevar",
+  "description": "A powerful multipurpose bot that covers the most important features from all areas",
   "version": "3.0.0-beta",
-  "description": "A Discord multipurpose bot with more than 100 commands based on Javascript and Discord.js",
-  "main": "src/app.js",
-  "author": "Tinte",
+  "keywords": [
+    "discord",
+    "discord bot",
+    "discord.js",
+    "multipurpose",
+    "nevar",
+    "bot"
+  ],
+  "main": "./src/app.js",
+  "homepage": "https://github.com/Tintenpatron/nevar-v3",
   "license": "AGPL-3.0",
-  "homepage": "https://nevar.eu",
+  "repository": "github:Tintenpatron/nevar-v3",
+  "author": "Tinte <p429344@gmail.com> (https://github.com/Tintenpatron)",
+  "contributors": [
+    "Fedox <mrminecrafttv19@gmail.com> (https://github.com/Fedox-die-Ente)"
+  ],
+  "funding": {
+    "type": "individual",
+    "url": "https://prohosting24.net/cp/donate/nevar"
+  },
+  "bugs": {
+    "url": "https://github.com/Tintenpatron/nevar-v3/issues",
+    "email": "other@nevar.eu"
+  },
   "scripts": {
-    "start": "node src/app.js",
+    "start": "node .",
     "install": "node storage/assets/scripts/install.js"
   },
   "dependencies": {
@@ -21,7 +41,6 @@
     "body-parser": "^1.19.0",
     "canvas": "^2.9.0",
     "chalk": "^4.1.1",
-    "cheerio": "^1.0.0-rc.10",
     "cheerio-without-node-native": "^1.0.0-rc.2",
     "connect": "^3.7.0",
     "connect-mongo": "^3.2.0",
@@ -37,8 +56,6 @@
     "discord.js-akinator": "^3.4.2",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "fs": "^0.0.1-security",
-    "genius-lyrics-api": "^3.2.0",
     "helmet": "^4.6.0",
     "i18next": "^20.3.5",
     "i18next-node-fs-backend": "^2.1.3",
