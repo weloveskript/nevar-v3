@@ -9,8 +9,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/nevar-bot/nevar-v3">
-    <img src="https://repository-images.githubusercontent.com/423237036/5a40e391-64d4-47d5-86eb-2f5e7c8a9e13" alt="Logo" width="80" height="80">
+  <a href="https://github.com/Tintenpatron/nevar-v3">
+    <img src="https://i.imgur.com/1sp95pk.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Nevar</h3>
@@ -23,9 +23,9 @@
     <br />
     <a href="https://nevar.eu">Website</a>
     ·
-    <a href="https://github.com/nevar-bot/nevar-v3/issues">Report Bug</a>
+    <a href="https://github.com/Tintenpatron/nevar-v3/issues">Report Bug</a>
     ·
-    <a href="https://github.com/nevar-bot/nevar-v3/issues">Request Feature</a>
+    <a href="https://github.com/Tintenpatron/nevar-v3/issues">Request Feature</a>
   </p>
 </div>
 
@@ -84,7 +84,7 @@ To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo
     ```sh
-    git clone https://github.com/nevar-bot/nevar-v3
+    git clone https://github.com/Tintenpatron/nevar-v3
     ```
 2. Install NPM packages
     ```sh
@@ -136,16 +136,16 @@ Distributed under the AGPLv3 License. See `LICENSE` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/nevar-bot/nevar-v3.svg?style=for-the-badge
-[contributors-url]: https://github.com/nevar-bot/nevar-v3/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/nevar-bot/nevar-v3.svg?style=for-the-badge
-[forks-url]: https://github.com/nevar-bot/nevar-v3/network/members
-[stars-shield]: https://img.shields.io/github/stars/nevar-bot/nevar-v3.svg?style=for-the-badge
-[stars-url]: https://github.com/nevar-bot/nevar-next/stargazers
-[issues-shield]: https://img.shields.io/github/issues/nevar-bot/nevar-v3.svg?style=for-the-badge
-[issues-url]: https://github.com/nevar-bot/nevar-v3/issues
-[license-shield]: https://img.shields.io/github/license/nevar-bot/nevar-v3.svg?style=for-the-badge
-[license-url]: https://github.com/nevar-bot/nevar-next/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/Tintenpatron/nevar-v3.svg?style=for-the-badge
+[contributors-url]: https://github.com/Tintenpatron/nevar-v3/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Tintenpatron/nevar-v3.svg?style=for-the-badge
+[forks-url]: https://github.com/Tintenpatron/nevar-v3/network/members
+[stars-shield]: https://img.shields.io/github/stars/Tintenpatron/nevar-v3.svg?style=for-the-badge
+[stars-url]: https://github.com/Tintenpatron/nevar-next/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Tintenpatron/nevar-v3.svg?style=for-the-badge
+[issues-url]: https://github.com/Tintenpatron/nevar-v3/issues
+[license-shield]: https://img.shields.io/github/license/Tintenpatron/nevar-v3.svg?style=for-the-badge
+[license-url]: https://github.com/Tintenpatron/nevar-next/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
