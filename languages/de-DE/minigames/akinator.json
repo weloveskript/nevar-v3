@@ -1,0 +1,10 @@
+{
+  "general": {
+    "description": "Startet eine neue Runde Akinator \uD83E\uDDDE",
+    "syntax": "|- akinator",
+    "examples": "|- akinator » Starte eine Akinator-Runde"
+  },
+  "main": {
+    "start": "{emotes.success} Ich habe eine neue Akinator-Runde gestartet"
+  }
+}
