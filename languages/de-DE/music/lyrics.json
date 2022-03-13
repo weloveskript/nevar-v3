@@ -1,0 +1,13 @@
+{
+  "general": {
+    "description": "Sendet den Songtext zu deinen Lieblingsliedern \uD83C\uDFB5",
+    "syntax": "|- lyrics <Name>",
+    "examples": "|- play Wir sind der HSV » Sendet die Lyrics für Wir sind der HSV"
+  },
+  "slash": {
+    "1": {
+      "name": "name",
+      "description": "» Gib hier den Namen an"
+    }
+  }
+}
