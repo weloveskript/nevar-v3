@@ -145,7 +145,7 @@ Distributed under the AGPLv3 License. See `LICENSE` for more information.
 [issues-shield]: https://img.shields.io/github/issues/Tintenpatron/nevar-v3.svg?style=for-the-badge
 [issues-url]: https://github.com/Tintenpatron/nevar-v3/issues
 [license-shield]: https://img.shields.io/github/license/Tintenpatron/nevar-v3.svg?style=for-the-badge
-[license-url]: https://github.com/Tintenpatron/nevar-v3/blob/main/LICENSE
+[license-url]: https://github.com/Tintenpatron/nevar-v3/blob/main/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: https://i.imgur.com/1sp95pk.png
