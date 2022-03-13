@@ -141,11 +141,11 @@ Distributed under the AGPLv3 License. See `LICENSE` for more information.
 [forks-shield]: https://img.shields.io/github/forks/Tintenpatron/nevar-v3.svg?style=for-the-badge
 [forks-url]: https://github.com/Tintenpatron/nevar-v3/network/members
 [stars-shield]: https://img.shields.io/github/stars/Tintenpatron/nevar-v3.svg?style=for-the-badge
-[stars-url]: https://github.com/Tintenpatron/nevar-next/stargazers
+[stars-url]: https://github.com/Tintenpatron/nevar-v3/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Tintenpatron/nevar-v3.svg?style=for-the-badge
 [issues-url]: https://github.com/Tintenpatron/nevar-v3/issues
 [license-shield]: https://img.shields.io/github/license/Tintenpatron/nevar-v3.svg?style=for-the-badge
-[license-url]: https://github.com/Tintenpatron/nevar-next/blob/master/LICENSE
+[license-url]: https://github.com/Tintenpatron/nevar-v3/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
