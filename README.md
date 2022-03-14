@@ -4,6 +4,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+[![NodeJS][nodejs-shield]][nodejs-url]
 [![AGPLv3 License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
@@ -76,7 +77,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
--   [NodeJS v17](https://nodejs.org)
+-   [NodeJS v16](https://nodejs.org)
 -   An [MongoDB](https://mongodb.org) Server
 -   An [Discord Bot](https://discord.com/developers/applications) application
 
@@ -149,3 +150,5 @@ Distributed under the AGPLv3 License. See `LICENSE` for more information.
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: https://i.imgur.com/1sp95pk.png
+[nodejs-shield]: https://img.shields.io/node/v/discord.js?color=c634f7&style=for-the-badge
+[nodejs-url]: https://nodejs.org/

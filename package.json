@@ -18,6 +18,7 @@
   "contributors": [
     "Fedox <mrminecrafttv19@gmail.com> (https://github.com/Fedox-die-Ente)"
   ],
+  "readme": "./README.md",
   "funding": {
     "type": "individual",
     "url": "https://prohosting24.net/cp/donate/nevar"
