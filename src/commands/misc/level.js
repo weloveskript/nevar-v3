@@ -4,7 +4,7 @@ const Canvas = require('canvas');
 const Discord = require('discord.js');
 const { CanvasRenderingContext2D } = require('canvas');
 const {SlashCommandBuilder} = require("@discordjs/builders");
-
+const Resolver = require('../../helper/resolver');
 Canvas.registerFont('./storage/fonts/KeepCalm-Medium.ttf', { family: 'KeepCalm' });
 
 
@@ -128,7 +128,7 @@ class Level extends Command {
             ctx.fillText(rankText, 505, 95)
 
             ctx.fillStyle = "#"+user.db.levelColor;
-            let levelText = message.translate("misc/level:main:level");
+            let levelText = guild.translate("misc/level:main:level");
             ctx.font = "36px Calibri"
             ctx.fillText(levelText, 745, 95)
             ctx.fillStyle = "#"+user.db.levelColor;
@@ -188,23 +188,29 @@ class Level extends Command {
         if(text.length > 25 && text.length < 29) ctx.fillText(text, 590, 170);
 
         // draw progress bar
-        ctx.roundRect(290, 185, 600, 40, 10).fill();
+        ctx.roundRect(290, 185, 600, 40, 13).fill();
 
         // draw progress bar fill
         const xpPercent = (user.level.xp * 100) / Levels.xpFor(user.level.level + 1);
         const percentWidth = (xpPercent * 600) / 100;
         ctx.fillStyle = '#'+user.db.levelColor;
-        ctx.roundRect(290, 185, percentWidth, 40, 10).fill();
+        ctx.roundRect(290, 185, percentWidth, 40, 13).fill();
 
-
-        // draw circle
-        ctx.beginPath();
-        ctx.arc(170, 150, 100, 0, Math.PI * 2, true);
-        ctx.closePath();
+        const profilePic = await Canvas.loadImage(user.discord.user.displayAvatarURL({ format: 'png'}));
+        ctx.save();
+        roundedImage(ctx, 70, 50, 200, 200, 23);
+        ctx.stroke()
         ctx.clip();
+        ctx.drawImage(profilePic, 70, 50, 200, 200);
+        ctx.restore();
 
-        const avatar = await Canvas.loadImage(user.discord.user.displayAvatarURL({ format: 'png'}));
-        ctx.drawImage(avatar, 70, 50, 200, 200);
+        let status = member.presence?.status;
+        if(status === 'online') ctx.strokeStyle = '#3ba55d';
+        if(status === 'idle') ctx.strokeStyle = '#faa81a';
+        if(status === 'dnd') ctx.strokeStyle = '#ed4245';
+        if(!status) ctx.strokeStyle = '#666f7c';
+        ctx.lineWidth = 3.5;
+        ctx.roundRect(70, 50, 200, 200, 23).stroke();
 
         const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'level-' + user.discord.user.id + '.png');
         if(interaction) interaction.editReply({files: [attachment] });
