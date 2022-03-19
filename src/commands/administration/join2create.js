@@ -109,8 +109,7 @@ class Join2create extends Command {
                         );
                         collectUserlimit.on("collect", async (msg) => {
                             collectUserlimit.stop();
-                            msg.delete().catch(() => {
-                            });
+                            msg.delete().catch(() => {});
                             let userlimit = parseInt(msg.content);
                             if (userlimit && (userlimit >= 1 && userlimit <= 99) || userlimit === -1) {
                                 let embed = new MessageEmbed()
