@@ -117,16 +117,16 @@ class Level extends Command {
 
         // write level and rank
         text = user.level.position;
-        let rankText1X = 595;
-        let rankText2X = 675;
-        let rankText = guild.translate("misc/level:main:rank");
+        let rankText1X = 620;
+        let rankText2X = 700;
+        let rankText = guild.translate("misc/level:main:rank").toUpperCase();
 
         // loop until the text fits within the width of the box
         for(let i = 1; i <= 7; i++){
-            rankText1X = rankText1X-25.5;
-            rankText2X = rankText2X-25.5;
+            rankText1X = rankText1X-27.5;
+            rankText2X = rankText2X-27.5;
             if(text.toString().length === i){
-                ctx.font = "36px Calibri";
+                ctx.font = "31px Calibri";
                 ctx.fillStyle = "#ffffff";
                 ctx.fillText(rankText, rankText1X, 95);
                 ctx.font = "61px Calibri";
@@ -135,8 +135,8 @@ class Level extends Command {
         }
         // write level
         ctx.fillStyle = '#' + user.db.levelColor;
-        ctx.font = "36px Calibri";
-        ctx.fillText(guild.translate("misc/level:main:level"), 740, 95);
+        ctx.font = "31px Calibri";
+        ctx.fillText(guild.translate("misc/level:main:level").toUpperCase(), 750, 95);
         ctx.font = "61px Calibri";
         ctx.fillText(user.level.level, 830, 95);
 
@@ -181,6 +181,7 @@ class Level extends Command {
         if(status === 'online') ctx.strokeStyle = '#3ba55d';
         if(status === 'idle') ctx.strokeStyle = '#faa81a';
         if(status === 'dnd') ctx.strokeStyle = '#ed4245';
+        if(status === 'offline') ctx.strokeStyle = '#666f7c';
         if(!status) ctx.strokeStyle = '#666f7c';
         ctx.lineWidth = 3.5;
         ctx.roundRect(70, 50, 200, 200, 23).stroke();
