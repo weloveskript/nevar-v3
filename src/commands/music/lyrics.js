@@ -67,7 +67,24 @@ class Lyrics extends Command {
         })
             .then((res) => res.json());
 
-        if(!song || song?.meta?.status !== 200){
+        if(song?.meta?.status === 404){
+            let hits = await fetch('https://api.genius.com/search?q=' + encodeURIComponent(args.join(' ')), {
+                headers: {
+                    "Authorization": "Bearer " + this.client.config.apikeys.genius
+                }
+            })
+                .then((res) => res.json())
+                .then((body) => body.response.hits);
+            let hit = hits[0];
+            song = await fetch('https://api.genius.com/songs/' + encodeURIComponent(hits[0]?.result?.id), {
+                headers: {
+                    "Authorization": "Bearer " + this.client.config.apikeys.genius
+                }
+            })
+                .then((res) => res.json());
+        }
+
+        if(!song || song?.meta?.status !== 200 && song?.meta?.status !== 404){
             if(message) return message.send(this.client.usageEmbed(guild, this, data));
             if(interaction) return interaction.editReply({embeds:[this.client.usageEmbed(guild, this, data)]});
         }

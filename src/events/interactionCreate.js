@@ -15,7 +15,6 @@ module.exports = class {
         if(!interaction) return;
         if(!interaction.isCommand()) {
             if(interaction.isAutocomplete()){
-                console.log(interaction.options.getFocused())
                 if(interaction.commandName === 'play'){
                     const searchResult = await this.client.player
                         .search(interaction.options.getFocused(), {
