@@ -18,7 +18,7 @@
 
     "errors": {
       "maxTime": "{emotes.error} Die Zeit darf nicht mehr als 7 Tage betragen",
-      "invalidTime": "{emotes.error} Du "
+      "invalidTime": "{emotes.error} Du musst eine gültige Zeit-Angabe machen. Die Aktion wurde abgebrochen"
     }
   }
 }

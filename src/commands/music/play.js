@@ -16,8 +16,9 @@ class Play extends Command {
                 data:
                     new SlashCommandBuilder()
                         .addStringOption(option =>
-                            option.setRequired(true)
-                            .setAutocomplete(true))
+                            option
+                                .setRequired(true)
+                                .setAutocomplete(true))
             }
         });
     }
@@ -58,13 +59,14 @@ class Play extends Command {
             },
             metadata: channel,
             leaveOnEmpty: true,
-            leaveOnEmptyCooldown: 10000,
             autoSelfDeaf: false,
+            leaveOnStop: true,
+            leaveOnEnd: true
         });
 
         try {
             if (!queue.connection) await queue.connect(member.voice.channel);
-        } catch {
+        } catch(e) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(guild.translate("music/play:main:errors:notConnected")
@@ -89,7 +91,7 @@ class Play extends Command {
 
         let embed = new MessageEmbed()
             .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-            .setDescription(guild.translate("player/messages:trackAdded")
+            .setDescription(guild.translate("music/play:main:added")
                 .replace('{emotes.play}', this.client.emotes.play)
                 .replace('{track}', searchResult?.playlist ? searchResult.playlist.title : searchResult.tracks[0].title))
             .setColor(this.client.embedColor)

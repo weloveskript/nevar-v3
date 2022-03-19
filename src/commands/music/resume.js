@@ -33,7 +33,7 @@ class Resume extends Command {
                 .setColor(this.client.embedColor)
                 .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
-            if(interaction) return interaction.interaction.send(embed);
+            if(interaction) return interaction.send(embed);
         }
         if(!member.voice?.channel || queue.connection.channel.id !== member.voice.channel.id){
             let embed = new MessageEmbed()
@@ -43,7 +43,7 @@ class Resume extends Command {
                 .setColor(this.client.embedColor)
                 .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
-            if(interaction) return interaction.interaction.send(embed);
+            if(interaction) return interaction.send(embed);
         }
 
         const resumed = queue.setPaused(false);
@@ -55,7 +55,7 @@ class Resume extends Command {
                 .setColor(this.client.embedColor)
                 .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
-            if(interaction) return interaction.interaction.send(embed);
+            if(interaction) return interaction.send(embed);
         }else{
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
@@ -64,7 +64,7 @@ class Resume extends Command {
                 .setColor(this.client.embedColor)
                 .setFooter({text: data.guild.footer});
             if(message) return message.send(embed);
-            if(interaction) return interaction.interaction.send(embed);
+            if(interaction) return interaction.send(embed);
         }
 
     }

@@ -8,13 +8,12 @@ module.exports = async (client, queue, track) => {
 	let guildData = await client.findOrCreateGuild({id: guild.id})
 
 	let embed = new MessageEmbed()
-		.setAuthor(client.user.username, client.user.displayAvatarURL(), client.website)
+		.setAuthor({name: client.user.username, iconURL: client.user.displayAvatarURL(), url: client.website})
 		.setDescription(guild.translate("player/messages:nowPlaying")
 			.replace('{emotes.play}', client.emotes.play)
 			.replace('{track}', track.title)
 			.replace('{channel}', queue.connection.channel.id))
 		.setColor(client.embedColor)
-		.setFooter(guildData.footer);
-	console.log(queue.interaction)
+		.setFooter({text: guildData.footer});
 	return channel.send({embeds:[embed]})
 };

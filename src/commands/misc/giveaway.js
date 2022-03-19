@@ -29,7 +29,7 @@ class Giveaway extends Command {
             bot.giveawaysManager.start(gwChannel, {
                 duration: gwDuration,
                 prize: gwWin,
-                //exemptMembers: (member) => member.user.id === gwHost.user.id,
+                exemptMembers: (member) => member.user.id === gwHost.user.id,
                 hostedBy: gwHost,
                 winnerCount: gwWinners,
                 thumbnail: guild.iconURL(),

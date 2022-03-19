@@ -102,8 +102,6 @@ let config =
     "        \"normalizer\", \"surrounding\"]\n" +
     "# Your looong YouTube cookie (this is how you get it: https://www.youtube.com/watch?v=qymuvhBetnM)*\n" +
     "youtube_cookie = \"\"\n" +
-    "# How long the bot will remain in the voice channel after a song has ended*\n" +
-    "stay_time = 25\n" +
     "\n" +
     "[ apikeys ]\n" +
     "# All of the following APIs offer a free API key and no paid subscription is required\n\n" +
@@ -118,6 +116,8 @@ let config =
     "giphy = \"\"\n" +
     "# openweathermap.org/api*\n" +
     "weather = \"\"\n" +
+    "# amaribot.com/developer (Access to this API must be requested)\n" +
+    "amari = \"\"\n" +
     "\n" +
     "# Status Section\n" +
     "\n" +

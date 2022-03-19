@@ -37,11 +37,11 @@ module.exports = class {
         if (data.userData.blocked) return;
 
         if (message.content.match(new RegExp(`^<@!?${this.client.user.id}>( |)$`)) && !message.author.bot) {
-            let greetings = cachedGuild.translate("general/commandHandler:botPing").split('[')[1].split(']')[0].split('|');
+            let greetings = cachedGuild.translate("commandHandler:botPing").split('[')[1].split(']')[0].split('|');
             let text =
-                cachedGuild.translate("general/commandHandler:botPing").split('[')[0] +
+                cachedGuild.translate("commandHandler:botPing").split('[')[0] +
                 greetings[Math.floor(Math.random() * greetings.length)] +
-                cachedGuild.translate("general/commandHandler:botPing").split(']')[1];
+                cachedGuild.translate("commandHandler:botPing").split(']')[1];
 
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
@@ -122,7 +122,7 @@ module.exports = class {
 
                         let embed = new MessageEmbed()
                             .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                            .setDescription(message.translate("commandHandler:premiumKey")
+                            .setDescription(cachedGuild.translate("commandHandler:premiumKey")
                                 .replace('{emotes.success}', this.client.emotes.success)
                                 .replace('{user}', message.member.user.username)
                                 .replace('{client}', this.client.user.username)
@@ -178,7 +178,7 @@ module.exports = class {
         if(data.guild.plugins.disabledCommands?.includes(cmd.help.name)) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("commandHandler:ignoredCmd")
+                .setDescription(cachedGuild.translate("commandHandler:ignoredCmd")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
                 .setFooter({text: data.guild.footer});
@@ -201,7 +201,7 @@ module.exports = class {
             let perms = neededPermissions.map((p) => `|- ${p}`).join("\n")
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("commandHandler:botPermsMissing")
+                .setDescription(cachedGuild.translate("commandHandler:botPermsMissing")
                     .replace('{perms}', perms)
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{emotes.arrow}', this.client.emotes.arrow))
@@ -219,7 +219,7 @@ module.exports = class {
             let perms = neededPermissions.map((p) => `|- ${p}`).join("\n")
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("commandHandler:memberPermsMissing")
+                .setDescription(cachedGuild.translate("commandHandler:memberPermsMissing")
                     .replace('{perms}', perms)
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
@@ -229,7 +229,7 @@ module.exports = class {
         if (!message.channel.nsfw && cmd.conf.nsfw) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("commandHandler:nsfwCommand")
+                .setDescription(cachedGuild.translate("commandHandler:nsfwCommand")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
                 .setFooter({text: data.guild.footer});
@@ -247,7 +247,7 @@ module.exports = class {
             if (message.author.id !== config.team.owner_id || !staffs[message.author.id] && message.author.id !== config.team.owner_id) {
                 let embed = new MessageEmbed()
                     .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                    .setDescription(message.translate("commandHandler:disabledCommand")
+                    .setDescription(cachedGuild.translate("commandHandler:disabledCommand")
                         .replace('{emotes.error}', this.client.emotes.error)
                         .replace('{emotes.arrow}', this.client.emotes.arrow)
                         .replace('{support}', this.client.supportUrl))
@@ -259,7 +259,7 @@ module.exports = class {
         if (cmd.conf.ownerOnly && (message.member.user.id !== config.team_owner_id)) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("commandHandler:ownerCommand")
+                .setDescription(cachedGuild.translate("commandHandler:ownerCommand")
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)
                 .setFooter({text: data.guild.footer});
@@ -269,7 +269,7 @@ module.exports = class {
         if (cmd.conf.staffOnly && !staffs[message.author.id] && message.author.id !== config.team.owner_id) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("commandHandler:staffCommand")
+                .setDescription(cachedGuild.translate("commandHandler:staffCommand")
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{client}', this.client.user.username))
                 .setColor(this.client.embedColor)
@@ -279,7 +279,7 @@ module.exports = class {
         if (cmd.conf.premium && !data.guild.premium) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("commandHandler:premiumCommand")
+                .setDescription(cachedGuild.translate("commandHandler:premiumCommand")
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{client}', this.client.user.username)
                     .replace('{emotes.arrow}', this.client.emotes.arrow)
@@ -298,14 +298,14 @@ module.exports = class {
             let staffs = JSON.parse(fs.readFileSync('./storage/staffs.json'));
             if (message.author.id !== config.team.owner_id || !staffs[message.author.id] && message.author.id !== config.team.owner_id) {
                 let seconds = Math.ceil((time - Date.now()) / 1000)
-                let desc = message.translate("commandHandler:remainingCooldown").split('?')[0]
+                let desc = cachedGuild.translate("commandHandler:remainingCooldown").split('?')[0]
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{time}', seconds);
 
-                if (seconds > 1) desc += message.translate("commandHandler:remainingCooldown").split('?')[2]
-                else desc += message.translate("commandHandler:remainingCooldown").split('?')[1]
+                if (seconds > 1) desc += cachedGuild.translate("commandHandler:remainingCooldown").split('?')[2]
+                else desc += cachedGuild.translate("commandHandler:remainingCooldown").split('?')[1]
 
-                desc += message.translate("commandHandler:remainingCooldown").split('?')[3]
+                desc += cachedGuild.translate("commandHandler:remainingCooldown").split('?')[3]
                 let embed = new MessageEmbed()
                     .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                     .setDescription(desc)
@@ -339,7 +339,7 @@ module.exports = class {
         } catch (e) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                .setDescription(message.translate("commandHandler:error")
+                .setDescription(cachedGuild.translate("commandHandler:error")
                     .replace('{support}', this.client.supportUrl)
                     .replace('{emotes.error}', this.client.emotes.error))
                 .setColor(this.client.embedColor)

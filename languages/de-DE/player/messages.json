@@ -1,13 +1,5 @@
 {
-  "error_nothingIsPlaying": "{emotes.error} Ich spiele aktuell nichts ab",
-  "error_noVoiceConnection": "{emotes.error} Du bist in keinem Sprachkanal verbunden",
-  "error_cantJoin": "{emotes.error} Ich kann mich nicht mit deinem Sprachkanal verbinden",
-  "error_notAvailabe": "{emotes.error} Das Video ist an meinem Standort nicht verfügbar",
-  "error_other": "{emotes.error} Ein unerwarteter Fehler ist aufgetreten - hier sind mögliche Gründe woran das liegen kann: \n```|- ich habe keine Rechte in deinem Sprachkanal zu sprechen\n|- dein Sprachkanal ist nicht mehr verfügbar\n|- das angeforderte Video ist nicht mehr verfügbar\n|- ich kann mich nicht zu deinem Sprachkanal verbinden```\n{emotes.arrow} Du kannst alle genannten Gründe ausschließen? Melde dich auf unserem [Supportserver]({support})!",
-  "noResults": "{emotes.error} Hmh.. Zu {query} habe ich nichts gefunden",
-  "playlistAdded": "{emotes.playlist} Ich habe **{title}** mit **{count}** Songs zur Queue hinzugefügt",
   "queueEnd": "{emotes.stop} Die Wiedergabe ist beendet",
-  "invalidResponse": "{emotes.error} Du musst eine Zahl zwischen 1 und {count} angeben",
-  "trackAdded": "{emotes.play} Ich habe **{track}** zur Queue hinzugefügt",
-  "nowPlaying": "{emotes.play} Ich spiele jetzt **{track}** in <#{channel}> ab"
+  "nowPlaying": "{emotes.play} Ich spiele jetzt **{track}** in <#{channel}> ab",
+  "error": "{emotes.error} Ein Fehler ist aufgetreten - hier sind mögliche Gründe woran das liegen kann:\n```|- Das Video auf YouTube ist ab 18 Jahren freigegeben\n|- Der Song ist nicht mehr verfügbar\n|- Ich kann mich nicht zu deinem Voicechannel verbinden\n|- Ich kann in deinem Voicechannel nicht sprechen```\n{emotes.arrow} Kannst du alle genannten Gründe ausschließen? Probiere es ein weiteres Mal\n{emotes.arrow} Du denkst, der Fehler liegt nicht bei dir? Melde dich auf unserem [Supportserver]({support}) und gib uns folgenden Code:\n```js\n{error}```"
 }

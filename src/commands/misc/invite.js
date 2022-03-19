@@ -25,7 +25,7 @@ class Invite extends Command {
                 new MessageButton()
                     .setLabel(guild.translate("misc/invite:main:buttons:1"))
                     .setEmoji('➕')
-                    .setURL('https://discord.com/oauth2/authorize?client_id=' + this.client.user.id + '&permissions=1899359446&scope=bot%20applications.commands')
+                    .setURL(this.client.invite())
                     .setStyle('LINK'),
                 new MessageButton()
                     .setLabel(guild.translate("misc/invite:main:buttons:2"))
