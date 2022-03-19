@@ -1,0 +1,17 @@
+{
+  "general": {
+    "description": "Ändert den Footer-Text aller Embeds ✏️",
+    "syntax": "|- footer",
+    "examples": "|- footer » Sendet das Footer-Menü"
+  },
+  "main": {
+    "actions": {
+      "1": "Footer-Text ändern",
+      "2": "Footer-Text zurücksetzen"
+    },
+    "collectors": {
+      "footer": "{emotes.arrow} Sende den neuen Footer-Text"
+    },
+    "updated": "{emotes.success} Der Footer-Text wurde editiert"
+  }
+}
