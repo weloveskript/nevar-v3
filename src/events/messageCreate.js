@@ -4,6 +4,7 @@ const { MessageEmbed, Permissions} = require('discord.js');
 const toml = require('toml');
 const config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
 const Levels = require('discord-xp');
+const moment = require("moment");
 
 Levels.setURL(config.general.mongodb_url);
 
@@ -34,7 +35,121 @@ module.exports = class {
             await message.guild.members.fetch(message.author.id);
         }
 
+        if(message.mentions.repliedUser || message.mentions.users){
+            let afkUsers = [];
+            let mentionUser;
+            if(message.mentions.repliedUser) {
+                let mentionData = await this.client.findOrCreateUser({id: message.mentions.repliedUser.id})
+                if(mentionData.afk?.status){
+                    let afkSinceData = moment.duration(moment(Date.now()).diff(mentionData.afk.since))._data;
+                    let afkSince = [];
+                    if(afkSinceData.years > 0)
+                        afkSince.push(afkSinceData.years + ' ' + (afkSinceData.years > 1 ? message.guild.translate("timeUnits:years") : message.guild.translate("timeUnits:year")));
+                    if(afkSinceData.months > 0)
+                        afkSince.push(afkSinceData.months + ' ' + (afkSinceData.months > 1 ? message.guild.translate("timeUnits:months") : message.guild.translate("timeUnits:month")));
+                    if(afkSinceData.days > 0)
+                        afkSince.push(afkSinceData.days + ' ' + (afkSinceData.days > 1 ? message.guild.translate("timeUnits:days") : message.guild.translate("timeUnits:day")));
+                    if(afkSinceData.hours > 0)
+                        afkSince.push(afkSinceData.hours + ' ' + (afkSinceData.hours > 1 ? message.guild.translate("timeUnits:hours") : message.guild.translate("timeUnits:hour")));
+                    if(afkSinceData.minutes > 0)
+                        afkSince.push(afkSinceData.minutes + ' ' + (afkSinceData.minutes > 1 ? message.guild.translate("timeUnits:minutes") : message.guild.translate("timeUnits:minute")));
+                    if(afkSinceData.seconds > 0)
+                        afkSince.push(afkSinceData.seconds + ' ' + (afkSinceData.seconds > 1 ? message.guild.translate("timeUnits:seconds") : message.guild.translate("timeUnits:second")));
+
+                    afkSince = afkSince.join(', ');
+                    afkUsers = afkUsers.filter((u) => u.id !== message.mentions.repliedUser.id);
+                    afkUsers.push({
+                        name: message.mentions.repliedUser.username,
+                        id: message.mentions.repliedUser.id,
+                        reason: mentionData.afk.reason,
+                        since: afkSince
+                    })
+                }
+
+            }
+            if(message.mentions.users){
+                let users = Array.from(message.mentions.users);
+                for(let user of users){
+                    let mentionData = await this.client.findOrCreateUser({id: user[1].id});
+                    if(mentionData.afk?.status){
+                        let afkSinceData = moment.duration(moment(Date.now()).diff(mentionData.afk.since))._data;
+                        let afkSince = [];
+                        if(afkSinceData.years > 0)
+                            afkSince.push(afkSinceData.years + ' ' + (afkSinceData.years > 1 ? message.guild.translate("timeUnits:years") : message.guild.translate("timeUnits:year")));
+                        if(afkSinceData.months > 0)
+                            afkSince.push(afkSinceData.months + ' ' + (afkSinceData.months > 1 ? message.guild.translate("timeUnits:months") : message.guild.translate("timeUnits:month")));
+                        if(afkSinceData.days > 0)
+                            afkSince.push(afkSinceData.days + ' ' + (afkSinceData.days > 1 ? message.guild.translate("timeUnits:days") : message.guild.translate("timeUnits:day")));
+                        if(afkSinceData.hours > 0)
+                            afkSince.push(afkSinceData.hours + ' ' + (afkSinceData.hours > 1 ? message.guild.translate("timeUnits:hours") : message.guild.translate("timeUnits:hour")));
+                        if(afkSinceData.minutes > 0)
+                            afkSince.push(afkSinceData.minutes + ' ' + (afkSinceData.minutes > 1 ? message.guild.translate("timeUnits:minutes") : message.guild.translate("timeUnits:minute")));
+                        if(afkSinceData.seconds > 0)
+                            afkSince.push(afkSinceData.seconds + ' ' + (afkSinceData.seconds > 1 ? message.guild.translate("timeUnits:seconds") : message.guild.translate("timeUnits:second")));
+
+                        afkSince = afkSince.join(', ');
+                        afkUsers = afkUsers.filter((u) => u.id !== user[1].id);
+                        afkUsers.push({
+                            name: user[1].username,
+                            id: user[1].id,
+                            reason: mentionData.afk.reason,
+                            since: afkSince
+                        })
+                    }
+                }
+            }
+
+            for(let afkUser of afkUsers){
+                let embed = new MessageEmbed()
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                    .setDescription(message.guild.translate("fun/afk:main:isAfk")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow)
+                        .replace('{user}', afkUser.name)
+                        .replace('{reason}', afkUser.reason)
+                        .replace('{time}', afkUser.since))
+                    .setColor(this.client.embedColor)
+                    .setFooter({text: data.guild.footer});
+                if(message) message.send(embed);
+            }
+        }
         if (data.userData.blocked) return;
+
+        if(data.userData.afk.status){
+            let since = data.userData.afk.since;
+            let afkReason = data.userData.afk.reason;
+            data.userData.afk.status = false;
+            data.userData.afk.reason = null;
+            data.userData.afk.since = null;
+            data.userData.markModified("afk");
+            await data.userData.save();
+
+            let afkSinceData = moment.duration(moment(Date.now()).diff(since))._data;
+            let afkSince = [];
+            if(afkSinceData.years > 0)
+                afkSince.push(afkSinceData.years + ' ' + (afkSinceData.years > 1 ? message.guild.translate("timeUnits:years") : message.guild.translate("timeUnits:year")));
+            if(afkSinceData.months > 0)
+                afkSince.push(afkSinceData.months + ' ' + (afkSinceData.months > 1 ? message.guild.translate("timeUnits:months") : message.guild.translate("timeUnits:month")));
+            if(afkSinceData.days > 0)
+                afkSince.push(afkSinceData.days + ' ' + (afkSinceData.days > 1 ? message.guild.translate("timeUnits:days") : message.guild.translate("timeUnits:day")));
+            if(afkSinceData.hours > 0)
+                afkSince.push(afkSinceData.hours + ' ' + (afkSinceData.hours > 1 ? message.guild.translate("timeUnits:hours") : message.guild.translate("timeUnits:hour")));
+            if(afkSinceData.minutes > 0)
+                afkSince.push(afkSinceData.minutes + ' ' + (afkSinceData.minutes > 1 ? message.guild.translate("timeUnits:minutes") : message.guild.translate("timeUnits:minute")));
+            if(afkSinceData.seconds > 0)
+                afkSince.push(afkSinceData.seconds + ' ' + (afkSinceData.seconds > 1 ? message.guild.translate("timeUnits:seconds") : message.guild.translate("timeUnits:second")));
+
+            afkSince = afkSince.join(', ');
+
+            let embed = new MessageEmbed()
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                .setDescription(message.guild.translate("fun/afk:main:reset")
+                    .replace('{emotes.success}', this.client.emotes.success)
+                    .replace('{reason}', afkReason)
+                    .replace('{time}', afkSince))
+                .setColor(this.client.embedColor)
+                .setFooter({text: data.guild.footer});
+            if(message) message.send(embed, true);
+        }
 
         if (message.content.match(new RegExp(`^<@!?${this.client.user.id}>( |)$`)) && !message.author.bot) {
             let greetings = cachedGuild.translate("commandHandler:botPing").split('[')[1].split(']')[0].split('|');

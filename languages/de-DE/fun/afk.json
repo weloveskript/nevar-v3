@@ -1,0 +1,21 @@
+{
+  "general": {
+    "description": "Setzt deinen AFK Status \uD83D\uDCA4",
+    "usage": "| afk [Grund]",
+    "example": "|- afk » Setzt dich AFK\n|- afk schlafen » Setzt dich AFK mit dem Grund schlafen"
+  },
+
+  "slash": {
+    "1": {
+      "name": "grund",
+      "description": "» Weshalb bist du AFK?"
+    }
+  },
+  "main": {
+    "noReason": "Kein Grund angegeben",
+    "set": "{emotes.success} Du bist jetzt AFK\n```|- {reason}```",
+    "reset": "{emotes.success} Willkommen zurück!\n```|- Du warst {time} AFK\n|- Grund: {reason}```",
+    "isAfk": "{emotes.arrow} {user} ist aktuell AFK\n```|- {reason}\n|- AFK seit: {time}```"
+
+  }
+}
