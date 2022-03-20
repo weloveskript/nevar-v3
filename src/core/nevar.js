@@ -6,7 +6,6 @@ const { Player } = require('discord-player');
 const { loadConfig } = require('../helper/loader');
 const config = loadConfig();
 
-
 class Nevar extends Client {
     constructor(options) {
         super(options);
@@ -62,7 +61,6 @@ class Nevar extends Client {
                 }
             }
         });
-
         this.invite = function(){
             return 'https://discord.com/api/oauth2/authorize?client_id=' + this.user.id + '&permissions=1899359446&scope=bot%20applications.commands'
         }

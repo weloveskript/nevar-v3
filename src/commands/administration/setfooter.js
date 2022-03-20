@@ -26,11 +26,7 @@ class Setfooter extends Command {
         const member = message?.member || interaction?.member;
 
         let embed = new MessageEmbed()
-            .setAuthor({
-                name: this.client.user.username,
-                iconURL: this.client.user.displayAvatarURL(),
-                url: this.client.website
-            })
+            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(guild.translate("language:collectors:action")
                 .replace('{emotes.arrow}', this.client.emotes.arrow))
             .setColor(this.client.embedColor)
