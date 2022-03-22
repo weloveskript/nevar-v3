@@ -61,6 +61,14 @@ class Nevar extends Client {
                 }
             }
         });
+
+        this.localeString = function(key, locale, args = []){
+            const language = this.translations.get(locale);
+            if(!language) console.error(new Error("Invalid language given"))
+            return language(key, args)
+
+        }
+
         this.invite = function(){
             return 'https://discord.com/api/oauth2/authorize?client_id=' + this.user.id + '&permissions=1899359446&scope=bot%20applications.commands'
         }

@@ -6,103 +6,54 @@ const { Routes } = require('discord-api-types/v9');
 
 module.exports = {
 
-    async init(client, givenGuild) {
-
-        let registeredCommand = 0;
+    async init(client) {
 
         const dirs = await readdir('./src/commands/');
-        const rest = new REST({
-            version: '9'
-        })
-            .setToken(client.token);
-        for (let guild of client.guilds.cache) {
 
-            let slashCommands = [];
-            for (let dir of dirs) {
-                const commands = await readdir(`./src/commands/${dir}/`);
+        const rest = new REST({ version: '9' }).setToken(client.token);
 
-                for (let command of commands) {
-                    if (command.split('.')[1] === 'js') {
-                        let cmd = client.commands.get(command.split('.')[0]);
-                        if (!cmd) continue;
-                        if (cmd?.slashCommand) {
-                            if (cmd.slashCommand.addCommand) {
-                                let data = cmd.slashCommand.data;
-                                if (data) {
-                                    // translate language strings (description, options, choices)
-                                    data.name = cmd.help.name
-                                    data.description = guild[1].translate(cmd.help.description)
-                                    let iOptions = 1;
-                                    for (let option of data.options) {
-                                        option.name = guild[1].translate(cmd.help.category + '/' + cmd.help.name + ':slash:' + iOptions + ':name');
-                                        option.description = guild[1].translate(cmd.help.category + '/' + cmd.help.name + ':slash:' + iOptions + ':description');
-                                        let iChoices = 1;
-                                        if (option?.choices) {
-                                            for (let choice of option?.choices) {
-                                                choice.name = guild[1].translate(cmd.help.category + '/' + cmd.help.name + ':slash:' + iOptions + ':choices:' + iChoices + ':name');
-                                                choice.value = guild[1].translate(cmd.help.category + '/' + cmd.help.name + ':slash:' + iOptions + ':choices:' + iChoices + ':value');
-                                                iChoices++;
-                                            }
-                                        }
-                                        iOptions++;
-                                    }
-                                    // push the command to the guild's slash command list
-                                    slashCommands.push(data.toJSON());
-                                }
+        let slashCommands = [];
+        for (let dir of dirs) {
+            const commands = await readdir(`./src/commands/${dir}/`);
+            for (let command of commands.filter(file => file.endsWith('.js'))) {
+                let clientCommand = client.commands.get(command.split('.')[0]);
+                if (!clientCommand || !clientCommand?.slashCommand || !clientCommand?.slashCommand.addCommand) continue;
+                let data = clientCommand.slashCommand.data;
+                if (data) {
+                    data.name = clientCommand.help.name
+                    data.description = client.localeString(clientCommand.help.description, 'de-DE')
+                    let iOptions = 1;
+                    for (let option of data.options) {
+                        option.name = client.localeString(clientCommand.help.category + '/' + clientCommand.help.name + ':slash:' + iOptions + ':name', 'de-DE');
+                        option.description = client.localeString(clientCommand.help.category + '/' + clientCommand.help.name + ':slash:' + iOptions + ':description', 'de-DE');
+                        let iChoices = 1;
+                        if (option?.choices) {
+                            for (let choice of option?.choices) {
+                                choice.name = client.localeString(clientCommand.help.category + '/' + clientCommand.help.name + ':slash:' + iOptions + ':choices:' + iChoices + ':name', 'de-DE');
+                                choice.value = client.localeString(clientCommand.help.category + '/' + clientCommand.help.name + ':slash:' + iOptions + ':choices:' + iChoices + ':value', 'de-DE');
+                                iChoices++;
                             }
                         }
+                        iOptions++;
                     }
-                }
-            }
-            if (slashCommands.length > 0) {
-                registeredCommand = slashCommands.length;
-                try {
-                    // check if one guild is especially selected
-                    if (givenGuild) {
-                        if (guild[0] === givenGuild) {
-                            // if so, update the guild's slash commands
-                            rest.put(
-                                Routes.applicationGuildCommands(client.user.id, guild[0]), {
-                                    body: slashCommands,
-                                }
-                            );
-                        }
-                    } else {
-                        // if not, update all guilds' slash commands
-                        rest.put(
-                            Routes.applicationGuildCommands(client.user.id, guild[0]), {
-                                body: slashCommands,
-                            }
-                        );
-                    }
-                } catch (e) {
-                    console.log(e);
+                    slashCommands.push(data.toJSON());
                 }
             }
         }
-        for (let guild of client.guilds.cache) {
-            guild[1].commands.fetch()
-                .then((guildCommands => {
-                    guildCommands = Array.from(guildCommands);
-                    for (let guildCommand of guildCommands) {
-                        let cmd = client.commands.get(guildCommand[1].name);
-                        if (!cmd) {
-                            // if the command does not exist anymore, remove it from the guild's slash commands
-                            try {
-                                guild[1].commands.delete(guildCommand[0])
-                                    .catch(() => {});
-                            } catch (e) {}
-                        }
-                        // îf the command exists but is not supposed to be registered, remove it from the guild's slash commands
-                        if (!cmd?.slashCommand?.addCommand) {
-                            try {
-                                guild[1].commands.delete(guildCommand[0])
-                                    .catch(() => {});
-                            } catch (e) {}
-                        }
-                    }
-                }));
+
+        rest.put(Routes.applicationCommands(client.user.id), { body: slashCommands }).catch(() => {});
+
+        let commandCount = 0;
+        for(let applicationCommand of await client.application.commands.fetch()) {
+            let clientCommand = client.commands.get(applicationCommand[1].name);
+            commandCount++;
+            if (!clientCommand) {
+                client.application.commands.delete(applicationCommand[0]).catch(() => {});
+            }else if(!clientCommand?.slashCommand?.addCommand){
+                client.application.commands.delete(applicationCommand[0]).catch(() => {});
+            }
         }
-        client.logger.log('Registered ' + registeredCommand + ' slash commands', "info");
+
+        client.logger.log('Registered ' + commandCount + ' global commands', "info");
     }
 }
