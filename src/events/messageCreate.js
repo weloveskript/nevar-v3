@@ -37,7 +37,6 @@ module.exports = class {
 
         if(message.mentions.repliedUser || message.mentions.users){
             let afkUsers = [];
-            let mentionUser;
             if(message.mentions.repliedUser) {
                 let mentionData = await this.client.findOrCreateUser({id: message.mentions.repliedUser.id})
                 if(mentionData.afk?.status){
