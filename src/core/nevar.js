@@ -69,10 +69,6 @@ class Nevar extends Client {
 
         }
 
-        this.invite = function(){
-            return 'https://discord.com/api/oauth2/authorize?client_id=' + this.user.id + '&permissions=1899359446&scope=bot%20applications.commands'
-        }
-
         this.format = function (integer){
             let formatter = new Intl.NumberFormat('de-DE');
             return formatter.format(integer);

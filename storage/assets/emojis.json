@@ -56,7 +56,9 @@
   "loop": "<:nev_loop:919256398083268678>",
   "stop": "<:nev_stop:919256540366659625>",
   "use": "<:nev_usage:919256705236361271>",
-  "arrow": "<:nev_arrow:919257028441047040>",
+  "arrow": "<:nev_arrow:956194040494325771>",
+  "arrowWhite": "<:nev_arrow_white:956194069745393714>",
+  "arrowRed": "<:nev_arrow_red:956194124808200333>",
   "example": "<:nev_example:919257215771222036>",
   "status": {
     "dnd": "<:nev_dnd:919257756224094209>",

@@ -1,0 +1,7 @@
+{
+  "general": {
+    "title": "{emotes.support} Dziękuję za przybycie!",
+    "description": "{emotes.arrow} Fajny serwer! Czy mogę tu zostać?\n\n{emotes.arrow} Mój prefiks dla poleceń komunikatów to {prefix}.\n{emotes.arrow} Oferuję również polecenia slash, pod warunkiem, że mam do tego odpowiednie uprawnienia\n\n{emotes.arrow} Aby być na bieżąco, zalecam dołączenie do mojego [discorda wsparcia]({support}).\n\n{emotes.arrow} Miłej zabawy z {client}!",
+    "footer": "Zaproszeni przez {inviter}"
+  }
+}

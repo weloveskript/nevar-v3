@@ -1,0 +1,7 @@
+{
+  "general": {
+    "title": "{emotes.support} Thank you for having me here!",
+    "description": "{emotes.arrow} Cool server! Can I stay here?\n\n{emotes.arrow} My prefix for message commands is {prefix}\n{emotes.arrow} I also offer slash commands, provided I have the necessary rights to do so\n\n{emotes.arrow} To stay up to date, I recommend you join my [support discord]({support}).\n\n{emotes.arrow} Have fun with {client}!",
+    "footer": "Invited by {inviter}"
+  }
+}
