@@ -1,0 +1,10 @@
+{
+  "general": {
+    "description": "Vergibt Operator-Rechte ⚡",
+    "usage": "|- op [Mitglied]",
+    "example": "|- op @Tinte » Ernennt Tinte zum Operator"
+  },
+  "main": {
+    "message": "*Made {user} a server operator*"
+  }
+}
