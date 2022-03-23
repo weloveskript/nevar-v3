@@ -4,9 +4,6 @@ const schedule = require('node-schedule');
 const connect = require('connect');
 const http = require('http');
 const bodyParser = require('body-parser');
-const slashCommands = require("../helper/slashCommands");
-const unbanChecker = require("../helper/unbanChecker");
-const cron = require("cron");
 
 
 module.exports = class {
@@ -15,6 +12,7 @@ module.exports = class {
     }
 
     async run() {
+        const client = this.client;
 
         // Start http server for uptime monitoring
         const app = connect();
@@ -38,7 +36,7 @@ module.exports = class {
         // Start channel renaming
         if(config.support.id){
             setInterval(async function(){
-                let supportGuild = this.client.guilds.cache.get(config.support.id);
+                let supportGuild = client.guilds.cache.get(config.support.id);
                 let serverChannel, voteChannel, userChannel;
                 if(config.support.server_count_channel) serverChannel = supportGuild.channels.cache.get(config.support.server_count_channel);
                 if(config.support.vote_count_channel) voteChannel = supportGuild.channels.cache.get(config.support.vote_count_channel);
@@ -46,14 +44,14 @@ module.exports = class {
 
                 if(serverChannel)
                     serverChannel.setName(config.channels.design_server_count_channel
-                        .replace('{count}', this.client.guilds.cache.size));
+                        .replace('{count}', client.guilds.cache.size));
 
                 if(userChannel)
                     userChannel.setName(config.channels.design_user_count_channel
-                        .replace('{count}', this.client.format(this.client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0))));
+                        .replace('{count}', client.format(client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0))));
 
                 if(config.apikeys.topgg && config.apikeys.topgg !== ""){
-                    let res = await fetch("https://discordbots.org/api/bots/"+ this.client.user.id, {
+                    let res = await fetch("https://discordbots.org/api/bots/"+ client.user.id, {
                         headers: { "Authorization": config.apikeys.topgg}
                     });
                     const data = await res.json();
@@ -65,7 +63,7 @@ module.exports = class {
                         votes = data.monthlyPoints;
                         if(voteChannel)
                             voteChannel.setName(config.channels.design_vote_count_channel
-                                .replace('{count}', this.client.format(votes))
+                                .replace('{count}', client.format(votes))
                                 .replace('{month}', month.toLowerCase))
                     }
                 }
@@ -132,11 +130,9 @@ module.exports = class {
         if(status[parseInt(i+1, 10)]) i++;
         else i = 0;
 
-        setInterval(function(){
-            let text = status[parseInt(i, 10)].name.replace('{servercount}', this.client.guilds.cache.size ? this.client.guilds.cache.size : 0);
-
-            //set activity
-            this.client.user.setActivity({
+        setInterval(async function(){
+            let text = status[parseInt(i, 10)].name.replace('{servercount}', client.guilds.cache.size);
+            client.user.setActivity({
                 name: text,
                 type: status[parseInt(i, 10)].type.toUpperCase(),
                 url: status[parseInt(i, 10)]?.url
@@ -155,15 +151,5 @@ module.exports = class {
 
         // Some debug info
         this.client.logger.log("Logged in as " + this.client.user.tag, "ready");
-
-
-
-
-
-
-
-
-
-
     }
 };

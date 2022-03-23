@@ -1,7 +1,7 @@
-const ms = require("ms");
 const moment = require("moment");
+
 module.exports = {
-    async init(client){
+    init(client){
         client.membersData.find({ "ban.banned": true }).then((members) => {
             members.forEach((member) => {
                 client.databaseCache.bannedUsers.set(member.id + member.guildID, member);
