@@ -80,8 +80,6 @@ module.exports = class {
 
         let cachedGuild = this.client.guilds.cache.get(interaction.guildId);
 
-
-
         if(data.guild.plugins.disabledCommands?.includes(cmd.help.name)){
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})

@@ -126,7 +126,7 @@ class Nevar extends Client {
         if(command.shutdown){
             await command.shutdown(this);
         }
-        delete require.cache[require.resolve(`.${commandPath}${path.sep}${commandName}.js`)];
+        delete require.cache[require.resolve(`${commandPath}${path.sep}${commandName}.js`)];
         return false;
     }
 

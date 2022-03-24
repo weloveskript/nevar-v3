@@ -26,10 +26,7 @@ class Say extends Command {
             if(interaction) return interaction.send(this.client.usageEmbed(guild, this, data));
         }
 
-
         channel.send({content: args.join(' ')}).catch(() => {});
-
-
     }
 }
 

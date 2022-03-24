@@ -1,0 +1,10 @@
+{
+  "general": {
+    "description": "Lädt einen bestimmten Command neu ⚙️",
+    "syntax": "|- reload <Command>",
+    "examples": "|- reload play » Lädt den Play Command neu"
+  },
+  "main": {
+    "message": "{emotes.success} {command} wurde neu geladen"
+  }
+}
