@@ -370,7 +370,7 @@ module.exports = class {
                 return message.send(embed)
             }
         }
-        if (cmd.conf.ownerOnly && (message.member.user.id !== config.team_owner_id)) {
+        if (cmd.conf.ownerOnly && (message.member.user.id !== config.team.owner_id)) {
             let embed = new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setDescription(cachedGuild.translate("commandHandler:ownerCommand")

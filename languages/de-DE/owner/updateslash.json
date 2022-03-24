@@ -1,0 +1,10 @@
+{
+  "general": {
+    "description": "Lädt alle Slash-Commands neu ⌛",
+    "syntax": "|- updateslash",
+    "examples": "|- updateslash » Lädt die Slash-Commands neu"
+  },
+  "main": {
+    "message": "{emotes.success} Ich habe alle Slash-Commands neugeladen\n{emotes.arrow} Bis Discord diese übernimmt, kann es bis zu einer Stunde dauern"
+  }
+}
