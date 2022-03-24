@@ -1,7 +1,5 @@
 const Command = require('../../core/command');
 const {MessageEmbed} = require("discord.js");
-const { spawn } = require('child_process');
-
 
 class Reboot extends Command {
     constructor(client){
@@ -30,10 +28,6 @@ class Reboot extends Command {
         if (interaction) await interaction.send(embed);
 
         process.exit(1);
-
-
-
-
     }
 }
 

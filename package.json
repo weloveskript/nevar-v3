@@ -15,9 +15,6 @@
   "license": "AGPL-3.0",
   "repository": "github:Tintenpatron/nevar-v3",
   "author": "Tinte <p429344@gmail.com> (https://github.com/Tintenpatron)",
-  "contributors": [
-    "Fedox <mrminecrafttv19@gmail.com> (https://github.com/Fedox-die-Ente)"
-  ],
   "readme": "./README.md",
   "funding": {
     "type": "individual",
