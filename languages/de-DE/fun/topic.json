@@ -1,7 +1,7 @@
 {
   "general": {
     "description": "Gibt ein zufälliges Gesprächsthema zurück \uD83D\uDCAC",
-    "usage": "| topic",
-    "example": "|- topic » Sendet ein zufälliges Gesprächsthema"
+    "syntax": "| topic",
+    "examples": "|- topic » Sendet ein zufälliges Gesprächsthema"
   }
 }
