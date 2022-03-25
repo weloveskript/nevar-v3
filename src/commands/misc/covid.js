@@ -1,9 +1,9 @@
 const Command = require('../../core/command');
 const { MessageEmbed } = require('discord.js');
-const fetch = require('node-fetch');
 const formatter = new Intl.NumberFormat('de-DE');
 const moment = require('moment-timezone');
 const { SlashCommandBuilder } = require("@discordjs/builders");
+const axios = require('axios');
 
 class Covid extends Command {
     constructor(client) {
@@ -33,12 +33,12 @@ class Covid extends Command {
         // get covid data
         let covidUrl = 'https://disease.sh/v3/covid-19/all';
         if(args[0]) covidUrl = 'https://disease.sh/v3/covid-19/countries/' + encodeURI(args[0]) + '?strict=true';
-        const covidJson = await fetch(covidUrl).then((res) => res.json());
+        const covidJson = (await axios.get(covidUrl)).data;
 
         // get vaccine data
         let vaccineUrl = 'https://disease.sh/v3/covid-19/vaccine/coverage?lastdays=1&fullData=true';
         if(args[0]) vaccineUrl = 'https://disease.sh/v3/covid-19/vaccine/coverage/countries/' + encodeURI(args[0]) + '?lastdays=1&fullData=true';
-        let vaccineJson = await fetch(vaccineUrl).then((res) => res.json());
+        let vaccineJson = (await axios.get(vaccineUrl)).data
         if(vaccineJson && args[0] && !vaccineJson?.message) vaccineJson = vaccineJson.timeline[0];
         if(vaccineJson && !args[0]) vaccineJson = vaccineJson[0];
 

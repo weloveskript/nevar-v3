@@ -1,8 +1,8 @@
 const Command = require('../../core/command');
 const { MessageEmbed} = require('discord.js');
 const {SlashCommandBuilder} = require("@discordjs/builders");
-const fetch = require('node-fetch');
 const moment = require('moment');
+const axios = require('axios');
 
 class Weather extends Command {
 
@@ -29,9 +29,7 @@ class Weather extends Command {
             if(interaction) return interaction.send(this.client.usageEmbed(guild, this, data));
         }
 
-        const res = await fetch('https://api.openweathermap.org/data/2.5/weather?q=' + encodeURI(args[0]) + '&appid=' + this.client.config.apikeys.weather + '&lang=' + data.guild.language.split('-')[0] + '&units=metric')
-            .then(res => res.json());
-
+        const res = (await axios.get('https://api.openweathermap.org/data/2.5/weather?q=' + encodeURI(args[0]) +'&appid=' + this.client.config.apikeys.weather + '&lang=' + data.guild.language.split('-')[0] + '&units=metric')).data;
         if(res.cod !== 200){
             if(message) return message.send(this.client.usageEmbed(guild, this, data));
             if(interaction) return interaction.send(this.client.usageEmbed(guild, this, data));

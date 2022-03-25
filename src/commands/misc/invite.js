@@ -25,7 +25,7 @@ class Invite extends Command {
                 new MessageButton()
                     .setLabel(guild.translate("misc/invite:main:buttons:1"))
                     .setEmoji('➕')
-                    .setURL(this.client.invite())
+                    .setURL(this.client.invite)
                     .setStyle('LINK'),
                 new MessageButton()
                     .setLabel(guild.translate("misc/invite:main:buttons:2"))
