@@ -21,13 +21,6 @@
     "active": false
   },
   {
-    "name": "fr-FR",
-    "nativeName": "Français",
-    "emoji": "\uD83C\uDDEB\uD83C\uDDF7",
-    "default": false,
-    "active": false
-  },
-  {
     "name": "pl-PL",
     "nativeName": "Polska",
     "emoji": "\uD83C\uDDF5\uD83C\uDDF1",
