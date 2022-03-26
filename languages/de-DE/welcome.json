@@ -3,5 +3,27 @@
     "title": "{emotes.support} Danke, dass ich hier sein darf!",
     "description": "{emotes.arrow} Cooler Server! Darf ich hierbleiben?\n\n{emotes.arrow} Mein Prefix für Message-Commands ist {prefix}\n{emotes.arrow} Außerdem biete ich Slash-Commands an, sofern ich die nötigen Rechte dafür habe\n\n{emotes.arrow} Um immer auf dem neuesten Stand zu bleiben, empfehle ich dir, meinem [Support-Discord]({support}) beizutreten\n\n{emotes.arrow} Viel Spaß mit {client}!",
     "footer": "Eingeladen von {inviter}"
+  },
+  "support": {
+    "invited": {
+      "name": "{emotes.support} Eingeladen von",
+      "value": "```{inviter}```"
+    },
+    "owner": {
+      "name": "{emotes.crown} Besitzer",
+      "value": "```{owner}```"
+    },
+    "members": {
+      "name": "{emotes.members} Mitglieder",
+      "value": "```{members}```"
+    },
+    "createdAt": {
+      "name": "{emotes.calendar} Erstellt am",
+      "value": "```{createdAt}```"
+    },
+    "createdAgo": {
+      "name": "{emotes.calendar} Erstellt vor",
+      "value": "```{createdAgo}```"
+    }
   }
 }
