@@ -1,0 +1,11 @@
+{
+  "general": {
+    "description": "Führt JavaScript Code aus \uD83D\uDC68\u200D\uD83D\uDCBB",
+    "syntax": "|- evaluate <Code>",
+    "examples": "|- evaluate message.channel.send({content:'Hallo!'}); » Sendet \"Hallo\" im aktuellen Channel"
+  },
+  "main": {
+    "message": "{emotes.success} {command} wurde deaktiviert",
+    "list": "{emotes.arrow} Folgende Commands sind deaktiviert:\n```|- {list}```"
+  }
+}
