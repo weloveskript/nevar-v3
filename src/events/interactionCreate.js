@@ -4,7 +4,7 @@ const toml = require('toml');
 const fs = require("fs");
 const {QueryType} = require("discord-player");
 const config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
-const fetch = require("node-fetch");
+const axios = require('axios');
 
 module.exports = class {
     constructor(client) {
@@ -33,13 +33,12 @@ module.exports = class {
                     interaction.respond(results).catch(() => {});
                 }
                 if(interaction.commandName === 'lyrics'){
-                    let hits = await fetch('https://api.genius.com/search?q=' + encodeURIComponent(interaction.options.getFocused()), {
+                    let hits = (await axios.get('https://api.genius.com/search?q=' + encodeURIComponent(interaction.options.getFocused()), {
                         headers: {
-                            "Authorization": "Bearer " + this.client.config.apikeys.genius
-                        }
-                    })
-                        .then((res) => res.json())
-                        .then((body) => body.response.hits);
+                            'Authorization': 'Bearer ' + this.client.config.apikeys.genius
+                        },
+                        validateStatus: false
+                    })).data.response.hits;
 
                     let results = [];
                     for(let track of hits){

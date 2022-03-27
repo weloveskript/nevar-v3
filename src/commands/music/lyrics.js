@@ -6,6 +6,7 @@ const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 const axios = require('axios');
 const cio = require('cheerio-without-node-native');
+const {encode} = require("qs/lib/utils");
 
 
 async function extractLyrics(url){
@@ -60,28 +61,30 @@ class Lyrics extends Command {
             if(interaction) return interaction.editReply({embeds:[this.client.usageEmbed(guild, this, data)]});
         }
 
-        let song = await fetch('https://api.genius.com/songs/' + encodeURIComponent(args.join(' ')), {
+        let song = (await axios.get('https://api.genius.com/songs/' + encodeURIComponent(args.join(' ')), {
             headers: {
-                "Authorization": "Bearer " + this.client.config.apikeys.genius
-            }
-        })
-            .then((res) => res.json());
+                'Authorization': 'Bearer ' + this.client.config.apikeys.genius
+            },
+            validateStatus: false
+        })).data;
+
 
         if(song?.meta?.status === 404){
-            let hits = await fetch('https://api.genius.com/search?q=' + encodeURIComponent(args.join(' ')), {
+
+            let hits = (await axios.get('https://api.genius.com/search?q=' + encodeURIComponent(args.join(' ')), {
                 headers: {
-                    "Authorization": "Bearer " + this.client.config.apikeys.genius
-                }
-            })
-                .then((res) => res.json())
-                .then((body) => body.response.hits);
+                    'Authorization': 'Bearer ' + this.client.config.apikeys.genius
+                },
+                validateStatus: false
+            })).data.response.hits;
+
             let hit = hits[0];
-            song = await fetch('https://api.genius.com/songs/' + encodeURIComponent(hits[0]?.result?.id), {
+            song = (await axios.get('https://api.genius.com/songs/' + encodeURIComponent(hit.result.id), {
                 headers: {
-                    "Authorization": "Bearer " + this.client.config.apikeys.genius
-                }
-            })
-                .then((res) => res.json());
+                    'Authorization': 'Bearer ' + this.client.config.apikeys.genius
+                },
+                validateStatus: false
+            })).data
         }
 
         if(!song || song?.meta?.status !== 200 && song?.meta?.status !== 404){

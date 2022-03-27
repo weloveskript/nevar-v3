@@ -33,12 +33,16 @@ class Covid extends Command {
         // get covid data
         let covidUrl = 'https://disease.sh/v3/covid-19/all';
         if(args[0]) covidUrl = 'https://disease.sh/v3/covid-19/countries/' + encodeURI(args[0]) + '?strict=true';
-        const covidJson = (await axios.get(covidUrl)).data;
+        const covidJson = (await axios.get(covidUrl, {
+            validateStatus: false
+        })).data;
 
         // get vaccine data
         let vaccineUrl = 'https://disease.sh/v3/covid-19/vaccine/coverage?lastdays=1&fullData=true';
         if(args[0]) vaccineUrl = 'https://disease.sh/v3/covid-19/vaccine/coverage/countries/' + encodeURI(args[0]) + '?lastdays=1&fullData=true';
-        let vaccineJson = (await axios.get(vaccineUrl)).data
+        let vaccineJson = (await axios.get(vaccineUrl, {
+            validateStatus: false
+        })).data
         if(vaccineJson && args[0] && !vaccineJson?.message) vaccineJson = vaccineJson.timeline[0];
         if(vaccineJson && !args[0]) vaccineJson = vaccineJson[0];
 

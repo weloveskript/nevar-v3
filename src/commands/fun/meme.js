@@ -1,7 +1,7 @@
 const Command = require('../../core/command');
 const {SlashCommandBuilder} = require("@discordjs/builders");
-const fetch = require('node-fetch');
 const {MessageEmbed} = require("discord.js");
+const axios = require('axios');
 
 class Meme extends Command {
     constructor(client) {
@@ -22,8 +22,9 @@ class Meme extends Command {
 
         if(interaction) await interaction.deferReply();
 
-        let { data: { children } } = await fetch("https://www.reddit.com/r/dankmemes/top.json?sort=top&t=day&limit=500")
-            .then((res) => res.json());
+        let children = (await axios.get('https://www.reddit.com/r/dankmemes/top.json?sort=top&t=day&limit=1000', {
+            validateStatus: false
+        })).data.data.children;
         let meme = children[Math.floor(Math.random() * children.length)];
 
         let embed = new MessageEmbed()
