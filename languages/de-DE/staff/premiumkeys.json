@@ -1,0 +1,36 @@
+{
+  "general": {
+    "description": "Verwaltet Premium-Keys \uD83D\uDD11",
+    "syntax": "|- premiumkeys",
+    "examples": "|- premiumkeys » Sendet das Premiumkey-Menü"
+  },
+  "main": {
+    "actions": {
+      "1": "Premium-Key erstellen",
+      "2": "Liste aller Premium-Keys ansehen",
+      "3": "Premium-Key löschen"
+    },
+    "create": {
+      "collectors": {
+        "key": "{emotes.arrow} Was für einen Premium-Key möchtest du erstellen?",
+        "keyText": "{emotes.arrow} Sende den Premium-Key den du erstellen möchtest",
+        "maxUses": "{emotes.arrow} Wie oft soll der Premium-Key benutzt werden können?"
+      },
+      "actions": {
+        "1": "Automatisch generieren",
+        "2": "Manuell generieren"
+      },
+      "created": "{emotes.success} Der Premium-Key wurde erfolgreich erstellt\n```|- Key: {key}\n|- Max. Verwendungen: {maxUses}```"
+    },
+    "list": {
+      "message": "{emotes.arrow} Folgende Premium-Keys sind gerade verfügbar:\n```{list}```",
+      "uses": "Verwendungen"
+    },
+    "delete": {
+      "collectors": {
+        "key": "{emotes.arrow} Welchen Premium-Key möchtest du löschen?"
+      },
+      "deleted": "{emotes.success} Der Premium-Key wurde erfolgreich gelöscht"
+    }
+  }
+}

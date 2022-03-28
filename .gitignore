@@ -9,7 +9,7 @@ package-lock.json
 config.toml
 storage/disabledcmds.json
 storage/giveaways.json
-storage/premiumKeys.json
+storage/premiumkeys.json
 storage/images/
 storage/staffs.json
 data.json

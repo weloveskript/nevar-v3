@@ -177,12 +177,12 @@ fs.writeFile('./storage/giveaways.json', JSON.stringify(giveaways, null, 4), fun
     }
 });
 
-fs.writeFile('./storage/premiumKeys.json', JSON.stringify(keys, null, 4), function(err){
+fs.writeFile('./storage/premiumkeys.json', JSON.stringify(keys, null, 4), function(err){
     if(err){
-        logger.log("Couldn't create storage/premiumKeys.json", "error");
+        logger.log("Couldn't create storage/premiumkeys.json", "error");
         console.error(new Error(err));
     }else{
-        logger.log('Successfully created storage/premiumKeys.json', "success");
+        logger.log('Successfully created storage/premiumkeys.json', "success");
     }
 });
 

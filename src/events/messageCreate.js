@@ -225,16 +225,8 @@ module.exports = class {
                 if (leveledUp) {
                     if (message.guild.id === config.support.id && Number(user.level) === 5) {
 
-                        let keyPath = 'storage/premiumKeys.json';
-                        let jsonDataKeys = JSON.parse(fs.readFileSync(keyPath));
-
-
-                        // PREMIUM KEY MANAGER
-                        let key = this.client.functions.generatePremiumKey();
-
-                        jsonDataKeys[key] = 1;
-                        let newJson = JSON.stringify(jsonDataKeys);
-                        fs.writeFileSync(keyPath, newJson);
+                        const premium = require('../managers/premiumkeys');
+                        let key = premium.createKey();
 
                         let embed = new MessageEmbed()
                             .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
@@ -242,7 +234,7 @@ module.exports = class {
                                 .replace('{emotes.success}', this.client.emotes.success)
                                 .replace('{user}', message.member.user.username)
                                 .replace('{client}', this.client.user.username)
-                                .replace('{key}', key))
+                                .replace('{key}', key.key))
                             .setColor(this.client.embedColor)
                             .setFooter({text: data.guild.footer});
                         await message.member.send(embed).catch(() => {});

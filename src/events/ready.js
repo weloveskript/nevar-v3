@@ -16,7 +16,7 @@ module.exports = class {
 
         // Start http server for uptime monitoring
 
-        const app = http.createServer(function(req, res){
+        const app = http.createServer(function (req, res) {
             res.setHeader('Content-Type', 'application/json');
             res.end(JSON.stringify({
                 status: 'ok',
@@ -46,23 +46,23 @@ module.exports = class {
         require('../managers/automaticunban').init(client);
 
         // Start channel renaming
-        if(config.support.id){
-            setInterval(async function(){
+        if (config.support.id) {
+            setInterval(async function () {
                 let supportGuild = client.guilds.cache.get(config.support.id);
                 let serverChannel, voteChannel, userChannel;
-                if(config.support.server_count_channel) serverChannel = supportGuild.channels.cache.get(config.support.server_count_channel);
-                if(config.support.vote_count_channel) voteChannel = supportGuild.channels.cache.get(config.support.vote_count_channel);
-                if(config.support.user_count_channel) userChannel = supportGuild.channels.cache.get(config.support.user_count_channel);
+                if (config.support.server_count_channel) serverChannel = supportGuild.channels.cache.get(config.support.server_count_channel);
+                if (config.support.vote_count_channel) voteChannel = supportGuild.channels.cache.get(config.support.vote_count_channel);
+                if (config.support.user_count_channel) userChannel = supportGuild.channels.cache.get(config.support.user_count_channel);
 
-                if(serverChannel)
+                if (serverChannel)
                     serverChannel.setName(config.channels.design_server_count_channel
                         .replace('{count}', client.guilds.cache.size));
 
-                if(userChannel)
+                if (userChannel)
                     userChannel.setName(config.channels.design_user_count_channel
                         .replace('{count}', client.format(client.guilds.cache.reduce((sum, guild) => sum + (guild.available ? guild.memberCount : 0), 0))));
 
-                if(config.apikeys.topgg && config.apikeys.topgg !== ""){
+                if (config.apikeys.topgg && config.apikeys.topgg !== "") {
                     let res = (await axios.get('https://discordbots.org/api/bots/' + client.user.id, {
                         headers: {
                             'Authorization': config.apikeys.topgg
@@ -72,11 +72,11 @@ module.exports = class {
                     const data = await res.json();
                     let votes = 0;
                     const date = new Date();
-                    const month = date.toLocaleString('en-GB', { month: "long" });
+                    const month = date.toLocaleString('en-GB', {month: "long"});
 
-                    if(!data.error){
+                    if (!data.error) {
                         votes = data.monthlyPoints;
-                        if(voteChannel)
+                        if (voteChannel)
                             voteChannel.setName(config.channels.design_vote_count_channel
                                 .replace('{count}', client.format(votes))
                                 .replace('{month}', month.toLowerCase))
@@ -86,20 +86,21 @@ module.exports = class {
         }
 
         // Start data transfer
-        if(config.datatransfer.state){
+        if (config.datatransfer.state) {
             schedule.scheduleJob('* * * * *', async () => {
                 let staffs = [];
                 let staffJson = JSON.parse(fs.readFileSync('./storage/staffs.json'));
                 let staffIds = Object.keys(staffJson);
-                let botOwner = await client.users.fetch(client.config.team.owner_id).catch(() => {});
+                let botOwner = await client.users.fetch(client.config.team.owner_id).catch(() => {
+                });
                 staffs.push(botOwner.tag + ' |?| ' + botOwner.id + ' |?| ' + botOwner.displayAvatarURL() + ' |?| ' + 'head_staff')
-                for(let id of staffIds){
+                for (let id of staffIds) {
                     let staffMember = await client.users.fetch(id);
                     staffs.push(staffMember.tag + ' |?| ' + staffMember.id + ' |?| ' + staffMember.displayAvatarURL() + ' |?| ' + Object.values(staffJson)[staffIds.indexOf(id)]);
                 }
 
                 let votes = 0;
-                if(config.apikeys.topgg && config.apikeys.topgg !== "") {
+                if (config.apikeys.topgg && config.apikeys.topgg !== "") {
                     let res = (await axios.get('https://discordbots.org/api/bots/' + client.user.id, {
                         headers: {
                             'Authorization': config.apikeys.topgg
@@ -125,8 +126,8 @@ module.exports = class {
                     lastUpdated: Date.now(),
                 };
 
-                fs.writeFile(config.datatransfer.path, JSON.stringify(obj, null, 4), function(err){
-                    if(err) {
+                fs.writeFile(config.datatransfer.path, JSON.stringify(obj, null, 4), function (err) {
+                    if (err) {
                         client.logger.log('Couldn\'t transfer the bot data', "error")
                         throw new Error(err)
                     }
@@ -144,17 +145,17 @@ module.exports = class {
             type: status[parseInt(i, 10)].type.toUpperCase(),
             url: status[parseInt(i, 10)]?.url
         });
-        if(status[parseInt(i+1, 10)]) i++;
+        if (status[parseInt(i + 1, 10)]) i++;
         else i = 0;
 
-        setInterval(async function(){
+        setInterval(async function () {
             let text = status[parseInt(i, 10)].name.replace('{servercount}', client.guilds.cache.size);
             client.user.setActivity({
                 name: text,
                 type: status[parseInt(i, 10)].type.toUpperCase(),
                 url: status[parseInt(i, 10)]?.url
             })
-            if(status[parseInt(i+1, 10)]) i++;
+            if (status[parseInt(i + 1, 10)]) i++;
             else i = 0;
         }, 25000)
 
@@ -162,7 +163,7 @@ module.exports = class {
         client.logger.log("Loaded " + client.guilds.cache.size + " guilds", "info")
 
         // Start dashboard, if enabled
-        if(config.webdashboard.enabled){
+        if (config.webdashboard.enabled) {
             await require("../interface/app.js")();
         }
 

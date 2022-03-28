@@ -1,7 +1,7 @@
 const Command = require('../../core/command');
 const { MessageEmbed } = require('discord.js');
-const fs = require('fs');
 const {SlashCommandBuilder} = require("@discordjs/builders");
+const premium = require('../../managers/premiumkeys');
 
 class Usekey extends Command {
 
@@ -30,53 +30,13 @@ class Usekey extends Command {
             if(interaction) return interaction.send(this.client.usageEmbed(guild, this, data));
         }
 
-        let path = 'storage/premiumKeys.json';
-        let json = JSON.parse(fs.readFileSync(path));
-        let key = args[0];
-
-        if(json[key]){
-            let i = 1;
-            let uses = 0;
-
-            if(isNaN(json[key])){
-                i = parseInt(json[key].split('|')[0]);
-                uses = parseInt(json[key].split('|')[1]);
-            }else{
-                i = parseInt(json[key]);
-            }
-
-            json[key] = i + '|' + parseInt(uses);
-
-            let newJson = JSON.stringify(json);
-            fs.writeFileSync(path, newJson);
-
-            if(uses > i){
-                delete json[key];
-                let newJson = JSON.stringify(json);
-                fs.writeFileSync(path, newJson);
-                let embed = new MessageEmbed()
-                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                    .setDescription(guild.translate("administration/usekey:main:invalid")
-                        .replace('{emotes.error}', this.client.emotes.error)
-                        .replace('{emotes.arrow}', this.client.emotes.arrow)
-                        .replace('{emotes.arrow}', this.client.emotes.arrow)
-                        .replace('{support}', this.client.supportUrl))
-                    .setColor(this.client.embedColor)
-                    .setFooter({text: data.guild.footer});
-                if(message) return message.send(embed, false);
-                if(interaction) return interaction.send(embed);
-            }else{
-                if(!data.guild.premium){
-                    json[key] = i + '|' + parseInt(i + 1);
-                    let newJson = JSON.stringify(json);
-                    fs.writeFileSync(path, newJson);
+        if(premium.validateKey(args[0])){
+            if(!data.guild.premium){
+                let redeemed = premium.redeemKey(args[0]);
+                if(redeemed){
                     data.guild.premium = true;
+                    data.guild.markModified("premium");
                     await data.guild.save();
-                    if(uses+1 === i){
-                        delete json[key];
-                        let newJson = JSON.stringify(json);
-                        fs.writeFileSync(path, newJson);
-                    }
                     let embed = new MessageEmbed()
                         .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                         .setDescription(guild.translate("administration/usekey:main:redeemed")
@@ -88,13 +48,25 @@ class Usekey extends Command {
                 }else{
                     let embed = new MessageEmbed()
                         .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                        .setDescription(guild.translate("administration/usekey:main:alreadyActivated")
-                            .replace('{emotes.error}', this.client.emotes.error))
+                        .setDescription(guild.translate("administration/usekey:main:invalid")
+                            .replace('{emotes.error}', this.client.emotes.error)
+                            .replace('{emotes.arrow}', this.client.emotes.arrow)
+                            .replace('{emotes.arrow}', this.client.emotes.arrow)
+                            .replace('{support}', this.client.supportUrl))
                         .setColor(this.client.embedColor)
                         .setFooter({text: data.guild.footer});
-                    if(message) return message.send(embed);
-                    if(interaction) return  interaction.send(embed);
+                    if(message) return message.send(embed, false);
+                    if(interaction) return interaction.send(embed);
                 }
+            }else{
+                let embed = new MessageEmbed()
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                    .setDescription(guild.translate("administration/usekey:main:alreadyActivated")
+                        .replace('{emotes.error}', this.client.emotes.error))
+                    .setColor(this.client.embedColor)
+                    .setFooter({text: data.guild.footer});
+                if(message) return message.send(embed);
+                if(interaction) return  interaction.send(embed);
             }
         }else{
             let embed = new MessageEmbed()
@@ -107,7 +79,7 @@ class Usekey extends Command {
                 .setColor(this.client.embedColor)
                 .setFooter({text: data.guild.footer});
             if(message) return message.send(embed, false);
-            if(interaction) return interaction.send(embed, true);
+            if(interaction) return interaction.send(embed);
         }
     }
 }
