@@ -1,6 +1,6 @@
 const Command = require('../../core/command');
 const { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
-const Resolvers = require("../../helper/resolver");
+const Resolvers = require("../../helper/finder");
 const {SlashCommandBuilder} = require("@discordjs/builders");
 const Levels = require("discord-xp");
 

@@ -2,7 +2,7 @@ const Command = require('../../core/command');
 const { MessageEmbed} = require('discord.js');
 const { MessageButton, MessageActionRow } = require('discord.js');
 const {SlashCommandBuilder} = require("@discordjs/builders");
-const Resolver = require('../../helper/resolver');
+const Resolver = require('../../helper/finder');
 
 class Systemmessages extends Command {
 

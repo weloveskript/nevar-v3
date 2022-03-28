@@ -36,14 +36,14 @@ module.exports = class {
 
         //Update slash commands every day at 00:00
         schedule.scheduleJob('0 0 * * *', async () => {
-            await require('../helper/slashCommands').init(client);
+            await require('../managers/slashcommands').init(client);
         })
 
         // Init top.gg webhook
-        require('../helper/topgg').init(client);
+        require('../managers/topgg').init(client);
 
         // Init automatic unbans
-        require('../helper/unbanChecker').init(client);
+        require('../managers/automaticunban').init(client);
 
         // Start channel renaming
         if(config.support.id){

@@ -23,13 +23,13 @@ class Nevar extends Client {
         this.website = config.general.website;
         this.wait = util.promisify(setTimeout);
 
-        this.logger = require('../helper/log');
+        this.logger = require('../helper/logger');
         this.logs = require('../models/log');
         this.functions = require('../helper/functions');
         this.guildsData = require('../models/guild');
         this.usersData = require('../models/user');
         this.membersData = require('../models/member');
-        this.mathUtils = require('../helper/mathUtils');
+        this.mathUtils = require('../helper/mathutils');
 
         this.databaseCache = {};
         this.databaseCache.users = new Collection();

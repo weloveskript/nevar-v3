@@ -1,5 +1,4 @@
-require('./helper/extenders');
-require('./helper/replier');
+require('./helper/extensions');
 
 const { Intents, Constants } = require('discord.js');
 const Nevar = require('./core/nevar');

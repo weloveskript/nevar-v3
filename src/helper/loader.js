@@ -8,9 +8,9 @@ function loadConfig(){
     try {
         config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
     } catch (err) {
-        require('./log')
+        require('./logger')
             .log("NO VALID CONFIG FOUND", "error");
-        require('./log')
+        require('./logger')
             .log("To create the config, run npm install or node storage/assets/scripts/install.js", "error");
         process.exit();
     }

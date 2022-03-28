@@ -228,6 +228,8 @@ module.exports = class {
                         let keyPath = 'storage/premiumKeys.json';
                         let jsonDataKeys = JSON.parse(fs.readFileSync(keyPath));
 
+
+                        // PREMIUM KEY MANAGER
                         let key = this.client.functions.generatePremiumKey();
 
                         jsonDataKeys[key] = 1;

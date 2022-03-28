@@ -1,6 +1,6 @@
 const Command = require('../../core/command');
 const {MessageEmbed} = require("discord.js");
-const slashCommandHandler = require('../../helper/slashCommands');
+const slashCommandHandler = require('../../managers/slashcommands');
 
 class Updateslash extends Command {
     constructor(client){

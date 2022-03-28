@@ -1,7 +1,7 @@
 const Command = require('../../core/command');
 const {SlashCommandBuilder} = require("@discordjs/builders");
 const {MessageEmbed} = require("discord.js");
-const Resolver = require('../../helper/resolver');
+const Resolver = require('../../helper/finder');
 
 class Avatar extends Command {
     constructor(client) {

@@ -73,7 +73,7 @@ class Setlang extends Command {
             }else{
                 data.guild.language = lang.name;
                 await data.guild.save();
-                const slashCommands = require('../../helper/slashCommands.js');
+                const slashCommands = require('../../managers/slashcommands.js');
                 slashCommands.init(this.client, guild.id);
                 let embed = new MessageEmbed()
                     .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})

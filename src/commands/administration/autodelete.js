@@ -2,7 +2,7 @@ const Command = require('../../core/command');
 const { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
 const ms = require('ms');
 const {SlashCommandBuilder} = require("@discordjs/builders");
-const Resolver = require('../../helper/resolver');
+const Resolver = require('../../helper/finder');
 
 class Autodelete extends Command {
 

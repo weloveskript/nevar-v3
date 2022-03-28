@@ -1,5 +1,5 @@
 const Command = require('../../core/command');
-const Resolvers = require('../../helper/resolver');
+const Resolvers = require('../../helper/finder');
 const { MessageEmbed, MessageActionRow, MessageButton} = require('discord.js');
 const {SlashCommandBuilder} = require("@discordjs/builders");
 

@@ -13,8 +13,7 @@ module.exports = {
             ];
             let prefix = null;
             prefixes.forEach((p) => {
-                if (message.content.startsWith(p) || message.content.toLowerCase()
-                    .startsWith(p)) {
+                if (message.content.startsWith(p) || message.content.toLowerCase().startsWith(p)) {
                     prefix = p;
                 }
             });
@@ -22,13 +21,5 @@ module.exports = {
         } else {
             return true;
         }
-    },
-
-    generatePremiumKey() {
-        const { client } = require('../app');
-        return client.user.username.toLowerCase() + '_' + [...Array(12)].map(i => (~~(Math.random() * 36))
-            .toString(36))
-            .join('');
-
     }
 };

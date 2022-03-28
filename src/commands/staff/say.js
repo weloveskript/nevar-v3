@@ -1,6 +1,6 @@
 const Command = require('../../core/command');
 const {SlashCommandBuilder} = require("@discordjs/builders");
-const Resolver = require('../../helper/resolver');
+const Resolver = require('../../helper/finder');
 
 class Say extends Command {
     constructor(client){

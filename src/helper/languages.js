@@ -1,8 +1,7 @@
 const i18next = require('i18next');
 const Backend = require('i18next-node-fs-backend');
 const path = require('path');
-const fs = require('fs')
-    .promises;
+const fs = require('fs').promises;
 
 async function walkDirectory(dir, namespaces = [], folderName = "") {
     const files = await fs.readdir(dir);

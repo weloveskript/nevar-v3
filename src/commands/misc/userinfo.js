@@ -2,7 +2,7 @@ const Command = require('../../core/command');
 const { MessageEmbed} = require('discord.js');
 const {SlashCommandBuilder} = require("@discordjs/builders");
 const moment = require('moment');
-const resolver = require('../../helper/resolver');
+const resolver = require('../../helper/finder');
 const packageJson = require("../../../package.json");
 
 class Userinfo extends Command {

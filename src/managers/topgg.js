@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { AutoPoster } = require("topgg-autoposter");
-const Topgg = require("@top-gg/sdk");
+const topgg = require("@top-gg/sdk");
 const express = require("express");
 const fetch = require("node-fetch");
 const toml = require('toml');
@@ -17,7 +17,7 @@ module.exports = {
             const ap = AutoPoster(config.apikeys.topgg, client);
             const app = express();
 
-            const webhook = new Topgg.Webhook(config.apikeys.topgg_webhook_auth);
+            const webhook = new topgg.Webhook(config.apikeys.topgg_webhook_auth);
             app.post("/dblwebhook", webhook.listener(async (vote) => {
                 const user = await client.users.fetch(vote.user);
                 const resp = await fetch("https://discordbots.org/api/bots/" + client.user.id, {
