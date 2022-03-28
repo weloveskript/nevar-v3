@@ -45,6 +45,8 @@ class Usekey extends Command {
                         .setFooter({text: data.guild.footer});
                     if(message) await message.send(embed);
                     if(interaction) await interaction.send(embed);
+
+                    // TODO: Info das der Key eingelöst wurde an Supportserver/Botlog senden
                 }else{
                     let embed = new MessageEmbed()
                         .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
