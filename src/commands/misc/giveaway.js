@@ -44,7 +44,7 @@ class Giveaway extends Command {
                     inviteToParticipate: guild.translate("misc/giveaway:main:gwMessages:participate")
                         .replace('{emotes.support}', bot.emotes.badges.earlysupporter)
                         .replace('{client}', bot.user.username)
-                        .replace('{invite}', bot.invite())
+                        .replace('{invite}', bot.invite)
                         .replace('{hostedBy}', gwHost.user.username),
                     winMessage: guild.translate("misc/giveaway:main:gwMessages:win")
                         .replaceAll('{emotes.giveaway}', bot.emotes.giveaway)
@@ -56,7 +56,7 @@ class Giveaway extends Command {
                         .replaceAll('{emotes.info}', bot.emotes.info2)
                         .replace('{emotes.support}', bot.emotes.badges.earlysupporter)
                         .replace('{client}', bot.user.username)
-                        .replace('{invite}', bot.invite())
+                        .replace('{invite}', bot.invite)
                         .replace('{condition}', gwCondition.text),
                     hostedBy: '',
                     winners: guild.translate("misc/giveaway:main:gwMessages:winners"),
@@ -91,22 +91,15 @@ class Giveaway extends Command {
                     .setEmoji('🎉')
                     .setStyle('PRIMARY'),
                 new MessageButton()
-                    .setCustomId('giveaway_' + id + '_list')
-                    .setLabel(guild.translate("misc/giveaway:main:actions:2"))
-                    .setEmoji('📝')
-                    .setDisabled(data.guild.plugins.autoDeleteChannels.length === 0)
-                    .setStyle('PRIMARY'),
-                new MessageButton()
                     .setCustomId('giveaway_' + id + '_reroll')
-                    .setLabel(guild.translate("misc/giveaway:main:actions:3"))
+                    .setLabel(guild.translate("misc/giveaway:main:actions:2"))
                     .setEmoji('🔁')
-                    .setDisabled(data.guild.plugins.autoDeleteChannels.length === 0)
                     .setStyle('PRIMARY'),
                 new MessageButton()
                     .setCustomId('giveaway_' + id + '_stop')
-                    .setLabel(guild.translate("misc/giveaway:main:actions:4"))
+                    .setLabel(guild.translate("misc/giveaway:main:actions:3"))
                     .setEmoji('➖')
-                    .setDisabled(data.guild.plugins.autoDeleteChannels.length === 0)
+                    .setDisabled(this.client.giveawaysManager.giveaways.filter(giveaway => giveaway.guildId === guild.id && giveaway.ended === false).length < 1)
                     .setStyle('DANGER'),
             )
         let sent;
@@ -249,7 +242,7 @@ class Giveaway extends Command {
                                                 const clicked = await sent.awaitMessageComponent({
                                                     filter:  m => m.user.id === member.user.id,
                                                     componentType: 'SELECT_MENU',
-                                                    time: 12000
+                                                    time: 60000
                                                 }).catch(() => {
                                                     sent.edit({embeds: [embed], components: []});
                                                 })
@@ -670,57 +663,111 @@ class Giveaway extends Command {
                     }
                 });
             }
-            if (clicked.customId === 'giveaway_' + id + '_list') {
-                let gws = [];
-                let filteredGiveaways = this.client.giveawaysManager.giveaways.filter(giveaway => giveaway.guildId === guild.id && giveaway.ended === false);
-                for(let giveaway of filteredGiveaways){
-                    if(giveaway.options.endAt < Date.now() && giveaway.ended === false) continue;
-                    let gw = {
-                        hostedBy: giveaway.options.hostedBy,
-                        channel: giveaway.options.channelId,
-                        id: giveaway.options.messageId,
-                        startAt: giveaway.options.startAt,
-                        endAt: giveaway.options.endAt,
-                        winnerCount: giveaway.options.winnerCount,
-                        prize: giveaway.options.prize
-                    }
-                    gws.push(gw);
-                }
-
-                    let beautifullList = [];
-                    for(let gw of gws){
-                        if(guild.channels.cache.get(gw.channel)){
-                            let user = await this.client.users.fetch(gw.hostedBy
-                                .replace('<', '')
-                                .replace('@', '')
-                                .replace('>', '')
-                                .replace('!', ''))
-
-                            let str = guild.translate("misc/giveaway:main:list:gw")
-                                .replace('{prize}', gw.prize)
-                                .replace('{hostedBy}', user.username)
-                                .replace('{id}', gw.id)
-                                .replace('{winnerCount}', gw.winnerCount)
-                                .replace('{startedAt}', moment.tz(new Date(gw.startAt), guild.translate("language:timezone")).format(guild.translate("language:dateformat")))
-                                .replace('{endAt}', moment.tz(new Date(gw.endAt), guild.translate("language:timezone")).format(guild.translate("language:dateformat")))
-                                .replace('{channel}', guild.channels.cache.get(gw.channel).name);
-                            beautifullList.push(str);
-                        }
-
-                    }
-                    let embed = new MessageEmbed()
-                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-                        .setDescription(guild.translate("misc/giveaway:main:list:list")
-                            .replace('{emotes.arrow}', this.client.emotes.arrow)
-                            .replace('{count}', beautifullList.length)
-                            .replace('{list}', beautifullList.join('\n')))
-                        .setColor(this.client.embedColor)
-                        .setFooter({text: data.guild.footer});
-                    return clicked.update({embeds: [embed], components: []});
-            }
             if (clicked.customId === 'giveaway_' + id + '_reroll') {
 
+                let embed = new MessageEmbed()
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                    .setDescription(guild.translate("misc/giveaway:main:reroll:collector")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow))
+                    .setColor(this.client.embedColor)
+                    .setFooter({text: data.guild.footer});
+                clicked.update({embeds: [embed], components: []});
+                const collectMessage = await channel.createMessageCollector({
+                    filter: m => m.author.id === id,
+                    time: 120000
+                });
 
+                collectMessage.on("collect", async (msg) => {
+                    collectMessage.stop();
+                    msg.delete().catch(() => {});
+                    let gwId = msg.content;
+                    if(gwId) {
+                        this.client.giveawaysManager.reroll(gwId, {
+                            messages: {
+                                error: guild.translate("misc/giveaway:main:reroll:noWinner")
+                                    .replace('{emotes.error}', this.client.emotes.error),
+                                congrat: guild.translate("misc/giveaway:main:gwMessages:win")
+                                    .replaceAll('{emotes.giveaway}', this.client.emotes.giveaway)
+                                    .replace('{emotes.arrow}', this.client.emotes.arrow)
+                            }
+                        })
+                            .then(() => {
+                                let embed = new MessageEmbed()
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                                    .setDescription(guild.translate("misc/giveaway:main:reroll:success")
+                                        .replace('{emotes.success}', this.client.emotes.success))
+                                    .setColor(this.client.embedColor)
+                                    .setFooter({text: data.guild.footer});
+                                return sent.edit({embeds: [embed]});
+                            })
+                            .catch((err) => {
+                                let embed = new MessageEmbed()
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                                    .setDescription(guild.translate("misc/giveaway:main:reroll:error")
+                                        .replace('{emotes.error}', this.client.emotes.error))
+                                    .setColor(this.client.embedColor)
+                                    .setFooter({text: data.guild.footer});
+                                return sent.edit({embeds: [embed]});
+                            })
+                    }else{
+                        let embed = new MessageEmbed()
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                            .setDescription(guild.translate("misc/giveaway:main:reroll:error")
+                                .replace('{emotes.error}', this.client.emotes.error))
+                            .setColor(this.client.embedColor)
+                            .setFooter({text: data.guild.footer});
+                        return sent.edit({embeds: [embed]});
+                    }
+                });
+            }
+            if (clicked.customId === 'giveaway_' + id + '_stop') {
+                let embed = new MessageEmbed()
+                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                    .setDescription(guild.translate("misc/giveaway:main:end:collector")
+                        .replace('{emotes.arrow}', this.client.emotes.arrow))
+                    .setColor(this.client.embedColor)
+                    .setFooter({text: data.guild.footer});
+                clicked.update({embeds: [embed], components: []});
+                const collectMessage = await channel.createMessageCollector({
+                    filter: m => m.author.id === id,
+                    time: 120000
+                });
+
+                collectMessage.on("collect", async (msg) => {
+                    collectMessage.stop();
+                    msg.delete().catch(() => {});
+                    let gwId = msg.content;
+                    if(gwId) {
+                        this.client.giveawaysManager.end(gwId)
+                            .then(() => {
+                                let embed = new MessageEmbed()
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                                    .setDescription(guild.translate("misc/giveaway:main:end:success")
+                                        .replace('{emotes.success}', this.client.emotes.success))
+                                    .setColor(this.client.embedColor)
+                                    .setFooter({text: data.guild.footer});
+                                return sent.edit({embeds: [embed]});
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                                let embed = new MessageEmbed()
+                                    .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                                    .setDescription(guild.translate("misc/giveaway:main:end:error")
+                                        .replace('{emotes.error}', this.client.emotes.error))
+                                    .setColor(this.client.embedColor)
+                                    .setFooter({text: data.guild.footer});
+                                return sent.edit({embeds: [embed]});
+                            })
+                    }else{
+                        let embed = new MessageEmbed()
+                            .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                            .setDescription(guild.translate("misc/giveaway:main:end:error")
+                                .replace('{emotes.error}', this.client.emotes.error))
+                            .setColor(this.client.embedColor)
+                            .setFooter({text: data.guild.footer});
+                        return sent.edit({embeds: [embed]});
+                    }
+                });
             }
         }
     };

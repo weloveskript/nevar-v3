@@ -11,7 +11,7 @@ module.exports = class {
                 .replaceAll('{emotes.info}', this.client.emotes.info2)
                 .replace('{emotes.support}', this.client.emotes.badges.earlysupporter)
                 .replace('{client}', this.client.user.username)
-                .replace('{invite}', this.client.invite())
+                .replace('{invite}', this.client.invite)
                 .replace('{winners}', winners.join(', '))
                 .replace('{this.winnerCount}', giveaway.winnerCount)
                 .replace('{this.hostedBy}', giveaway.hostedBy)

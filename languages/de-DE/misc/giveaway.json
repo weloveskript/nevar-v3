@@ -9,9 +9,8 @@
 
     "actions": {
       "1": "Giveaway starten",
-      "2": "Alle Giveaways ansehen",
-      "3": "Neuen Gewinner wählen",
-      "4": "Giveaway beenden"
+      "2": "Neuen Gewinner wählen",
+      "3": "Giveaway beenden"
     },
 
     "start": {
@@ -70,16 +69,17 @@
       "created": "{emotes.success} Das Giveaway wurde erstellt",
       "invalid": "{emotes.error} Du hast eine ungültige Angabe gemacht. Die Aktion wurde abgebrochen"
     },
-
-    "list": {
-      "list": "{emotes.arrow} Auf dem Server laufen gerade **{count} Giveaways**:\n\n```{list}```",
-      "gw": "» Preis: {prize}\n» Erstellt von: {hostedBy}\n» ID: {id}\n» Gewinner: {winnerCount}\n» Gestartet am: {startedAt}\n» Endet am: {endAt}\n» Channel: {channel}\n\n"
+    "reroll": {
+      "collector": "{emotes.arrow} Sende die Message-ID eines beendeten Giveaways",
+      "error": "{emotes.error} Ich konnte keinen neuen Gewinner wählen - hier sind mögliche Gründe woran das liegen kann:\n```|- es gibt kein Giveaway mit dieser ID\n|- an dem Giveaway hat keiner teilgenommen\n|- das Giveaway wurde gelöscht```",
+      "success": "{emotes.success} Ich habe das Giveaway erfolgreich neu gestartet",
+      "noWinner": "{emotes.error} Es gibt keinen neuen Gewinner, da keiner mehr teilgenommen hat"
     },
 
-    "reroll": {
-      "collector": "{emotes.arrow} Sende die ID eines beendeten Giveaways"
-
-
+    "end": {
+      "collector": "{emotes.arrow} Sende die Message-ID des Giveaways, welches du beenden möchtest",
+      "error": "{emotes.error} Ich konnte das Giveaway nicht beenden - hier sind mögliche Gründe woran das liegen kann:\n```|- es gibt kein Giveaway mit dieser ID\n|- an dem Giveaway hat keiner teilgenommen\n|- das Giveaway wurde gelöscht\n|- das Giveaway ist bereits beendet```",
+      "success": "{emotes.success} Ich habe das Giveaway beendet"
     },
 
     "gwMessages": {
