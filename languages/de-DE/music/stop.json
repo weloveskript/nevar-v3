@@ -1,0 +1,17 @@
+{
+  "general": {
+    "description": "Stoppt die Wiedergabe ⏹",
+    "syntax": "|- stop",
+    "examples": "|- stop » Stoppt die Wiedergabe"
+  },
+
+  "main": {
+    "paused": "{emotes.success} Die Wiedergabe wurde pausiert",
+    "errors": {
+      "notPlaying": "{emotes.error} Aktuell wird nichts abgespielt",
+      "notConnected": "{emotes.error} Du bist zu keinem Voicechannel verbunden",
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    },
+    "stopped": "{emotes.success} Die Wiedergabe wurde beendet"
+  }
+}
