@@ -55,13 +55,6 @@ module.exports = mongoose.model("Guild", new Schema({
             },
             autoDeleteChannels: [],
             reactionRoles: [],
-
-            notifier: {
-                tiktok: [],
-                youtube: [],
-                twitch: []
-            }
-
         }
     },
     commands: { type: Array, default: [] },
