@@ -14,33 +14,36 @@
     "error": "{emotes.error} Beim Generieren deines Embeds ist ein Fehler aufgetreten",
     "collectors": {
       "author": {
-        "description": "{emotes.arrow} [Schritt 1/9] Wie soll der Autor des Embeds heißen?",
-        "example": "»» Hier steht der Autorname"
+        "description": "{emotes.arrow} [Schritt 1/10] Wie soll der Autor des Embeds heißen?"
+      },
+      "authorInEmbed": {
+        "description": "{emotes.arrow} [Schritt 2/10] Soll der Autor auch im Embed stehen?",
+        "example": "»» Hier steht der Autorname im Embed"
       },
       "authorIcon": {
-        "description": "{emotes.arrow} [Schritt 2/9] Sende den Avatar des Autors - wenn er keinen haben soll, kannst du \"/\" senden",
+        "description": "{emotes.arrow} [Schritt 3/10] Sende den Avatar des Autors - wenn er keinen haben soll, kannst du \"/\" senden",
         "example": "«« Das ist das Autor-Icon"
       },
       "thumbnail": {
-        "description": "{emotes.arrow} [Schritt 3/9] Sende das Thumbnail des Embeds - wenn es keins haben soll, kannst du \"/\" senden",
+        "description": "{emotes.arrow} [Schritt 4/10] Sende das Thumbnail des Embeds - wenn es keins haben soll, kannst du \"/\" senden",
         "example": "Das Thumbnail ist das Bild rechts im Embed »»"
       },
       "title": {
-        "description": "{emotes.arrow} [Schritt 4/9] Sende den Titel des Embeds - wenn es keinen haben soll, kannst du \"/\" senden",
+        "description": "{emotes.arrow} [Schritt 5/10] Sende den Titel des Embeds - wenn es keinen haben soll, kannst du \"/\" senden",
         "example": "»» Das hier ist der Titel"
       },
-      "description": "{emotes.arrow} [Schritt 5/9] Sende die Beschreibung des Embeds - wenn es keine haben soll, kannst du \"/\" senden\n{emotes.arrow} Die Beschreibung ist dieser Text",
-      "image": "{emotes.arrow} [Schritt 6/9] Sende das Bild des Embeds - wenn es keins haben soll, kannst du \"/\" senden",
+      "description": "{emotes.arrow} [Schritt 6/10] Sende die Beschreibung des Embeds - wenn es keine haben soll, kannst du \"/\" senden\n{emotes.arrow} Die Beschreibung ist dieser Text",
+      "image": "{emotes.arrow} [Schritt 7/10] Sende das Bild des Embeds - wenn es keins haben soll, kannst du \"/\" senden",
       "footer": {
-        "description": "{emotes.arrow} [Schritt 7/9] Sende den Footer des Embeds - wenn es keinen haben soll, kannst du \"/\" senden",
+        "description": "{emotes.arrow} [Schritt 8/10] Sende den Footer des Embeds - wenn es keinen haben soll, kannst du \"/\" senden",
         "example": "»» Der Footer ist hier"
       },
       "footerIcon": {
-        "description": "{emotes.arrow} [Schritt 8/9] Sende das Icon des Footers - wenn es keins haben soll, kannst du \"/\" senden",
+        "description": "{emotes.arrow} [Schritt 9/10] Sende das Icon des Footers - wenn es keins haben soll, kannst du \"/\" senden",
         "example": "«« Das ist das Footer-Icon"
       },
       "color": {
-        "description": "{emotes.arrow} [Schritt 9/9] Sende die Farbe des Embeds in HEX oder RGB - wenn es die {client}-Standardfarbe haben soll, kannst du \"/\" senden",
+        "description": "{emotes.arrow} [Schritt 10/10] Sende die Farbe des Embeds in HEX oder RGB - wenn es die {client}-Standardfarbe haben soll, kannst du \"/\" senden",
         "example": "«« Das ist die Farbe des Embeds"
       }
     },
