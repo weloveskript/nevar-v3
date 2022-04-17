@@ -123,8 +123,8 @@ class Level extends Command {
 
         // loop until the text fits within the width of the box
         for(let i = 1; i <= 7; i++){
-            rankText1X = rankText1X-47.5;
-            rankText2X = rankText2X-47.5;
+            rankText1X = rankText1X-49.5;
+            rankText2X = rankText2X-49.5;
             if(text.toString().length === i){
                 ctx.font = "31px Calibri";
                 ctx.fillStyle = "#ffffff";
