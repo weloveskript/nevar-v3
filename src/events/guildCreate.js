@@ -65,7 +65,7 @@ module.exports = class {
         await firstChannel.send({embeds:[embed]}).catch(() => {});
         await firstChannel.send({content: this.client.supportUrl}).catch(() => {});
         let mention = await firstChannel.send({content:'<@' + inviter.id + '>'}).catch(() => {});
-        mention.delete().catch(() => {});
+        mention?.delete().catch(() => {});
 
         let supportGuild = this.client.guilds.cache.get(this.client.config.support.id);
         if(!supportGuild) return;
