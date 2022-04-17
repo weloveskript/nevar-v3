@@ -35,7 +35,7 @@ module.exports = class {
             await message.guild.members.fetch(message.author.id);
         }
 
-        if(message.mentions.repliedUser || message.mentions.users){
+        if((message.mentions.repliedUser || message.mentions.users) && !message.author.bot){
             let afkUsers = [];
             if(message.mentions.repliedUser) {
                 let mentionData = await this.client.findOrCreateUser({id: message.mentions.repliedUser.id})
@@ -97,7 +97,6 @@ module.exports = class {
                     }
                 }
             }
-
             for(let afkUser of afkUsers){
                 let embed = new MessageEmbed()
                     .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
@@ -110,6 +109,7 @@ module.exports = class {
                     .setFooter({text: data.guild.footer});
                 if(message) message.send(embed);
             }
+
         }
         if (data.userData.blocked) return;
 
