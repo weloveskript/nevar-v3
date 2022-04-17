@@ -123,7 +123,7 @@ class Level extends Command {
 
         // loop until the text fits within the width of the box
         for(let i = 1; i <= 7; i++){
-            rankText1X = rankText1X-49.5;
+            rankText1X = rankText1X-56.5;
             rankText2X = rankText2X-49.5;
             if(text.toString().length === i){
                 ctx.font = "31px Calibri";
@@ -138,7 +138,7 @@ class Level extends Command {
         ctx.font = "31px Calibri";
         ctx.fillText(guild.translate("misc/level:main:level").toUpperCase(), 750, 95);
         ctx.font = "61px Calibri";
-        ctx.fillText(user.level.level, 830, 95);
+        ctx.fillText(user.level.level, 837, 95);
 
         // write current xp / needed xp
         function kFormatter(int){
