@@ -16,6 +16,7 @@ class Help extends Command {
             slashCommand: {
                 addCommand: true,
                 data: new SlashCommandBuilder()
+                    .addStringOption(option => option.setRequired(false))
             }
         });
     }

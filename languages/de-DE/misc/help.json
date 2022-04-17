@@ -6,6 +6,13 @@
     "emoji": "❓"
   },
 
+  "slash": {
+    "1": {
+      "name": "befehl",
+      "description": "» Für welchen Befehl möchtest du Hilfe bekommen?"
+    }
+  },
+
   "main": {
     "links": "{emotes.discord} **[SUPPORT]({support})** | {emotes.logo} **[EINLADEN]({invite})** | {emotes.web} **[WEBSITE]({website})**\n\n",
     "prefix": "Mein Prefix für Message-Commands ist: ```{prefix}```",
