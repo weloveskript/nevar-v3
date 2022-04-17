@@ -1,0 +1,34 @@
+{
+  "general": {
+    "description": "Sendet das Hilfe-Menü",
+    "syntax": "|- help [Befehl]",
+    "examples": "|- help » Sendet das Hilfe-Menü\n|- help Ban » Sendet Hilfe zum Ban-Befehl"
+  },
+
+  "main": {
+    "links": "{emotes.discord} **[SUPPORT]({support})** | {emotes.logo} **[EINLADEN]({invite})** | {emotes.web} **[WEBSITE]({website})**\n\n",
+    "prefix": "Mein Prefix für Message-Commands ist: ```{prefix}```",
+    "categories": "**Kategorien:**",
+    "categories_value": "{categories}",
+    "categoriesList": {
+      "administration": "Administration",
+      "fun": "Fun",
+      "minigames": "Minispiele",
+      "misc": "Nützliches",
+      "moderation": "Moderation",
+      "music": "Musik",
+      "owner": "Owner",
+      "staff": "Staff"
+    },
+    "news": {
+      "title": "Aktuelle Neuigkeiten - {date}",
+      "news": "{news}"
+    },
+    "footer": "» Um eine Übersicht der Commands zu bekommen, kannst du im Menü unten eine Kategorie auswählen",
+    "placeholder": "Wähle eine Kategorie",
+    "choose": "Zeig die Befehle der {cat}-Kategorie",
+    "back": "Zurück",
+    "forward": "Weiter",
+    "showing": "{emotes.dev} Zeige {index}-{indexEnd} von {total}"
+  }
+}

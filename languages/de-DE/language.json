@@ -3,6 +3,7 @@
  "no": "Nein",
 
  "dateformat": "DD.MM.yyyy, HH:mm:ss",
+ "onlyDateFormat": "DD.MM.yyyy",
  "timezone": "Europe/Berlin",
  "language": "Deutsch",
 

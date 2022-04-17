@@ -1,19 +1,21 @@
 {
-  "temp": "<:nev_temp:919220615389536316>",
-  "humidity": "<:nev_humidity:919221259076792390>",
-  "bank": "<:nev_bank:919221417218809866>",
+  "temp": "<:nev_temp:965005831261290586>",
+  "humidity": "<:nev_humidity:965006120420786247>",
   "info": "<:nev_info:942221350867722311>",
-  "creditcard": "<:nev_mastercard:919221688791609387>",
-  "books": "<:nev_books:941797577647611924>",
-  "wind": "<:nev_wind:941856619170508802>",
-  "moon": "<:nev_moon:941857164669096007>",
-  "youtube": "<:nev_yt:955044951190798346>",
-  "twitch": "<:nev_twitch:955047289062293505>",
-  "tiktok": "<:nev_tiktok:955048357087313950>",
-  "formula": "<:nev_formula:919222407829536778>",
-  "result": "<:nev_result:919222576998383678>",
+  "library": "<:nev_library:965007011261603850>",
+  "wind": "<:nev_wind:965007322994843718>",
+  "moon": "<:nev_moon:965007598715809852>",
+  "formula": "<:nev_formula:965008201064001537>",
+  "result": "<:nev_result:965008512449146900> ",
   "giveaway": "<a:nev_giveaway:949063875221921843>",
-  "image": "<:nev_image:919223017282895922>",
+  "image": "<:nev_image:965008880390242314>",
+
+
+
+  "BREAKHERE": "--------------------------------------------------",
+
+
+
   "sun": "<:nev_sun:919223547379978300>",
   "js": "<:nev_javascript:919223787394846782>",
   "members": "<:nev_members:919224059953283142>",
@@ -71,6 +73,7 @@
   "categories": {
     "administration": "<:nev_cat_administration:919258881442578442>",
     "fun": "<:nev_cat_joke:919259314340913182>",
+    "minigames": "<:nev_games:919239711057412146>",
     "misc": "<:nev_cat_misc:919260147761705130>",
     "moderation": "<:nev_cat_moderation:919260332109754479>",
     "music": "<:nev_cat_music:919260824030294066>",

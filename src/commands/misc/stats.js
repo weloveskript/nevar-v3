@@ -121,7 +121,7 @@ class Stats extends Command {
                     .replace('{nodeVer}', process.version), true)
 
             .addField(guild.translate("misc/stats:main:fields:library:name")
-                    .replace('{emotes.book}', this.client.emotes.books),
+                    .replace('{emotes.book}', this.client.emotes.library),
                 guild.translate("misc/stats:main:fields:library:value")
                     .replace('{library}', 'discord.js'), true)
 
