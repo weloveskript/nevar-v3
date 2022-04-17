@@ -185,6 +185,7 @@ class Ban extends Command {
                 humanDuration = bannedDuration.slice(0, 2).join(', ');
             }
 
+            let durationSave = humanDuration;
             if(clicked.customId === 'confirm_' + id + '_yes'){
                 let privateEmbed = new MessageEmbed()
                     .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
@@ -226,7 +227,7 @@ class Ban extends Command {
                                 .replace('{user}', fetchUser.tag)
                                 .replace('{reason}', banData.reason)
                                 .replace('{moderator}', member.user.tag)
-                                .replace('{duration}', humanDuration)
+                                .replace('{duration}', durationSave)
                                 .replace('{bannedUntil}', bannedUntil))
                             .setImage('https://c.tenor.com/SglvezQEKnAAAAAC/discord-ban.gif')
                             .setColor(this.client.embedColor)
