@@ -2,7 +2,8 @@
   "general": {
     "description": "Verwaltet Premium-Keys \uD83D\uDD11",
     "syntax": "|- premiumkeys",
-    "examples": "|- premiumkeys » Sendet das Premiumkey-Menü"
+    "examples": "|- premiumkeys » Sendet das Premiumkey-Menü",
+    "emoji": "\uD83D\uDD11"
   },
   "main": {
     "actions": {

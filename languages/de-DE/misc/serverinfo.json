@@ -1,8 +1,9 @@
 {
   "general": {
-    "description": "Zeigt Informationen zum Discord-Server",
+    "description": "Zeigt Informationen zum Discord-Server ℹ️",
     "usage": "|- serverinfo",
-    "example": "|- serverinfo » Zeigt allgemeine Informationen über den Discord-Server"
+    "example": "|- serverinfo » Zeigt allgemeine Informationen über den Discord-Server",
+    "emoji": "ℹ️"
   },
 
   "main": {

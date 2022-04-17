@@ -2,7 +2,8 @@
   "general": {
     "description": "Entbannt einen Nutzer \uD83D\uDD28",
     "syntax": "|- unban <ID/Tag>",
-    "examples": "|- unban Tinte#1000 -> entbannt Tinte#1000"
+    "examples": "|- unban Tinte#1000 -> entbannt Tinte#1000",
+    "emoji": "\uD83D\uDD28"
   },
   "slash": {
     "1": {

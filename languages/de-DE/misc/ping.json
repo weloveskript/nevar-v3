@@ -2,7 +2,8 @@
   "general": {
     "description": "Zeigt die aktuelle Latenz des Bots an \uD83E\uDD71",
     "syntax": "|- ping",
-    "examples": "|- ping » Sendet die Latenz des Bots"
+    "examples": "|- ping » Sendet die Latenz des Bots",
+    "emoji": "\uD83E\uDD71"
   },
 
   "main": {

@@ -2,7 +2,8 @@
   "general": {
     "description": "Sendet Bugs an unser Entwicklerteam \uD83D\uDC1B",
     "syntax": "|- reportbug <Beschreibung>",
-    "examples": "|- reportbug Bot kaputt :( » Sendet \"Bot kaputt :(\" an unser Team"
+    "examples": "|- reportbug Bot kaputt :( » Sendet \"Bot kaputt :(\" an unser Team",
+    "emoji": "🐛"
   },
 
   "slash": {

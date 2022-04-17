@@ -1,8 +1,9 @@
 {
   "general": {
-    "description": "Lässt dich in nur einem Schritt Emojis für deinen Discord-Server erstellen \uD83D\uDE0A",
+    "description": "Lässt dich in nur einem Schritt Emojis für deinen Discord-Server erstellen \uD83D\uDDBC️",
     "syntax": "|- addemoji <URL/Emoji> [Name]",
-    "examples": "|- addemoji www.seite.de/bild.png cooler_emoji » fügt das Bild mit dem Namen cooler_emoji hinzu\n|- addemoji <:SadChaton:934265471103025162> » fügt den Emoji mit seinem Originalnamen hinzu"
+    "examples": "|- addemoji www.seite.de/bild.png cooler_emoji » fügt das Bild mit dem Namen cooler_emoji hinzu\n|- addemoji <:SadChaton:934265471103025162> » fügt den Emoji mit seinem Originalnamen hinzu",
+    "emoji": "\uD83D\uDDBC️"
   },
   "slash": {
     "1": {

@@ -2,7 +2,8 @@
   "general": {
     "description": "Lässt dich bestimmte Wörter automatisch löschen \uD83D\uDEAB",
     "syntax": "|- blacklist",
-    "examples": "|- blacklist » Sendet das Blacklist-Menü"
+    "examples": "|- blacklist » Sendet das Blacklist-Menü",
+    "emoji": "\uD83D\uDEAB"
   },
 
   "main": {

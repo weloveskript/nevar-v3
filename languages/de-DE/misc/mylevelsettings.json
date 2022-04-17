@@ -2,7 +2,8 @@
   "general": {
     "description": "Lässt dich die Farbe oder das Hintergrundbild deiner Level-Card einstellen \uD83D\uDDBC️",
     "syntax": "|- mylevelsettings",
-    "examples": "|- mylevelsettings » Sendet dein Level-Menü"
+    "examples": "|- mylevelsettings » Sendet dein Level-Menü",
+    "emoji": "\uD83D\uDDBC️"
   },
   "main": {
     "actions": {

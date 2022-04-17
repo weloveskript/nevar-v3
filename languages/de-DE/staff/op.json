@@ -2,7 +2,8 @@
   "general": {
     "description": "Vergibt Operator-Rechte ⚡",
     "syntax": "|- op [Mitglied]",
-    "examples": "|- op @Tinte » Ernennt Tinte zum Operator"
+    "examples": "|- op @Tinte » Ernennt Tinte zum Operator",
+    "emoji": "⚡"
   },
   "main": {
     "message": "*Made {user} a server operator*"

@@ -2,7 +2,8 @@
   "general": {
     "description": "Verwalte Giveaways auf deinem Server und mache deinen Mitgliedern eine Freude \uD83C\uDF89",
     "syntax": "|- giveaways",
-    "examples": "|- giveaways » Sendet das Giveaways-Menü"
+    "examples": "|- giveaways » Sendet das Giveaways-Menü",
+    "emoji": "\uD83C\uDF89"
   },
 
   "main": {

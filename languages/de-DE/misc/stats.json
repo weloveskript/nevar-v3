@@ -2,7 +2,8 @@
   "general": {
     "description": "Zeigt Informationen zum Bot an \uD83E\uDD16",
     "syntax": "|- stats",
-    "examples": "|- stats » Zeigt allgemeine Informationen zum Bot an"
+    "examples": "|- stats » Zeigt allgemeine Informationen zum Bot an",
+    "emoji": "\uD83E\uDD16"
   },
 
   "main": {

@@ -2,7 +2,8 @@
   "general": {
     "description": "Stoppt die Wiedergabe ⏹",
     "syntax": "|- stop",
-    "examples": "|- stop » Stoppt die Wiedergabe"
+    "examples": "|- stop » Stoppt die Wiedergabe",
+    "emoji": "⏹"
   },
 
   "main": {

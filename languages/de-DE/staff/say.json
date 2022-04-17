@@ -2,6 +2,7 @@
   "general": {
     "description": "Sendet Nachrichten über den Bot ⚡",
     "syntax": "|- say <Nachricht>",
-    "examples": "|- say Hallo » Sendet Hallo"
+    "examples": "|- say Hallo » Sendet Hallo",
+    "emoji": "⚡"
   }
 }

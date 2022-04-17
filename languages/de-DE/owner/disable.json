@@ -2,7 +2,8 @@
   "general": {
     "description": "Deaktiviert einen bestimmten Command \uD83D\uDED1",
     "syntax": "|- disable <Command> | list",
-    "examples": "|- disable play » Deaktiviert den Play Command\n|- disable list » Listet alle deaktivierten Commands auf"
+    "examples": "|- disable play » Deaktiviert den Play Command\n|- disable list » Listet alle deaktivierten Commands auf",
+    "emoji": "\uD83D\uDED1"
   },
   "main": {
     "message": "{emotes.success} {command} wurde deaktiviert",

@@ -2,7 +2,8 @@
   "general": {
     "description": "Lässt dich meinen Prefix für normale Message-Commands ändern ⚙️",
     "syntax": "|- setprefix <Prefix>",
-    "examples": "|- setprefix ! » Setzt den Prefix auf !"
+    "examples": "|- setprefix ! » Setzt den Prefix auf !",
+    "emoji": "⚙️"
   },
 
   "main": {

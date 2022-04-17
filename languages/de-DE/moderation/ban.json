@@ -2,7 +2,8 @@
   "general": {
     "description": "Bannt böse Menschen vom Server \uD83D\uDD28",
     "syntax": "|- ban <Mitglied> <Grund> [Dauer] | [Grund] <Dauer>",
-    "examples": "|- ban @Tinte Nerven 1h » bannt @Tinte eine Stunde für Nerven\n|- ban @Tinte Werbung » bannt @Tinte permanent für Werbung\n|- ban @Tinte 1d » bannt @Tinte für einen Tag"
+    "examples": "|- ban @Tinte Nerven 1h » bannt @Tinte eine Stunde für Nerven\n|- ban @Tinte Werbung » bannt @Tinte permanent für Werbung\n|- ban @Tinte 1d » bannt @Tinte für einen Tag",
+    "emoji": "\uD83D\uDD28"
   },
 
   "slash": {

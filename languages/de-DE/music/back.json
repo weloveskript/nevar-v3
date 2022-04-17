@@ -2,7 +2,8 @@
   "general": {
     "description": "Spielt das vorherige Lied ab \uD83D\uDD19",
     "syntax": "|- back",
-    "examples": "|- back » Springt zum letzten Lied zurück"
+    "examples": "|- back » Springt zum letzten Lied zurück",
+    "emoji": "\uD83D\uDD19"
   },
 
   "main": {

@@ -2,7 +2,8 @@
   "general": {
     "description": "Lässt dich alles ausrechnen, was womöglich für den Kopf zu schwer ist ➗",
     "syntax": "|- calc <Formel>",
-    "examples": "|- calc 1+2-(3*4)/5+sqrt(9) » Wird vermutlich 3.6 zurückgeben"
+    "examples": "|- calc 1+2-(3*4)/5+sqrt(9) » Wird vermutlich 3.6 zurückgeben",
+    "emoji": "➗"
   },
 
   "slash": {

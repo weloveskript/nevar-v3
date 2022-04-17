@@ -2,7 +2,8 @@
   "general": {
     "description": "Lade mich ein, um mich auch auf deinem Server zu benutzen \uD83E\uDD1D",
     "syntax": "|- invite",
-    "examples": "|- invite » Sendet wichtige Links"
+    "examples": "|- invite » Sendet wichtige Links",
+    "emoji": "\uD83E\uDD1D"
   },
 
   "main": {

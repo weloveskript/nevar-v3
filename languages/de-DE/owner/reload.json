@@ -2,7 +2,8 @@
   "general": {
     "description": "Lädt einen bestimmten Command neu ⚙️",
     "syntax": "|- reload <Command>",
-    "examples": "|- reload play » Lädt den Play Command neu"
+    "examples": "|- reload play » Lädt den Play Command neu",
+    "emoji": "⚙️"
   },
   "main": {
     "message": "{emotes.success} {command} wurde neu geladen"

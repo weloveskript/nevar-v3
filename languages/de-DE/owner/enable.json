@@ -2,7 +2,8 @@
   "general": {
     "description": "Aktiviert einen bestimmten Command \uD83D\uDED1",
     "syntax": "|- enable <Command>",
-    "examples": "|- enable play » Aktiviert den Play Command"
+    "examples": "|- enable play » Aktiviert den Play Command",
+    "emoji": "\uD83D\uDED1"
   },
   "main": {
     "message": "{emotes.success} {command} wurde aktiviert"

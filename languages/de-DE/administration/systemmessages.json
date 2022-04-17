@@ -2,7 +2,8 @@
   "general": {
     "description": "Stellt die Willkommens- und Verabschiedungsnachrichten ein \uD83D\uDC4B",
     "syntax": "|- systemmessages <welcome/goodbye>",
-    "examples": "|- systemmessages welcome » Sendet das Willkommensnachricht-Menü"
+    "examples": "|- systemmessages welcome » Sendet das Willkommensnachricht-Menü",
+    "emoji": "\uD83D\uDC4B"
   },
 
   "slash": {

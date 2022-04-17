@@ -2,7 +2,8 @@
   "general": {
     "description": "Setzt deinen AFK Status \uD83D\uDCA4",
     "syntax": "| afk [Grund]",
-    "examples": "|- afk » Setzt dich AFK\n|- afk schlafen » Setzt dich AFK mit dem Grund schlafen"
+    "examples": "|- afk » Setzt dich AFK\n|- afk schlafen » Setzt dich AFK mit dem Grund schlafen",
+    "emoji": "\uD83D\uDCA4"
   },
 
   "slash": {

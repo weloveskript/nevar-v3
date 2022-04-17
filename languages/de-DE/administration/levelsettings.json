@@ -2,7 +2,8 @@
   "general": {
     "description": "Stelle die Levelnachrichten, dessen Channel und Levelrollen sowie Doppel-XP Rollen ein \uD83C\uDD99",
     "syntax": "|- levelsettings <channel/message/roles/doublexp>",
-    "examples": "|- levelsettings roles » Sendet das Levelrollen-Menü"
+    "examples": "|- levelsettings roles » Sendet das Levelrollen-Menü",
+    "emoji": "\uD83C\uDD99"
   },
 
   "slash": {

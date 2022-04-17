@@ -2,7 +2,8 @@
   "general": {
     "description": "Lässt dich in wenigen Schritten ein komplett angepasstes Embed senden \uD83D\uDDBC️",
     "usage": "|- embed",
-    "example": "|- embed » Beginnt die Embed Einrichtung"
+    "example": "|- embed » Beginnt die Embed Einrichtung",
+    "emoji": "\uD83D\uDDBC️"
   },
 
   "embed": {

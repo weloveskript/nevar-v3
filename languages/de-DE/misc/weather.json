@@ -2,7 +2,8 @@
   "general": {
     "description": "Zeigt das aktuelle Wetter für einen Ort ☁️",
     "syntax": "|- weather <Ort>",
-    "examples": "|- weather Berlin » Zeigt das aktuelle Wetter für Berlin"
+    "examples": "|- weather Berlin » Zeigt das aktuelle Wetter für Berlin",
+    "emoji": "☁️"
   },
 
   "slash": {

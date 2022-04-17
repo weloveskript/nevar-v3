@@ -2,7 +2,8 @@
   "general": {
     "description": "Überspringt eine Anzahl an Liedern ⏭️",
     "syntax": "|- jump <Anzahl>",
-    "examples": "|- jump 5 » überspringt 5 Lieder"
+    "examples": "|- jump 5 » überspringt 5 Lieder",
+    "emoji": "⏭️"
   },
   "slash": {
     "1": {

@@ -2,7 +2,8 @@
   "general": {
     "description": "Lässt dich in wenigen Schritten einen Join2Create Channel einstellen \uD83D\uDD0A",
     "usage": "|- join2create",
-    "example": "|- join2create » Sendet das Join2Create-Menü"
+    "example": "|- join2create » Sendet das Join2Create-Menü",
+    "emoji": "\uD83D\uDD0A"
   },
 
   "main": {

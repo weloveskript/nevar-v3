@@ -2,7 +2,8 @@
   "general": {
     "description": "Lässt dich neuen Mitgliedern automatisch beliebig viele Rollen geben \uD83D\uDC4B",
     "syntax": "|- autorole",
-    "examples": "|- autorole » Sendet das Autorole-Menü"
+    "examples": "|- autorole » Sendet das Autorole-Menü",
+    "emoji": "\uD83D\uDC4B"
   },
 
   "main": {

@@ -2,7 +2,8 @@
   "general": {
     "description": "Pausiert die Wiedergabe ⏸️",
     "syntax": "|- pause",
-    "examples": "|- pause » Pausiert die Wiedergabe"
+    "examples": "|- pause » Pausiert die Wiedergabe",
+    "emoji": "⏸️"
   },
 
   "main": {

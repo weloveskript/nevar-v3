@@ -2,7 +2,8 @@
   "general": {
     "description": "Zeigt dein aktuelles Level als übersichtliches Bild \uD83C\uDD99",
     "syntax": "|- level [Mitglied]",
-    "examples": "|- level @Tinte » Zeigt die Levelcard von Tinte"
+    "examples": "|- level @Tinte » Zeigt die Levelcard von Tinte",
+    "emoji": "\uD83C\uDD99"
   },
 
   "slash": {

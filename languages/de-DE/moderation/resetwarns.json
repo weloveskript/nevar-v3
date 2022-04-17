@@ -2,7 +2,8 @@
   "general": {
     "description": "Setzt alle Warns eines Mitgliedes zurück ❌",
     "syntax": "|- resetwarns <Mitglied>",
-    "examples": "|- resetwarns @Tinte -> setzt alle Warns von @Tinte zurück"
+    "examples": "|- resetwarns @Tinte -> setzt alle Warns von @Tinte zurück",
+    "emoji": "❌"
   },
   "slash": {
     "1": {

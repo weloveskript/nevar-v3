@@ -2,7 +2,8 @@
   "general": {
     "description": "Stellt die Sprache des Bots ein \uD83C\uDF10",
     "syntax": "|- setlang",
-    "examples": "|- setlang » Sendet die Sprachenauswahl"
+    "examples": "|- setlang » Sendet die Sprachenauswahl",
+    "emoji": "\uD83C\uDF10"
   },
 
   "main": {

@@ -2,7 +2,8 @@
   "general": {
     "description": "Spielt deine Lieblingsmusik ab \uD83C\uDFB5",
     "syntax": "|- play <Name/URL>",
-    "examples": "|- play bibel tv jesus » Sucht auf Youtube nach bibeltv jesus und spielt das erste Ergebnis\n|- play https://youtu.be/dQw4w9WgXcQ » Spielt das Video von Youtube\n|- play https://open.spotify.com/track/6eOGjyegLDZqCvCZ3divgp » Spielt das Lied von Spotify\n|- play https://soundcloud.com/tlowraps/stay-with-me-x-ottel » Spielt das Lied von Soundcloud"
+    "examples": "|- play bibel tv jesus » Sucht auf Youtube nach bibeltv jesus und spielt das erste Ergebnis\n|- play https://youtu.be/dQw4w9WgXcQ » Spielt das Video von Youtube\n|- play https://open.spotify.com/track/6eOGjyegLDZqCvCZ3divgp » Spielt das Lied von Spotify\n|- play https://soundcloud.com/tlowraps/stay-with-me-x-ottel » Spielt das Lied von Soundcloud",
+    "emoji": "\uD83C\uDFB5"
   },
   "slash": {
     "1": {

@@ -2,7 +2,8 @@
   "general": {
     "description": "Ändert den Footer-Text aller Embeds ✏️",
     "syntax": "|- footer",
-    "examples": "|- footer » Sendet das Footer-Menü"
+    "examples": "|- footer » Sendet das Footer-Menü",
+    "emoji": "✏️"
   },
   "main": {
     "actions": {

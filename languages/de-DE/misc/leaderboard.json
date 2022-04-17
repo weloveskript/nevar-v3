@@ -2,7 +2,8 @@
   "general": {
     "description": "Zeigt die TOP-10 Mitglieder des Servers im Levelsystem an \uD83C\uDFC6",
     "syntax": "|- leaderboard",
-    "examples": "|- leaderboard » Zeigt die TOP-10 Mitglieder des Servers im Levelsystem an"
+    "examples": "|- leaderboard » Zeigt die TOP-10 Mitglieder des Servers im Levelsystem an",
+    "emoji": "\uD83C\uDFC6"
   },
 
   "main": {

@@ -2,6 +2,7 @@
   "general": {
     "description": "Sendet ein zufälliges Meme \uD83D\uDC38",
     "syntax": "| meme",
-    "examples": "|- meme » Sendet ein zufälliges Meme"
+    "examples": "|- meme » Sendet ein zufälliges Meme",
+    "emoji": "\uD83D\uDC38"
   }
 }

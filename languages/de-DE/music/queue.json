@@ -2,7 +2,8 @@
   "general":  {
     "description": "Zeigt die Queue an \uD83D\uDC49",
     "syntax": "|- queue",
-    "examples": "|- queue » Zeigt die Queue an"
+    "examples": "|- queue » Zeigt die Queue an",
+    "emoji": "\uD83D\uDC49"
   },
   "main": {
     "errors": {

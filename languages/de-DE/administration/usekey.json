@@ -2,7 +2,8 @@
   "general": {
     "description": "Aktiviert alle Premium-Funktionen \uD83D\uDD11",
     "syntax": "|- usekey <Key>",
-    "examples": "|- usekey nevar123 » Löst den Key \"nevar123\" ein"
+    "examples": "|- usekey nevar123 » Löst den Key \"nevar123\" ein",
+    "emoji": "\uD83D\uDD11"
   },
 
   "slash": {

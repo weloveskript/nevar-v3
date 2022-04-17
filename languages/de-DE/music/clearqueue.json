@@ -2,7 +2,8 @@
   "general": {
     "description": "Leert die Queue \uD83D\uDD04",
     "syntax": "|- clearqueue",
-    "examples": "|- clearqueue » Leert die Queue"
+    "examples": "|- clearqueue » Leert die Queue",
+    "emoji": "\uD83D\uDD04"
   },
   "main": {
     "noQueue": "{emotes.error} In der Queue sind aktuell keine Songs vorhanden",

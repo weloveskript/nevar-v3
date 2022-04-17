@@ -2,7 +2,8 @@
   "general": {
     "description": "Lässt dich in wenigen Schritten Backups erstellen und verwalten \uD83D\uDCBE",
     "syntax": "|- backup",
-    "examples": "|- backup » Sendet das Backup-Menü"
+    "examples": "|- backup » Sendet das Backup-Menü",
+    "emoji": "\uD83D\uDCBE"
   },
 
   "main": {

@@ -2,7 +2,8 @@
   "general": {
     "description": "Zeigt für welche Commands die Premium-Version benötigt ist \uD83D\uDC8E",
     "syntax": "|- premiumcommands",
-    "examples": "|- premiumcommands » Sendet eine Liste mit allen Commands für die die Premium-Version benötigt wird"
+    "examples": "|- premiumcommands » Sendet eine Liste mit allen Commands für die die Premium-Version benötigt wird",
+    "emoji": "\uD83D\uDC8E"
   },
 
   "main": {

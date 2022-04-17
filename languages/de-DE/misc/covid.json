@@ -2,7 +2,8 @@
   "general": {
     "description": "Zeigt aktuelle Zahlen zum Coronavirus (COVID-19) an • bleibt gesund ❤️",
     "syntax": "|- covid [Land]",
-    "examples": "|- covid Germany » Zeigt aktuelle Zahlen zu Corona für Deutschland an"
+    "examples": "|- covid Germany » Zeigt aktuelle Zahlen zu Corona für Deutschland an",
+    "emoji": "\uD83E\uDDA0"
   },
 
   "slash": {

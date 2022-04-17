@@ -2,7 +2,8 @@
   "general": {
     "description": "Verwarnt ein Mitglied ⚠️",
     "syntax": "|- warn <Mitglied> <Grund>",
-    "examples": "|- warn @Tinte Spam -> Warnt @Tinte für Spam"
+    "examples": "|- warn @Tinte Spam -> Warnt @Tinte für Spam",
+    "emoji": "⚠️"
   },
   "slash": {
     "1": {

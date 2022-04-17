@@ -2,7 +2,8 @@
   "general": {
     "description": "Löscht eine bestimmte Anzahl an Nachrichten \uD83D\uDDD1️",
     "syntax": "|- clear <Anzahl> [Mitglied]",
-    "examples": "|- clear 7 -> löscht die letzten 7 Nachrichten\n|- clear 7 @Tinte -> löscht die letzten 7 Nachrichten von @Tinte"
+    "examples": "|- clear 7 -> löscht die letzten 7 Nachrichten\n|- clear 7 @Tinte -> löscht die letzten 7 Nachrichten von @Tinte",
+    "emoji": "\uD83D\uDDD1️"
   },
 
   "slash": {

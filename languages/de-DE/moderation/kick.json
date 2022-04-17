@@ -2,7 +2,8 @@
   "general": {
     "description": "Kickt ein Mitglied vom Server ✈️",
     "syntax": "|- kick <Mitglied>",
-    "examples": "|- kick @Tinte -> kickt @Tinte vom Server"
+    "examples": "|- kick @Tinte -> kickt @Tinte vom Server",
+    "emoji": "✈️"
   },
 
   "slash": {

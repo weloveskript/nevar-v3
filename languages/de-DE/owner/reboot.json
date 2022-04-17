@@ -2,7 +2,8 @@
   "general": {
     "description": "Startet den Bot neu \uD83E\uDD16",
     "syntax": "|- reboot",
-    "examples": "|- reboot » Startet den Bot neu"
+    "examples": "|- reboot » Startet den Bot neu",
+    "emoji": "\uD83E\uDD16"
   },
   "main": {
     "message": "{emotes.arrow} Ich starte neu.."

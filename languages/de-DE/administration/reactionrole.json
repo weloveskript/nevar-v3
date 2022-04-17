@@ -2,7 +2,8 @@
   "general": {
     "description": "Lässt dich in wenigen Schritten Reactionroles einrichten ➕",
     "syntax": "|- reactionrole",
-    "examples": "|- reactionrole » Startet das Reactionrole-Setup"
+    "examples": "|- reactionrole » Startet das Reactionrole-Setup",
+    "emoji": "➕"
   },
 
   "main": {

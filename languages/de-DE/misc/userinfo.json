@@ -2,7 +2,8 @@
   "general": {
     "description": "Zeigt Informationen zu einem Mitglied an \uD83D\uDC64",
     "usage": "|- userinfo [Mitglied]",
-    "example": "|- userinfo @Tinte » Zeigt allgemeine Informationen zu Tinte an"
+    "example": "|- userinfo @Tinte » Zeigt allgemeine Informationen zu Tinte an",
+    "emoji": "\uD83D\uDC64"
   },
 
   "slash": {
