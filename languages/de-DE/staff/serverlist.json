@@ -1,0 +1,17 @@
+{
+  "general": {
+    "description": "Listet alle Server des Bots auf ⚡",
+    "syntax": "|- serverlist",
+    "examples": "|- serverlist » Listet alle Server",
+    "emoji": "⚡"
+  },
+  "main": {
+    "labels": {
+      "back": "Zurück",
+      "forward": "Weiter"
+    },
+    "showing": "{emotes.server} Serverlist | Zeige {index}-{indexEnd} von {total}",
+    "members": "Mitglieder: ",
+    "id": "ID: "
+  }
+}
