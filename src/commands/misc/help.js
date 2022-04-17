@@ -25,6 +25,34 @@ class Help extends Command {
         const channel = interaction?.channel || message.channel;
         const member = interaction?.member || message.member;
 
+        let cmd;
+        if(args[0]) cmd = this.client.commands.get(args[0].toString().toLowerCase()) || this.client.commands.get(this.client.aliases.get(args[0].toString().toLowerCase()));
+
+        if(cmd){
+            const embed = new MessageEmbed()
+                .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                .setColor(this.client.embedColor)
+                .setTitle(guild.translate("misc/help:main:command:helpFor")
+                    .replace('{emoji}', guild.translate(cmd.help.category + '/' + cmd.help.name + ':general:emoji'))
+                    .replace('{command}', cmd.help.name.charAt(0).toUpperCase() + cmd.help.name.slice(1))
+                    .replace('{category}', guild.translate("misc/help:main:categoriesList:" + cmd.help.category)))
+                .setDescription('```' + guild.translate(cmd.help.description) + '```')
+                .addField(guild.translate("misc/help:main:command:premium:name"), '```' + guild.translate("misc/help:main:command:premium:value")
+                    .replace('{state}', cmd.conf.premium ? guild.translate("language:yes") : guild.translate("language:no")) + '```', true)
+                .addField(guild.translate("misc/help:main:command:cooldown:name"), '```' + guild.translate("misc/help:main:command:cooldown:value")
+                    .replace('{cooldown}', cmd.conf.cooldown/1000) + '```', true)
+                .addField(guild.translate("misc/help:main:command:permissions:name"), '```' + guild.translate("misc/help:main:command:permissions:value")
+                    .replace('{permissions}', cmd.conf.memberPermissions.length > 0 ? cmd.conf.memberPermissions.join('\n') : guild.translate("language:noEntries")) + '```')
+                .addField(guild.translate("misc/help:main:command:slashcommand:name"), '```' + guild.translate("misc/help:main:command:slashcommand:value")
+                    .replace('{state}', cmd.slashCommand.addCommand ? guild.translate("language:yes") : guild.translate("language:no")) + '```')
+                .addField(guild.translate("misc/help:main:command:aliases:name"), '```' + guild.translate("misc/help:main:command:aliases:value")
+                    .replace('{aliases}', cmd.help.aliases.length > 0 ? cmd.help.aliases.join('\n') : guild.translate("language:noEntries")) + '```')
+                .setThumbnail(this.client.user.displayAvatarURL())
+                .setFooter({text: data.guild.footer});
+            return channel.send({embeds:[embed]});
+        }
+
+
         let desc = guild.translate("misc/help:main:links")
             .replace('{emotes.discord}', this.client.emotes.discord)
             .replace('{support}', this.client.supportUrl)
@@ -70,10 +98,9 @@ class Help extends Command {
             sortedCategories.push(this.client.emotes.categories[category] + ' **' + guild.translate("misc/help:main:categoriesList:" + category) + '**');
         }
 
-
         let sent;
         let news = JSON.parse(fs.readFileSync('./storage/news.json'))
-        let embed = new MessageEmbed()
+        let mainEmbed = new MessageEmbed()
             .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
             .setDescription(desc)
             .setColor(this.client.embedColor)
@@ -86,14 +113,15 @@ class Help extends Command {
                 guild.translate("misc/help:main:news:news")
                     .replace('{news}', news.text), true)
             .setFooter({text: guild.translate("misc/help:main:footer")});
-        if(message) sent = await message.send(embed, false, [row]);
-        if(interaction) sent = await interaction.send(embed, false, [row]);
+        if(message) sent = await message.send(mainEmbed, false, [row]);
+        if(interaction) sent = await interaction.send(mainEmbed, false, [row]);
 
         const collector = sent.createMessageComponentCollector({
             filter: (i) => i.customId === member.user.id + '_helpmenu',
         });
 
         collector.on("collect", async (chooseCategory) => {
+            if(chooseCategory.customId !== chooseCategory.user.id + '_helpmenu') return;
             let currentIndex = 0;
             let category = chooseCategory.values[0].split('_')[1];
             let commands = this.client.commands.filter((command) => command.help.category === category);
@@ -101,6 +129,7 @@ class Help extends Command {
 
             let backId = member.user.id + '_back';
             let forwardId = member.user.id + '_forward';
+            let homeId = member.user.id + '_home';
 
             let backButton = new MessageButton({
                 style: "SECONDARY",
@@ -116,17 +145,24 @@ class Help extends Command {
                 custom_id: forwardId
             });
 
+            let homeButton = new MessageButton({
+                style: "DANGER",
+                label: guild.translate("misc/help:main:home"),
+                emoji: "🏠",
+                custom_id: homeId
+            });
+
             const cmds = [... commands.values()];
 
             let generateEmbed = async start => {
                 const current = cmds.slice(start, start + 10);
                 let text = '{text}'.replace('{text}',
-                    await Promise.all(current.map(cmd => (
+                    current.map(cmd => (
 
-                        '**' + cmd.help.name.charAt(0).toUpperCase() + cmd.help.name.slice(1) + '**' +
-                        '\n' + guild.translate(cmd.help.description).replace(/[^\p{L}\p{N}\p{P}\p{Z}^$\n]/gu, '') + '\n\n'
+                        guild.translate(cmd.help.category + '/' + cmd.help.name + ':general:emoji') + ' `' + data.guild.prefix + cmd.help.name + '`' +
+                        '\n» ' + guild.translate(cmd.help.description).replace(/[^\p{L}\p{N}\p{P}\p{Z}^$\n]/gu, '') + '\n\n'
 
-                    ))));
+                    )).join(''));
 
                 let embed = new MessageEmbed()
                     .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
@@ -134,7 +170,7 @@ class Help extends Command {
                         .replace('{index}', start + 1)
                         .replace('{indexEnd}', start + current.length)
                         .replace('{total}', cmds.length)
-                        .replace('{emotes.dev}', this.client.emotes.badges.verifieddev))
+                        .replace('{category}', this.client.emotes.categories[category] + ' ' + guild.translate("misc/help:main:categoriesList:" + category)))
                     .setDescription(text)
                     .setColor(this.client.embedColor)
                     .setFooter({text: data.guild.footer});
@@ -146,8 +182,8 @@ class Help extends Command {
             await chooseCategory.update({
                 embeds : [await generateEmbed(0)],
                 components: canFitOnePage
-                    ? []
-                    : [new MessageActionRow({components: [forwardButton]})]
+                    ? [new MessageActionRow({components: [homeButton]})]
+                    : [new MessageActionRow({components: [forwardButton, homeButton]})]
             })
             if(canFitOnePage) return;
 
@@ -158,21 +194,36 @@ class Help extends Command {
             currentIndex = 0;
 
             collector2.on('collect', async (collectPagination) => {
-                collectPagination.customId === backId ? (currentIndex -= 10) : (currentIndex += 10);
+                if(collectPagination.customId === backId || collectPagination.customId === forwardId){
+                    collectPagination.customId === backId ? (currentIndex -= 10) : (currentIndex += 10);
 
-                    await collectPagination.update({
+                    await collectPagination.deferUpdate().catch(() => {});
+                    await sent.edit({
                         embeds: [await generateEmbed(currentIndex)],
                         components: [
                             new MessageActionRow({
                                 components: [
-                                    ...(currentIndex ? [backButton] : []),
-                                    ...(currentIndex + 10 < cmds.length ? [forwardButton] : [])
+                                    ...(currentIndex ? [backButton, homeButton] : []),
+                                    ...(currentIndex + 10 < cmds.length ? [forwardButton, homeButton] : [])
                                 ]
                             })
                         ]
                     })
                 }
-            )
+            })
+
+            const homeCollector = sent.createMessageComponentCollector({
+                filter: (i) => i.customId === member.user.id + '_home',
+            });
+
+            homeCollector.on("collect", async (homeInteraction) => {
+                if(homeInteraction.customId !== homeInteraction.user.id + '_home') return;
+                await homeInteraction.deferUpdate().catch(() => {});
+                sent.edit({
+                   embeds: [mainEmbed],
+                   components: [row]
+                });
+            });
         })
     }
 }

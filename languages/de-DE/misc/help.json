@@ -1,8 +1,9 @@
 {
   "general": {
-    "description": "Sendet das Hilfe-Menü",
+    "description": "Sendet das Hilfe-Menü ❓",
     "syntax": "|- help [Befehl]",
-    "examples": "|- help » Sendet das Hilfe-Menü\n|- help Ban » Sendet Hilfe zum Ban-Befehl"
+    "examples": "|- help » Sendet das Hilfe-Menü\n|- help Ban » Sendet Hilfe zum Ban-Befehl",
+    "emoji": "❓"
   },
 
   "main": {
@@ -14,7 +15,7 @@
       "administration": "Administration",
       "fun": "Fun",
       "minigames": "Minispiele",
-      "misc": "Nützliches",
+      "misc": "Sonstiges",
       "moderation": "Moderation",
       "music": "Musik",
       "owner": "Owner",
@@ -29,6 +30,31 @@
     "choose": "Zeig die Befehle der {cat}-Kategorie",
     "back": "Zurück",
     "forward": "Weiter",
-    "showing": "{emotes.dev} Zeige {index}-{indexEnd} von {total}"
+    "home": "Zur Hauptseite",
+    "showing": "{category} | Zeige {index}-{indexEnd} von {total}",
+
+    "command": {
+      "helpFor": "{emoji} Hilfe für {command} ({category})",
+      "premium": {
+        "name": "Premium",
+        "value": "{state}"
+      },
+      "cooldown": {
+        "name": "Cooldown",
+        "value": "{cooldown} Sekunden"
+      },
+      "permissions": {
+        "name": "Benötigte Berechtigungen",
+        "value": "{permissions}"
+      },
+      "slashcommand": {
+        "name": "Als Slash-Command verfügbar",
+        "value": "{state}"
+      },
+      "aliases": {
+        "name": "Aliase",
+        "value": "{aliases}"
+      }
+    }
   }
 }
