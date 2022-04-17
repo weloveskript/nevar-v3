@@ -39,7 +39,7 @@ class Giveaway extends Command {
                     giveawayEnded: guild.translate("misc/giveaway:main:gwMessages:giveawayEnd")
                         .replaceAll('{emotes.giveaway}', bot.emotes.giveaway),
                     drawing: guild.translate("misc/giveaway:main:gwMessages:timeLeft")
-                        .replaceAll('{emotes.info}', bot.emotes.info2)
+                        .replaceAll('{emotes.info}', bot.emotes.star)
                         .replace('{condition}', gwCondition.text),
                     inviteToParticipate: guild.translate("misc/giveaway:main:gwMessages:participate")
                         .replace('{emotes.support}', bot.emotes.badges.earlysupporter)
@@ -53,7 +53,7 @@ class Giveaway extends Command {
                         text: guild.translate("misc/giveaway:main:gwMessages:endAt"),
                     },
                     noWinner: guild.translate("misc/giveaway:main:gwMessages:noWinner")
-                        .replaceAll('{emotes.info}', bot.emotes.info2)
+                        .replaceAll('{emotes.info}', bot.emotes.star)
                         .replace('{emotes.support}', bot.emotes.badges.earlysupporter)
                         .replace('{client}', bot.user.username)
                         .replace('{invite}', bot.invite)

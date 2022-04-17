@@ -8,7 +8,7 @@ module.exports = class {
             let guild = giveaway.message.guild;
             let embed = this.client.giveawaysManager.generateEndEmbed(giveaway, winners);
             embed.description = guild.translate("misc/giveaway:main:gwMessages:winners")
-                .replaceAll('{emotes.info}', this.client.emotes.info2)
+                .replaceAll('{emotes.info}', this.client.emotes.star)
                 .replace('{emotes.support}', this.client.emotes.badges.earlysupporter)
                 .replace('{client}', this.client.user.username)
                 .replace('{invite}', this.client.invite)

@@ -74,7 +74,7 @@ class Serverinfo extends Command {
                     .replace('{memberCount}', guild.memberCount), true)
 
             .addField(guild.translate("misc/serverinfo:main:fields:channels:name")
-                    .replace('{emotes.channel}', this.client.emotes.channels),
+                    .replace('{emotes.channel}', this.client.emotes.list),
                 guild.translate("misc/serverinfo:main:fields:channels:value")
                     .replace('{channelCount}', guild.channels.cache.filter(c => c.type === "GUILD_TEXT" || c.type === "GUILD_NEWS" || c.type === "GUILD_VOICE").size)
                     .replace('{text}', guild.channels.cache.filter(c => c.type === "GUILD_TEXT" || c.type === "GUILD_NEWS").size)
@@ -91,12 +91,12 @@ class Serverinfo extends Command {
                     .replace('{createdBefore}', createdAgo))
 
             .addField(guild.translate("misc/serverinfo:main:fields:boosts:name")
-                    .replace('{emotes.boost}', this.client.emotes.boost),
+                    .replace('{emotes.boost}', this.client.emotes.diamond),
                 guild.translate("misc/serverinfo:main:fields:boosts:value")
                     .replace('{boosts}', guild.premiumSubscriptionCount), true)
 
             .addField(guild.translate("misc/serverinfo:main:fields:boostLevel:name")
-                    .replace('{emotes.boost}', this.client.emotes.boost),
+                    .replace('{emotes.boost}', this.client.emotes.diamond),
                 guild.translate("misc/serverinfo:main:fields:boostLevel:value")
                     .replace('{boostLevel}', guild.premiumTier
                         .replace('NONE', '0')
@@ -105,7 +105,7 @@ class Serverinfo extends Command {
                         .replace('TIER_3', '3')), true)
 
             .addField(guild.translate("misc/serverinfo:main:fields:boostsUntil:name")
-                    .replace('{emotes.boost}', this.client.emotes.boost)
+                    .replace('{emotes.boost}', this.client.emotes.diamond)
                     .replace('{level}', guild.premiumTier
                         .replace('NONE', '1')
                         .replace('TIER_1', '2')

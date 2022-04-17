@@ -50,14 +50,5 @@
     "invalid": {
       "image": "{emotes.error} Du hast kein gültiges Bild hochgeladen. Der Vorgang wurde abgebrochen\n{emotes.arrow} Gültige Formate sind:\n```|- PNG\n|- WEBP\n|- JPEG\n|- GIF```"
     }
-  },
-
-
-  "generate": "{emotes.arrow} Dein Embed wird nun generiert. Bitte beachte, das dass einen kleinen Moment dauern kann",
-  "successfull": "{emotes.success} Dein Embed wurde erfolgreich generiert",
-  "unsuccessfull": "{emotes.error} Beim Generieren/Senden deines Embeds ist ein Fehler aufgetreten",
-
-
-  "collectColor": "{emotes.arrow} [Schritt 9/9] Letzter Schritt: Sende die Farbe des Embeds - diese Angabe kann in HEX sowie RGB sein. Wenn du die Nevar-Standardfarbe möchtest, kannst du \"/\" senden",
-  "color": "«« Das ist die Farbe des Embeds"
+  }
 }

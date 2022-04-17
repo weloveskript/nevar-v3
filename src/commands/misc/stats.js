@@ -76,7 +76,7 @@ class Stats extends Command {
                     .replace('{staffs}', staffs.join('\n')))
 
             .addField(guild.translate("misc/stats:main:fields:uptime:name")
-                    .replace('{emotes.clock}', this.client.emotes.time),
+                    .replace('{emotes.clock}', this.client.emotes.clock),
                 guild.translate("misc/stats:main:fields:uptime:value")
                     .replace('{uptime}', uptime))
 
@@ -106,7 +106,7 @@ class Stats extends Command {
                     .replace('{averageMembers}', this.client.format(averageMemberCount)), true)
 
             .addField(guild.translate("misc/stats:main:fields:channels:name")
-                    .replace('{emotes.channel}', this.client.emotes.channels),
+                    .replace('{emotes.channel}', this.client.emotes.list),
                 guild.translate("misc/stats:main:fields:channels:value")
                     .replace('{channels}', this.client.format(this.client.channels.cache.size)), true)
 
