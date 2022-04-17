@@ -13,6 +13,8 @@ module.exports = class {
             id: guild.id
         });
 
+        // TODO: Hinzufügen wenn alle Übersetzungen für die Sprachen fertig sind
+        /**
         let preferredLang = guild.preferredLocale.split('-')[0]
         for(let lang of this.client.languages){
             if(lang.name.split('-')[0] === preferredLang){
@@ -21,6 +23,11 @@ module.exports = class {
                 await guildData.save();
             }
         }
+         **/
+        // Solange immer Sprache auf Deutsch setzen
+        guildData.language = 'de-DE';
+        guildData.markModified("language");
+        await guildData.save();
         if(guildData.blocked) {
             guild.leave().catch(() => {});
             return;

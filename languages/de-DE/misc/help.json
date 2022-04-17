@@ -42,6 +42,14 @@
 
     "command": {
       "helpFor": "{emoji} Hilfe für {command} ({category})",
+      "syntax": {
+        "name": "Syntax",
+        "value": "{syntax}"
+      },
+      "examples": {
+        "name": "Beispiele",
+        "value": "{examples}"
+      },
       "premium": {
         "name": "Premium",
         "value": "{state}"
