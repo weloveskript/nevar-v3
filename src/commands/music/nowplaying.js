@@ -63,7 +63,8 @@ class Nowplaying extends Command {
             .setColor(this.client.embedColor)
             .setFooter({text: data.guild.footer});
 
-        return interaction.send(embed);
+        if(interaction) return interaction.send(embed);
+        if(message) return message.send(embed);
 
     }
 
