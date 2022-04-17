@@ -54,7 +54,8 @@ class Help extends Command {
                     .replace('{aliases}', cmd.help.aliases.length > 0 ? cmd.help.aliases.join('\n') : guild.translate("language:noEntries")) + '```')
                 .setThumbnail(this.client.user.displayAvatarURL())
                 .setFooter({text: data.guild.footer});
-            return channel.send({embeds:[embed]});
+            if(message) return message.send(embed);
+            if(interaction) return interaction.send(embed);
         }
 
 
