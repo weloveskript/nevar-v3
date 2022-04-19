@@ -135,9 +135,9 @@ class Userinfo extends Command {
                     .replace('{flags}', userFlags.map(flag => flags[flag]).join('\n')))
         }
 
-        let activities = user.presence.activities;
+        let activities = user.presence?.activities;
         const presences = [];
-        if(activities.length > 0){
+        if(activities?.length > 0){
             for(let activity of activities){
                 let type = activity.type.toString()
                     .replace('PLAYING', guild.translate("misc/userinfo:main:presenceTypes:playing"))
@@ -186,7 +186,7 @@ class Userinfo extends Command {
                 }
             }
         }
-        if(presences.length > 0) {
+        if(presences?.length > 0) {
             embed.addField(guild.translate("misc/userinfo:main:fields:presences:name")
                     .replace('{emotes.play}', this.client.emotes.playing),
                 guild.translate('misc/userinfo:main:fields:presences:value')
