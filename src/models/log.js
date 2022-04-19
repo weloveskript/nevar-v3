@@ -22,4 +22,12 @@ module.exports = mongoose.model("Log", new mongoose.Schema({
             createdAt: { type: Number, default: Date.now() }
         }
     },
-}))
+    channel: {
+        type: Object,
+        default: {
+            name: "unknown",
+            id: null,
+            createdAt: { type: Number, default: Date.now() }
+        }
+    }
+}));

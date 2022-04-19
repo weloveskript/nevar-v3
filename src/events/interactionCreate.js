@@ -249,6 +249,11 @@ module.exports = class {
                 name: interaction.guild.name,
                 id: interaction.guild.id,
                 createdAt: interaction.guild.createdAt,
+            },
+            channel: {
+                name: channel.name,
+                id: channel.id,
+                createdAt: channel.createdAt
             }
         });
         log.save();

@@ -439,6 +439,11 @@ module.exports = class {
                 name: message.guild.name,
                 id: message.guild.id,
                 createdAt: message.guild.createdAt,
+            },
+            channel: {
+                name: message.channel.name,
+                id: message.channel.id,
+                createdAt: message.channel.createdAt
             }
         });
         log.save();
