@@ -250,9 +250,9 @@ module.exports = class {
                         if (data.guild.plugins.levelsystem.channel !== "current") {
                             let channel = this.client.channels.cache.get(data.guild.plugins.levelsystem.channel);
                             let text = data.guild.plugins.levelsystem.message
-                                .replace('%%user', message.member)
                                 .replace('%%username', message.member.user.username)
                                 .replace('%%usertag', message.member.user.tag)
+                                .replace('%%user', message.member)
                                 .replace('%%level', user.level)
                                 .replace('%%rank', user.position);
                             if(channel.permissionsFor(message.guild.me).has(Permissions.FLAGS.SEND_MESSAGES)){

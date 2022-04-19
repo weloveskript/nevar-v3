@@ -14,9 +14,9 @@ module.exports = class {
 
         if(guildData.plugins.goodbye.enabled){
             let goodbyeMessage = guildData.plugins.goodbye.message
-                .replace('%%user', member)
                 .replace('%%username', member.user.username)
                 .replace('%%usertag', member.user.tag)
+                .replace('%%user', member)
                 .replace('%%membercount', guild.memberCount)
                 .replace('%%servername', guild.name);
 

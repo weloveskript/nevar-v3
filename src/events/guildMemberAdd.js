@@ -21,9 +21,9 @@ module.exports = class {
 
         if(guildData.plugins.welcome.enabled){
             let welcomeMessage = guildData.plugins.welcome.message
-                .replace('%%user', member)
                 .replace('%%username', member.user.username)
                 .replace('%%usertag', member.user.tag)
+                .replace('%%user', member)
                 .replace('%%membercount', guild.memberCount)
                 .replace('%%servername', guild.name);
 
