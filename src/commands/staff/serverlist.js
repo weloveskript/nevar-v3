@@ -40,7 +40,7 @@ class Serverlist extends Command {
             custom_id: forwardId
         });
 
-        const guilds = [... this.client.guilds.cache.values()];
+        const guilds = [... this.client.guilds.cache.sort((a,b) => b.memberCount-a.memberCount).values()];
 
         let generateEmbed = async start => {
             const current = guilds.slice(start, start + 10);
