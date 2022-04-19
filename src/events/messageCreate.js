@@ -174,7 +174,7 @@ module.exports = class {
             for (let val of data.guild.plugins.autoDeleteChannels) {
                 if (val.split(' | ')[0].toString() === message.channel.id.toString()) {
                     new Promise(resolve => setTimeout(resolve, Number(val.split(' | ')[1]))).then(async () => {
-                        message.delete().catch(() => {});
+                        if(!message.pinned) message.delete().catch(() => {});
                     })
                 }
             }
