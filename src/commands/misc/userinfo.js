@@ -107,7 +107,7 @@ class Userinfo extends Command {
             .addField(guild.translate("misc/userinfo:main:fields:nick:name")
                     .replace('{emotes.pencil}', this.client.emotes.pencil),
                 guild.translate('misc/userinfo:main:fields:nick:value')
-                    .replace('{nick}', member.nickname || member.user.username), true)
+                    .replace('{nick}', user.nickname || user.user.username), true)
 
             .addField(guild.translate("misc/userinfo:main:fields:bot:name")
                     .replace('{emotes.robot}', this.client.emotes.bot),
