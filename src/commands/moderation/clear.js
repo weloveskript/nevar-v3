@@ -27,6 +27,8 @@ class Clear extends Command {
         let guild = interaction?.guild || message?.guild;
         let channel = interaction?.channel || message?.channel;
 
+        if(message) await message.delete().catch(() => {});
+
         if (!args[0]) {
             if (message) return message.send(this.client.usageEmbed(guild, this, data));
             if (interaction) return interaction.send(this.client.usageEmbed(guild, this, data));
@@ -38,13 +40,11 @@ class Clear extends Command {
             if (interaction) return interaction.send(this.client.usageEmbed(guild, this, data));
         }
 
-
-
         let user;
         user = await this.client.users.fetch(args[1]).catch(() => {});
         if (message) user = await this.client.resolveUser(args[1]);
 
-        let messages = Array.from((await channel.messages.fetch({limit: parseInt(amount)+1})).values());
+        let messages = Array.from((await channel.messages.fetch({limit: parseInt(amount)})).values());
 
         if (user)
             messages = messages.filter((m) => m.author.id === user.id);
@@ -61,8 +61,8 @@ class Clear extends Command {
             .setColor(this.client.embedColor)
             .setFooter({text: data.guild.footer});
         let sent;
-        if (message) sent = await message.send(embed);
-        if (interaction) sent = await interaction.send(embed);
+        if(message) sent = await channel.send({embeds:[embed]});
+        if(interaction) sent = await interaction.send(embed);
         await this.client.wait(7000);
         sent.delete().catch(() => {});
     }
