@@ -10,7 +10,7 @@ config.toml
 storage/disabledcmds.json
 storage/giveaways.json
 storage/premiumkeys.json
-storage/images/
 storage/staffs.json
 storage/news.json
+storage/images/
 data.json
