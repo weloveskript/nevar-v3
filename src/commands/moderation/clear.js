@@ -44,6 +44,11 @@ class Clear extends Command {
         user = await this.client.users.fetch(args[1]).catch(() => {});
         if (message) user = await this.client.resolveUser(args[1]);
 
+        if(parseInt(amount) > 100){
+            if (message) return message.send(this.client.usageEmbed(guild, this, data));
+            if (interaction) return interaction.send(this.client.usageEmbed(guild, this, data));
+        }
+
         let messages = Array.from((await channel.messages.fetch({limit: parseInt(amount)})).values());
 
         if (user)
