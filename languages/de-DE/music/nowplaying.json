@@ -1,8 +1,8 @@
 {
   "general": {
     "description": "Zeigt welches Lied aktuell abgespielt wird \uD83C\uDFB5",
-    "syntax": "{emotes.use} Syntax: ```{prefix}nowplaying```",
-    "examples": "{emotes.example} Beispiel: ```{prefix}nowplaying```",
+    "syntax": "|- nowplaying",
+    "examples": "|- nowplaying » Zeigt was aktuell abgespielt wird",
     "emoji": "\uD83C\uDFB5"
   },
 
