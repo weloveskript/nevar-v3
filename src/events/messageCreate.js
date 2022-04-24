@@ -237,7 +237,7 @@ module.exports = class {
                                 .replace('{key}', key.key))
                             .setColor(this.client.embedColor)
                             .setFooter({text: data.guild.footer});
-                        await message.member.send(embed).catch(() => {});
+                        await message.member.user.send({embeds: [embed]}).catch(() => {});
                     }
                     if (data.guild.plugins?.levelsystem?.levelroles?.length > 0) {
                         for (let val of data.guild.plugins?.levelsystem?.levelroles) {
