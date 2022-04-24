@@ -26,6 +26,11 @@ class Resetwarns extends Command {
         let guild = interaction?.guild || message?.guild;
         let channel = interaction?.channel || message?.channel;
 
+        if(!args[0]){
+            if (message) return message.send(this.client.usageEmbed(guild, this, data));
+            if (interaction) return interaction.send(this.client.usageEmbed(guild, this, data));
+        }
+
         let member = await guild.members.fetch(args[0]).catch(() => {});
         if(message) member = await Resolver.resolveMember({
             message: message,

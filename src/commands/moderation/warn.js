@@ -29,12 +29,16 @@ class Warn extends Command {
         let channel = interaction?.channel || message?.channel;
         let author = interaction?.member || message?.member;
 
+        if(!args[0]){
+            if (message) return message.send(this.client.usageEmbed(guild, this, data));
+            if (interaction) return interaction.send(this.client.usageEmbed(guild, this, data));
+        }
+
         let member = await guild.members.fetch(args[0]).catch(() => {});
         if(message) member = await Resolver.resolveMember({
             message: message,
             search: args[0]
         });
-
 
         if(!member){
             if (message) return message.send(this.client.usageEmbed(guild, this, data));
@@ -68,7 +72,6 @@ class Warn extends Command {
             guildID: guild.id
         });
 
-        console.log(guild.ownerId)
         let moderatorPosition = author.roles.highest.position;
         let victimPositon = member.roles.highest.position;
         if(guild.ownerId !== author.user.id && moderatorPosition < victimPositon){
