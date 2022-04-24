@@ -30,7 +30,7 @@ class Setprefix extends Command {
 
         let embed = new MessageEmbed()
             .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
-            .setDescription(guild.translate("administration/sp:main:set")
+            .setDescription(guild.translate("administration/setprefix:main:set")
                 .replace('{emotes.success}', this.client.emotes.success)
                 .replace('{prefix}', prefix))
             .setColor(this.client.embedColor)
