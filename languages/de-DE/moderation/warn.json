@@ -19,7 +19,7 @@
     "errors": {
       "bot": "{emotes.error} Bots können nicht verwarnt werden",
       "yourSelf": "{emotes.error} Du kannst dich nicht selber verwarnen",
-      "cantWarn": "{emotes.error} Du kannst {user} nicht verwarnen{emotes.arrow} Hier sind mögliche Gründe woran das liegen kann:\n```|- {user} hat eine höhere Rolle als du```"
+      "cantWarn": "{emotes.error} Du kannst {user} nicht verwarnen\n{emotes.arrow} Hier sind mögliche Gründe woran das liegen kann:\n```|- {user} hat eine höhere Rolle als du```"
     },
     "noReason": "Kein Grund angegeben",
     "embeds": {
