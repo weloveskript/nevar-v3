@@ -1,5 +1,5 @@
 const Levels = require("discord-xp");
-const fetch = require("node-fetch");
+const axios = require('axios');
 
 module.exports = class {
     constructor(client) {
@@ -32,13 +32,12 @@ module.exports = class {
                 }
                 if(bot === 'Amari'){
                     // Get the user's level from the Amari API
-                    let json = await fetch('https://amaribot.com/api/v1/guild/' + member.guild.id + '/member/' + member.user.id, {
-                        method: 'GET',
+                    let json = (await axios.get('https://amaribot.com/api/v1/guild/' + member.guild.id + '/member/' + member.user.id, {
                         headers: {
                             Authorization: this.client.config.apikeys.amari
-                        }
-                    })
-                        .then(res => res.json());
+                        },
+                        validateStatus: false
+                    })).data
 
                     let level = 0;
                     if(json?.error?.startsWith('Unable to find the requested') || json?.error === 'Unauthorized')
