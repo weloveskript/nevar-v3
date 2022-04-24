@@ -608,16 +608,16 @@ class Embed extends Command {
                                                                             await Imgur
                                                                                 .uploadFile(footerIcon)
                                                                                 .then((json) => {
-                                                                                    generatedEmbed.setFooter(footerText, json.link)
+                                                                                    generatedEmbed.setFooter({text: footerText, iconURL: json.link})
                                                                                 });
                                                                         } else {
                                                                             if (footerText) {
-                                                                                generatedEmbed.setFooter(footerText)
+                                                                                generatedEmbed.setFooter({text: footerText})
                                                                             } else if (footerIcon) {
                                                                                 await Imgur
                                                                                     .uploadFile(footerIcon)
                                                                                     .then((json) => {
-                                                                                        generatedEmbed.setFooter('', json.link)
+                                                                                        generatedEmbed.setFooter({text: '', iconURL: json.link})
                                                                                     });
                                                                             }
                                                                         }
