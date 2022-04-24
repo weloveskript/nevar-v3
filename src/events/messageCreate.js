@@ -5,6 +5,7 @@ const toml = require('toml');
 const config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
 const Levels = require('discord-xp');
 const moment = require("moment");
+const premium = require("../managers/premiumkeys");
 
 Levels.setURL(config.general.mongodb_url);
 
@@ -199,19 +200,20 @@ module.exports = class {
 
         if (message.author.bot) return;
 
-        let prefix = this.client.functions.getPrefix(message, data);
-        if (!prefix) {
-            if (data.guild.plugins.blacklist?.list.length > 0) {
-                for (let word of data.guild.plugins.blacklist.list) {
-                    if (message.content.toLowerCase().includes(word)) {
-                        if (!message.channel.permissionsFor(message.member).has(Permissions.FLAGS.ADMINISTRATOR) || !message.channel.permissionsFor(message.member).has(Permissions.FLAGS.MANAGE_GUILD) || !message.channel.permissionsFor(message.member).has(Permissions.FLAGS.MANAGE_MESSAGES)) {
-                            return message.delete().catch(() => {});
-                        }
+        if (data.guild.plugins.blacklist?.list.length > 0) {
+            for (let word of data.guild.plugins.blacklist.list) {
+                if (message.content.toLowerCase().includes(word)) {
+                    if (!message.channel.permissionsFor(message.member).has(Permissions.FLAGS.ADMINISTRATOR) || !message.channel.permissionsFor(message.member).has(Permissions.FLAGS.MANAGE_GUILD) || !message.channel.permissionsFor(message.member).has(Permissions.FLAGS.MANAGE_MESSAGES)) {
+                        return message.delete().catch(() => {
+                        });
                     }
                 }
             }
+        }
 
-            // Leveling
+        // Leveling
+        let prefix = this.client.functions.getPrefix(message, data);
+        if(!prefix){
             let randomXp = Math.floor(Math.random() * 30) + 1;
             for (let index of data.guild.plugins.levelsystem.doubleXpRoles) {
                 if (message.member.roles.cache.get(index)) {
@@ -276,6 +278,7 @@ module.exports = class {
             }
             return;
         }
+
 
         const args = message.content.slice((typeof prefix === "string" ? prefix.length : 0)).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
