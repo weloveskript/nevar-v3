@@ -31,8 +31,6 @@ class Levelsettings extends Command {
     }
     async run(interaction, message, args, data){
 
-        console.log(args[0])
-
         const guild = message?.guild || interaction?.guild;
         const member = message?.member || interaction?.member;
         const channel = message?.channel || interaction?.channel;
