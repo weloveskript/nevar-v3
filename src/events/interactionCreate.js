@@ -12,6 +12,27 @@ module.exports = class {
     }
 
     async run(interaction) {
+        if(!interaction.isCommand()){
+            let customIdSplitted = interaction.customId.split('_');
+            let guild = this.client.guilds.cache.get(interaction.guildId);
+            const data = {
+                config: this.client.config,
+                guild: await this.client.findOrCreateGuild({id: interaction.guildId}),
+                memberData: await this.client.findOrCreateMember({id: interaction.member.user.id}),
+                userData: await this.client.findOrCreateUser({id: interaction.member.user.id})
+            };
+            for(let idSplit of customIdSplitted){
+                if(parseInt(idSplit) && (interaction.user.id.toString() !== idSplit.toString())) {
+                    let embed = new MessageEmbed()
+                        .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
+                        .setDescription(guild.translate("commandHandler:notYourInteraction")
+                            .replace('{emotes.error}', this.client.emotes.error))
+                        .setColor(this.client.embedColor)
+                        .setFooter({text: data.guild.footer});
+                    return interaction.send(embed, true);
+                }
+            }
+        }
         if(!interaction) return;
         if(!interaction.isCommand()) {
             if(interaction.isAutocomplete()){

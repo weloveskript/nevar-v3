@@ -10,5 +10,6 @@
   "remainingCooldown": "{emotes.error} Ganz ruhig.. Du kannst den Befehl in {time} ?Sekunde?Sekunden? wieder nutzen",
   "unknownError": "{emotes.error} Hmh, irgendwas ist schiefgelaufen.. Meld dich auf dem [Supportserver]({support}), dort können wir dir weiterhelfen",
   "botPing": "{emotes.arrow} [Hey {user}. Wie kann ich dir helfen?|Stets zu Diensten {user}. Wie kann ich helfen?|Hola {user} - wie geht's dir?|Wie kann ich dir helfen {user}?|Was geht {user}?|Was kann ich für dich tun {user}?] Mein Prefix hier ist **{prefix}**\n{emotes.arrow} Als Alternative zu normalen Commands biete ich auch Slash-Commands an",
-  "premiumKey": "{emotes.success} Hey {user}. Wie ich sehe, hast du auf meinem Supportserver gerade Level 5 erreicht. Als kleines Dankeschön, schenke ich dir einen Key für die {client}-Premiumversion: {key}"
+  "premiumKey": "{emotes.success} Hey {user}. Wie ich sehe, hast du auf meinem Supportserver gerade Level 5 erreicht. Als kleines Dankeschön, schenke ich dir einen Key für die {client}-Premiumversion: {key}",
+  "notYourInteraction": "{emotes.error} Du kannst diese Interaction nicht nutzen"
 }
