@@ -19,7 +19,7 @@
 # Enter your bot token here*
 bot_token = ""
 # Your MongoDB login url*
-mongodb_url = ""
+mongodb_url = "mongodb://USER:PASSWORD@127.0.0.1:27017/DATABASENAME?authMechanism=DEFAULT&authSource=admin"
 # Your prefix for commands*
 default_prefix = "-"
 # Your website (Discord invitation works too)*
