@@ -123,6 +123,7 @@ module.exports = class {
                     wsPing: client.ws.ping,
                     votes: votes,
                     support: client.support,
+                    invite: client.invite,
                     lastUpdated: Date.now(),
                 };
 
