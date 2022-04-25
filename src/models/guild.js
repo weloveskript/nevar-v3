@@ -55,6 +55,7 @@ module.exports = mongoose.model("Guild", new Schema({
             },
             autoDeleteChannels: [],
             reactionRoles: [],
+            autoReact: [],
         }
     },
     commands: { type: Array, default: [] },

@@ -17,7 +17,8 @@ const client = new Nevar({
     partials: Object.values(Constants.PartialTypes),
     allowedMention: {
         parse: ["users"]
-    }
+    },
+    restTimeOffset: 1000
 });
 
 const config = loadConfig();

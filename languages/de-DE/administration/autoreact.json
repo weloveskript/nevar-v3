@@ -1,0 +1,52 @@
+{
+  "general": {
+    "description": "Lass mich in bestimmten Channel automatisch mit festgelegten Emojis reagieren",
+    "syntax": "|- autoreact",
+    "examples": "|- autoreact » Sendet das Autoreact-Menü",
+    "emoji": "\uD83D\uDDD1️"
+  },
+
+  "main": {
+    "actions": {
+      "1": "Autoreact hinzufügen",
+      "2": "Liste ansehen",
+      "3": "Autoreact entfernen"
+    },
+    "collectors": {
+      "emoji": "{emotes.arrow} Sende den Emoji"
+    },
+    "errors": {
+      "toMany": "{emotes.error} Du kannst maximal 40 Emojis als Autoreact hinzufügen",
+      "invalidEmoji": "{emotes.error} Du musst eine gültige Emojiangabe machen. Die Aktion wurde abgebrochen"
+    },
+    "added": "{emotes.success} Das Autoreact wurde eingestellt",
+    "list": "{emotes.success} Folgende Emojis wurden als Autoreact eingestellt:\n\n{emotes.arrow} {list}",
+    "removed": "{emotes.success} Das Autoreact wurde entfernt"
+  },
+
+  "description": "Stellt den Autoreact für Channel ein",
+  "usage": "{emotes.use} Syntax: ```vb\n{prefix}autoreact <add/remove> <channel> <emoji> | <reset> <all/channel> | list```",
+  "example": "{emotes.example} Beispiel: ```vb\n{prefix}autoreact add #{channel} <:nevar_logo:860278157486587964>```",
+
+  "slashOption1": "aktion",
+  "slashOption1Desc": "Was möchtest du machen?",
+  "slashOption1Choice1": "add",
+  "slashOption1Choice2": "remove",
+  "slashOption1Choice3": "list",
+  "slashOption1Choice4": "reset",
+
+  "slashOption2": "channel",
+  "slashOption2Desc": "In welchem Channel möchtest du das durchführen?",
+
+  "slashOption3": "emoji",
+  "slashOption3Desc": "Gib einen Emoji an",
+
+  "maxCount": "{emotes.error} Du kannst maximal 40 Autoreact-Emojis einstellen",
+  "added": "{emotes.success} Du hast in {channel} {emote} zum Autoreact hinzugefügt",
+  "removed": "{emotes.success} Du hast in {channel} {emote} vom Autoreact entfernt",
+  "notAdded": "{emotes.error} {emote} ist nicht im Autoreact von {channel} hinzugefügt",
+  "list": "{emotes.success} Hier sind alle Autoreact-Emojis aufgelistet:\n\n{emotes.arrow} {list}",
+  "resetted": "{emotes.success} Ich habe alle Emojis vom Autoreact entfernt",
+  "resettedIn": "{emotes.success} Ich habe in {channel} alle Emojis vom Autoreact entfernt",
+  "noAutoreact": "{emotes.error} In {channel} ist kein Autoreact aktiviert"
+}

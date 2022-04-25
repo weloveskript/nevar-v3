@@ -181,8 +181,8 @@ module.exports = class {
             }
         }
 
-        if (data.guild?.autoReactChannels && data.guild?.autoReactChannels?.length > 0) {
-            for (let val of data.guild.autoReactChannels) {
+        if (data.guild.plugins?.autoReact && data.guild.plugins?.autoReact?.length > 0) {
+            for (let val of data.guild.plugins.autoReact) {
                 if (val.split(' | ')[0] === message.channel.id) {
                     let id = val.split(' | ')[1];
                     let emoji = this.client.emojis.cache.find(emoji => emoji.id === id);
