@@ -122,7 +122,7 @@ module.exports = class {
                     staffs: staffs,
                     wsPing: client.ws.ping,
                     votes: votes,
-                    support: client.support,
+                    support: client.supportUrl,
                     invite: client.invite,
                     lastUpdated: Date.now(),
                 };
