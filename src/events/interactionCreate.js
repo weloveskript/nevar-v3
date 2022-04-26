@@ -13,7 +13,7 @@ module.exports = class {
 
     async run(interaction) {
         if(!interaction.isCommand()){
-            let customIdSplitted = interaction.customId.split('_');
+            let customIdSplitted = interaction.customId?.split('_');
             let guild = this.client.guilds.cache.get(interaction.guildId);
             const data = {
                 config: this.client.config,
