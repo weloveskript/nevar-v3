@@ -1,0 +1,12 @@
+{
+  "general": {
+    "description": "Sendet das Banner des Servers \uD83D\uDC64",
+    "usage": "|- banner",
+    "example": "|- banner » Sendet das Banner des Servers",
+    "emoji": "\uD83D\uDC64"
+  },
+
+  "main": {
+    "icon": "Banner von {server}"
+  }
+}
