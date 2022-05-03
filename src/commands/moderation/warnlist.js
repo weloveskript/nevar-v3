@@ -14,6 +14,7 @@ class Warnlist extends Command {
             dirname: __dirname,
             cooldown: 5000,
             memberPermissions: ["KICK_MEMBERS"],
+            aliases: ["warns", "warn-list", "warnings"],
             slashCommand: {
                 addCommand: true,
                 data: new SlashCommandBuilder()
