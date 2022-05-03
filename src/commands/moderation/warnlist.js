@@ -51,6 +51,7 @@ class Warnlist extends Command {
 
         let warns = [... targetData.warnings.list];
 
+
         let backId = executor.user.id + '_back';
         let forwardId = executor.user.id + '_forward';
 
@@ -72,10 +73,15 @@ class Warnlist extends Command {
         let generateEmbed = async start => {
             const current = warns.slice(start, start + 5);
             let text = '{text}'
-                .replace('{text}',
-                    current.map(warn => (
-                        '\n\n**'+ this.client.emotes.arrow + ' ' + guild.translate("moderation/warnlist:main:warnNumber").replace('{number}', warns.indexOf(warn) + 1) + '**\n' + '» ' + guild.translate("moderation/warnlist:main:reason") + warn.reason + '\n' + '» ' + guild.translate("moderation/warnlist:main:moderator") + warn.moderator + '\n' + '» ' + guild.translate("moderation/warnlist:main:warnedAt") + moment.tz(new Date(warn.date), guild.translate("language:timezone")).format(guild.translate("language:dateformat"))
-                    )).join(''));
+                    .replace('{text}',
+                        current.map(warn => (
+                            '\n\n**'+ this.client.emotes.arrow + ' ' + guild.translate("moderation/warnlist:main:warnNumber").replace('{number}', warns.indexOf(warn) + 1) + '**\n' + '» ' + guild.translate("moderation/warnlist:main:reason") + warn.reason + '\n' + '» ' + guild.translate("moderation/warnlist:main:moderator") + warn.moderator + '\n' + '» ' + guild.translate("moderation/warnlist:main:warnedAt") + moment.tz(new Date(warn.date), guild.translate("language:timezone")).format(guild.translate("language:dateformat"))
+                        )).join(''));
+
+            if(warns.length === 0){
+                text = guild.translate("language:noEntries");
+            }
+
             return new MessageEmbed()
                 .setAuthor({name: this.client.user.username, iconURL: this.client.user.displayAvatarURL(), url: this.client.website})
                 .setTitle(guild.translate("moderation/warnlist:main:showing")

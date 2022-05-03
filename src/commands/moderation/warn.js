@@ -80,6 +80,7 @@ class Warn extends Command {
                 .setDescription(guild.translate("moderation/warn:main:errors:cantWarn")
                     .replace('{emotes.error}', this.client.emotes.error)
                     .replace('{emotes.warn}', this.client.emotes.warn)
+                    .replace('{emotes.arrow}', this.client.emotes.arrow)
                     .replaceAll('{user}', member.user.tag))
                 .setColor(this.client.embedColor)
                 .setFooter({text: data.guild.footer});
