@@ -19,6 +19,6 @@
     "reason": "Grund: ",
     "moderator": "Moderator: ",
     "warnedAt": "Verwarnt am: ",
-    "showing": "{emotes.server} Warnlist | Zeige {index}-{indexEnd} von {total}"
+    "showing": "{emotes.server} Warns von {user} | Zeige {index}-{indexEnd} von {total}"
   }
 }

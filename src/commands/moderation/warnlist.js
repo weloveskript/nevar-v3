@@ -88,6 +88,7 @@ class Warnlist extends Command {
                 .setTitle(guild.translate("moderation/warnlist:main:showing")
                     .replace('{index}', start + 1)
                     .replace('{indexEnd}', start + current.length)
+                    .replace('{user}', member.user.tag)
                     .replace('{total}', warns.length)
                     .replace('{emotes.server}', this.client.emotes.discord))
                 .setDescription(text)
@@ -97,12 +98,25 @@ class Warnlist extends Command {
         }
 
         const canFitOnePage = warns.length <= 5;
-        const embedMessage = await channel.send({
-            embeds : [await generateEmbed(0)],
-            components: canFitOnePage
-                ? []
-                : [new MessageActionRow({components: [forwardButton]})]
-        });
+        let embedMessage;
+        if(interaction){
+            embedMessage = await interaction.reply({
+                embeds : [await generateEmbed(0)],
+                components: canFitOnePage
+                    ? []
+                    : [new MessageActionRow({components: [forwardButton]})],
+            });
+        }
+        if(message){
+            embedMessage = await message.reply({
+                embeds : [await generateEmbed(0)],
+                components: canFitOnePage
+                    ? []
+                    : [new MessageActionRow({components: [forwardButton]})],
+                allowedMentions: ['user']
+            });
+        }
+
         if(canFitOnePage) return;
 
         const collector = embedMessage.createMessageComponentCollector({
