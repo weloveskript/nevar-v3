@@ -1,0 +1,21 @@
+{
+  "general": {
+    "description": "Entfernt einen einzelnen Warn eines Mitglieds ❌",
+    "syntax": "|- remove-warn <Mitglied> <Nummer>",
+    "examples": "|- remove-warn @Tinte 5 -> entfernt den fünften Warn von @Tinte",
+    "emoji": "❌"
+  },
+  "slash": {
+    "1": {
+      "name": "mitglied",
+      "description": "» Wessen Warns möchtest du zurücksetzen?"
+    },
+    "2": {
+      "name": "nummer",
+      "description": "» Welchen Warn möchtest du entfernen?"
+    }
+  },
+  "main": {
+    "removed": "{emotes.success} Du hast den {num}. Warn von {user} entfernt"
+  }
+}
