@@ -1,0 +1,15 @@
+{
+  "general": {
+    "description": "Sendet einen Text als Ascii-Art \uD83D\uDD8A️",
+    "syntax": "|- ascii <Text>",
+    "examples": "|- ascii Hallo » Sendet Hallo als Ascii-Art",
+    "emoji": "\uD83D\uDD8A️"
+  },
+
+  "slash": {
+    "1": {
+      "name": "text",
+      "description": "» Sende den Text"
+    }
+  }
+}
