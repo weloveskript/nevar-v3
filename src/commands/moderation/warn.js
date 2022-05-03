@@ -91,7 +91,7 @@ class Warn extends Command {
         if(!reason) reason = guild.translate("moderation/warn:main:noReason");
 
         let warning = {
-            date: moment.tz(new Date(Date.now()), guild.translate("language:timezone")).format(guild.translate("language:dateformat")),
+            date: Date.now(),
             moderator: author.user.tag,
             reason: reason
         }

@@ -1,0 +1,24 @@
+{
+  "general": {
+    "description": "Zeigt alle Warns eines Mitgliedes ℹ️",
+    "syntax": "|- warnlist <Mitglied>",
+    "examples": "|- warnlist @Tinte -> Zeigt alle Warns von @Tinte",
+    "emoji": "ℹ️"
+  },
+  "slash": {
+    "1": {
+      "name": "mitglied",
+      "description": "» Wessen Warns möchtest du sehen?"
+    }
+  },
+  "main": {
+    "cleared": "{emotes.success} Alle Warns von {user} wurden zurückgesetzt",
+    "back": "Zurück",
+    "forward": "Weiter",
+    "warnNumber": "Warn {number}",
+    "reason": "Grund: ",
+    "moderator": "Moderator: ",
+    "warnedAt": "Verwarnt am: ",
+    "showing": "{emotes.server} Warnlist | Zeige {index}-{indexEnd} von {total}"
+  }
+}
