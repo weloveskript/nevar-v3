@@ -1,0 +1,18 @@
+{
+  "general": {
+    "description": "Stoppt die Wiedergabe ⏩",
+    "syntax": "|- skip",
+    "examples": "|- skip » Überspringt die Wiedergabe",
+    "emoji": "⏩"
+  },
+
+  "main": {
+    "paused": "{emotes.success} Die Wiedergabe wurde übersprungen",
+    "errors": {
+      "notPlaying": "{emotes.error} Aktuell wird nichts abgespielt",
+      "notConnected": "{emotes.error} Du bist zu keinem Voicechannel verbunden",
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    },
+    "stopped": "{emotes.success} Die Wiedergabe wurde beendet"
+  }
+}
