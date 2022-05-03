@@ -50,7 +50,7 @@ class RemoveWarn extends Command {
             id: member.user.id
         });
 
-        if(!targetData.warnings.list[parseInt(args[1])]){
+        if(!targetData.warnings.list[parseInt(args[1] - 1)]){
             if (message) return message.send(this.client.usageEmbed(guild, this, data));
             if (interaction) return interaction.send(this.client.usageEmbed(guild, this, data));
         }
