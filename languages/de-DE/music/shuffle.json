@@ -1,0 +1,17 @@
+{
+  "general": {
+    "description": "Shuffled die Queue \uD83D\uDD00",
+    "syntax": "|- shuffle",
+    "examples": "|- shuffle » Shuffled die Queue",
+    "emoji": "\uD83D\uDD00"
+  },
+
+  "main": {
+    "errors": {
+      "notPlaying": "{emotes.error} Aktuell wird nichts abgespielt",
+      "notConnected": "{emotes.error} Du bist zu keinem Voicechannel verbunden",
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    },
+    "shuffled": "{emotes.success} Die Queue wurde geshuffled"
+  }
+}
