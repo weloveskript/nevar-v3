@@ -1,7 +1,7 @@
 {
   "general": {
     "description": "Sendet den Avatar eines Mitgliedes \uD83D\uDC64",
-    "usage": "| avatar [Mitglied]",
+    "usage": "|- avatar [Mitglied]",
     "example": "|- avatar @Tinte » Sendet @Tintes Avatar\n|- avatar » Sendet deinen Avatar",
     "emoji": "\uD83D\uDC64"
   },

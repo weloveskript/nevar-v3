@@ -53,6 +53,7 @@
     "discord.js-akinator": "^3.4.2",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
+    "figlet": "^1.5.2",
     "helmet": "^4.6.0",
     "i18next": "^20.3.5",
     "i18next-node-fs-backend": "^2.1.3",
