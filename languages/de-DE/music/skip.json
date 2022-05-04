@@ -1,6 +1,6 @@
 {
   "general": {
-    "description": "Stoppt die Wiedergabe ⏩",
+    "description": "Überspringt die Wiedergabe ⏩",
     "syntax": "|- skip",
     "examples": "|- skip » Überspringt die Wiedergabe",
     "emoji": "⏩"
