@@ -33,7 +33,7 @@ async function walkDirectory(dir, namespaces = [], folderName = "") {
 module.exports = async() => {
     const options = {
         jsonIndent: 2,
-        loadPath: path.resolve(__dirname, "../../languages/{{lng}}//{{ns}}.json")
+        loadPath: path.resolve(__dirname, "../../languages/{{lng}}//{{ns}}.json"),
     };
 
     const {
@@ -49,6 +49,7 @@ module.exports = async() => {
         backend: options,
         debug: false,
         fallbackLng: 'de-DE',
+        returnObjects: true,
         initImmediate: false,
         interpolation: {
             escapeValue: false
