@@ -1,0 +1,18 @@
+{
+  "general": {
+    "description": "Sendet das Banner eines Mitgliedes \uD83D\uDC64",
+    "usage": "|- banner [Mitglied]",
+    "example": "|- banner @Tinte » Sendet @Tintes Banner\n|- avatar » Sendet deinen Banner",
+    "emoji": "\uD83D\uDC64"
+  },
+
+  "slash": {
+    "1": {
+      "name": "mitglied",
+      "description": "» Wessen Banner möchtest du sehen?"
+    }
+  },
+  "main": {
+    "banner": "Banner von {user}"
+  }
+}
