@@ -14,6 +14,8 @@ class Filters extends Command {
             slashCommand: {
                 addCommand: true,
                 data: new SlashCommandBuilder()
+                    .addStringOption(option =>
+                        option.setRequired(true))
             }
         });
     }

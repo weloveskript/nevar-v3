@@ -1,9 +1,16 @@
 {
   "general": {
-    "description": "Spielt das vorherige Lied ab \uD83D\uDD25",
-    "syntax": "|- filters [list]",
-    "examples": "|- filters » Sendet das Filter-Menü\n|- filters list » Sendet die Liste aller Filter",
+    "description": "Verwaltet die Musik-Filter \uD83D\uDD25",
+    "syntax": "|- filters <filter/list>",
+    "examples": "|- filter nightcore » (De)aktiviert den Nightcore Filter\n|- filters list » Sendet die Liste aller Filter",
     "emoji": "\uD83D\uDD25"
+  },
+
+  "slash": {
+    "1": {
+      "name": "filter",
+      "description": "» Gib hier den Filter an"
+    }
   },
 
   "main": {
