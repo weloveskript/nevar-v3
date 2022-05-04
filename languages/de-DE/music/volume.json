@@ -1,0 +1,17 @@
+{
+  "general": {
+    "description": "Passt die Lautstärke an \uD83D\uDD0A",
+    "syntax": "|- volume <Lautstärke>",
+    "examples": "|- volume 100 » Setzt die Lautstärke auf 100",
+    "emoji": "\uD83D\uDD0A"
+  },
+
+  "main": {
+    "errors": {
+      "notPlaying": "{emotes.error} Aktuell wird nichts abgespielt",
+      "notConnected": "{emotes.error} Du bist zu keinem Voicechannel verbunden",
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    },
+    "set": "{emotes.success} Die Lautstärke wurde auf {vol} gesetzt"
+  }
+}
