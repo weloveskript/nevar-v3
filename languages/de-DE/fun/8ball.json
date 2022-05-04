@@ -1,0 +1,59 @@
+{
+  "general": {
+    "description": "Magische Kugel \uD83D\uDD2E",
+    "syntax": "| 8ball <Frage>",
+    "examples": "|- 8ball Ist Nevar ein guter Bot? » Was anderes als Ja sollte hier natürlich nicht kommen",
+    "emoji": "\uD83D\uDD2E"
+  },
+  "slash": {
+    "1": {
+      "name": "frage",
+      "description": "» Sende die Frage"
+    }
+  },
+  "main": {
+    "answer": "{emotes.arrow} **{question}**\n\n{emotes.arrow} {answer}",
+    "answers": [
+      "Ja",
+      "Nein",
+      "Vielleicht",
+      "Klare Sache",
+      "Das ist bisher unklar",
+      "Kann sein",
+      "Vielleicht nicht",
+      "Wahrscheinlich",
+      "Wahrscheinlich nicht",
+      "Möglich",
+      "Wie kommst du darauf?",
+      "Ich weiß nicht",
+      "Ich weiß nicht, was du von mir willst",
+      "Ich sag einfach mal ja",
+      "Ich sag einfach mal nein",
+      "Was soll ich dazu sagen?",
+      "Das hat dich nicht zu interessieren",
+      "Was geht dich das an?",
+      "Das geht dich nichts an",
+      "Die Frage stelle ich mir seit langem aber weiß die Antwort bis heute nicht",
+      "Das geht mir zu weit",
+      "Such es dir aus",
+      "Die Entscheidung liegt bei dir",
+      "Die Entscheidung ist dir überlassen",
+      "Das weiß ich heute nicht",
+      "Keine Ahnung",
+      "Denk nach, vielleicht kommst du dann drauf",
+      "Ja - oder?",
+      "Nein - oder?",
+      "Ich hoffe es",
+      "Ich hoffe nicht",
+      "Das kann gar nicht sein",
+      "Das kann sein",
+      "Das ist gut möglich",
+      "Das ist nicht möglich",
+      "Das ist eine Frage, die ich nicht beantworte",
+      "Was stellst du mir für Fragen?",
+      "Das kann ich dir nicht sagen",
+      "Da bin ich mir ziemlich sicher",
+      "Da bin ich mir ziemlich unsicher"
+    ]
+  }
+}
