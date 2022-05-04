@@ -1,0 +1,17 @@
+{
+  "general": {
+    "description": "Spielt das vorherige Lied ab \uD83D\uDD25",
+    "syntax": "|- filters [list]",
+    "examples": "|- filters » Sendet das Filter-Menü\n|- filters list » Sendet die Liste aller Filter",
+    "emoji": "\uD83D\uDD25"
+  },
+
+  "main": {
+    "errors": {
+      "notPlaying": "{emotes.error} Aktuell wird nichts abgespielt",
+      "sameChannel": "{emotes.error} Du musst zum selben Voicechannel wie ich verbunden sein"
+    },
+    "list": "{emotes.success} Die folgenden Filter sind verfügbar:\n\n```{list}```",
+    "set": "{emotes.success} Der {filter}-Filter wurde eingestellt"
+  }
+}
