@@ -77,4 +77,4 @@ class Volume extends Command {
     }
 }
 
-module.exports = Skip;
+module.exports = Volume;
